@@ -1,0 +1,17 @@
+# EscapeKey+r puts Screen into resize mode. Resize regions using hjkl keys, toggle focus with Tab and arrow keys.
+
+bind r eval "command -c classresize" # enter resize mode
+
+# use hjkl keys to resize regions
+bind -c classresize -k kl eval "resize -h -5" "command -c classresize"
+bind -c classresize -k kd eval "resize -v -5" "command -c classresize"
+bind -c classresize -k ku eval "resize -v +5" "command -c classresize"
+bind -c classresize -k kr eval "resize -h +5" "command -c classresize"
+
+# quickly switch between regions using tab and arrows
+bind -c classresize \t    eval "focus"       "command -c classresize" # Tab Key
+bind -c classresize h eval "focus left"  "command -c classresize" # Arrow Left
+bind -c classresize l eval "focus right" "command -c classresize" # Arrow Right
+bind -c classresize k eval "focus up"    "command -c classresize" # Arrow Up
+bind -c classresize j eval "focus down"  "command -c classresize" # Arrow Down
+

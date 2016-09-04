@@ -1,0 +1,5 @@
+[user]
+	name = Bryan Lee
+	email = pygmize.me@gmail.com
+[alias]
+	graph = log --graph --pretty=oneline --date=short --format=\"%Cgreen%h%Cred%an%Creset%s\"
