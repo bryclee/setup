@@ -15,11 +15,11 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Search
 set incsearch
 set hlsearch
-nnoremap <silent> \\ :noh<CR><Esc>
+nnoremap <silent> <Bslash><Bslash> :noh<CR><Esc>
 
 " Buffers
-map <C-j> :bp<CR>
-map <C-k> :bn<CR>
+map <C-J> :bp<CR>
+map <C-K> :bn<CR>
 set hidden
 
 " split line
@@ -71,3 +71,10 @@ let g:airline_powerline_fonts = 1
 map <C-T> :FZF<CR>
 map <C-Y> :call fzf#run({'sink': 'e', 'dir': '<C-R>=expand("%:p:h") . "/" <CR>'})<CR>
 map <C-P> :call fzf#run({'source': map(range(1, bufnr('$')), 'bufname(v:val)'), 'sink': 'e', 'down': '30%'})<CR>
+
+" vim-sexp
+" ========
+" nmap <LocalLeader>( <Plug>(sexp_round_head_wrap_list)
+" nmap <LocalLeader>) <Plug>(sexp_round_tail_wrap_list)
+" nmap <LocalLeader>e( <Plug>(sexp_round_head_wrap_element)
+" nmap <LocalLeader>e) <Plug>(sexp_round_tail_wrap_element)
