@@ -15,3 +15,9 @@ bind -c classresize l eval "focus right" "command -c classresize" # Arrow Right
 bind -c classresize k eval "focus up"    "command -c classresize" # Arrow Up
 bind -c classresize j eval "focus down"  "command -c classresize" # Arrow Down
 
+# Usability settings?
+defscrollback 10000
+term "screen-256color"
+
+# Set `_` key mapping to clear page, buffer, and current input
+bind _ eval "clear" "scrollback 0" "scrollback 15000" "stuff \03"
