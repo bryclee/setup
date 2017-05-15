@@ -12,6 +12,22 @@ filetype plugin indent on
 " Force markdown highlighting for *.md
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
+" Trim trailing whitespace on write.
+function TrimWhiteSpace()
+    " Save the last searched
+    let _s = @/
+    " Save the current cursor position
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    let @/ = _s
+    call cursor(l, c)
+endfunction
+" Autotrim on write...
+autocmd BufWritePre * call TrimWhiteSpace()
+" Trailing dots
+set list listchars=tab:»·,trail:·
+
 " Search
 set incsearch
 set hlsearch
@@ -65,12 +81,31 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_theme='dark'
 set noshowmode " hide the default mode line
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#default#section_truncate_width = {
+    \ 'b': 100,
+    \ 'y': 120
+    \ }
+let g:airline_mode_map = {
+    \ 'n'   : 'NOR',
+    \ 'i'   : 'INS',
+    \ 'v'   : 'VIS',
+    \ 'V'   : 'VIS',
+    \ '^V'  : 'VIS',
+    \ }
+"    \ '__'  : '-',
+"    \ 'c'   : 'COM',
+"    \ 's'   : 'SEL',
+"    \ 'S'   : 'SEL',
+"    \ '^S'  : 'SEL',
 
 " FZF
 " =========
 map <C-T> :FZF<CR>
 map <C-Y> :call fzf#run({'sink': 'e', 'dir': '<C-R>=expand("%:p:h") . "/" <CR>'})<CR>
-map <C-P> :call fzf#run({'source': map(range(1, bufnr('$')), 'bufname(v:val)'), 'sink': 'e', 'down': '30%'})<CR>
+map <C-P> :call fzf#run({'source': map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), 'bufname(v:val)'), 'sink': 'e', 'down': '30%'})<CR>
+
+" Indent line plugin ? - https://github.com/Yggdroot/indentLine
+" ===========================================================
 
 " vim-sexp
 " ========
