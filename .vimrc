@@ -1,7 +1,7 @@
 " Initialize Pathogen
 execute pathogen#infect()
 
-colorscheme seagull
+" colorscheme seagull " (OPTIONAL) Color scheme...
 
 set nocp
 set bs=indent,eol,start
@@ -25,7 +25,7 @@ function TrimWhiteSpace()
 endfunction
 " Autotrim on write...
 autocmd BufWritePre * call TrimWhiteSpace()
-" Trailing dots
+" Trailing dots showing whitespace
 set list listchars=tab:»·,trail:·
 
 " Search
@@ -80,11 +80,15 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_theme='dark'
 set noshowmode " hide the default mode line
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1 " (OPTIONAL) show powerline fonts
+" Trimming some sections earlier so more of the file path can be shown
+    " airline_section_b (hunks, branch)
+    " airline_section_y (fileencoding, fileformat)
 let g:airline#extensions#default#section_truncate_width = {
     \ 'b': 100,
     \ 'y': 120
     \ }
+" Abbreviating the vim mode mapping in the bottom left corner
 let g:airline_mode_map = {
     \ 'n'   : 'NOR',
     \ 'i'   : 'INS',
