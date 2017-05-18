@@ -28,10 +28,12 @@ autocmd BufWritePre * call TrimWhiteSpace()
 " Trailing dots showing whitespace
 set list listchars=tab:»·,trail:·
 
+let mapleader=","
+
 " Search
 set incsearch
 set hlsearch
-nnoremap <silent> <Bslash><Bslash> :noh<CR><Esc>
+nnoremap <silent> <Leader><Leader> :noh<CR><Esc>
 
 set wildmenu    " display autocomplete options in command menu
 
@@ -114,6 +116,10 @@ let g:airline_mode_map = {
 map <C-T> :FZF<CR>
 map <C-Y> :call fzf#run({'sink': 'e', 'dir': '<C-R>=expand("%:p:h") . "/" <CR>'})<CR>
 map <C-P> :call fzf#run({'source': map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), 'bufname(v:val)'), 'sink': 'e', 'down': '30%'})<CR>
+
+" fzf.vim
+" =======
+map <Leader>/ :Ag<space>
 
 " Indent line plugin ? - https://github.com/Yggdroot/indentLine
 " ===========================================================
