@@ -3,10 +3,10 @@ execute pathogen#infect()
 
 " colorscheme seagull " (OPTIONAL) Color scheme...
 
-set nocp
-set bs=indent,eol,start
-set ic " ignore case
-syntax on
+set nocp    " not vi-compatible, probably redundant with .vimrc?
+set bs=indent,eol,start     " allow backspace to jump over these items
+set ic      " ignore case
+syntax on   " Syntax highlighting
 filetype plugin indent on
 
 " Force markdown highlighting for *.md
@@ -33,6 +33,12 @@ set incsearch
 set hlsearch
 nnoremap <silent> <Bslash><Bslash> :noh<CR><Esc>
 
+set wildmenu    " display autocomplete options in command menu
+
+" Bind j and k to move by visual line if text is there
+nnoremap j gj
+nnoremap k gk
+
 " Buffers
 map <C-J> :bp<CR>
 map <C-K> :bn<CR>
@@ -47,6 +53,7 @@ set foldlevel=99
 
 " Center cursor
 set so=999
+set cursorline
 
 " line columns and ruler
 set number
