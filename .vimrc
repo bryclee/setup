@@ -1,7 +1,17 @@
-" Initialize Pathogen
-execute pathogen#infect()
-
-" colorscheme seagull " (OPTIONAL) Color scheme... not needed
+" Initialize Pathogen plugins
+execute pathogen#interpose('bundle/fzf')
+execute pathogen#interpose('bundle/fzf.vim')
+execute pathogen#interpose('bundle/gundo')
+execute pathogen#interpose('bundle/vim-airline')
+execute pathogen#interpose('bundle/vim-coloresque')
+execute pathogen#interpose('bundle/vim-fireplace')
+execute pathogen#interpose('bundle/vim-fugitive')
+execute pathogen#interpose('bundle/vim-gitgutter')
+execute pathogen#interpose('bundle/vim-javascript')
+execute pathogen#interpose('bundle/vim-json')
+execute pathogen#interpose('bundle/vim-less')
+execute pathogen#interpose('bundle/vim-sleuth')
+execute pathogen#interpose('bundle/pig.vim')
 
 set nocp    " not vi-compatible, probably redundant with .vimrc?
 set bs=indent,eol,start     " allow backspace to jump over these items
@@ -11,6 +21,14 @@ filetype plugin indent on
 
 " Set the leader key
 let mapleader=','
+
+" Move file directories away from local directory
+" The trailing // is to use absolute path
+set undodir=~/.vim/.undo//
+set backupdir=~/.vim/.backup//
+
+" Read if file has changed from outside vim
+set autoread
 
 " Force markdown highlighting for *.md
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -30,24 +48,51 @@ endfunction
 " autocmd BufWritePre * call TrimWhiteSpace()
 nnoremap <leader>w :call TrimWhiteSpace()<CR>:w<CR>
 " Trailing dots showing whitespace
-set list listchars=tab:»·,trail:·
+set list
+set listchars=tab:\|\ ,trail:·
+
+" Function for toggling a property
+" Usage: NMapToggle <keybinding> <string property name>
+function NMapToggle(key, opt)
+    " Create chained command string, toggle property and get value of property
+    let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
+    " nnoremap with new cmd
+    exec 'nnoremap '.a:key.' '.cmd
+endfunction
+" Apply variable number of args to NMapToggle?
+command -nargs=+ NMapToggle call NMapToggle(<f-args>)
+
+" paste mode
+" paste command. only works with pbpaste (OSX)
+nnoremap <silent> <leader>p :r !pbpaste<CR>
+" nnoremap <silent> <leader>p :set paste!<CR>
 
 " Search
 set incsearch
 set hlsearch
 nnoremap <silent> <Leader><Leader> :noh<CR><Esc>
 
+" Autocomplete
 set wildmenu    " display autocomplete options in command menu
+set complete=.,b,u,] " Autocomplete sources
+set wildmode=longest,list:longest " Set autocomplete default replacement behavior
+set completeopt=menu,preview " How menu shows
 
 " Bind j and k to move by visual line if text is there
 nnoremap j gj
 nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 
 " Buffers
 nnoremap <C-J> :bp<CR>
 nnoremap <C-K> :bn<CR>
-nnoremap <leader>d :bd<CR>
+nnoremap <leader>d :b# <BAR> bd #<CR> " In case you want to leave the window
 set hidden
+
+" Using splits
+set splitbelow
+set splitright
 
 " split line
 nnoremap K i<CR><Esc>
@@ -58,17 +103,42 @@ set foldlevel=99
 
 " Center cursor
 set so=999
-set cursorline
 
 " line columns and ruler
 set number
+set numberwidth=4
 set ruler
+" Add column marker at 81 chars
+set colorcolumn=81
 
 " indentation settings
 set autoindent
 set tabstop=4
 set shiftwidth=4
 set expandtab " tab to spaces
+
+" netrw settings
+" ==============
+" let g:netrw_browse_split = 4 " Open the file when hitting <CR> in the original window
+function! ToggleVExplorer()
+    if exists("t:expl_buf_num")
+        let expl_win_num = bufwinnr(t:expl_buf_num)
+        if expl_win_num != -1
+            let cur_win_nr = winnr()
+            exec expl_win_num . 'wincmd w'
+            close
+            exec cur_win_nr . 'wincmd w'
+            unlet t:expl_buf_num
+        else
+            unlet t:expl_buf_num
+        endif
+    else
+        exec '1wincmd w'
+        Vexplore
+        let t:expl_buf_num = bufnr("%")
+    endif
+endfunction
+map <silent> <C-E> :call ToggleVExplorer()<CR>
 
 " Commands to edit from current file
 map ,e :e <C-R>=expand("%:p:h") . "/" <CR>
@@ -88,16 +158,16 @@ endif
 " ======================
 set laststatus=2
 set t_Co=256
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_theme='dark'
 set noshowmode " hide the default mode line
-" let g:airline_powerline_fonts = 1 " (OPTIONAL) show powerline fonts
+let g:airline_powerline_fonts = 1 " (OPTIONAL) show powerline fonts
 " Trimming some sections earlier so more of the file path can be shown
     " airline_section_b (hunks, branch)
     " airline_section_y (fileencoding, fileformat)
 let g:airline#extensions#default#section_truncate_width = {
-    \ 'b': 100,
+    \ 'b': 110,
     \ 'y': 120
     \ }
 " Abbreviating the vim mode mapping in the bottom left corner
@@ -143,17 +213,9 @@ autocmd VimEnter * command! -nargs=* -bang Ag call s:ag_with_opts(<q-args>, <ban
 
 " editorconfig-vim
 " ================
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-command E Explore " Map :E to :Explore to keep that shortcut
+" let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " gundo.vim
 " =========
 nnoremap <leader>u :GundoToggle<CR>
-
-" vim-markdown-preview
-" ====================
-let vim_markdown_preview_hotkey='<C-m>'
-let vim_markdown_preview_toggle=1
-let vim_markdown_preview_temp_file=1
-let vim_markdown_preview_github=1
 
