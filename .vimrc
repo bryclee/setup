@@ -19,6 +19,8 @@ set ic      " ignore case
 syntax on   " Syntax highlighting
 filetype plugin indent on
 
+set path+=**    " improve find
+
 " Set the leader key
 let mapleader=','
 
@@ -141,10 +143,10 @@ endfunction
 map <silent> <C-E> :call ToggleVExplorer()<CR>
 
 " Commands to edit from current file
-map ,e :e <C-R>=expand("%:p:h") . "/" <CR>
-map ,t :tabe <C-R>=expand("%:p:h") . "/" <CR>
-map ,s :split <C-R>=expand("%:p:h") . "/" <CR>
-map ,v :vsplit <C-R>=expand("%:p:h") . "/" <CR>
+map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+map <leader>t :tabe <C-R>=expand("%:p:h") . "/" <CR>
+map <leader>s :split <C-R>=expand("%:p:h") . "/" <CR>
+map <leader>v :vsplit <C-R>=expand("%:p:h") . "/" <CR>
 
 " webpack watching
 set backupcopy=yes
