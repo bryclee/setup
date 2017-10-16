@@ -122,6 +122,7 @@ set expandtab " tab to spaces
 " netrw settings
 " ==============
 " let g:netrw_browse_split = 4 " Open the file when hitting <CR> in the original window
+let g:netrw_banner = 0
 function! ToggleVExplorer()
     if exists("t:expl_buf_num")
         let expl_win_num = bufwinnr(t:expl_buf_num)
@@ -150,11 +151,6 @@ map <leader>v :vsplit <C-R>=expand("%:p:h") . "/" <CR>
 
 " webpack watching
 set backupcopy=yes
-
-" clipboard
-if $TMUX == ''
-    set clipboard=unnamed
-endif
 
 " airline configurations
 " ======================
@@ -221,3 +217,7 @@ autocmd VimEnter * command! -nargs=* -bang Ag call s:ag_with_opts(<q-args>, <ban
 " =========
 nnoremap <leader>u :GundoToggle<CR>
 
+" vim-json
+if isdirectory(expand("~/.vim/bundle/vim-json"))
+    let g:vim_json_syntax_conceal = 0
+endif
