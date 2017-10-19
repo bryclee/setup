@@ -52,6 +52,7 @@ endfunction
 " Autotrim on write...
 " autocmd BufWritePre * call TrimWhiteSpace()
 nnoremap <leader>w :call TrimWhiteSpace()<CR>:w<CR>
+
 " Trailing dots showing whitespace
 set list
 set listchars=tab:\|\ ,trail:·
@@ -201,9 +202,6 @@ function! s:ag_with_opts(arg, bang)
 endfunction
 
 autocmd VimEnter * command! -nargs=* -bang Ag call s:ag_with_opts(<q-args>, <bang>0)
-
-" Indent line plugin ? - https://github.com/Yggdroot/indentLine
-" ===========================================================
 
 " vim-sexp
 " ========
