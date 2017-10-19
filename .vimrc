@@ -21,6 +21,9 @@ filetype plugin indent on
 
 set path+=**    " improve find
 
+" enable mouse
+set mouse=a
+
 " Set the leader key
 let mapleader=','
 
@@ -104,7 +107,7 @@ set foldmethod=indent
 set foldlevel=99
 
 " Center cursor
-set so=999
+set scrolloff=5
 
 " line columns and ruler
 set number
