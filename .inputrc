@@ -2,4 +2,4 @@ set completion-ignore-case on
 set show-all-if-ambiguous on
 
 # Vim mode for bash
-set -o vi
+set editing-mode vi
