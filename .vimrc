@@ -19,6 +19,9 @@ set ic      " ignore case
 syntax on   " Syntax highlighting
 filetype plugin indent on
 
+" Disable bell sound
+set visualbell
+
 set path+=**    " improve find
 
 " enable mouse
@@ -114,8 +117,6 @@ set scrolloff=5
 set number
 set numberwidth=4
 set ruler
-" Add column marker at 81 chars
-set colorcolumn=81
 
 " indentation settings
 set autoindent

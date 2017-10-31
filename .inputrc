@@ -3,3 +3,6 @@ set show-all-if-ambiguous on
 
 # Vim mode for bash
 set editing-mode vi
+
+# Disable bell
+set bell-style none
