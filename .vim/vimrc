@@ -11,6 +11,7 @@ filetype plugin indent on
 set visualbell
 
 set path+=**    " improve find
+set wildignorecase      " case insensitive file autocomplete
 
 " enable mouse
 set mouse=a
