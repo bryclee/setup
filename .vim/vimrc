@@ -179,8 +179,10 @@ let g:airline_mode_map = {
 " FZF
 " =========
 map <C-T> :FZF<CR>
-map <C-Y> :call fzf#run({'sink': 'e', 'dir': '<C-R>=expand("%:p:h") . "/" <CR>'})<CR>
-map <C-P> :call fzf#run({'source': map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), 'bufname(v:val)'), 'sink': 'e', 'down': '30%'})<CR>
+map <C-Y> :call fzf#run(fzf#wrap(
+    \ {'dir': '<C-R>=expand("%:p:h") . "/" <CR>'}))<CR>
+map <C-P> :call fzf#run(fzf#wrap(
+    \ { 'source': map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), 'bufname(v:val)')}))<CR>
 
 " FZF.vim
 " =======
@@ -216,3 +218,11 @@ endif
 " elm
 " ===
 let g:elm_format_autosave = 0
+" ALE options
+let g:ale_linters = {
+            \ 'javascript': ['eslint'],
+            \}
+
+" Prettier
+" ========
+nnoremap <leader>P :PrettierAsync<CR>
