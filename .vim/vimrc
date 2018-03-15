@@ -7,8 +7,13 @@ set ic      " ignore case
 syntax on   " Syntax highlighting
 filetype plugin indent on
 
+" Setting filetypes
+autocmd BufRead,BufNewFile *.babelrc set filetype=json
+autocmd BufRead,BufNewFile *.eslintrc set filetype=json
+
 " Disable bell sound
-set visualbell
+" Only use if terminal is making noise - otherwise it's very annoying
+" set visualbell
 
 set path+=**    " improve find
 set wildignorecase      " case insensitive file autocomplete
@@ -69,6 +74,11 @@ nnoremap <silent> <leader>p :r !pbpaste<CR>
 set incsearch
 set hlsearch
 nnoremap <silent> <Leader><Leader> :noh<CR><Esc>
+" Use ag for search
+if executable('ag')
+    command! -nargs=+ -complete=file Ag cexpr system('ag --nogroup --nocolor <args>')
+    set grepprg=ag\ --nogroup\ --nocolor
+endif
 
 " Autocomplete
 set wildmenu    " display autocomplete options in command menu
@@ -137,11 +147,8 @@ function! ToggleVExplorer()
 endfunction
 map <silent> <C-E> :call ToggleVExplorer()<CR>
 
-" Commands to edit from current file
+" Populate edit command relative to the current file
 map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-map <leader>t :tabe <C-R>=expand("%:p:h") . "/" <CR>
-map <leader>s :split <C-R>=expand("%:p:h") . "/" <CR>
-map <leader>v :vsplit <C-R>=expand("%:p:h") . "/" <CR>
 
 " webpack watching
 set backupcopy=yes
@@ -180,20 +187,9 @@ let g:airline_mode_map = {
 " =========
 map <C-T> :FZF<CR>
 map <C-Y> :call fzf#run(fzf#wrap(
-    \ {'dir': '<C-R>=expand("%:p:h") . "/" <CR>'}))<CR>
-map <C-P> :call fzf#run(fzf#wrap(
-    \ { 'source': map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), 'bufname(v:val)')}))<CR>
+    \ { 'source': "find * -path '*/\.*' -prune -o -type d -print" }))<CR>
+map <C-P> :Buffers<CR>
 
-" FZF.vim
-" =======
-function! s:ag_with_opts(arg, bang)
-    let tokens = split(a:arg)
-    let ag_opts = join(filter(copy(tokens), 'v:val =~ "^-"'))
-    let query = join(filter(copy(tokens), 'v:val !~ "^-"'))
-    call fzf#vim#ag(query, ag_opts, a:bang ? {} : {'down': '4o%'})
-endfunction
-
-autocmd VimEnter * command! -nargs=* -bang Ag call s:ag_with_opts(<q-args>, <bang>0)
 
 " vim-sexp
 " ========
