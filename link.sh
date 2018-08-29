@@ -4,3 +4,7 @@
 ln -sv $(pwd)/.vim ~/
 ln -sv $(pwd)/.inputrc ~/
 ln -sv $(pwd)/.gitconfig ~/
+ln -sv $(pwd)/.bash_profile ~/
+ln -sv $(pwd)/.bash_aliases ~/
+ln -sv $(pwd)/.profile ~/
+
