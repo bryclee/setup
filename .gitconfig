@@ -5,3 +5,5 @@
 	graph = log --graph --pretty=oneline --date=short --format=\"%Cgreen%h%Cred%an%Creset%s\"
 [credential]
 	helper = cache
+[include]
+    path = ~/.gitconfig_local
