@@ -7,3 +7,5 @@
     helper = cache
 [include]
     path = ~/.gitconfig_local
+[core]
+    excludesfile = /Users/bryalee/.gitignore_global
