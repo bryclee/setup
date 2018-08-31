@@ -15,9 +15,9 @@ filetype plugin indent on
 autocmd BufRead,BufNewFile *.babelrc set filetype=json
 autocmd BufRead,BufNewFile *.eslintrc set filetype=json
 
-" Disable bell sound
-" Only use if terminal is making noise - otherwise it's very annoying
+" Disable bell sound with visualbell and disable flashing
 set visualbell
+set t_vb=
 
 set path+=**    " improve find
 set wildignorecase      " case insensitive file autocomplete
