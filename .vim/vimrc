@@ -30,7 +30,6 @@ let mapleader=','
 
 " Move file directories away from local directory
 " The trailing // is to use absolute path
-set undodir=~/.vim/.undo//
 set backupdir=~/.vim/.backup//
 
 " Read if file has changed from outside vim
@@ -76,7 +75,7 @@ nnoremap <silent> <Leader><Leader> :noh<CR><Esc>
 " Use ag for search
 if executable('ag')
     command! -nargs=+ -complete=file Ag cexpr system('echo ' . shellescape('<args>'))
-    set grepprg=ag\ --nogroup\ --nocolor
+    set grepprg=ag\ --nogroup\ --nocolor\ --follow
 endif
 
 " Autocomplete
@@ -184,7 +183,11 @@ map <C-P> :Buffers<CR>
 
 " gundo.vim
 " =========
-nnoremap <leader>u :GundoToggle<CR>
+if has("persistant_undo")
+    set undodir=~/.vim/.undo//
+    set undofile
+endif
+nnoremap <leader>u :UndotreeToggle<CR>
 
 " vim-json
 if isdirectory(expand("~/.vim/bundle/vim-json"))
