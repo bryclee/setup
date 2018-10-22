@@ -211,10 +211,3 @@ let g:prettier#config#single_quote = 'true'
 let g:prettier#config#trailing_comma = 'none'
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#config_precedence = 'prefer-file'
-
-" vim-smooth-scroll
-" =================
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 5, 3)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 5, 3)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 5, 6)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 5, 6)<CR>
