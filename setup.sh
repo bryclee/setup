@@ -20,7 +20,7 @@ pwd
 case "$OS" in
   linux)
     sudo apt-get update -y
-    sudo apt-get install -y git checkinstall man-db
+    sudo apt-get install -y git checkinstall man-db curl
     ;;
   osx)
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
