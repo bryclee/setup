@@ -20,8 +20,7 @@ pwd
 case "$OS" in
   linux)
     sudo apt-get update -y
-    sudo apt-get install git -y
-    sudo apt install checkinstall # For safe removing of packages later
+    sudo apt-get install -y git checkinstall man-db curl
     ;;
   osx)
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -39,10 +38,10 @@ git submodule update
 # Run the link script to link vim and other rc files
 . ./link.sh
 
-# Install other items
-# . ./install/startup.${OS}.sh
-
-
+# Run the install scripts for different items.
+# Note that these are run from the setup dir.
+. ./install/misc.${OS}.sh
 . ./install/vim.${OS}.sh
+. ./install/node.${OS}.sh
 
 set +x

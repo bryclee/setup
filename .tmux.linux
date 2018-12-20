@@ -1,0 +1,2 @@
+# divider bar renders as "x" and "q" without this
+set-option -ga terminal-overrides ',*:enacs@:smacs@:rmacs@:acsc@'

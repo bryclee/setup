@@ -24,4 +24,5 @@ function safelyLink {
 }
 
 # Link files here
-safelyLink .vim .inputrc .gitconfig .bash_profile .bash_aliases .profile .bashrc .tmux.conf
+safelyLink .vim .inputrc .gitconfig .bash_profile .bash_aliases .profile .bashrc \
+    .tmux.conf .tmux.macosx .tmux.linux
