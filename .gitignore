@@ -1,4 +1,7 @@
 .vim/bundle
+.vim/plugged
 .vim/disabled
 .vim/.netrwhist
+.vim/.undo
+.vim/autoload
 sources

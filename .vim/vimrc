@@ -1,9 +1,41 @@
 scriptencoding utf-8
 set encoding=utf-8
 
-" Initialize Pathogen plugins
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
+" Auto install plug if not already installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
+" General pugins
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'w0rp/ale'
+Plug 'jiangmiao/auto-pairs'
+Plug 'vim-airline/vim-airline'
+Plug 'simnalamburt/vim-mundo'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+
+" Language specific
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'groenewege/vim-less'
+Plug 'ap/vim-css-color'
+" Pinned because latest does not properly source config from vimrc prettier config if no project config
+Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier', 'commit': 'e440d85' }
+Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin' }
+Plug 'leafgarland/typescript-vim'
+Plug 'motus/pig.vim', { 'for': 'pig' }
+Plug 'jparise/vim-graphql', { 'for': 'graphql' }
+
+call plug#end()
 
 set nocp    " not vi-compatible, probably redundant with .vimrc?
 set bs=indent,eol,start     " allow backspace to jump over these items
@@ -139,7 +171,8 @@ set t_Co=256
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_theme='dark'
-set noshowmode " hide the default mode line
+" hide the default mode line
+set noshowmode 
 let g:airline_powerline_fonts = 1 " (OPTIONAL) show powerline fonts
 " Trimming some sections earlier so more of the file path can be shown
     " airline_section_b (hunks, branch)
@@ -156,11 +189,6 @@ let g:airline_mode_map = {
     \ 'V'   : 'VIS',
     \ '^V'  : 'VIS',
     \ }
-"    \ '__'  : '-',
-"    \ 'c'   : 'COM',
-"    \ 's'   : 'SEL',
-"    \ 'S'   : 'SEL',
-"    \ '^S'  : 'SEL',
 
 " FZF
 " =========
@@ -177,22 +205,14 @@ map <C-P> :Buffers<CR>
 " nmap <LocalLeader>e( <Plug>(sexp_round_head_wrap_element)
 " nmap <LocalLeader>e) <Plug>(sexp_round_tail_wrap_element)
 
-" editorconfig-vim
-" ================
-" let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
 " gundo.vim
 " =========
-if has("persistant_undo")
-    set undodir=~/.vim/.undo//
+if has("persistent_undo")
     set undofile
+    set undodir=~/.vim/.undo//
 endif
-nnoremap <leader>u :UndotreeToggle<CR>
-
-" vim-json
-if isdirectory(expand("~/.vim/bundle/vim-json"))
-    let g:vim_json_syntax_conceal = 0
-endif
+" nnoremap <leader>u :UndotreeToggle<CR>
+nnoremap <leader>u :MundoToggle<CR>
 
 " ALE options
 let g:ale_linters = {
