@@ -32,8 +32,8 @@ Plug 'ap/vim-css-color'
 Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier', 'commit': 'e440d85' }
 Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin' }
 Plug 'leafgarland/typescript-vim'
-Plug 'motus/pig.vim', { 'for': 'pig' }
-Plug 'jparise/vim-graphql', { 'for': 'graphql' }
+Plug 'motus/pig.vim'
+Plug 'jparise/vim-graphql'
 
 call plug#end()
 
