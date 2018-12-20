@@ -101,7 +101,7 @@ set splitbelow
 set splitright
 
 " split line
-nnoremap K i<CR><Esc>
+nnoremap K i<CR><Esc>l
 
 " Folding
 set foldmethod=indent
@@ -198,6 +198,7 @@ endif
 let g:ale_linters = {
             \ 'javascript': ['eslint'],
             \}
+let g:ale_lint_delay = 500
 
 " vim-flow
 " ========
@@ -211,3 +212,4 @@ let g:prettier#config#single_quote = 'true'
 let g:prettier#config#trailing_comma = 'none'
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#config_precedence = 'prefer-file'
+let g:prettier#config#print_width = 120
