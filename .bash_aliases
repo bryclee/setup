@@ -8,3 +8,6 @@ alias gg="git graph"
 alias gco="git checkout"
 alias gpul="git pull"
 alias gpush="git push"
+
+# Misc aliases
+alias grb="git branch --sort='-authordate' | fzf | xargs git checkout"
