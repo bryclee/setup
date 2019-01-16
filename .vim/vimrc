@@ -224,15 +224,21 @@ let g:ale_lint_delay = 500
 " ========
 let g:flow#autoclose = 1
 let g:flow#omnifunc = 0
+let g:flow#enable = 0
 
 " Prettier
 " ========
 nnoremap <leader>P :PrettierAsync<CR>
+let external_prettier = trim(system('which prettier'))
+if !empty(external_prettier)
+  let g:prettier#exec_cmd_path = external_prettier
+endif
+
+let g:prettier#config#config_precedence = 'prefer-file'
 let g:prettier#config#tab_width = 4
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#trailing_comma = 'none'
 let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#config_precedence = 'prefer-file'
 let g:prettier#config#print_width = 120
 
 " vim-javascript
