@@ -123,8 +123,6 @@ nnoremap gj j
 nnoremap gk k
 
 " Buffers
-nnoremap <C-J> :bp<CR>
-nnoremap <C-K> :bn<CR>
 nnoremap <leader>d :b# <BAR> bd #<CR> " In case you want to leave the window
 set hidden
 
@@ -168,11 +166,12 @@ set backupcopy=yes
 " ======================
 set laststatus=2
 set t_Co=256
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_theme='dark'
 " hide the default mode line
-set noshowmode 
+set noshowmode
 let g:airline_powerline_fonts = 1 " (OPTIONAL) show powerline fonts
 " Trimming some sections earlier so more of the file path can be shown
     " airline_section_b (hunks, branch)
@@ -205,16 +204,16 @@ map <C-P> :Buffers<CR>
 " nmap <LocalLeader>e( <Plug>(sexp_round_head_wrap_element)
 " nmap <LocalLeader>e) <Plug>(sexp_round_tail_wrap_element)
 
-" gundo.vim
+" mundo.vim
 " =========
 if has("persistent_undo")
     set undofile
     set undodir=~/.vim/.undo//
 endif
-" nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>u :MundoToggle<CR>
 
 " ALE options
+" ===========
 let g:ale_linters = {
             \ 'javascript': ['eslint'],
             \}
@@ -233,7 +232,6 @@ let external_prettier = trim(system('which prettier'))
 if !empty(external_prettier)
   let g:prettier#exec_cmd_path = external_prettier
 endif
-
 let g:prettier#config#config_precedence = 'prefer-file'
 let g:prettier#config#tab_width = 4
 let g:prettier#config#single_quote = 'true'
