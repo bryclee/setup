@@ -127,6 +127,32 @@ nnoremap gk k
 " Buffers
 nnoremap <leader>bd :b# <BAR> bd #<CR> " In case you want to leave the window
 set hidden
+nnoremap <c-j> :call BackBufferHistory()<CR>
+nnoremap <c-k> :call ForwardBufferHistory()<CR>
+
+" TODO: Freezes if hits the end of the list, has to be <C-C>'d out
+" Go back in history to previous buffer
+function! BackBufferHistory()
+  let startName = bufname('%')
+  while 1
+    exe "normal! \<c-o>"
+    let nowName = bufname('%')
+    if nowName != startName
+      break
+    endif
+  endwhile
+endfunction
+" Go forward in history to buffer
+function! ForwardBufferHistory()
+  let startName = bufname('%')
+  while 1
+    exe "normal! 1\<c-i>"
+    let nowName = bufname('%')
+    if nowName != startName
+      break
+    endif
+  endwhile
+endfunction
 
 " Using splits
 set splitbelow

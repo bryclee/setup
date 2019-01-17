@@ -1,3 +1,6 @@
+" This is a config file with the minimum vim setup needed to launch with coc,
+" for debugging purposes
+
 set nocp
 
 call plug#begin('~/.vim/plugged')
