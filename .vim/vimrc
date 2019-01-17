@@ -162,6 +162,10 @@ map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " webpack watching
 set backupcopy=yes
 
+autocmd Filetype json set suffixesadd+=.js
+
+
+" Plugin configurations
 " vim-airline configurations
 " ======================
 set laststatus=2
