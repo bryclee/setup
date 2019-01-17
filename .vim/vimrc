@@ -23,6 +23,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
+
 " Language specific
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -123,7 +125,7 @@ nnoremap gj j
 nnoremap gk k
 
 " Buffers
-nnoremap <leader>d :b# <BAR> bd #<CR> " In case you want to leave the window
+nnoremap <leader>bd :b# <BAR> bd #<CR> " In case you want to leave the window
 set hidden
 
 " Using splits
@@ -247,3 +249,23 @@ let g:prettier#config#print_width = 120
 " vim-javascript
 " ==============
 let g:javascript_plugin_jsdoc = 1
+
+" coc-nvim
+" ===================
+" Set tab completion
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+
+" Go to definition
+nmap <silent> <leader>d <Plug>(coc-definition)
+nmap <silent> <C-W><leader>d :call CocActionAsync('jumpDefinition', 'tabe')<CR>
+nmap <silent> <leader>i <Plug>(coc-implementation)
+nmap <silent> <leader>r <Plug>(coc-references)
