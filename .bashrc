@@ -130,3 +130,4 @@ export EDITOR="vim"
 
 # Load z
 . ~/setup/z/z.sh
+
