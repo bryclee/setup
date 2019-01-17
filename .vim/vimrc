@@ -171,6 +171,8 @@ set scrolloff=5
 set number
 set numberwidth=4
 set ruler
+set signcolumn=yes
+highligh LineNr ctermfg=DarkGrey
 
 " indentation settings
 set autoindent

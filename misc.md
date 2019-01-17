@@ -16,11 +16,12 @@ Currently using [tpm](https://github.com/tmux-plugins/tpm). Haven't looked in to
 ## Vim setup
 
 ### COC for completion
-Some prerequisites that are not yet automated:
+Some prerequisites that are not yet automated/other issues:
  - yarn needs to be installed globally
  - for vim, need vim-node-rpc installed
  - install the server exetnsions globally?
  - only activate completion/bindings on files that have an extension installed?
+ - there seems to be something cause a bunch of redraws? screen flashes sometimes for new buffers
 
 
 ## Other things that are nice to have
