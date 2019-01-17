@@ -127,30 +127,29 @@ nnoremap gk k
 " Buffers
 nnoremap <leader>bd :b# <BAR> bd #<CR> " In case you want to leave the window
 set hidden
-nnoremap <c-j> :call BackBufferHistory()<CR>
-nnoremap <c-k> :call ForwardBufferHistory()<CR>
+" Buffer navigation history
+nnoremap <silent> <c-j> :call BackBuffer()<CR>
+nnoremap <silent> <c-k> :call ForwardBuffer()<CR>
 
-" TODO: Freezes if hits the end of the list, has to be <C-C>'d out
-" Go back in history to previous buffer
-function! BackBufferHistory()
-  let startName = bufname('%')
-  while 1
-    exe "normal! \<c-o>"
-    let nowName = bufname('%')
-    if nowName != startName
-      break
-    endif
-  endwhile
+" Navigate via command provided until buffer changes or there are no more
+" navigation changes. Mostly for the buffer changes though
+function! BackBuffer()
+  call UntilBufferChange("\<c-o>")
 endfunction
-" Go forward in history to buffer
-function! ForwardBufferHistory()
+function! ForwardBuffer()
+  call UntilBufferChange("1\<c-i>")
+endfunction
+function! UntilBufferChange(cmd)
   let startName = bufname('%')
+  let beforePos = getcurpos()[1:2]
   while 1
-    exe "normal! 1\<c-i>"
+    exe "normal! ".a:cmd
     let nowName = bufname('%')
-    if nowName != startName
+    let nowPos = getcurpos()[1:2]
+    if nowName != startName || beforePos == nowPos
       break
     endif
+    let beforePos = nowPos
   endwhile
 endfunction
 
