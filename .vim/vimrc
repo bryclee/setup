@@ -158,8 +158,8 @@ endif
 " Autocomplete
 set wildmenu    " display autocomplete options in command menu
 set complete=.,b,u,] " Autocomplete sources
-set wildmode=longest,list:longest " Set autocomplete default replacement behavior
-set completeopt=menu,preview " How menu shows
+set wildmode=full " Set autocomplete default replacement behavior
+set completeopt=menu " How menu shows
 
 " Bind j and k to move by visual line if text is there
 nnoremap j gj
@@ -306,3 +306,4 @@ nmap <silent> <leader>d <Plug>(coc-definition)
 nmap <silent> <C-W><leader>d :call CocActionAsync('jumpDefinition', 'tabe')<CR>
 nmap <silent> <leader>i <Plug>(coc-implementation)
 nmap <silent> <leader>r <Plug>(coc-references)
+nmap <silent> <leader>R <Plug>(coc-rename)
