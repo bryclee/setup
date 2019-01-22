@@ -17,9 +17,13 @@ autocmd! Filetype fzf
 autocmd  Filetype fzf set laststatus=0
   \| autocmd BufLeave <buffer> set laststatus=2
 map <C-T> :FZF<CR>
-map <C-Y> :call fzf#run(fzf#wrap(
+map <silent> <C-Y> :call fzf#run(fzf#wrap(
     \ { 'source': "find * -path '*/\.*' -prune -o -type d -print" }))<CR>
 map <C-P> :Buffers<CR>
+" [Buffers] Jump to existing window if possible
+let g:fzf_buffers_jump = 1
+
+Plug 'altercation/vim-colors-solarized'
 
 Plug 'w0rp/ale'
 let g:ale_linters = {
@@ -73,6 +77,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'groenewege/vim-less'
 Plug 'ap/vim-css-color'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " Pinned because latest does not properly source config from vimrc prettier config if no project config
 Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier', 'commit': 'e440d85' }
 Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin' }
@@ -81,6 +86,9 @@ Plug 'motus/pig.vim'
 Plug 'jparise/vim-graphql'
 
 call plug#end()
+
+set background=dark
+colorscheme solarized
 
 set nocp    " not vi-compatible, probably redundant with .vimrc?
 set bs=indent,eol,start     " allow backspace to jump over these items
@@ -235,22 +243,9 @@ map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " webpack watching
 set backupcopy=yes
 
+" Allow loading of js files from paths described in json files... most common
+" use case
 autocmd Filetype json set suffixesadd+=.js
-
-
-" Plugin configurations
-" vim-airline configurations
-" ======================
-
-" FZF
-" ===
-
-" vim-sexp
-" ========
-" nmap <LocalLeader>( <Plug>(sexp_round_head_wrap_list)
-" nmap <LocalLeader>) <Plug>(sexp_round_tail_wrap_list)
-" nmap <LocalLeader>e( <Plug>(sexp_round_head_wrap_element)
-" nmap <LocalLeader>e) <Plug>(sexp_round_tail_wrap_element)
 
 " mundo.vim
 " =========
