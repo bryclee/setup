@@ -22,6 +22,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
+Plug 'alvan/vim-closetag', { 'for': 'html,*javascript*' }
+let g:closetag_filenames = '*.html,*.js,*.jsx'
+let g:closetag_xhtml_filenames = '*.js,*.jsx'
+let g:closetag_emptyTags_caseSensitive = 1
 
 " Language specific
 Plug 'pangloss/vim-javascript'
