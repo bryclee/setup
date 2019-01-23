@@ -1,0 +1,28 @@
+" This is a config file with the minimum vim setup needed to launch with coc,
+" for debugging purposes
+
+set nocp
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
+
+call plug#end()
+
+set hidden
+
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+
+" Go to definition
+nmap <silent> <leader>d <Plug>(coc-definition)
+nmap <silent> <leader>i <Plug>(coc-implementation)
+nmap <silent> <leader>r <Plug>(coc-references)

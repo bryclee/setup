@@ -121,13 +121,20 @@ fi
 # FZF setting -- allow symlinks
 export FZF_DEFAULT_COMMAND="find -L * -path '*/\.*' -prune -o -type f -print -o -type l -print 2> /dev/null"
 
-# Load nvm 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Set vim as default editor
-export EDITOR="vim"
+export EDITOR="vi"
 
 # Load z
 . ~/setup/z/z.sh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+if [ -x "$(command -v nvim)" ]
+then
+  alias vi=nvim
+  export EDITOR="nvim"
+fi

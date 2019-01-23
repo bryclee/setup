@@ -13,9 +13,55 @@ call plug#begin('~/.vim/plugged')
 " General pugins
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+autocmd! Filetype fzf
+autocmd  Filetype fzf set laststatus=0
+  \| autocmd BufLeave <buffer> set laststatus=2
+map <C-T> :FZF<CR>
+map <silent> <C-Y> :call fzf#run(fzf#wrap(
+    \ { 'source': "find * -path '*/\.*' -prune -o -type d -print" }))<CR>
+map <C-P> :Buffers<CR>
+" [Buffers] Jump to existing window if possible
+let g:fzf_buffers_jump = 1
+
+Plug 'altercation/vim-colors-solarized'
+
 Plug 'w0rp/ale'
+let g:ale_linters = {
+            \ 'javascript': ['eslint'],
+            \}
+let g:ale_lint_delay = 500
+
 Plug 'jiangmiao/auto-pairs'
+let g:AutoPairsMapSpace = 0
+let g:AutoPairsMultilineClose = 0
+
 Plug 'vim-airline/vim-airline'
+set laststatus=2
+set t_Co=256
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline_theme='dark'
+" hide the default mode line
+set noshowmode
+let g:airline_powerline_fonts = 1 " (OPTIONAL) show powerline fonts
+" Trimming some sections earlier so more of the file path can be shown
+    " airline_section_b (hunks, branch)
+    " airline_section_y (fileencoding, fileformat)
+let g:airline#extensions#default#section_truncate_width = {
+    \ 'b': 110,
+    \ 'y': 120
+    \ }
+" Abbreviating the vim mode mapping in the bottom left corner
+let g:airline_mode_map = {
+    \ 'n'   : 'NOR',
+    \ 'i'   : 'INS',
+    \ 'v'   : 'VIS',
+    \ 'V'   : 'VIS',
+    \ '^V'  : 'VIS',
+    \ }
+
 Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -26,12 +72,23 @@ Plug 'alvan/vim-closetag', { 'for': 'html,*javascript*' }
 let g:closetag_filenames = '*.html,*.js,*.jsx'
 let g:closetag_xhtml_filenames = '*.js,*.jsx'
 let g:closetag_emptyTags_caseSensitive = 1
+Plug 'tpope/vim-vinegar'
+
+" Install Coc. Install yarn if not already installed
+function InstallCoc()
+  if !executable('yarn')
+    !npm install -g yarn
+  endif
+  call coc#util#install()
+endfunction
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> InstallCoc() }}
 
 " Language specific
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'groenewege/vim-less'
 Plug 'ap/vim-css-color'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " Pinned because latest does not properly source config from vimrc prettier config if no project config
 Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier', 'commit': 'e440d85' }
 Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin' }
@@ -40,6 +97,9 @@ Plug 'motus/pig.vim'
 Plug 'jparise/vim-graphql'
 
 call plug#end()
+
+set background=dark
+colorscheme solarized
 
 set nocp    " not vi-compatible, probably redundant with .vimrc?
 set bs=indent,eol,start     " allow backspace to jump over these items
@@ -117,8 +177,8 @@ endif
 " Autocomplete
 set wildmenu    " display autocomplete options in command menu
 set complete=.,b,u,] " Autocomplete sources
-set wildmode=longest,list:longest " Set autocomplete default replacement behavior
-set completeopt=menu,preview " How menu shows
+set wildmode=full " Set autocomplete default replacement behavior
+set completeopt=menu " How menu shows
 
 " Bind j and k to move by visual line if text is there
 nnoremap j gj
@@ -127,17 +187,40 @@ nnoremap gj j
 nnoremap gk k
 
 " Buffers
-nnoremap <C-J> :bp<CR>
-nnoremap <C-K> :bn<CR>
-nnoremap <leader>d :b# <BAR> bd #<CR> " In case you want to leave the window
+nnoremap <leader>bd :b# <BAR> bd #<CR> " In case you want to leave the window
 set hidden
+" Buffer navigation history
+nnoremap <silent> <c-j> :call BackBuffer()<CR>
+nnoremap <silent> <c-k> :call ForwardBuffer()<CR>
+
+" Navigate via command provided until buffer changes or there are no more
+" navigation changes. Mostly for the buffer changes though
+function! BackBuffer()
+  call UntilBufferChange("\<c-o>")
+endfunction
+function! ForwardBuffer()
+  call UntilBufferChange("1\<c-i>")
+endfunction
+function! UntilBufferChange(cmd)
+  let startName = bufname('%')
+  let beforePos = getcurpos()[1:2]
+  while 1
+    exe "normal! ".a:cmd
+    let nowName = bufname('%')
+    let nowPos = getcurpos()[1:2]
+    if nowName != startName || beforePos == nowPos
+      break
+    endif
+    let beforePos = nowPos
+  endwhile
+endfunction
 
 " Using splits
 set splitbelow
 set splitright
 
 " split line
-nnoremap K i<CR><Esc>l
+nnoremap K i<CR><Esc>l :call TrimWhiteSpace()<CR>
 
 " Folding
 set foldmethod=indent
@@ -150,6 +233,14 @@ set scrolloff=5
 set number
 set numberwidth=4
 set ruler
+set signcolumn=yes
+highlight LineNr ctermfg=DarkGrey
+" cursorline seems to have better performance on nvim, and is not necessary
+if has('nvim')
+  set cursorline
+  highlight CursorLine term=NONE cterm=NONE
+  highlight CursorLineNr ctermfg=white
+endif
 
 " indentation settings
 set autoindent
@@ -157,83 +248,68 @@ set tabstop=4
 set shiftwidth=4
 set expandtab " tab to spaces
 
-" netrw settings
-" ==============
-" let g:netrw_browse_split = 4 " Open the file when hitting <CR> in the original window
-let g:netrw_banner = 0
-
 " Populate edit command relative to the current file
 map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " webpack watching
 set backupcopy=yes
 
-" airline configurations
-" ======================
-set laststatus=2
-set t_Co=256
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline_theme='dark'
-" hide the default mode line
-set noshowmode 
-let g:airline_powerline_fonts = 1 " (OPTIONAL) show powerline fonts
-" Trimming some sections earlier so more of the file path can be shown
-    " airline_section_b (hunks, branch)
-    " airline_section_y (fileencoding, fileformat)
-let g:airline#extensions#default#section_truncate_width = {
-    \ 'b': 110,
-    \ 'y': 120
-    \ }
-" Abbreviating the vim mode mapping in the bottom left corner
-let g:airline_mode_map = {
-    \ 'n'   : 'NOR',
-    \ 'i'   : 'INS',
-    \ 'v'   : 'VIS',
-    \ 'V'   : 'VIS',
-    \ '^V'  : 'VIS',
-    \ }
+" Allow loading of js files from paths described in json files... most common
+" use case
+autocmd Filetype json set suffixesadd+=.js
 
-" FZF
-" =========
-map <C-T> :FZF<CR>
-map <C-Y> :call fzf#run(fzf#wrap(
-    \ { 'source': "find * -path '*/\.*' -prune -o -type d -print" }))<CR>
-map <C-P> :Buffers<CR>
-
-
-" vim-sexp
-" ========
-" nmap <LocalLeader>( <Plug>(sexp_round_head_wrap_list)
-" nmap <LocalLeader>) <Plug>(sexp_round_tail_wrap_list)
-" nmap <LocalLeader>e( <Plug>(sexp_round_head_wrap_element)
-" nmap <LocalLeader>e) <Plug>(sexp_round_tail_wrap_element)
-
-" gundo.vim
+" mundo.vim
 " =========
 if has("persistent_undo")
     set undofile
     set undodir=~/.vim/.undo//
 endif
-" nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>u :MundoToggle<CR>
 
 " ALE options
-let g:ale_linters = {
-            \ 'javascript': ['eslint'],
-            \}
-let g:ale_lint_delay = 500
+" ===========
 
 " vim-flow
 " ========
 let g:flow#autoclose = 1
+let g:flow#omnifunc = 0
+let g:flow#enable = 0
 
 " Prettier
 " ========
-nnoremap <leader>P :PrettierAsync<CR>
+nnoremap <leader>P :PrettierAsync<CR>:w<CR>
+let external_prettier = trim(system('which prettier'))
+if !empty(external_prettier)
+  let g:prettier#exec_cmd_path = external_prettier
+endif
+let g:prettier#config#config_precedence = 'prefer-file'
 let g:prettier#config#tab_width = 4
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#trailing_comma = 'none'
 let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#config_precedence = 'prefer-file'
 let g:prettier#config#print_width = 120
+
+" vim-javascript
+" ==============
+let g:javascript_plugin_jsdoc = 1
+
+" coc-nvim
+" ===================
+" Set tab completion
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+
+" Go to definition
+nmap <silent> <leader>d <Plug>(coc-definition)
+nmap <silent> <C-W><leader>d :call CocActionAsync('jumpDefinition', 'tabe')<CR>
+nmap <silent> <leader>i <Plug>(coc-implementation)
+nmap <silent> <leader>r <Plug>(coc-references)
+nmap <silent> <leader>R <Plug>(coc-rename)
