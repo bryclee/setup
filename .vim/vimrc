@@ -134,6 +134,10 @@ set autoread
 " Force markdown highlighting for *.md
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
+function TrimStr(str)
+  return substitute(a:str, '^\s*\(.\{-}\)\s*$', '\1', '')
+endfunction
+
 " Trim trailing whitespace on write.
 function TrimWhiteSpace()
     " Save the last searched
@@ -278,7 +282,7 @@ let g:flow#enable = 0
 " Prettier
 " ========
 nnoremap <leader>P :PrettierAsync<CR>:w<CR>
-let external_prettier = trim(system('which prettier'))
+let external_prettier = TrimStr(system('which prettier'))
 if !empty(external_prettier)
   let g:prettier#exec_cmd_path = external_prettier
 endif
