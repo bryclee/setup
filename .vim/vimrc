@@ -45,7 +45,7 @@ let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline_theme='dark'
 " hide the default mode line
 set noshowmode
-let g:airline_powerline_fonts = 1 " (OPTIONAL) show powerline fonts
+" let g:airline_powerline_fonts = 1 " (OPTIONAL) show powerline fonts
 " Trimming some sections earlier so more of the file path can be shown
     " airline_section_b (hunks, branch)
     " airline_section_y (fileencoding, fileformat)
