@@ -181,7 +181,7 @@ endif
 " Autocomplete
 set wildmenu    " display autocomplete options in command menu
 set complete=.,b,u,] " Autocomplete sources
-set wildmode=full " Set autocomplete default replacement behavior
+set wildmode=longest,list:longest " Set autocomplete default replacement behavior
 set completeopt=menu " How menu shows
 
 " Bind j and k to move by visual line if text is there
