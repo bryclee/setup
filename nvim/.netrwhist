@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/bryalee/Projects/mini/LanguageClient-neovim/tests/data/sample-js'
+let g:netrw_dirhist_2='/Users/bryalee/Projects/mini/LanguageClient-neovim/tests/data/sample-js/src'
+let g:netrw_dirhist_3='/Users/bryalee/setup'
