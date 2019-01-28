@@ -297,6 +297,7 @@ let g:prettier#config#print_width = 120
 " vim-javascript
 " ==============
 let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_flow = 1
 
 " coc-nvim
 " ===================
