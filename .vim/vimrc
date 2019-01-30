@@ -240,7 +240,8 @@ set numberwidth=4
 set ruler
 set signcolumn=yes
 highlight LineNr ctermfg=DarkGrey
-" cursorline seems to have better performance on nvim, and is not necessary
+" cursorline seems to have better performance on nvim. Not really worth the
+" performance hit on scroll otherwise
 if has('nvim')
   set cursorline
   highlight CursorLine term=NONE cterm=NONE
@@ -299,8 +300,9 @@ let g:prettier#config#print_width = 120
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_flow = 1
 
-" coc-nvim
+" coc.nvim
 " ===================
+set noshowcmd
 " Set tab completion
 inoremap <silent><expr> <TAB>
   \ pumvisible() ? "\<C-n>" :
