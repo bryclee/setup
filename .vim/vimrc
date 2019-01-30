@@ -10,6 +10,10 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'justinmk/vim-dirvish'
+" Sort directories first
+let g:dirvish_mode = ':sort ,^.*[\/],'
+
 " General pugins
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
