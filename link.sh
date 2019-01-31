@@ -14,3 +14,4 @@ safelyLink .vim .inputrc .gitconfig .bash_profile .bash_aliases .profile .bashrc
 mkdir -p ~/.config
 
 ./safelyLink.sh nvim ~/.config
+./safelyLink.sh .nvm/default-packages ~/.nvm

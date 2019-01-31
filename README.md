@@ -24,7 +24,7 @@ Some prerequisites that are not yet automated/other issues:
  - there seems to be something cause a bunch of redraws? screen flashes sometimes for new buffers
 
 
-## Other things that are nice to have
+## Other things that are nice to have that are not installed as part of the script
 
 ### General
 
@@ -32,6 +32,6 @@ Flux
 
 ### Mac
 
+XCode App - The command line tools are installed as part of the script, but not sure if that includes all the tools that are desired.
 Alfred (search is better than default Spotlight)
 Spectacle
-iTerm2
