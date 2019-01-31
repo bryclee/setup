@@ -9,7 +9,7 @@ function safelyLink {
 
 # Link files here
 safelyLink .vim .inputrc .gitconfig .bash_profile .bash_aliases .profile .bashrc \
-    .tmux.conf .tmux.macosx .tmux.linux
+    .tmux.conf .tmux.macosx .tmux.linux .gitignore_global
 
 mkdir -p ~/.config
 
