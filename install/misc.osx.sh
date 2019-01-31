@@ -17,3 +17,4 @@ brew install the_silver_searcher
 
 # More installs
 . ./install/iterm2.osx.sh
+. ./install/alfred.osx.sh
