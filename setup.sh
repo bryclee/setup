@@ -12,6 +12,8 @@ mkdir sources
 (. ./install/misc.${OS}.sh)
 (. ./install/node.sh)
 (. ./install/vim.${OS}.sh)
+(. ./install/fzf.${OS}.sh)
+(. ./install/tmux.${OS}.sh)
 
 # Run the link script to link vim and other rc files
 . ./link.sh
