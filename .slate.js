@@ -1,30 +1,18 @@
 const pushLeft = slate.operation('move', {
-    x: 0,
-    y: 0,
+    x: 'screenOriginX',
+    y: 'screenOriginY',
     width: 'screenSizeX/2',
     height: 'screenSizeY'
 });
 const pushRight = slate.operation('move', {
-    x: 'screenSizeX/2',
-    y: 0,
+    x: 'screenOriginX+(screenSizeX/2)',
+    y: 'screenOriginY',
     width: 'screenSizeX/2',
     height: 'screenSizeY'
 });
-const halfTop = slate.operation('move', {
-    x: 0,
-    y: 0,
-    width: 'screenSizeX',
-    height: 'screenSizeY/2'
-});
-const halfBottom = slate.operation('move', {
-    x: 0,
-    y: 'screenSizeY/2',
-    width: 'screenSizeX',
-    height: 'screenSizeY/2'
-});
 const maximize = slate.operation('move', {
-    x: 0,
-    y: 0,
+    x: 'screenOriginX',
+    y: 'screenOriginY',
     width: 'screenSizeX',
     height: 'screenSizeY'
 });
