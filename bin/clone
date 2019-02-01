@@ -8,6 +8,12 @@ ORIGIN=https://github.com/${GITHUB_USER}/$REPO.git
 UPSTREAM=https://github.com/${ORG}/$REPO.git
 
 git clone $ORIGIN
+
+if [ ! -d "$REPO" ]
+then
+  exit
+fi
+
 pushd $REPO
 git remote add upstream $UPSTREAM
 popd
