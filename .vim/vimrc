@@ -10,6 +10,16 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'justinmk/vim-dirvish'
+" Sort directories first
+let g:dirvish_mode = ':sort ,^.*[\/],'
+augroup dirvish_config
+  autocmd!
+  autocmd FileType dirvish silent! unmap <buffer> <C-p>
+augroup end
+
+" [Buffers] Jump to existing window if possible
+let g:fzf_buffers_jump = 1
 " General pugins
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -20,13 +30,6 @@ map <C-T> :FZF<CR>
 map <silent> <C-Y> :call fzf#run(fzf#wrap(
     \ { 'source': "find * -path '*/\.*' -prune -o -type d -print" }))<CR>
 map <C-P> :Buffers<CR>
-
-Plug 'justinmk/vim-dirvish'
-" Sort directories first
-" TODO: Remap P for preview
-let g:dirvish_mode = ':sort ,^.*[\/],'
-" [Buffers] Jump to existing window if possible
-let g:fzf_buffers_jump = 1
 
 Plug 'altercation/vim-colors-solarized'
 
