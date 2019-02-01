@@ -26,13 +26,15 @@ Some prerequisites that are not yet automated/other issues:
 
 ## Other things that are nice to have that are not installed as part of the script
 
-### General
+### General other tools
 
 Flux
+Postman
 
 ### Mac
 
 XCode App - The command line tools are installed as part of the script, but not sure if that includes all the tools that are desired.
 Alfred (search is better than default Spotlight)
     - Script will install, but need to manually disable the spotlight shortcut in system preferences
-Spectacle
+Slate
+    - Need to enable accessibility

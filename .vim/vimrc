@@ -344,3 +344,9 @@ nmap <silent> <leader>r <Plug>(coc-references)
 nmap <silent> <leader>R <Plug>(coc-rename)
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
 nmap <silent> ]d <Plug>(coc-diagnostic-next)
+
+" After we're done with all the common config, check if there's a system local
+" config to source
+if filereadable(expand('~/.vimrc_local'))
+  source ~/.vimrc_local
+endif
