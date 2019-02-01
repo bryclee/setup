@@ -202,31 +202,33 @@ nnoremap gk k
 " Buffers
 nnoremap <leader>bd :b# <BAR> bd #<CR> " In case you want to leave the window
 set hidden
-" Buffer navigation history
-nnoremap <silent> <c-j> :call BackBuffer()<CR>
-nnoremap <silent> <c-k> :call ForwardBuffer()<CR>
+
+" Buffer navigation history. I haven't found this very useful, so going to try
+" commenting this out for now.
+" nnoremap <silent> <c-j> :call BackBuffer()<CR>
+" nnoremap <silent> <c-k> :call ForwardBuffer()<CR>
 
 " Navigate via command provided until buffer changes or there are no more
 " navigation changes. Mostly for the buffer changes though
-function! BackBuffer()
-  call UntilBufferChange("\<c-o>")
-endfunction
-function! ForwardBuffer()
-  call UntilBufferChange("1\<c-i>")
-endfunction
-function! UntilBufferChange(cmd)
-  let startName = bufname('%')
-  let beforePos = getcurpos()[1:2]
-  while 1
-    exe "normal! ".a:cmd
-    let nowName = bufname('%')
-    let nowPos = getcurpos()[1:2]
-    if nowName != startName || beforePos == nowPos
-      break
-    endif
-    let beforePos = nowPos
-  endwhile
-endfunction
+" function! BackBuffer()
+"   call UntilBufferChange("\<c-o>")
+" endfunction
+" function! ForwardBuffer()
+"   call UntilBufferChange("1\<c-i>")
+" endfunction
+" function! UntilBufferChange(cmd)
+"   let startName = bufname('%')
+"   let beforePos = getcurpos()[1:2]
+"   while 1
+"     exe "normal! ".a:cmd
+"     let nowName = bufname('%')
+"     let nowPos = getcurpos()[1:2]
+"     if nowName != startName || beforePos == nowPos
+"       break
+"     endif
+"     let beforePos = nowPos
+"   endwhile
+" endfunction
 
 " Using splits
 set splitbelow
@@ -234,6 +236,17 @@ set splitright
 
 " split line
 nnoremap K i<CR><Esc>l :call TrimWhiteSpace()<CR>
+
+" swapping lines
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
+
+" Enter newline, deleting commas if needed
+nnoremap <Enter> o<Esc>0d$
 
 " Folding
 set foldmethod=indent
