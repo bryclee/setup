@@ -1,0 +1,14 @@
+#!/bin/bash
+
+GITHUB_USER=bryclee
+ARGS=(${1//\// })
+ORG=${ARGS[0]}
+REPO=${ARGS[1]}
+ORIGIN=https://github.com/${GITHUB_USER}/$REPO.git
+UPSTREAM=https://github.com/${ORG}/$REPO.git
+
+git clone $ORIGIN
+pushd $REPO
+git remote add upstream $UPSTREAM
+popd
+
