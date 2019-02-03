@@ -47,7 +47,7 @@ const throwLeft = slate.operation('throw', {
 const TERMINALS = {
     HYPER: {
         name: 'Hyper',
-        launch: 'hyper'
+        launch: '/Applications/Hyper.app/Contents/MacOS/Hyper'
     },
     ITERM: {
         name: 'iTerm2',
