@@ -17,6 +17,19 @@ const maximize = slate.operation('move', {
     height: 'screenSizeY'
 });
 
+const pushHalfTop = slate.operation('move', {
+    x: 'windowTopLeftX',
+    y: 'screenOriginY',
+    width: 'windowSizeX',
+    height: 'screenSizeY/2'
+});
+const pushHalfBottom = slate.operation('move', {
+    x: 'windowTopLeftX',
+    y: 'screenOriginY+(screenSizeY/2)',
+    width: 'windowSizeX',
+    height: 'screenSizeY/2'
+});
+
 const downsize = slate.operation('move', {
     x: 'windowTopLeftX+(windowSizeX*0.05)',
     y: 'windowTopLeftY+(windowSizeY*0.05)',
@@ -31,14 +44,49 @@ const throwLeft = slate.operation('throw', {
     screen: 'left'
 });
 
+const TERMINALS = {
+    HYPER: {
+        name: 'Hyper',
+        launch: 'hyper'
+    },
+    ITERM: {
+        name: 'iTerm2',
+        launch: '/Applications/iTerm.app/Contents/MacOS/iTerm2'
+    }
+};
+
+const launchOrFocusTerm = win => {
+    const { name, launch } = TERMINALS.HYPER;
+    let termPresent = false;
+
+    slate.eachApp(app => {
+        if (app.name() === name) {
+            termPresent = true;
+        }
+    });
+
+    if (!termPresent) {
+        slate.shell(launch);
+    } else {
+        win.doOperation(slate.operation('focus', {
+            app: name
+        }));
+    }
+};
+
 slate.bindAll({
-    '[:ctrl,cmd': pushLeft,
-    ']:ctrl,cmd': pushRight,
+    'h:ctrl,cmd': pushLeft,
+    'l:ctrl,cmd': pushRight,
     '=:ctrl,cmd': maximize,
     '-:ctrl,cmd': downsize,
 
+    'j:ctrl,cmd': pushHalfBottom,
+    'k:ctrl,cmd': pushHalfTop,
+
     '[:ctrl,cmd,alt': throwLeft,
     ']:ctrl,cmd,alt': throwRight,
+
+    't:ctrl,cmd': launchOrFocusTerm,
 
     'g:ctrl,cmd': slate.operation('grid'),
 

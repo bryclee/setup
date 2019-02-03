@@ -10,14 +10,6 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'justinmk/vim-dirvish'
-" Sort directories first
-let g:dirvish_mode = ':sort ,^.*[\/],'
-augroup dirvish_config
-  autocmd!
-  autocmd FileType dirvish silent! unmap <buffer> <C-p>
-augroup end
-
 " [Buffers] Jump to existing window if possible
 let g:fzf_buffers_jump = 1
 " General pugins
@@ -31,7 +23,9 @@ map <silent> <C-Y> :call fzf#run(fzf#wrap(
     \ { 'source': "find * -path '*/\.*' -prune -o -type d -print" }))<CR>
 map <C-P> :Buffers<CR>
 
+" Colorschemes
 Plug 'altercation/vim-colors-solarized'
+Plug 'jeffkreeftmeijer/vim-dim'
 
 Plug 'w0rp/ale'
 let g:ale_linters = {
@@ -107,8 +101,7 @@ Plug 'jparise/vim-graphql'
 
 call plug#end()
 
-set background=dark
-colorscheme solarized
+colorscheme dim
 
 set nocp    " not vi-compatible, probably redundant with .vimrc?
 set bs=indent,eol,start     " allow backspace to jump over these items
@@ -246,7 +239,7 @@ vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " Enter newline, deleting commas if needed
-nnoremap <Enter> o<Esc>0d$
+nnoremap <expr> <Enter> &ma ? "o<Esc>0d$" : "\<CR>"
 
 " Folding
 set foldmethod=indent
