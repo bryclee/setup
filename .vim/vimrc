@@ -1,5 +1,14 @@
+" Basic vim configuration
 scriptencoding utf-8
 set encoding=utf-8
+set nocp    " not vi-compatible, probably redundant with .vimrc?
+set bs=indent,eol,start     " allow backspace to jump over these items
+set ic      " ignore case
+syntax on   " Syntax highlighting
+filetype plugin indent on
+" Disable bell sound with visualbell and disable flashing
+set visualbell
+set t_vb=
 
 " Auto install plug if not already installed
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -10,6 +19,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'tpope/vim-eunuch'
 " [Buffers] Jump to existing window if possible
 let g:fzf_buffers_jump = 1
 " General pugins
@@ -31,13 +41,15 @@ Plug 'w0rp/ale'
 let g:ale_linters = {
             \ 'javascript': ['eslint'],
             \}
-let g:ale_lint_delay = 500
+let g:ale_lint_delay = 300
+highlight SpellBad cterm=underline ctermbg=none
 
 Plug 'jiangmiao/auto-pairs'
 let g:AutoPairsMapSpace = 0
 let g:AutoPairsMultilineClose = 0
 
 Plug 'vim-airline/vim-airline'
+set noshowmode
 set laststatus=2
 set t_Co=256
 let g:airline#extensions#tabline#enabled = 1
@@ -47,7 +59,6 @@ let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#show_close_button = 0
 " let g:airline_theme='dark'
 " hide the default mode line
-set noshowmode
 " let g:airline_powerline_fonts = 1 " (OPTIONAL) show powerline fonts
 " Trimming some sections earlier so more of the file path can be shown
     " airline_section_b (hunks, branch)
@@ -103,19 +114,9 @@ call plug#end()
 
 colorscheme dim
 
-set nocp    " not vi-compatible, probably redundant with .vimrc?
-set bs=indent,eol,start     " allow backspace to jump over these items
-set ic      " ignore case
-syntax on   " Syntax highlighting
-filetype plugin indent on
-
 " Setting filetypes
 autocmd BufRead,BufNewFile *.babelrc set filetype=json
 autocmd BufRead,BufNewFile *.eslintrc set filetype=json
-
-" Disable bell sound with visualbell and disable flashing
-set visualbell
-set t_vb=
 
 set path+=**    " improve find
 set wildignorecase      " case insensitive file autocomplete
@@ -286,9 +287,6 @@ if has("persistent_undo")
 endif
 nnoremap <leader>u :MundoToggle<CR>
 
-" ALE options
-" ===========
-
 " vim-flow
 " ========
 let g:flow#autoclose = 1
@@ -316,7 +314,6 @@ let g:javascript_plugin_flow = 1
 
 " coc.nvim
 " ===================
-set noshowcmd
 " Set tab completion
 inoremap <silent><expr> <TAB>
   \ pumvisible() ? "\<C-n>" :
