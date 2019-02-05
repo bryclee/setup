@@ -1,14 +1,21 @@
 " Basic vim configuration
 scriptencoding utf-8
 set encoding=utf-8
-set nocp    " not vi-compatible, probably redundant with .vimrc?
+set nocp            " not vi-compatible, probably redundant with .vimrc?
 set bs=indent,eol,start     " allow backspace to jump over these items
-set ic      " ignore case
-syntax on   " Syntax highlighting
+set ic              " ignore case
+syntax on           " Syntax highlighting
 filetype plugin indent on
 " Disable bell sound with visualbell and disable flashing
 set visualbell
 set t_vb=
+" Setting filetypes
+autocmd BufRead,BufNewFile *.babelrc set filetype=json
+autocmd BufRead,BufNewFile *.eslintrc set filetype=json
+set path+=**        " improve find
+set wildignorecase  " case insensitive file autocomplete
+set mouse=a         " enable mouse
+let mapleader=','   " Set the leader key
 
 " Auto install plug if not already installed
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -93,14 +100,26 @@ Plug 'junegunn/goyo.vim'
 autocmd! User GoyoEnter set linebreak
 autocmd! User GoyoLeave set nolinebreak
 
-" Install Coc. Install yarn if not already installed
-function InstallCoc()
-  if !executable('yarn')
-    !npm install -g yarn
-  endif
-  call coc#util#install()
+function InstallVimLspDependencies()
+  !npm install -g typescript typescript-language-server
 endfunction
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> InstallCoc() }}
+function InitVimLspKeyBindings()
+  nnoremap <leader>d :LspDefinition<CR>
+  nnoremap <leader>r :LspReferences<CR>
+  nnoremap <leader>R :LspRename<CR>
+endfunction
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp', { 'do': { -> InstallVimLspDependencies() }}
+if executable('typescript-language-server')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'typescript-language-server',
+        \ 'cmd': {server_info -> [&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+        \ 'root_uri': {server_info -> lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
+        \ 'whitelist': ['javascript', 'javascript.jsx']
+        \ })
+  let g:lsp_javascript = 1
+  call InitVimLspKeyBindings()
+endif
 
 " Language specific
 Plug 'pangloss/vim-javascript'
@@ -118,19 +137,6 @@ Plug 'jparise/vim-graphql'
 call plug#end()
 
 colorscheme dim
-
-" Setting filetypes
-autocmd BufRead,BufNewFile *.babelrc set filetype=json
-autocmd BufRead,BufNewFile *.eslintrc set filetype=json
-
-set path+=**    " improve find
-set wildignorecase      " case insensitive file autocomplete
-
-" enable mouse
-set mouse=a
-
-" Set the leader key
-let mapleader=','
 
 " Move file directories away from local directory
 " The trailing // is to use absolute path
@@ -290,25 +296,25 @@ let g:javascript_plugin_flow = 1
 " coc.nvim
 " ===================
 " Set tab completion
-inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <silent><expr> <TAB>
+"   \ pumvisible() ? "\<C-n>" :
+"   \ <SID>check_back_space() ? "\<TAB>" :
+"   \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1] =~# '\s'
-endfunction
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1] =~# '\s'
+" endfunction
 
-" Go to definition
-nmap <silent> <leader>d <Plug>(coc-definition)
-nmap <silent> <C-W><leader>d :call CocActionAsync('jumpDefinition', 'tabe')<CR>
-nmap <silent> <leader>i <Plug>(coc-implementation)
-nmap <silent> <leader>r <Plug>(coc-references)
-nmap <silent> <leader>R <Plug>(coc-rename)
-nmap <silent> [d <Plug>(coc-diagnostic-prev)
-nmap <silent> ]d <Plug>(coc-diagnostic-next)
+" " Go to definition
+" nmap <silent> <leader>d <Plug>(coc-definition)
+" nmap <silent> <C-W><leader>d :call CocActionAsync('jumpDefinition', 'tabe')<CR>
+" nmap <silent> <leader>i <Plug>(coc-implementation)
+" nmap <silent> <leader>r <Plug>(coc-references)
+" nmap <silent> <leader>R <Plug>(coc-rename)
+" nmap <silent> [d <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
 " After we're done with all the common config, check if there's a system local
 " config to source
