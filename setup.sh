@@ -10,10 +10,10 @@ mkdir sources
 # Run the install scripts for different items.
 # Note that these are run from the setup dir.
 (. ./install/misc.${OS}.sh)
-(. ./install/node.sh)
+(. ./install/node.${OS}.sh)
 (. ./install/vim.${OS}.sh)
-(. ./install/fzf.${OS}.sh)
-(. ./install/tmux.${OS}.sh)
+# (. ./install/fzf.${OS}.sh)
+# (. ./install/tmux.${OS}.sh)
 
 # Run the link script to link vim and other rc files
 . ./link.sh

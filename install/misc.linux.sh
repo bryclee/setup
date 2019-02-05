@@ -1,1 +1,1 @@
-apt-get install -y silversearcher-ag
+sudo apt-get install -y silversearcher-ag
