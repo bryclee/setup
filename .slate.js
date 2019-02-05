@@ -1,3 +1,16 @@
+const TERMINALS = {
+    HYPER: {
+        name: 'Hyper',
+        launch: '/Applications/Hyper.app/Contents/MacOS/Hyper'
+    },
+    ITERM: {
+        name: 'iTerm2',
+        launch: '/Applications/iTerm.app/Contents/MacOS/iTerm2'
+    }
+};
+
+const PREFERRED_TERMINAL = TERMINALS.HYPER;
+
 const pushLeft = slate.operation('move', {
     x: 'screenOriginX',
     y: 'screenOriginY',
@@ -44,19 +57,9 @@ const throwLeft = slate.operation('throw', {
     screen: 'left'
 });
 
-const TERMINALS = {
-    HYPER: {
-        name: 'Hyper',
-        launch: '/Applications/Hyper.app/Contents/MacOS/Hyper'
-    },
-    ITERM: {
-        name: 'iTerm2',
-        launch: '/Applications/iTerm.app/Contents/MacOS/iTerm2'
-    }
-};
 
 const launchOrFocusTerm = win => {
-    const { name, launch } = TERMINALS.HYPER;
+    const { name, launch } = PREFERRED_TERMINAL;
     let termPresent = false;
 
     slate.eachApp(app => {

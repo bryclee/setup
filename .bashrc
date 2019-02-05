@@ -136,8 +136,9 @@ export EDITOR="vi"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-if [ -x "$(command -v nvim)" ]
-then
-  alias vi=nvim
-  export EDITOR="nvim"
-fi
+# Trying out regular vim again
+# if [ -x "$(command -v nvim)" ]
+# then
+#   alias vi=nvim
+#   export EDITOR="nvim"
+# fi
