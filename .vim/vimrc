@@ -207,6 +207,30 @@ nnoremap gk k
 " Buffers
 nnoremap <leader>bd :b# <BAR> bd #<CR> " In case you want to leave the window
 set hidden
+nnoremap <silent> <leader>o :call BackBuffer()<CR>
+nnoremap <silent> <leader>i :call ForwardBuffer()<CR>
+
+" Navigate via command provided until buffer changes or there are no more
+" navigation changes. Mostly for the buffer changes though
+function! BackBuffer()
+  call UntilBufferChange("\<c-o>")
+endfunction
+function! ForwardBuffer()
+  call UntilBufferChange("1\<c-i>")
+endfunction
+function! UntilBufferChange(cmd)
+  let startName = bufname('%')
+  let beforePos = getcurpos()[1:2]
+  while 1
+    exe "normal! ".a:cmd
+    let nowName = bufname('%')
+    let nowPos = getcurpos()[1:2]
+    if nowName != startName || beforePos == nowPos
+      break
+    endif
+    let beforePos = nowPos
+  endwhile
+endfunction
 
 " Using splits
 set splitbelow
