@@ -11,6 +11,8 @@ sudo xcodebuild -license accept
 
 defaults write -g InitialKeyRepeat -int 15
 defaults write -g KeyRepeat -int 1
+defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write -g ApplePressAndHoldEnabled -bool false
 
 brew install moreutils
 brew install the_silver_searcher
