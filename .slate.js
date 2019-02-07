@@ -9,7 +9,7 @@ const TERMINALS = {
     }
 };
 
-const PREFERRED_TERMINAL = TERMINALS.HYPER;
+const PREFERRED_TERMINAL = TERMINALS.ITERM;
 
 const pushLeft = slate.operation('move', {
     x: 'screenOriginX',
@@ -86,8 +86,8 @@ slate.bindAll({
     'j:ctrl,cmd': pushHalfBottom,
     'k:ctrl,cmd': pushHalfTop,
 
-    '[:ctrl,cmd,alt': throwLeft,
-    ']:ctrl,cmd,alt': throwRight,
+    'h:ctrl,cmd,alt': throwLeft,
+    'l:ctrl,cmd,alt': throwRight,
 
     't:ctrl,cmd': launchOrFocusTerm,
 

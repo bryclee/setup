@@ -36,8 +36,6 @@ autocmd! Filetype fzf
 autocmd  Filetype fzf set laststatus=0
   \| autocmd BufLeave <buffer> set laststatus=2
 map <C-T> :FZF<CR>
-map <silent> <C-Y> :call fzf#run(fzf#wrap(
-    \ { 'source': "find * -path '*/\.*' -prune -o -type d -print" }))<CR>
 map <C-P> :Buffers<CR>
 
 " Colorschemes
@@ -51,9 +49,9 @@ let g:ale_linters = {
 let g:ale_lint_delay = 300
 highlight SpellBad cterm=underline ctermbg=none
 
-Plug 'jiangmiao/auto-pairs'
-let g:AutoPairsMapSpace = 0
-let g:AutoPairsMultilineClose = 0
+" Plug 'jiangmiao/auto-pairs'
+" let g:AutoPairsMapSpace = 0
+" let g:AutoPairsMultilineClose = 0
 
 Plug 'vim-airline/vim-airline'
 set noshowmode
@@ -87,6 +85,7 @@ Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+set updatetime=500 " Write swap file to disk quicker, also gives faster diff updates
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'alvan/vim-closetag', { 'for': 'html,*javascript*' }
@@ -97,8 +96,9 @@ Plug 'tpope/vim-vinegar'
 
 " Goyo is nice for text editing. Use :Goyo and :Goyo! to enter goyo mode.
 Plug 'junegunn/goyo.vim'
-autocmd! User GoyoEnter set linebreak
-autocmd! User GoyoLeave set nolinebreak
+let g:goyo_width = 90
+autocmd! User GoyoEnter set linebreak tw=80
+autocmd! User GoyoLeave set nolinebreak tw=0
 
 function InstallVimLspDependencies()
   !npm install -g typescript typescript-language-server
@@ -244,8 +244,8 @@ nnoremap <C-j> :m .+1<CR>
 nnoremap <C-k> :m .-2<CR>
 inoremap <C-j> <Esc>:m .+1<CR>
 inoremap <C-k> <Esc>:m .-2<CR>
-vnoremap <C-j> :m '>+1<CR>
-vnoremap <C-k> :m '<-2<CR>
+vnoremap <C-j> :m '>+1<CR>gv
+vnoremap <C-k> :m '<-2<CR>gv
 
 " Folding
 set foldmethod=indent
@@ -345,3 +345,5 @@ let g:javascript_plugin_flow = 1
 if filereadable(expand('~/.vimrc_local'))
   source ~/.vimrc_local
 endif
+
+au VimEnter if @% == '' | e . | endif
