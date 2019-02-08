@@ -97,8 +97,8 @@ Plug 'tpope/vim-vinegar'
 " Goyo is nice for text editing. Use :Goyo and :Goyo! to enter goyo mode.
 Plug 'junegunn/goyo.vim'
 let g:goyo_width = 90
-autocmd! User GoyoEnter set linebreak tw=80
-autocmd! User GoyoLeave set nolinebreak tw=0
+autocmd! User GoyoEnter set linebreak
+autocmd! User GoyoLeave set nolinebreak
 
 function InstallVimLspDependencies()
   !npm install -g typescript typescript-language-server
