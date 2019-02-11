@@ -51,10 +51,19 @@ const downsize = slate.operation('move', {
 });
 
 const throwRight = slate.operation('throw', {
-    screen: 'right'
+    screen: 'right',
+    x: 'screenOriginX',
+    y: 'screenOriginY',
+    width: 'min({windowSizeX,screenSizeX})',
+    height: 'min({windowSizeY,screenSizeY})'
+
 });
 const throwLeft = slate.operation('throw', {
-    screen: 'left'
+    screen: 'left',
+    x: 'screenOriginX',
+    y: 'screenOriginY',
+    width: 'min({windowSizeX,screenSizeX})',
+    height: 'min({windowSizeY,screenSizeY})'
 });
 
 

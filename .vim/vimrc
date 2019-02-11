@@ -141,7 +141,11 @@ call plug#end()
 
 colorscheme dim
 " custom colors/highlighting
-set cursorline
+augroup CursorLineActiveWindow
+  autocmd!
+  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  autocmd WinLeave * setlocal nocursorline
+augroup END
 highlight CursorLine term=NONE cterm=NONE
 highlight CursorLineNr ctermfg=white ctermbg=darkgray
 highlight DiffAdd ctermfg=green ctermbg=none
