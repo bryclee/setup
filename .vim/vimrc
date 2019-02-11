@@ -39,7 +39,6 @@ map <C-T> :FZF<CR>
 map <C-P> :Buffers<CR>
 
 " Colorschemes
-Plug 'altercation/vim-colors-solarized'
 Plug 'jeffkreeftmeijer/vim-dim'
 
 Plug 'w0rp/ale'
@@ -47,8 +46,10 @@ let g:ale_linters = {
             \ 'javascript': ['eslint'],
             \}
 let g:ale_lint_delay = 300
-highlight SpellBad cterm=underline ctermbg=none
 
+" The issue with this is that it closes the pair in cases where I don't want
+" it to. So let's see if this is better disabled - otherwise will have to
+" spend more time to figure out a way to better match expectations.
 " Plug 'jiangmiao/auto-pairs'
 " let g:AutoPairsMapSpace = 0
 " let g:AutoPairsMultilineClose = 0
@@ -58,9 +59,11 @@ set noshowmode
 set laststatus=2
 set t_Co=256
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#tab_nr_type = 2
 let g:airline#extensions#tabline#show_close_button = 0
 " let g:airline_theme='dark'
 " hide the default mode line
@@ -137,6 +140,14 @@ Plug 'jparise/vim-graphql'
 call plug#end()
 
 colorscheme dim
+" custom colors/highlighting
+set cursorline
+highlight CursorLine term=NONE cterm=NONE
+highlight CursorLineNr ctermfg=white ctermbg=darkgray
+highlight DiffAdd ctermfg=green ctermbg=none
+highlight DiffChange ctermfg=yellow ctermbg=none
+highlight DiffDelete ctermfg=red ctermbg=none
+highlight SpellBad term=standout cterm=underline ctermbg=none
 
 " Move file directories away from local directory
 " The trailing // is to use absolute path
@@ -252,21 +263,13 @@ set foldmethod=indent
 set foldlevel=99
 
 " Center cursor
-set scrolloff=5
+set scrolloff=3
 
 " line columns and ruler
 set number
 set numberwidth=4
 set ruler
 set signcolumn=yes
-highlight LineNr ctermfg=DarkGrey
-" cursorline seems to have better performance on nvim. Not really worth the
-" performance hit on scroll otherwise
-if has('nvim')
-  set cursorline
-  highlight CursorLine term=NONE cterm=NONE
-  highlight CursorLineNr ctermfg=white
-endif
 
 " indentation settings
 set autoindent
@@ -331,19 +334,9 @@ let g:javascript_plugin_flow = 1
 "   return !col || getline('.')[col - 1] =~# '\s'
 " endfunction
 
-" " Go to definition
-" nmap <silent> <leader>d <Plug>(coc-definition)
-" nmap <silent> <C-W><leader>d :call CocActionAsync('jumpDefinition', 'tabe')<CR>
-" nmap <silent> <leader>i <Plug>(coc-implementation)
-" nmap <silent> <leader>r <Plug>(coc-references)
-" nmap <silent> <leader>R <Plug>(coc-rename)
-" nmap <silent> [d <Plug>(coc-diagnostic-prev)
-" nmap <silent> ]d <Plug>(coc-diagnostic-next)
-
 " After we're done with all the common config, check if there's a system local
 " config to source
 if filereadable(expand('~/.vimrc_local'))
   source ~/.vimrc_local
 endif
 
-au VimEnter if @% == '' | e . | endif
