@@ -32,20 +32,26 @@ let g:fzf_buffers_jump = 1
 " General pugins
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-autocmd! Filetype fzf
-autocmd  Filetype fzf set laststatus=0
+autocmd! filetype fzf
+autocmd  filetype fzf set laststatus=0
   \| autocmd BufLeave <buffer> set laststatus=2
 map <C-T> :FZF<CR>
 map <C-P> :Buffers<CR>
 
 " Colorschemes
 Plug 'jeffkreeftmeijer/vim-dim'
+Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'w0rp/ale'
 let g:ale_linters = {
             \ 'javascript': ['eslint'],
-            \}
+            \ 'javascript.jsx': ['eslint'],
+            \ 'typescript': ['tslint', 'tsserver'],
+            \ 'typescript.tsx': ['tslint', 'tsserver']
+            \ }
 let g:ale_lint_delay = 300
+nnoremap <silent> [d :ALENextWrap<CR>
+nnoremap <silent> ]d :ALEPreviousWrap<CR>
 
 " The issue with this is that it closes the pair in cases where I don't want
 " it to. So let's see if this is better disabled - otherwise will have to
@@ -57,7 +63,6 @@ let g:ale_lint_delay = 300
 Plug 'vim-airline/vim-airline'
 set noshowmode
 set laststatus=2
-set t_Co=256
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#show_buffers = 0
@@ -92,9 +97,17 @@ set updatetime=500 " Write swap file to disk quicker, also gives faster diff upd
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'alvan/vim-closetag', { 'for': 'html,*javascript*' }
-let g:closetag_filenames = '*.html,*.js,*.jsx'
-let g:closetag_xhtml_filenames = '*.js,*.jsx'
+let g:closetag_filenames = '*.html,*.js,*.jsx,*.tsx'
+let g:closetag_xhtml_filenames = '*.js,*.jsx,*.tsx'
 let g:closetag_emptyTags_caseSensitive = 1
+Plug 'justinmk/vim-dirvish'
+let g:dirvish_mode = ':sort ,^.*[\/],'
+augroup dirvish_config
+  autocmd!
+  " autocmd filetype dirvish silent! unmap <buffer> /
+  " autocmd filetype dirvish silent! unmap <buffer> ?
+  autocmd filetype dirvish silent! unmap <buffer> p
+augroup END
 Plug 'tpope/vim-vinegar'
 
 " Goyo is nice for text editing. Use :Goyo and :Goyo! to enter goyo mode.
@@ -109,7 +122,10 @@ endfunction
 function InitVimLspKeyBindings()
   nnoremap <leader>d :LspDefinition<CR>
   nnoremap <leader>r :LspReferences<CR>
+  nnoremap <leader>t :LspTypeDefinition<CR>
   nnoremap <leader>R :LspRename<CR>
+  nnoremap <silent> [e :LspPreviousError<CR>
+  nnoremap <silent> ]e :LspNextError<CR>
 endfunction
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp', { 'do': { -> InstallVimLspDependencies() }}
@@ -118,7 +134,7 @@ if executable('typescript-language-server')
         \ 'name': 'typescript-language-server',
         \ 'cmd': {server_info -> [&shell, &shellcmdflag, 'typescript-language-server --stdio']},
         \ 'root_uri': {server_info -> lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
-        \ 'whitelist': ['javascript', 'javascript.jsx']
+        \ 'whitelist': ['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx']
         \ })
   let g:lsp_javascript = 1
   call InitVimLspKeyBindings()
@@ -134,23 +150,30 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier', 'commit': 'e440d85' }
 Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin' }
 Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
 Plug 'motus/pig.vim'
 Plug 'jparise/vim-graphql'
+Plug 'digitaltoad/vim-pug'
 
 call plug#end()
 
-colorscheme dim
+set t_Co=256
+set background=dark
+colorscheme PaperColor
 " custom colors/highlighting
 augroup CursorLineActiveWindow
   autocmd!
   autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
   autocmd WinLeave * setlocal nocursorline
 augroup END
-highlight CursorLine term=NONE cterm=NONE
-highlight CursorLineNr ctermfg=white ctermbg=darkgray
+highlight CursorLine term=none cterm=none
+" highlight CursorLineNr ctermfg=white ctermbg=darkgray
 highlight DiffAdd ctermfg=green ctermbg=none
 highlight DiffChange ctermfg=yellow ctermbg=none
 highlight DiffDelete ctermfg=red ctermbg=none
+" Highlight looks kinda bad specifically with the iterm2 dracula color scheme.
+" Can change this later if needed
+highlight Search ctermbg=blue
 highlight SpellBad term=standout cterm=underline ctermbg=none
 
 " Move file directories away from local directory
