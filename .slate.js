@@ -9,7 +9,7 @@ const TERMINALS = {
     }
 };
 
-const PREFERRED_TERMINAL = TERMINALS.HYPER;
+const PREFERRED_TERMINAL = TERMINALS.ITERM;
 
 const pushLeft = slate.operation('move', {
     x: 'screenOriginX',
@@ -49,12 +49,27 @@ const downsize = slate.operation('move', {
     width: 'windowSizeX*0.9',
     height: 'windowSizeY*0.9'
 });
+const center = slate.operation('move', {
+    x: 'screenOriginX+(screenSizeX*0.2)',
+    y: 'screenOriginY+(screenSizeY*0.1)',
+    width: 'screenSizeX*0.6',
+    height: 'screenSizeY*0.8'
+});
 
 const throwRight = slate.operation('throw', {
-    screen: 'right'
+    screen: 'right',
+    x: 'screenOriginX',
+    y: 'screenOriginY',
+    width: 'min({windowSizeX,screenSizeX})',
+    height: 'min({windowSizeY,screenSizeY})'
+
 });
 const throwLeft = slate.operation('throw', {
-    screen: 'left'
+    screen: 'left',
+    x: 'screenOriginX',
+    y: 'screenOriginY',
+    width: 'min({windowSizeX,screenSizeX})',
+    height: 'min({windowSizeY,screenSizeY})'
 });
 
 
@@ -82,12 +97,13 @@ slate.bindAll({
     'l:ctrl,cmd': pushRight,
     '=:ctrl,cmd': maximize,
     '-:ctrl,cmd': downsize,
+    'o:ctrl,cmd': center,
 
     'j:ctrl,cmd': pushHalfBottom,
     'k:ctrl,cmd': pushHalfTop,
 
-    '[:ctrl,cmd,alt': throwLeft,
-    ']:ctrl,cmd,alt': throwRight,
+    'h:ctrl,cmd,alt': throwLeft,
+    'l:ctrl,cmd,alt': throwRight,
 
     't:ctrl,cmd': launchOrFocusTerm,
 

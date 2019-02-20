@@ -32,37 +32,43 @@ let g:fzf_buffers_jump = 1
 " General pugins
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-autocmd! Filetype fzf
-autocmd  Filetype fzf set laststatus=0
+autocmd! filetype fzf
+autocmd  filetype fzf set laststatus=0
   \| autocmd BufLeave <buffer> set laststatus=2
 map <C-T> :FZF<CR>
-map <silent> <C-Y> :call fzf#run(fzf#wrap(
-    \ { 'source': "find * -path '*/\.*' -prune -o -type d -print" }))<CR>
 map <C-P> :Buffers<CR>
 
 " Colorschemes
-Plug 'altercation/vim-colors-solarized'
 Plug 'jeffkreeftmeijer/vim-dim'
+Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'w0rp/ale'
 let g:ale_linters = {
             \ 'javascript': ['eslint'],
-            \}
+            \ 'javascript.jsx': ['eslint'],
+            \ 'typescript': ['tslint', 'tsserver'],
+            \ 'typescript.tsx': ['tslint', 'tsserver']
+            \ }
 let g:ale_lint_delay = 300
-highlight SpellBad cterm=underline ctermbg=none
+nnoremap <silent> [d :ALENextWrap<CR>
+nnoremap <silent> ]d :ALEPreviousWrap<CR>
 
-Plug 'jiangmiao/auto-pairs'
-let g:AutoPairsMapSpace = 0
-let g:AutoPairsMultilineClose = 0
+" The issue with this is that it closes the pair in cases where I don't want
+" it to. So let's see if this is better disabled - otherwise will have to
+" spend more time to figure out a way to better match expectations.
+" Plug 'jiangmiao/auto-pairs'
+" let g:AutoPairsMapSpace = 0
+" let g:AutoPairsMultilineClose = 0
 
 Plug 'vim-airline/vim-airline'
 set noshowmode
 set laststatus=2
-set t_Co=256
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#tab_nr_type = 2
 let g:airline#extensions#tabline#show_close_button = 0
 " let g:airline_theme='dark'
 " hide the default mode line
@@ -87,16 +93,26 @@ Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+set updatetime=500 " Write swap file to disk quicker, also gives faster diff updates
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'alvan/vim-closetag', { 'for': 'html,*javascript*' }
-let g:closetag_filenames = '*.html,*.js,*.jsx'
-let g:closetag_xhtml_filenames = '*.js,*.jsx'
+let g:closetag_filenames = '*.html,*.js,*.jsx,*.tsx'
+let g:closetag_xhtml_filenames = '*.js,*.jsx,*.tsx'
 let g:closetag_emptyTags_caseSensitive = 1
+Plug 'justinmk/vim-dirvish'
+let g:dirvish_mode = ':sort ,^.*[\/],'
+augroup dirvish_config
+  autocmd!
+  " autocmd filetype dirvish silent! unmap <buffer> /
+  " autocmd filetype dirvish silent! unmap <buffer> ?
+  autocmd filetype dirvish silent! unmap <buffer> p
+augroup END
 Plug 'tpope/vim-vinegar'
 
 " Goyo is nice for text editing. Use :Goyo and :Goyo! to enter goyo mode.
 Plug 'junegunn/goyo.vim'
+let g:goyo_width = 90
 autocmd! User GoyoEnter set linebreak
 autocmd! User GoyoLeave set nolinebreak
 
@@ -106,7 +122,10 @@ endfunction
 function InitVimLspKeyBindings()
   nnoremap <leader>d :LspDefinition<CR>
   nnoremap <leader>r :LspReferences<CR>
+  nnoremap <leader>t :LspTypeDefinition<CR>
   nnoremap <leader>R :LspRename<CR>
+  nnoremap <silent> [e :LspPreviousError<CR>
+  nnoremap <silent> ]e :LspNextError<CR>
 endfunction
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp', { 'do': { -> InstallVimLspDependencies() }}
@@ -115,7 +134,7 @@ if executable('typescript-language-server')
         \ 'name': 'typescript-language-server',
         \ 'cmd': {server_info -> [&shell, &shellcmdflag, 'typescript-language-server --stdio']},
         \ 'root_uri': {server_info -> lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
-        \ 'whitelist': ['javascript', 'javascript.jsx']
+        \ 'whitelist': ['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx']
         \ })
   let g:lsp_javascript = 1
   call InitVimLspKeyBindings()
@@ -131,12 +150,31 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier', 'commit': 'e440d85' }
 Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin' }
 Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
 Plug 'motus/pig.vim'
 Plug 'jparise/vim-graphql'
+Plug 'digitaltoad/vim-pug'
 
 call plug#end()
 
-colorscheme dim
+set t_Co=256
+set background=dark
+colorscheme PaperColor
+" custom colors/highlighting
+augroup CursorLineActiveWindow
+  autocmd!
+  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  autocmd WinLeave * setlocal nocursorline
+augroup END
+highlight CursorLine term=none cterm=none
+" highlight CursorLineNr ctermfg=white ctermbg=darkgray
+highlight DiffAdd ctermfg=green ctermbg=none
+highlight DiffChange ctermfg=yellow ctermbg=none
+highlight DiffDelete ctermfg=red ctermbg=none
+" Highlight looks kinda bad specifically with the iterm2 dracula color scheme.
+" Can change this later if needed
+highlight Search ctermbg=blue
+highlight SpellBad term=standout cterm=underline ctermbg=none
 
 " Move file directories away from local directory
 " The trailing // is to use absolute path
@@ -207,6 +245,30 @@ nnoremap gk k
 " Buffers
 nnoremap <leader>bd :b# <BAR> bd #<CR> " In case you want to leave the window
 set hidden
+nnoremap <silent> <leader>o :call BackBuffer()<CR>
+nnoremap <silent> <leader>i :call ForwardBuffer()<CR>
+
+" Navigate via command provided until buffer changes or there are no more
+" navigation changes. Mostly for the buffer changes though
+function! BackBuffer()
+  call UntilBufferChange("\<c-o>")
+endfunction
+function! ForwardBuffer()
+  call UntilBufferChange("1\<c-i>")
+endfunction
+function! UntilBufferChange(cmd)
+  let startName = bufname('%')
+  let beforePos = getcurpos()[1:2]
+  while 1
+    exe "normal! ".a:cmd
+    let nowName = bufname('%')
+    let nowPos = getcurpos()[1:2]
+    if nowName != startName || beforePos == nowPos
+      break
+    endif
+    let beforePos = nowPos
+  endwhile
+endfunction
 
 " Using splits
 set splitbelow
@@ -220,29 +282,21 @@ nnoremap <C-j> :m .+1<CR>
 nnoremap <C-k> :m .-2<CR>
 inoremap <C-j> <Esc>:m .+1<CR>
 inoremap <C-k> <Esc>:m .-2<CR>
-vnoremap <C-j> :m '>+1<CR>
-vnoremap <C-k> :m '<-2<CR>
+vnoremap <C-j> :m '>+1<CR>gv
+vnoremap <C-k> :m '<-2<CR>gv
 
 " Folding
 set foldmethod=indent
 set foldlevel=99
 
 " Center cursor
-set scrolloff=5
+set scrolloff=3
 
 " line columns and ruler
 set number
 set numberwidth=4
 set ruler
 set signcolumn=yes
-highlight LineNr ctermfg=DarkGrey
-" cursorline seems to have better performance on nvim. Not really worth the
-" performance hit on scroll otherwise
-if has('nvim')
-  set cursorline
-  highlight CursorLine term=NONE cterm=NONE
-  highlight CursorLineNr ctermfg=white
-endif
 
 " indentation settings
 set autoindent
@@ -307,17 +361,9 @@ let g:javascript_plugin_flow = 1
 "   return !col || getline('.')[col - 1] =~# '\s'
 " endfunction
 
-" " Go to definition
-" nmap <silent> <leader>d <Plug>(coc-definition)
-" nmap <silent> <C-W><leader>d :call CocActionAsync('jumpDefinition', 'tabe')<CR>
-" nmap <silent> <leader>i <Plug>(coc-implementation)
-" nmap <silent> <leader>r <Plug>(coc-references)
-" nmap <silent> <leader>R <Plug>(coc-rename)
-" nmap <silent> [d <Plug>(coc-diagnostic-prev)
-" nmap <silent> ]d <Plug>(coc-diagnostic-next)
-
 " After we're done with all the common config, check if there's a system local
 " config to source
 if filereadable(expand('~/.vimrc_local'))
   source ~/.vimrc_local
 endif
+
