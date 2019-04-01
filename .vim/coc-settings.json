@@ -1,3 +1,6 @@
 {
-    "coc.preferences.diagnostic.displayByAle": true
+    "coc.preferences.diagnostic.enable": false,
+    "suggest.noselect": false,
+    "typescript.suggest.completeFunctionCalls": false,
+    "javascript.suggest.completeFunctionCalls": false
 }

@@ -107,6 +107,7 @@ augroup dirvish_config
   " autocmd filetype dirvish silent! unmap <buffer> /
   " autocmd filetype dirvish silent! unmap <buffer> ?
   autocmd filetype dirvish silent! unmap <buffer> p
+  autocmd filetype dirvish setlocal nonumber
 augroup END
 Plug 'tpope/vim-vinegar'
 
@@ -130,15 +131,15 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> InstallCoc() }}
 " ===================
 " Set tab completion
 inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  \ pumvisible() ? "\<C-y>" : "\<TAB>"
+inoremap <silent><expr> <ENTER>
+  \ pumvisible() ? "\<C-e><ENTER>" : "\<ENTER>"
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1] =~# '\s'
-endfunction
+" " Checks last character is space
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1] =~# '\s'
+" endfunction
 
 " Go to definition
 nmap <silent> <leader>d <Plug>(coc-definition)
@@ -148,6 +149,7 @@ nmap <silent> <leader>r <Plug>(coc-references)
 nmap <silent> <leader>R <Plug>(coc-rename)
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
 nmap <silent> ]d <Plug>(coc-diagnostic-next)
+inoremap <silent><expr> <c-space> coc#refresh()
 
 " Language specific
 Plug 'pangloss/vim-javascript'
