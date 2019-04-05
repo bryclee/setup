@@ -12,7 +12,7 @@ set t_vb=
 " Setting filetypes
 autocmd BufRead,BufNewFile *.babelrc set filetype=json
 autocmd BufRead,BufNewFile *.eslintrc set filetype=json
-set path+=**        " improve find
+" set path+=**        " improve find
 set wildignorecase  " case insensitive file autocomplete
 set mouse=a         " enable mouse
 let mapleader=','   " Set the leader key
@@ -27,31 +27,15 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-eunuch'
-" [Buffers] Jump to existing window if possible
-let g:fzf_buffers_jump = 1
 " General pugins
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-autocmd! filetype fzf
-autocmd  filetype fzf set laststatus=0
-  \| autocmd BufLeave <buffer> set laststatus=2
-map <C-T> :FZF<CR>
-map <C-P> :Buffers<CR>
 
 " Colorschemes
 Plug 'jeffkreeftmeijer/vim-dim'
 Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'w0rp/ale'
-let g:ale_linters = {
-            \ 'javascript': ['eslint'],
-            \ 'javascript.jsx': ['eslint'],
-            \ 'typescript': ['tslint', 'tsserver'],
-            \ 'typescript.tsx': ['tslint', 'tsserver']
-            \ }
-let g:ale_lint_delay = 300
-nnoremap <silent> [d :ALENextWrap<CR>
-nnoremap <silent> ]d :ALEPreviousWrap<CR>
 
 " The issue with this is that it closes the pair in cases where I don't want
 " it to. So let's see if this is better disabled - otherwise will have to
@@ -101,14 +85,6 @@ let g:closetag_filenames = '*.html,*.js,*.jsx,*.tsx'
 let g:closetag_xhtml_filenames = '*.js,*.jsx,*.tsx'
 let g:closetag_emptyTags_caseSensitive = 1
 Plug 'justinmk/vim-dirvish'
-let g:dirvish_mode = ':sort ,^.*[\/],'
-augroup dirvish_config
-  autocmd!
-  " autocmd filetype dirvish silent! unmap <buffer> /
-  " autocmd filetype dirvish silent! unmap <buffer> ?
-  autocmd filetype dirvish silent! unmap <buffer> p
-  autocmd filetype dirvish setlocal nonumber
-augroup END
 Plug 'tpope/vim-vinegar'
 
 " Goyo is nice for text editing. Use :Goyo and :Goyo! to enter goyo mode.
@@ -324,6 +300,38 @@ set backupcopy=yes
 " Allow loading of js files from paths described in json files... most common
 " use case
 autocmd Filetype json set suffixesadd+=.js
+
+" Plugin config
+" =============
+
+" fzf.vim
+autocmd! filetype fzf
+autocmd  filetype fzf set laststatus=0
+  \| autocmd BufLeave <buffer> set laststatus=2
+map <C-T> :FZF<CR>
+map <C-P> :Buffers<CR>
+
+" ale
+let g:ale_linters = {
+            \ 'javascript': ['eslint'],
+            \ 'javascript.jsx': ['eslint'],
+            \ 'typescript': ['tslint', 'tsserver'],
+            \ 'typescript.tsx': ['tslint', 'tsserver']
+            \ }
+let g:ale_lint_delay = 300
+nnoremap <silent> [d :ALENextWrap<CR>
+nnoremap <silent> ]d :ALEPreviousWrap<CR>
+
+" vim-dirvish
+let g:dirvish_mode = ':sort ,^.*[\/],'
+augroup dirvish_config
+  autocmd!
+  " autocmd filetype dirvish silent! unmap <buffer> /
+  " autocmd filetype dirvish silent! unmap <buffer> ?
+  " autocmd filetype dirvish silent! unmap <buffer> p
+  autocmd filetype dirvish silent! unmap <buffer> <c-p>
+  autocmd filetype dirvish setlocal nonumber
+augroup END
 
 " mundo.vim
 " =========
