@@ -1,4 +1,1 @@
-{
-    "tsserver.log": "verbose",
-    "coc.preferences.diagnostic.displayByAle": true
-}
+../.vim/coc-settings.json
