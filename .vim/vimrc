@@ -123,8 +123,8 @@ nmap <silent> <C-W><leader>d :call CocActionAsync('jumpDefinition', 'tabe')<CR>
 nmap <silent> <leader>i <Plug>(coc-implementation)
 nmap <silent> <leader>r <Plug>(coc-references)
 nmap <silent> <leader>R <Plug>(coc-rename)
-nmap <silent> [d <Plug>(coc-diagnostic-prev)
-nmap <silent> ]d <Plug>(coc-diagnostic-next)
+nmap <silent> [e <Plug>(coc-diagnostic-prev)
+nmap <silent> ]e <Plug>(coc-diagnostic-next)
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " Language specific
@@ -144,9 +144,8 @@ Plug 'digitaltoad/vim-pug'
 
 call plug#end()
 
-set t_Co=256
-set background=dark
-colorscheme PaperColor
+set t_Co=16
+colorscheme dim
 " custom colors/highlighting
 augroup CursorLineActiveWindow
   autocmd!
@@ -216,6 +215,8 @@ if executable('ag')
     command! -nargs=+ -complete=file Ag cexpr system('echo ' . shellescape('<args>'))
     set grepprg=ag\ --nogroup\ --nocolor\ --follow
 endif
+" Populate current word in search
+nnoremap <leader>/ :grep '\b<C-R><C-W>\b'
 
 " Autocomplete
 set wildmenu    " display autocomplete options in command menu
@@ -264,13 +265,13 @@ set splitright
 " split line
 nnoremap K i<CR><Esc>l :call TrimWhiteSpace()<CR>
 
-" swapping lines
-nnoremap <C-j> :m .+1<CR>
-nnoremap <C-k> :m .-2<CR>
-inoremap <C-j> <Esc>:m .+1<CR>
-inoremap <C-k> <Esc>:m .-2<CR>
-vnoremap <C-j> :m '>+1<CR>gv
-vnoremap <C-k> :m '<-2<CR>gv
+" " swapping lines
+" nnoremap <C-j> :m .+1<CR>
+" nnoremap <C-k> :m .-2<CR>
+" inoremap <C-j> <Esc>:m .+1<CR>
+" inoremap <C-k> <Esc>:m .-2<CR>
+" vnoremap <C-j> :m '>+1<CR>gv
+" vnoremap <C-k> :m '<-2<CR>gv
 
 " Folding
 set foldmethod=indent
@@ -287,8 +288,8 @@ set signcolumn=yes
 
 " indentation settings
 set autoindent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab " tab to spaces
 
 " Populate edit command relative to the current file
@@ -355,11 +356,8 @@ if !empty(external_prettier)
   let g:prettier#exec_cmd_path = external_prettier
 endif
 let g:prettier#config#config_precedence = 'prefer-file'
-let g:prettier#config#tab_width = 4
 let g:prettier#config#single_quote = 'true'
-let g:prettier#config#trailing_comma = 'none'
 let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#print_width = 120
 
 " vim-javascript
 " ==============

@@ -1614,13 +1614,13 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>2264 138 445 413 1680 -390 2560 1417 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>530 476 620 392 0 0 1680 1027 </string>
+	<string>2650 378 620 392 1680 -390 2560 1417 </string>
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>598 491 1018 447 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>375 194 970 724 0 0 1680 1027 </string>
+	<string>1680 -390 2560 1417 1680 -390 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 0 970 1027 0 0 1680 1027 </string>
+	<string>0 0 1680 1027 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>0 0 1680 1027 0 0 1680 1027 </string>
 	<key>NeverWarnAboutShortLivedSessions_97BA57D3-1060-4E76-8470-821DCB66BFDE</key>
@@ -1801,11 +1801,11 @@
 			<key>Background Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.13233847916126251</real>
+				<real>0.91764706373214722</real>
 				<key>Green Component</key>
-				<real>0.13542565703392029</real>
+				<real>0.91764706373214722</real>
 				<key>Red Component</key>
-				<real>0.13533444702625275</real>
+				<real>0.91764706373214722</real>
 			</dict>
 			<key>Background Image Is Tiled</key>
 			<true/>
@@ -1878,11 +1878,11 @@
 			<key>Cursor Text Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.87325412034988403</real>
+				<real>0.17576293647289276</real>
 				<key>Green Component</key>
-				<real>0.87323933839797974</real>
+				<real>0.17907498776912689</real>
 				<key>Red Component</key>
-				<real>0.87326544523239136</real>
+				<real>0.17897795140743256</real>
 			</dict>
 			<key>Cursor Type</key>
 			<integer>2</integer>
@@ -1903,11 +1903,11 @@
 			<key>Foreground Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.89729100465774536</real>
+				<real>0.13233847916126251</real>
 				<key>Green Component</key>
-				<real>0.89727580547332764</real>
+				<real>0.13542565703392029</real>
 				<key>Red Component</key>
-				<real>0.89730262756347656</real>
+				<real>0.13533444702625275</real>
 			</dict>
 			<key>Guid</key>
 			<string>97BA57D3-1060-4E76-8470-821DCB66BFDE</string>
@@ -2261,20 +2261,20 @@
 			<key>Selected Text Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.23922896385192871</real>
+				<real>0.30725601315498352</real>
 				<key>Green Component</key>
-				<real>0.23922491073608398</real>
+				<real>0.30725079774856567</real>
 				<key>Red Component</key>
-				<real>0.23923206329345703</real>
+				<real>0.30725997686386108</real>
 			</dict>
 			<key>Selection Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.87325412034988403</real>
+				<real>0.76020538806915283</real>
 				<key>Green Component</key>
-				<real>0.87323933839797974</real>
+				<real>0.76019245386123657</real>
 				<key>Red Component</key>
-				<real>0.87326544523239136</real>
+				<real>0.76021528244018555</real>
 			</dict>
 			<key>Semantic History</key>
 			<dict>
@@ -3504,9 +3504,9 @@
 	<key>NoSyncInstallationId</key>
 	<string>E01F318C-AD91-42E3-A221-8E03CD231324</string>
 	<key>NoSyncLastTipTime</key>
-	<real>575679725.19194305</real>
+	<real>576772259.94686198</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>1</integer>
+	<integer>7</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -4134,6 +4134,16 @@
 		<string>0026</string>
 		<string>0027</string>
 		<string>0028</string>
+		<string>0029</string>
+		<string>0030</string>
+		<string>0031</string>
+		<string>0032</string>
+		<string>0033</string>
+		<string>0034</string>
+		<string>0035</string>
+		<string>0036</string>
+		<string>0037</string>
+		<string>0038</string>
 	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
@@ -4207,7 +4217,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-03-31T07:00:48Z</date>
+	<date>2019-04-11T15:09:18Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
