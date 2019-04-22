@@ -33,7 +33,9 @@ Plug 'junegunn/fzf.vim'
 
 " Colorschemes
 Plug 'jeffkreeftmeijer/vim-dim'
+Plug 'noahfrederick/vim-noctu'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'vim-scripts/bw.vim'
 
 Plug 'w0rp/ale'
 
@@ -145,22 +147,8 @@ Plug 'digitaltoad/vim-pug'
 call plug#end()
 
 set t_Co=16
-colorscheme dim
-" custom colors/highlighting
-augroup CursorLineActiveWindow
-  autocmd!
-  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-  autocmd WinLeave * setlocal nocursorline
-augroup END
-highlight CursorLine term=none cterm=none
-" highlight CursorLineNr ctermfg=white ctermbg=darkgray
-highlight DiffAdd ctermfg=green ctermbg=none
-highlight DiffChange ctermfg=yellow ctermbg=none
-highlight DiffDelete ctermfg=red ctermbg=none
-" Highlight looks kinda bad specifically with the iterm2 dracula color scheme.
-" Can change this later if needed
-highlight Search ctermbg=blue
-highlight SpellBad term=standout cterm=underline ctermbg=none
+set background=light
+colorscheme custom
 
 " Move file directories away from local directory
 " The trailing // is to use absolute path
