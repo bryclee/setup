@@ -22,3 +22,6 @@ mkdir sources
 vi +PlugInstall +qall
 
 set +x
+
+# Add custom tmux-256color to support italics in tmux
+tic -x tmux-256color.terminfo

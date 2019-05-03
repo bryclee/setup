@@ -35,6 +35,9 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+# If in tmux, revert back to xterm-256color. tmux-256color is only needed at start?
+[ -n "$TMUX" ] && export TERM=xterm-256color
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color) color_prompt=yes;;
