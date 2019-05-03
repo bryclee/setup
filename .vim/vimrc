@@ -26,16 +26,15 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'tpope/vim-eunuch'
 " General pugins
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-obsession'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 " Colorschemes
 Plug 'jeffkreeftmeijer/vim-dim'
-Plug 'noahfrederick/vim-noctu'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'vim-scripts/bw.vim'
 
 Plug 'w0rp/ale'
 
@@ -56,9 +55,6 @@ let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#tab_nr_type = 2
 let g:airline#extensions#tabline#show_close_button = 0
-" let g:airline_theme='dark'
-" hide the default mode line
-" let g:airline_powerline_fonts = 1 " (OPTIONAL) show powerline fonts
 " Trimming some sections earlier so more of the file path can be shown
     " airline_section_b (hunks, branch)
     " airline_section_y (fileencoding, fileformat)
@@ -74,6 +70,8 @@ let g:airline_mode_map = {
     \ 'V'   : 'VIS',
     \ '^V'  : 'VIS',
     \ }
+let g:airline#extensions#obsession#enabled = 1
+
 
 Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-commentary'
@@ -121,6 +119,7 @@ inoremap <silent><expr> <ENTER>
 
 " Go to definition
 nmap <silent> <leader>d <Plug>(coc-definition)
+nmap <silent> <leader>D <Plug>(coc-type-definition)
 nmap <silent> <C-W><leader>d :call CocActionAsync('jumpDefinition', 'tabe')<CR>
 nmap <silent> <leader>i <Plug>(coc-implementation)
 nmap <silent> <leader>r <Plug>(coc-references)
@@ -204,7 +203,7 @@ if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor\ --follow
 endif
 " Populate current word in search
-nnoremap <leader>/ :grep '\b<C-R><C-W>\b'
+nnoremap <leader>/ :grep '\b<C-R><C-W>\b'<space>
 
 " Autocomplete
 set wildmenu    " display autocomplete options in command menu
@@ -351,20 +350,6 @@ let g:prettier#config#bracket_spacing = 'true'
 " ==============
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_flow = 1
-
-" coc.nvim
-" ===================
-" Set tab completion
-" inoremap <silent><expr> <TAB>
-"   \ pumvisible() ? "\<C-n>" :
-"   \ <SID>check_back_space() ? "\<TAB>" :
-"   \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1] =~# '\s'
-" endfunction
 
 " After we're done with all the common config, check if there's a system local
 " config to source

@@ -1,20 +1,59 @@
 highlight clear
 
+" For reference - here are the colors we're working off of
+"   NR-16   NR-8    COLOR NAME ~
+"   0       0       Black
+"   1       4       DarkBlue
+"   2       2       DarkGreen
+"   3       6       DarkCyan
+"   4       1       DarkRed
+"   5       5       DarkMagenta
+"   6       3       Brown, DarkYellow
+"   7       7       LightGray, LightGrey, Gray, Grey
+"   8       0*      DarkGray, DarkGrey
+"   9       4*      Blue, LightBlue
+"   10      2*      Green, LightGreen
+"   11      6*      Cyan, LightCyan
+"   12      1*      Red, LightRed
+"   13      5*      Magenta, LightMagenta
+"   14      3*      Yellow, LightYellow
+"   15      7*      White
+
+let s:colors = {
+      \ 'black': '0',
+      \ 'darkRed': '1',
+      \ 'darkGreen': '2',
+      \ 'darkBrown': '3',
+      \ 'darkBlue': '4',
+      \ 'darkMagenta': '5',
+      \ 'darkCyan': '6',
+      \ 'darkGrey': '8',
+      \ 'lightGrey': '7',
+      \ 'red': '9',
+      \ 'green': '10',
+      \ 'yellow': '11',
+      \ 'blue': '12',
+      \ 'magenta': '13',
+      \ 'cyan': '14',
+      \ 'white': '15',
+      \ 'none': 'none'
+      \ }
+
 if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "dim"
+" Forked off of dim
+let colors_name = "custom"
 
-" In diffs, added lines are green, changed lines are yellow, deleted lines are
-" red, and changed text (within a changed line) is bright yellow and bold.
-highlight DiffAdd        ctermfg=0    ctermbg=2
-highlight DiffChange     ctermfg=0    ctermbg=3
-highlight DiffDelete     ctermfg=0    ctermbg=1
+" Diff highlighting
+highlight DiffAdd        ctermfg=2    ctermbg=none
+highlight DiffChange     ctermfg=3    ctermbg=none
+highlight DiffDelete     ctermfg=1    ctermbg=none
 highlight DiffText       ctermfg=0    ctermbg=11   cterm=bold
 
 " Invert selected lines in visual mode
-highlight Visual         ctermfg=NONE ctermbg=NONE cterm=inverse
+highlight Visual         ctermfg=15 ctermbg=6
 
 " Highlight search matches in black, with a yellow background
 highlight Search         ctermfg=0    ctermbg=11

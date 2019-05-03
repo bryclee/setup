@@ -1,6 +1,7 @@
 #!/bin/bash
 
 GITHUB_USER=bryclee
+
 ARGS=(${1//\// })
 ORG=${ARGS[0]}
 REPO=${ARGS[1]}
@@ -16,5 +17,6 @@ fi
 
 pushd $REPO
 git remote add upstream $UPSTREAM
+git config --local user.email pygmize.me@gmail.com
 popd
 

@@ -3,3 +3,6 @@
 *.swp
 *.swo
 .DS_Store
+
+# For now, let's ignore tracking the Session.vim files. It'd be cool to do some sort of branch tracking in the future, maybe.
+Session.vim
