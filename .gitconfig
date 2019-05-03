@@ -2,7 +2,7 @@
     name = Bryan Lee
     email = pygmize.me@gmail.com
 [alias]
-    graph = log --graph --pretty=oneline --date=short --format=\"%Cgreen%h %Cred%an %Creset%s\"
+    graph = log --graph --format=\"%C(auto)%h %C(italic)%an%C(auto)%d %s\"
     pr = "!f() { git fetch upstream pull/\"$1\"/head:pr-\"$1\"; git checkout pr.\"$1\"; }; f"
 [credential]
     helper = cache
