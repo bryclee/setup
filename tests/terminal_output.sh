@@ -29,6 +29,7 @@ printf '\e[48;5;42m256-color background, de facto standard (commonly used)\e[49m
 printf '\e[48:2::240:143:104mtruecolor background, de jure standard (ITU-T T.416) (new in 0.52)\e[49m\n'
 printf '\e[48:2:240:143:104mtruecolor background, rarely used incorrect format (might be removed at some point)\e[49m\n'
 printf '\e[48;2;240;143;104mtruecolor background, de facto standard (commonly used)\e[49m\n'
+printf '\e[24m'
 
 # Probably doesn't matter if these work, to me at least.
 # printf '\e[21m\e[58:5:42m256-color underline (new in 0.52)\e[59m\e[24m\n'
