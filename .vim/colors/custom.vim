@@ -62,7 +62,7 @@ highlight Search         ctermfg=0    ctermbg=11
 " columns.
 if &background == "light"
   highlight LineNr       ctermfg=7
-  highlight Comment      ctermfg=7
+  highlight Comment      ctermfg=7                 cterm=italic
   highlight ColorColumn  ctermfg=8    ctermbg=7
   highlight Folded       ctermfg=8    ctermbg=7
   highlight FoldColumn   ctermfg=8    ctermbg=7
@@ -102,3 +102,7 @@ highlight SpellBad term=standout cterm=underline ctermbg=none
 
 " Syntax options
 highlight Type cterm=bold
+
+" To allow italics in default vim
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
