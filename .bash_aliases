@@ -10,12 +10,17 @@ alias gpul="git pull"
 alias gpush="git push"
 
 # FZF aliases/functions
-alias fgb="git branch --format='%(refname:short)' | fzf --reverse --preview 'git show --color=always --pretty=medium {}'"
+function fgb() {
+  git branch --format='%(refname:short)' |
+    fzf --reverse \
+    --preview 'git graph --color=always {} --format="%C(auto)%h%d %s %C(italic)%cr%Creset"' \
+    --preview-window=down:50%
+}
 # Git log that outputs hash to stdout, for use in scripts.
 # Unfortunately, I don't see a simple way to make this work with fgl-view() - both need to print to stdout.
 function fgl() {
   git log --graph --color=always \
-    --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+    --format="%C(auto)%h%d %s %C(black)%C(italic)%cr%Creset" "$@" |
     fzf --ansi --no-sort --reverse --tiebreak=index \
     --preview='git show --color=always --pretty=medium $(echo {} | awk '"'"'{print $2}'"'"')' \
     --bind "ctrl-j:down,ctrl-k:up,ctrl-d:page-down,ctrl-u:page-up,J:preview-down,K:preview-up,D:preview-page-down,U:preview-page-up,ctrl-p:toggle-preview" |
@@ -24,7 +29,7 @@ function fgl() {
 # Git log browser from https://gist.github.com/junegunn/f4fca918e937e6bf5bad
 fgl-view() {
   git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+      --format="%C(auto)%h%d %s %C(black)%C(italic)%cr%Creset" "$@" |
   fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
       --bind "ctrl-m:execute:
                 (grep -o '[a-f0-9]\{7\}' | head -1 |
