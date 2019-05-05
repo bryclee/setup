@@ -47,9 +47,9 @@ endif
 let colors_name = "custom"
 
 " Diff highlighting
-highlight DiffAdd        ctermfg=2    ctermbg=none
-highlight DiffChange     ctermfg=3    ctermbg=none
-highlight DiffDelete     ctermfg=1    ctermbg=none
+highlight DiffAdd        ctermfg=0    ctermbg=2
+highlight DiffChange     ctermfg=0    ctermbg=3
+highlight DiffDelete     ctermfg=0    ctermbg=1
 highlight DiffText       ctermfg=0    ctermbg=11   cterm=bold
 
 " Invert selected lines in visual mode
@@ -106,3 +106,8 @@ highlight Type cterm=bold
 " To allow italics in default vim
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
+
+" Plugins
+highlight GitGutterAdd      ctermfg=2    ctermbg=none
+highlight GitGutterChange   ctermfg=3    ctermbg=none
+highlight GitGutterDelete   ctermfg=1    ctermbg=none
