@@ -8,3 +8,7 @@
 
 - `Gbrowse`: Open file under cursor in Github in the webbrowser
     - Requires `vim-rhubarb` for integration with Github
+
+## vim-unimpaired
+
+- `[q`, `]q`: Navigate between quickfix list items

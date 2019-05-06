@@ -29,6 +29,7 @@ call plug#begin('~/.vim/plugged')
 " General pugins
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
