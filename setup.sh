@@ -12,6 +12,7 @@ mkdir sources
 (. ./install/misc.${OS}.sh)
 (. ./install/node.${OS}.sh)
 (. ./install/vim.${OS}.sh)
+(. ./install/nvim.${OS}.sh)
 # (. ./install/fzf.${OS}.sh)
 # (. ./install/tmux.${OS}.sh)
 
