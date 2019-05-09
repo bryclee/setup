@@ -13,7 +13,7 @@ alias gpush="git push"
 function fgb() {
   git branch --format='%(refname:short)' |
     fzf --reverse \
-    --preview 'git graph --color=always {} --format="%C(auto)%h%d %s %C(italic)%cr%Creset"' \
+    --preview 'git graph --color=always {}' \
     --preview-window=down:50%
 }
 # Git log that outputs hash to stdout, for use in scripts.

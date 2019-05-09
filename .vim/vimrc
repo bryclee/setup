@@ -45,6 +45,8 @@ Plug 'w0rp/ale'
 " Plug 'jiangmiao/auto-pairs'
 " let g:AutoPairsMapSpace = 0
 " let g:AutoPairsMultilineClose = 0
+Plug 'rstacruz/vim-closer'
+Plug 'tpope/vim-endwise'
 
 Plug 'vim-airline/vim-airline'
 set noshowmode
@@ -108,10 +110,37 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> InstallCoc() }}
 " coc.nvim
 " ===================
 " Set tab completion
+function! s:pumVisibleEnter()
+  if pumvisible()
+    return "\<C-e>\<CR>"
+  else
+    return "\<CR>"
+  endif
+endfunction
+
+if maparg("<Plug>CloseEnter") == ""
+  inoremap <silent> <SID>CloseEnter <C-R>=<SID>pumVisibleEnter()<CR>
+  imap <script> <Plug>CloseEnter <SID>CloseEnter
+endif
+" inoremap <CR> <Plug>CloseEnter<CR>
+imap <CR> <Plug>CloseEnter
+
 inoremap <silent><expr> <TAB>
   \ pumvisible() ? "\<C-y>" : "\<TAB>"
-inoremap <silent><expr> <ENTER>
-  \ pumvisible() ? "\<C-e><ENTER>" : "\<ENTER>"
+" inoremap <silent><expr> <CR>
+"   \ pumvisible() ? "\<C-e>\<CR>" : "\<CR>"
+
+" let oldmap = maparg('<CR>', 'i')
+" echo "oldmap<" . oldmap . ">"
+" let newmap = maparg('<CR>', 'i')
+" echo "newmap<" . newmap . ">"
+
+" if oldmap !~# "CloseEnter"
+"   if oldmap != ""
+"   else
+"     imap <CR> <CR><Plug>CloseEnter
+"   endif
+" endif
 
 " " Checks last character is space
 " function! s:check_back_space() abort
@@ -126,8 +155,8 @@ nmap <silent> <C-W><leader>d :call CocActionAsync('jumpDefinition', 'tabe')<CR>
 nmap <silent> <leader>i <Plug>(coc-implementation)
 nmap <silent> <leader>r <Plug>(coc-references)
 nmap <silent> <leader>R <Plug>(coc-rename)
-nmap <silent> [e <Plug>(coc-diagnostic-prev)
-nmap <silent> ]e <Plug>(coc-diagnostic-next)
+" nmap <silent> [e <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]e <Plug>(coc-diagnostic-next)
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " Language specific
@@ -201,7 +230,6 @@ set hlsearch
 nnoremap <silent> <Leader><Leader> :noh<CR><Esc>
 " Use ag for search
 if executable('ag')
-    command! -nargs=+ -complete=file Ag cexpr system('echo ' . shellescape('<args>'))
     set grepprg=ag\ --nogroup\ --nocolor\ --follow
 endif
 " Populate current word in search
@@ -220,7 +248,7 @@ nnoremap gj j
 nnoremap gk k
 
 " Buffers
-nnoremap <leader>bd :b# <BAR> bd #<CR> " In case you want to leave the window
+nnoremap <leader>bd :b# <BAR> bd #<CR> " In case you want to leave the window open
 set hidden
 nnoremap <silent> <leader>o :call BackBuffer()<CR>
 nnoremap <silent> <leader>i :call ForwardBuffer()<CR>
@@ -361,3 +389,10 @@ if filereadable(expand('~/.vimrc_local'))
   source ~/.vimrc_local
 endif
 
+function CheckSessionExists()
+  if !argc() && filereadable('Session.vim')
+    echo 'Existing session exists: Session.vim, it can be loaded with :source Session.vim'
+  endif
+endfunction
+
+au VimEnter * call CheckSessionExists()
