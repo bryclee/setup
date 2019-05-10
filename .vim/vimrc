@@ -39,14 +39,18 @@ Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'w0rp/ale'
 
-" The issue with this is that it closes the pair in cases where I don't want
-" it to. So let's see if this is better disabled - otherwise will have to
-" spend more time to figure out a way to better match expectations.
+" For auto pairing structures. Very finicky and probably very individual.
+" I like this plugin because it is a bit more conservative with when to pair.
+" Some use cases that I care about:
+"   [x] '<word>' should be able to produce '''<word>'
+"   [x] (do(something|) should be able to produce (do(something))
+"   [ ] should be able to type [ ] with just one space
+"   [ ] |word should produce (word
+Plug 'cohama/lexima.vim'
+" TODO: Once happy with the pairing, delete this
 " Plug 'jiangmiao/auto-pairs'
 " let g:AutoPairsMapSpace = 0
 " let g:AutoPairsMultilineClose = 0
-Plug 'rstacruz/vim-closer'
-Plug 'tpope/vim-endwise'
 
 Plug 'vim-airline/vim-airline'
 set noshowmode
