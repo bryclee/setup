@@ -44,6 +44,7 @@ function fnpm() {
     fzf --reverse --nth 1 |
     awk '{print $1}')
 
+  # TODO: Populate history list with command so pressing "up" will navigate to it
   [[ -n "$script" ]] && echo npm run $script && npm run $script
 }
 

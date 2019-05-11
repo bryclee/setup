@@ -1,5 +1,16 @@
 {
-    "suggest.noselect": false,
-    "typescript.suggest.completeFunctionCalls": false,
-    "javascript.suggest.completeFunctionCalls": false
+  "suggest.noselect": false,
+  "typescript.suggest.completeFunctionCalls": false,
+  "javascript.suggest.completeFunctionCalls": false,
+  "languageserver": {
+    "flow": {
+      "command": "flow",
+      "args": ["lsp"],
+      "filetypes": ["javascript", "javascript.jsx", "javascriptreact"],
+      "initializationOptions": {},
+      "requireRootPattern": true,
+      "settings": {},
+      "rootPatterns": [".flowconfig"]
+    }
+  }
 }
