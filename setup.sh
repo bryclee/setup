@@ -9,6 +9,7 @@ mkdir sources
 
 # Run the install scripts for different items.
 # Note that these are run from the setup dir.
+(. ./install/common.sh)
 (. ./install/misc.${OS}.sh)
 (. ./install/node.${OS}.sh)
 (. ./install/vim.${OS}.sh)
@@ -27,4 +28,6 @@ set +x
 # Add custom tmux-256color to support italics in tmux
 tic -x tmux/tmux-256color.terminfo
 
+# Output to terminal to see if how text looks
 . ./tests/terminal_output.sh
+. ./tests/colortest.sh

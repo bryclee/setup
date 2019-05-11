@@ -122,6 +122,14 @@ fi
 # Add setup bin to path
 export PATH="$HOME/setup/bin:$PATH"
 
+# Source completions
+if [ -d ~/.bash_completions ]; then
+    for file in ~/.bash_completions/*
+    do
+        . $file
+    done
+fi
+
 # FZF setting -- allow symlinks
 if [ -n "$(which ag)" ]
 then
