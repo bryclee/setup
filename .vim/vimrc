@@ -44,9 +44,11 @@ Plug 'w0rp/ale'
 " Some use cases that I care about:
 "   [x] '<word>' should be able to produce '''<word>'
 "   [x] (do(something|) should be able to produce (do(something))
-"   [ ] should be able to type [ ] with just one space
 "   [ ] |word should produce (word
+"   [ ] should be able to type [ ] with just one space
 Plug 'cohama/lexima.vim'
+let g:lexima_nvim_accept_pum_with_enter = 0
+let g:lexima_map_escape = ''
 " TODO: Once happy with the pairing, delete this
 " Plug 'jiangmiao/auto-pairs'
 " let g:AutoPairsMapSpace = 0
@@ -114,47 +116,8 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> InstallCoc() }}
 " coc.nvim
 " ===================
 " Set tab completion
-function! s:pumVisibleEnter()
-  let pm = pumvisible()
-  echo "pm?" . pm
-  if pumvisible()
-    return "\<C-e>\<CR>"
-  else
-    return "\<CR>"
-  endif
-endfunction
-
-if maparg("<Plug>CloseEnter") == ""
-  inoremap <silent> <SID>CloseEnter <C-R>=<SID>pumVisibleEnter()<CR>
-  imap <script> <Plug>CloseEnter <SID>CloseEnter
-endif
-
-" Set our own mapping for endwise to be called
-let g:endwise_no_mappings = 1
-imap <CR> <Plug>CloseEnter<Plug>DiscretionaryEnd
-
 inoremap <silent><expr> <TAB>
   \ pumvisible() ? "\<C-y>" : "\<TAB>"
-" inoremap <silent><expr> <CR>
-"   \ pumvisible() ? "\<C-e>\<CR>" : "\<CR>"
-
-" let oldmap = maparg('<CR>', 'i')
-" echo "oldmap<" . oldmap . ">"
-" let newmap = maparg('<CR>', 'i')
-" echo "newmap<" . newmap . ">"
-
-" if oldmap !~# "CloseEnter"
-"   if oldmap != ""
-"   else
-"     imap <CR> <CR><Plug>CloseEnter
-"   endif
-" endif
-
-" " Checks last character is space
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1] =~# '\s'
-" endfunction
 
 " Go to definition
 nmap <silent> <leader>d <Plug>(coc-definition)
@@ -163,6 +126,7 @@ nmap <silent> <C-W><leader>d :call CocActionAsync('jumpDefinition', 'tabe')<CR>
 nmap <silent> <leader>i <Plug>(coc-implementation)
 nmap <silent> <leader>r <Plug>(coc-references)
 nmap <silent> <leader>R <Plug>(coc-rename)
+nmap <silent> gh :call CocAction('doHover')<CR>
 " nmap <silent> [e <Plug>(coc-diagnostic-prev)
 " nmap <silent> ]e <Plug>(coc-diagnostic-next)
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -347,8 +311,8 @@ let g:ale_linters = {
             \ 'typescript.tsx': ['tslint', 'tsserver']
             \ }
 let g:ale_lint_delay = 300
-nnoremap <silent> [d :ALENextWrap<CR>
-nnoremap <silent> ]d :ALEPreviousWrap<CR>
+nnoremap <silent> [d :ALEPreviousWrap<CR>
+nnoremap <silent> ]d :ALENextWrap<CR>
 
 " vim-dirvish
 let g:dirvish_mode = ':sort ,^.*[\/],'
