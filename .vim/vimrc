@@ -44,15 +44,9 @@ Plug 'w0rp/ale'
 " Some use cases that I care about:
 "   [x] '<word>' should be able to produce '''<word>'
 "   [x] (do(something|) should be able to produce (do(something))
-"   [ ] |word should produce (word
-"   [ ] should be able to type [ ] with just one space
+"   [x] |word should produce (word
+"   [x] should be able to type [ ] with just one space
 Plug 'cohama/lexima.vim'
-let g:lexima_nvim_accept_pum_with_enter = 0
-let g:lexima_map_escape = ''
-" TODO: Once happy with the pairing, delete this
-" Plug 'jiangmiao/auto-pairs'
-" let g:AutoPairsMapSpace = 0
-" let g:AutoPairsMultilineClose = 0
 
 Plug 'vim-airline/vim-airline'
 set noshowmode
@@ -313,6 +307,12 @@ let g:ale_linters = {
 let g:ale_lint_delay = 300
 nnoremap <silent> [d :ALEPreviousWrap<CR>
 nnoremap <silent> ]d :ALENextWrap<CR>
+
+" lexima.vim
+let g:lexima_nvim_accept_pum_with_enter = 0
+let g:lexima_map_escape = ''
+let g:lexima_enable_space_rules = 0
+call lexima#add_rule({'char': '(', 'at': '\%#\w'})
 
 " vim-dirvish
 let g:dirvish_mode = ':sort ,^.*[\/],'

@@ -16,6 +16,7 @@ function fgb() {
     --preview 'git graph --color=always {}' \
     --preview-window=down:50%
 }
+
 # Git log that outputs hash to stdout, for use in scripts.
 # Unfortunately, I don't see a simple way to make this work with fgl-view() - both need to print to stdout.
 function fgl() {
@@ -44,8 +45,15 @@ function fnpm() {
     fzf --reverse --nth 1 |
     awk '{print $1}')
 
-  # TODO: Populate history list with command so pressing "up" will navigate to it
-  [[ -n "$script" ]] && echo npm run $script && npm run $script
+  if [[ -z "$script" ]]
+  then
+    return
+  fi
+
+  local selected="npm run $script"
+  echo "$selected"
+  history -s $selected
+  npm run $script
 }
 
 # More git aliases composed
