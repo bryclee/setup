@@ -121,9 +121,9 @@ nmap <silent> <leader>i <Plug>(coc-implementation)
 nmap <silent> <leader>r <Plug>(coc-references)
 nmap <silent> <leader>R <Plug>(coc-rename)
 nmap <silent> gh :call CocAction('doHover')<CR>
+inoremap <silent><expr> <c-space> coc#refresh()
 " nmap <silent> [e <Plug>(coc-diagnostic-prev)
 " nmap <silent> ]e <Plug>(coc-diagnostic-next)
-inoremap <silent><expr> <c-space> coc#refresh()
 
 " Language specific
 Plug 'pangloss/vim-javascript'

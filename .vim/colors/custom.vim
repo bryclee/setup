@@ -1,4 +1,4 @@
-highlight clear
+" highlight clear
 
 " For reference - here are the colors we're working off of
 "   NR-16   NR-8    COLOR NAME ~
@@ -111,3 +111,5 @@ let &t_ZR="\e[23m"
 highlight GitGutterAdd      ctermfg=2    ctermbg=none
 highlight GitGutterChange   ctermfg=3    ctermbg=none
 highlight GitGutterDelete   ctermfg=1    ctermbg=none
+highlight CocInfoSign       ctermfg=3
+highlight CocInfoFloat      ctermfg=11

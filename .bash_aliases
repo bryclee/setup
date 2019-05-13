@@ -38,7 +38,7 @@ fgl-view() {
                 {}
 FZF-EOF"
 }
-function fnpm() {
+function npmf() {
   local scripts=$(npm run --json | python -c 'import sys, json; print "\n".join(sorted(["\t".join(s) for s in json.load(sys.stdin).items()]))')
   local script=$(echo "$scripts" |
     column -t -s $'\t' |
