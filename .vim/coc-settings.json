@@ -2,7 +2,7 @@
   "suggest.noselect": false,
   "typescript.suggest.completeFunctionCalls": false,
   "javascript.suggest.completeFunctionCalls": false,
-  "languageserver": {
+  "_languageserver": {
     "flow": {
       "command": "flow",
       "args": ["lsp"],

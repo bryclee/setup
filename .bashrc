@@ -134,7 +134,7 @@ fi
 if [ -n "$(which ag)" ]
 then
     # Set FZF to use ag
-    export FZF_DEFAULT_COMMAND='ag -l --path-to-ignore ~/.ignore --nocolor --hidden -g ""'
+    export FZF_DEFAULT_COMMAND='ag -l --nocolor --hidden -g ""'
     # Default ag to follow symlinks
     alias ag='ag -f'
 fi

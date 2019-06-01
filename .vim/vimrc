@@ -32,6 +32,7 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'henrik/vim-indexed-search'
 
 " Colorschemes
 Plug 'jeffkreeftmeijer/vim-dim'
@@ -39,14 +40,23 @@ Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'w0rp/ale'
 
-" For auto pairing structures. Very finicky and probably very individual.
-" I like this plugin because it is a bit more conservative with when to pair.
-" Some use cases that I care about:
-"   [x] '<word>' should be able to produce '''<word>'
-"   [x] (do(something|) should be able to produce (do(something))
-"   [x] |word should produce (word
-"   [x] should be able to type [ ] with just one space
-Plug 'cohama/lexima.vim'
+Plug 'tmsvg/pear-tree'
+let g:pear_tree_repeatable_expand = 0
+let g:pear_tree_smart_openers = 1
+let g:pear_tree_smart_closers = 1
+let g:pear_tree_smart_backspace = 1
+let g:pear_tree_pairs = {
+    \   '(': {'closer': ')'},
+    \   '[': {'closer': ']'},
+    \   '{': {'closer': '}'},
+    \   "'": {'closer': "'"},
+    \   '"': {'closer': '"'},
+    \   '"""': {'closer': '"""'},
+    \   '`': {'closer': '`'},
+    \   '```': {'closer': '```', 'not_at': ['`']},
+    \   '<*>': {'closer': '</*>', 'not_if': ['br', 'meta'], 'not_like': '/$', 'until': '\W'},
+    \   '<!--': {'closer': '-->'}
+    \ }
 
 Plug 'vim-airline/vim-airline'
 set noshowmode
@@ -84,10 +94,10 @@ Plug 'airblade/vim-gitgutter'
 set updatetime=500 " Write swap file to disk quicker, also gives faster diff updates
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
-Plug 'alvan/vim-closetag', { 'for': 'html,*javascript*' }
-let g:closetag_filenames = '*.html,*.js,*.jsx,*.tsx'
-let g:closetag_xhtml_filenames = '*.js,*.jsx,*.tsx'
-let g:closetag_emptyTags_caseSensitive = 1
+" Plug 'alvan/vim-closetag', { 'for': 'html,*javascript*' }
+" let g:closetag_filenames = '*.html,*.js,*.jsx,*.tsx'
+" let g:closetag_xhtml_filenames = '*.js,*.jsx,*.tsx'
+" let g:closetag_emptyTags_caseSensitive = 1
 Plug 'justinmk/vim-dirvish'
 Plug 'tpope/vim-vinegar'
 
@@ -122,8 +132,8 @@ nmap <silent> <leader>r <Plug>(coc-references)
 nmap <silent> <leader>R <Plug>(coc-rename)
 nmap <silent> gh :call CocAction('doHover')<CR>
 inoremap <silent><expr> <c-space> coc#refresh()
-" nmap <silent> [e <Plug>(coc-diagnostic-prev)
-" nmap <silent> ]e <Plug>(coc-diagnostic-next)
+nmap <silent> [D <Plug>(coc-diagnostic-prev)
+nmap <silent> ]D <Plug>(coc-diagnostic-next)
 
 " Language specific
 Plug 'pangloss/vim-javascript'
@@ -132,7 +142,7 @@ Plug 'groenewege/vim-less'
 Plug 'ap/vim-css-color'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " Pinned because latest does not properly source config from vimrc prettier config if no project config
-Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier', 'commit': 'e440d85' }
+Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier' }
 Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin' }
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
@@ -307,12 +317,6 @@ let g:ale_linters = {
 let g:ale_lint_delay = 300
 nnoremap <silent> [d :ALEPreviousWrap<CR>
 nnoremap <silent> ]d :ALENextWrap<CR>
-
-" lexima.vim
-let g:lexima_nvim_accept_pum_with_enter = 0
-let g:lexima_map_escape = ''
-let g:lexima_enable_space_rules = 0
-call lexima#add_rule({'char': '(', 'at': '\%#\w'})
 
 " vim-dirvish
 let g:dirvish_mode = ':sort ,^.*[\/],'

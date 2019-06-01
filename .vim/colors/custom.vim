@@ -69,6 +69,7 @@ if &background == "light"
   highlight Pmenu        ctermfg=0    ctermbg=7
   highlight PmenuSel     ctermfg=7    ctermbg=0
   highlight SpellCap     ctermfg=8    ctermbg=7
+  highlight SpellLocal   ctermfg=6                 cterm=inverse
   highlight StatusLine   ctermfg=0    ctermbg=7    cterm=bold
   highlight StatusLineNC ctermfg=8    ctermbg=7    cterm=NONE
   highlight VertSplit    ctermfg=8    ctermbg=NONE cterm=NONE
@@ -82,6 +83,7 @@ else
   highlight Pmenu        ctermfg=15   ctermbg=8
   highlight PmenuSel     ctermfg=8    ctermbg=15
   highlight SpellCap     ctermfg=7    ctermbg=8
+  highlight SpellLocal   ctermfg=6                 cterm=inverse
   highlight StatusLine   ctermfg=15   ctermbg=8    cterm=bold
   highlight StatusLineNC ctermfg=7    ctermbg=8    cterm=NONE
   highlight VertSplit    ctermfg=7    ctermbg=NONE cterm=NONE
@@ -95,9 +97,8 @@ augroup CursorLineActiveWindow
   autocmd WinLeave * setlocal nocursorline
 augroup END
 highlight CursorLine term=none cterm=none
-" highlight DiffAdd ctermfg=green ctermbg=none
-" highlight DiffChange ctermfg=yellow ctermbg=none
-" highlight DiffDelete ctermfg=red ctermbg=none
+highlight CursorLineNr         ctermfg=3
+
 highlight SpellBad term=standout cterm=underline ctermbg=none
 
 " Syntax options
