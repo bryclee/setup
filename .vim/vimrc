@@ -46,17 +46,20 @@ let g:pear_tree_smart_openers = 1
 let g:pear_tree_smart_closers = 1
 let g:pear_tree_smart_backspace = 1
 let g:pear_tree_pairs = {
-    \   '(': {'closer': ')'},
-    \   '[': {'closer': ']'},
-    \   '{': {'closer': '}'},
-    \   "'": {'closer': "'"},
-    \   '"': {'closer': '"'},
-    \   '"""': {'closer': '"""'},
-    \   '`': {'closer': '`'},
-    \   '```': {'closer': '```', 'not_at': ['`']},
-    \   '<*>': {'closer': '</*>', 'not_if': ['br', 'meta'], 'not_like': '/$', 'until': '\W'},
-    \   '<!--': {'closer': '-->'}
-    \ }
+      \ '(': { 'closer': ')', 'not_in': ['String', 'Comment'] },
+      \ '[': { 'closer': ']', 'not_in': ['String', 'Comment'] },
+      \ '{': { 'closer': '}', 'not_in': ['String', 'Comment'] },
+      \ "'": { 'closer': "'" },
+      \ '"': { 'closer': '"' },
+      \ '<*>': { 'closer': '</*>',
+      \          'not_if': ['br', 'hr', 'img', 'input', 'link', 'meta',
+      \                  'area', 'base', 'col', 'command', 'embed',
+      \                  'keygen', 'param', 'source', 'track', 'wbr'],
+      \          'not_like': '/$',
+      \          'until': '[^a-zA-Z0-9-._]'
+      \        },
+      \ '<!--': { 'closer': '-->'}
+      \ }
 
 Plug 'vim-airline/vim-airline'
 set noshowmode
