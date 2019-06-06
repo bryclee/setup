@@ -114,3 +114,6 @@ highlight GitGutterChange   ctermfg=3    ctermbg=none
 highlight GitGutterDelete   ctermfg=1    ctermbg=none
 highlight CocInfoSign       ctermfg=3
 highlight CocInfoFloat      ctermfg=11
+
+" Syntax specific options
+highlight link graphqlConstant Type

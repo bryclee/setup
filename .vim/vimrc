@@ -33,6 +33,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'henrik/vim-indexed-search'
+" Plug 'junegunn/vim-peekaboo'
 
 " Colorschemes
 Plug 'jeffkreeftmeijer/vim-dim'
@@ -42,8 +43,8 @@ Plug 'w0rp/ale'
 
 Plug 'tmsvg/pear-tree'
 let g:pear_tree_repeatable_expand = 0
-let g:pear_tree_smart_openers = 1
-let g:pear_tree_smart_closers = 1
+let g:pear_tree_smart_openers = 0
+let g:pear_tree_smart_closers = 0
 let g:pear_tree_smart_backspace = 1
 let g:pear_tree_pairs = {
       \ '(': { 'closer': ')', 'not_in': ['String', 'Comment'] },
@@ -61,8 +62,8 @@ let g:pear_tree_pairs = {
       \ '<!--': { 'closer': '-->'}
       \ }
 
-Plug 'vim-airline/vim-airline'
-set noshowmode
+" Plug 'vim-airline/vim-airline'
+" set noshowmode
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_min_count = 2
@@ -76,15 +77,28 @@ let g:airline#extensions#tabline#show_close_button = 0
     " airline_section_y (fileencoding, fileformat)
 let g:airline#extensions#default#section_truncate_width = {
     \ 'b': 110,
+    \ 'x': 110,
     \ 'y': 120
     \ }
 " Abbreviating the vim mode mapping in the bottom left corner
 let g:airline_mode_map = {
-    \ 'n'   : 'NOR',
-    \ 'i'   : 'INS',
-    \ 'v'   : 'VIS',
-    \ 'V'   : 'VIS',
-    \ '^V'  : 'VIS',
+    \ '__' : '-',
+    \ 'c'  : 'C',
+    \ 'i'  : 'I',
+    \ 'ic' : 'I',
+    \ 'ix' : 'I',
+    \ 'n'  : 'N',
+    \ 'ni' : 'N',
+    \ 'no' : 'N',
+    \ 'R'  : 'R',
+    \ 'Rv' : 'R',
+    \ 's'  : 'S',
+    \ 'S'  : 'S',
+    \ '' : 'S',
+    \ 't'  : 'T',
+    \ 'v'  : 'V',
+    \ 'V'  : 'V',
+    \ '' : 'V',
     \ }
 let g:airline#extensions#obsession#enabled = 1
 
@@ -112,7 +126,7 @@ autocmd! User GoyoLeave set nolinebreak
 
 " LSP
 " Install Coc. Install yarn if not already installed
-function InstallCoc()
+function! InstallCoc()
   if !executable('yarn')
     !npm install -g yarn
   endif
@@ -169,12 +183,18 @@ set autoread
 " Force markdown highlighting for *.md
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-function TrimStr(str)
+" For checking syntax highlight of cursor
+function! SynGroup()
+    let l:s = synID(line('.'), col('.'), 1)
+    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfun
+
+function! TrimStr(str)
   return substitute(a:str, '^\s*\(.\{-}\)\s*$', '\1', '')
 endfunction
 
 " Trim trailing whitespace on write.
-function TrimWhiteSpace()
+function! TrimWhiteSpace()
     " Save the last searched
     let _s = @/
     " Save the current cursor position
@@ -194,14 +214,14 @@ set listchars=tab:\|\ ,trail:·
 
 " Function for toggling a property
 " Usage: NMapToggle <keybinding> <string property name>
-function NMapToggle(key, opt)
+function! NMapToggle(key, opt)
     " Create chained command string, toggle property and get value of property
     let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
     " nnoremap with new cmd
     exec 'nnoremap '.a:key.' '.cmd
 endfunction
 " Apply variable number of args to NMapToggle?
-command -nargs=+ NMapToggle call NMapToggle(<f-args>)
+command! -nargs=+ NMapToggle call NMapToggle(<f-args>)
 
 " Search
 set incsearch
@@ -259,7 +279,7 @@ set splitbelow
 set splitright
 
 " split line
-nnoremap K i<CR><Esc>l :call TrimWhiteSpace()<CR>
+nnoremap K i<CR><Esc>l:call TrimWhiteSpace()<CR>
 
 " " swapping lines
 " nnoremap <C-j> :m .+1<CR>
@@ -368,7 +388,7 @@ if filereadable(expand('~/.vimrc_local'))
   source ~/.vimrc_local
 endif
 
-function CheckSessionExists()
+function! CheckSessionExists()
   if !argc() && filereadable('Session.vim')
     echo 'Existing session exists: Session.vim, it can be loaded with :source Session.vim'
   endif
