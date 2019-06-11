@@ -43,8 +43,8 @@ Plug 'w0rp/ale'
 
 Plug 'tmsvg/pear-tree'
 let g:pear_tree_repeatable_expand = 0
-let g:pear_tree_smart_openers = 0
-let g:pear_tree_smart_closers = 0
+let g:pear_tree_smart_openers = 1
+let g:pear_tree_smart_closers = 1
 let g:pear_tree_smart_backspace = 1
 let g:pear_tree_pairs = {
       \ '(': { 'closer': ')', 'not_in': ['String', 'Comment'] },
@@ -57,7 +57,8 @@ let g:pear_tree_pairs = {
       \                  'area', 'base', 'col', 'command', 'embed',
       \                  'keygen', 'param', 'source', 'track', 'wbr'],
       \          'not_like': '/$',
-      \          'until': '[^a-zA-Z0-9-._]'
+      \          'until': '[^a-zA-Z0-9-._]',
+      \          'not_in': ['String']
       \        },
       \ '<!--': { 'closer': '-->'}
       \ }
