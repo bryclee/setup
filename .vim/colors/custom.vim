@@ -96,8 +96,8 @@ augroup CursorLineActiveWindow
   autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
   autocmd WinLeave * setlocal nocursorline
 augroup END
-highlight CursorLine term=none cterm=none
-highlight CursorLineNr         ctermfg=3
+highlight CursorLine           cterm=none
+highlight CursorLineNr         cterm=reverse    ctermfg=3
 
 highlight SpellBad term=standout cterm=underline ctermbg=none
 

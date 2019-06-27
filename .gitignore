@@ -3,4 +3,5 @@
 .vim/disabled
 .vim/.netrwhist
 .vim/autoload
+.vim/sessions
 sources

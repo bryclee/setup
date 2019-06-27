@@ -10,20 +10,22 @@ set nocp
 call plug#begin('~/.vim/plugged')
 
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
-Plug 'tmsvg/pear-tree'
-let g:pear_tree_repeatable_expand = 0
-let g:pear_tree_smart_openers = 1
-let g:pear_tree_smart_closers = 1
-let g:pear_tree_smart_backspace = 1
-let g:pear_tree_pairs = {
-            \ '(': {'closer': ')', 'not_in': ['Comment']},
-            \ '{': {'closer': '}', 'not_in': ['Comment']},
-            \ '[': {'closer': ']', 'not_in': ['Comment']}
-            \ }
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> InstallCoc() }}
+" Plug 'tmsvg/pear-tree'
+" let g:pear_tree_repeatable_expand = 0
+" let g:pear_tree_smart_openers = 1
+" let g:pear_tree_smart_closers = 1
+" let g:pear_tree_smart_backspace = 1
+" let g:pear_tree_pairs = {
+"             \ '(': {'closer': ')', 'not_in': ['Comment']},
+"             \ '{': {'closer': '}', 'not_in': ['Comment']},
+"             \ '[': {'closer': ']', 'not_in': ['Comment']}
+"             \ }
 
 call plug#end()
 
 set hidden
+nmap <silent> gh :call CocAction('doHover')<CR>
 
 " inoremap <silent><expr> <TAB>
 "   \ pumvisible() ? "\<C-n>" :
