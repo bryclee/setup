@@ -14,8 +14,7 @@ defaults write -g KeyRepeat -int 1
 defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write -g ApplePressAndHoldEnabled -bool false
 
-brew install moreutils
-brew install the_silver_searcher
+brew install moreutils the_silver_searcher bash-completion
 
 # More installs
 . ./install/iterm2.osx.sh
