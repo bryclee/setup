@@ -33,18 +33,26 @@ Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'henrik/vim-indexed-search'
-Plug 'vimwiki/vimwiki'
 
 " Colorschemes
 Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'w0rp/ale'
 
+" Plug 'jiangmiao/auto-pairs'
+" let g:AutoPairsMapSpace = 0
+" let g:AutoPairsMultilineClose = 0
+" Plug 'alvan/vim-closetag', { 'for': 'html,javascript.jsx,typescript.tsx' }
+" let g:closetag_filenames = '*.html,*.js,*.jsx,*.tsx'
+" let g:closetag_xhtml_filenames = '*.js,*.jsx,*.tsx'
+" let g:closetag_emptyTags_caseSensitive = 1
+" pear-tree sometimes fails to smartly close things
 Plug 'tmsvg/pear-tree'
 let g:pear_tree_repeatable_expand = 0
-let g:pear_tree_smart_openers = 1
-let g:pear_tree_smart_closers = 1
-let g:pear_tree_smart_backspace = 1
+" let g:pear_tree_smart_openers = 1
+" let g:pear_tree_smart_closers = 1
+" let g:pear_tree_smart_backspace = 1
+" let g:pear_tree_timeout = 1000
 let g:pear_tree_pairs = {
       \ '(': { 'closer': ')', 'not_in': ['String', 'Comment'] },
       \ '[': { 'closer': ']', 'not_in': ['String', 'Comment'] },
@@ -57,11 +65,11 @@ let g:pear_tree_pairs = {
       \                  'keygen', 'param', 'source', 'track', 'wbr'],
       \          'not_like': '/$',
       \          'until': '[^a-zA-Z0-9-._]',
+      \          'not_at': ['[^> ]<[^>]*'],
       \          'not_in': ['String']
       \        },
       \ '<!--': { 'closer': '-->'}
       \ }
-let g:pear_tree_timeout = 1000
 
 " Plug 'vim-airline/vim-airline'
 " set noshowmode
@@ -111,10 +119,6 @@ Plug 'airblade/vim-gitgutter'
 set updatetime=500 " Write swap file to disk quicker, also gives faster diff updates
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
-" Plug 'alvan/vim-closetag', { 'for': 'html,*javascript*' }
-" let g:closetag_filenames = '*.html,*.js,*.jsx,*.tsx'
-" let g:closetag_xhtml_filenames = '*.js,*.jsx,*.tsx'
-" let g:closetag_emptyTags_caseSensitive = 1
 Plug 'justinmk/vim-dirvish'
 Plug 'tpope/vim-vinegar'
 
@@ -164,6 +168,8 @@ Plug 'ianks/vim-tsx'
 Plug 'motus/pig.vim'
 Plug 'jparise/vim-graphql'
 Plug 'digitaltoad/vim-pug'
+" Plug 'plasticboy/vim-markdown'
+" Plug 'prurigro/vim-markdown-concealed'
 
 call plug#end()
 
@@ -179,7 +185,10 @@ set backupdir=~/.vim/.backup//
 set autoread
 
 " Force markdown highlighting for *.md
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" augroup markdown
+"   autocmd!
+"   autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" augroup END
 
 " For checking syntax highlight of cursor
 function! SynGroup()
@@ -230,7 +239,7 @@ if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor\ --follow
 endif
 " Populate current word in search
-nnoremap <leader>/ :grep '\b<C-R><C-W>\b'<space>
+nnoremap <leader>/ :grep '\b<C-R>=expand("<cword>")<CR>\b'<space>
 
 " Autocomplete
 set wildmenu    " display autocomplete options in command menu
