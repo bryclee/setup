@@ -1,6 +1,5 @@
 {
   "suggest.noselect": false,
-  "diagnostic.enable": false,
   "typescript.suggest.completeFunctionCalls": false,
   "javascript.suggest.completeFunctionCalls": false
 }
