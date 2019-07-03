@@ -162,7 +162,8 @@ Plug 'mxw/vim-jsx'
 Plug 'groenewege/vim-less'
 Plug 'ap/vim-css-color'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier' }
+" Trying using ALEFix instead
+" Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier' }
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
 Plug 'motus/pig.vim'
@@ -212,7 +213,6 @@ function! TrimWhiteSpace()
     call cursor(l, c)
 endfunction
 " Autotrim on write...
-" autocmd BufWritePre * call TrimWhiteSpace()
 nnoremap <leader>w :call TrimWhiteSpace()<CR>:w<CR>
 
 " Trailing dots showing whitespace
@@ -339,12 +339,20 @@ command! -bang -nargs=* AllFiles call fzf#run(fzf#wrap({ 'source': "find -L * -p
 
 " ale
 let g:ale_linters = {
-            \ 'javascript': ['eslint', 'flow'],
-            \ 'javascript.jsx': ['eslint', 'flow'],
-            \ 'typescript': ['tslint', 'tsserver'],
-            \ 'typescript.tsx': ['tslint', 'tsserver']
-            \ }
+      \ 'javascript': ['eslint', 'flow'],
+      \ 'javascript.jsx': ['eslint', 'flow'],
+      \ 'typescript': ['tslint', 'tsserver'],
+      \ 'typescript.tsx': ['tslint', 'tsserver']
+      \ }
+let g:ale_fixers = {
+      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \ 'javascript': ['prettier', 'eslint'],
+      \ 'javascript.jsx': ['prettier', 'eslint'],
+      \ 'typescript': ['prettier', 'tslint'],
+      \ 'typescript.tsx': ['prettier', 'tslint']
+      \ }
 let g:ale_lint_delay = 300
+nmap <silent> <leader>P <Plug>(ale_fix)
 nnoremap <silent> [d :ALEPreviousWrap<CR>
 nnoremap <silent> ]d :ALENextWrap<CR>
 
@@ -375,14 +383,14 @@ let g:flow#enable = 0
 
 " Prettier
 " ========
-nnoremap <leader>P :PrettierAsync<CR>:w<CR>
-let external_prettier = TrimStr(system('which prettier'))
-if !empty(external_prettier)
-  let g:prettier#exec_cmd_path = external_prettier
-endif
-let g:prettier#config#config_precedence = 'prefer-file'
-let g:prettier#config#single_quote = 'true'
-let g:prettier#config#bracket_spacing = 'true'
+" nnoremap <leader>P :PrettierAsync<CR>:w<CR>
+" let external_prettier = TrimStr(system('which prettier'))
+" if !empty(external_prettier)
+"   let g:prettier#exec_cmd_path = external_prettier
+" endif
+" let g:prettier#config#config_precedence = 'prefer-file'
+" let g:prettier#config#single_quote = 'true'
+" let g:prettier#config#bracket_spacing = 'true'
 
 " vim-javascript
 " ==============
