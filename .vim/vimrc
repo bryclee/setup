@@ -17,6 +17,9 @@ set wildignorecase  " case insensitive file autocomplete
 set mouse=a         " enable mouse
 let mapleader=','   " Set the leader key
 
+" https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md
+set nomodeline
+
 " Auto install plug if not already installed
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -63,7 +66,7 @@ let g:pear_tree_pairs = {
       \          'not_if': ['br', 'hr', 'img', 'input', 'link', 'meta',
       \                  'area', 'base', 'col', 'command', 'embed',
       \                  'keygen', 'param', 'source', 'track', 'wbr'],
-      \          'not_like': '/$',
+      \          'not_like': '{[^}]*$\|/$',
       \          'until': '[^a-zA-Z0-9-._]',
       \          'not_at': ['[^> ]<[^>]*'],
       \          'not_in': ['String']
@@ -165,7 +168,10 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " Trying using ALEFix instead
 " Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier' }
 Plug 'leafgarland/typescript-vim'
-Plug 'ianks/vim-tsx'
+" vim-jsx-typescript has some indentation bugs, so sticking with vim-tsx even
+" though defunct
+" Plug 'peitalin/vim-jsx-typescript'
+Plug 'peitalin/vim-tsx'
 Plug 'motus/pig.vim'
 Plug 'jparise/vim-graphql'
 Plug 'digitaltoad/vim-pug'
@@ -341,6 +347,7 @@ command! -bang -nargs=* AllFiles call fzf#run(fzf#wrap({ 'source': "find -L * -p
 let g:ale_linters = {
       \ 'javascript': ['eslint', 'flow'],
       \ 'javascript.jsx': ['eslint', 'flow'],
+      \ 'css': ['eslint'],
       \ 'typescript': ['tslint', 'tsserver'],
       \ 'typescript.tsx': ['tslint', 'tsserver']
       \ }
@@ -349,10 +356,11 @@ let g:ale_fixers = {
       \ 'javascript': ['prettier', 'eslint'],
       \ 'javascript.jsx': ['prettier', 'eslint'],
       \ 'typescript': ['prettier', 'tslint'],
-      \ 'typescript.tsx': ['prettier', 'tslint']
+      \ 'typescript.tsx': ['prettier', 'tslint'],
+      \ 'css': ['prettier']
       \ }
 let g:ale_lint_delay = 300
-nmap <silent> <leader>P <Plug>(ale_fix)
+nmap <silent> <leader>F <Plug>(ale_fix)
 nnoremap <silent> [d :ALEPreviousWrap<CR>
 nnoremap <silent> ]d :ALENextWrap<CR>
 
