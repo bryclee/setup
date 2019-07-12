@@ -139,7 +139,8 @@ function! InstallCoc()
   endif
   call coc#util#install()
 endfunction
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> InstallCoc() }}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> InstallCoc() }}
+let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-tsserver']
 
 " coc.nvim
 " ===================
@@ -171,7 +172,7 @@ Plug 'leafgarland/typescript-vim'
 " vim-jsx-typescript has some indentation bugs, so sticking with vim-tsx even
 " though defunct
 " Plug 'peitalin/vim-jsx-typescript'
-Plug 'peitalin/vim-tsx'
+Plug 'tasn/vim-tsx'
 Plug 'motus/pig.vim'
 Plug 'jparise/vim-graphql'
 Plug 'digitaltoad/vim-pug'
@@ -357,9 +358,9 @@ let g:ale_fixers = {
       \ 'javascript.jsx': ['prettier', 'eslint'],
       \ 'typescript': ['prettier', 'tslint'],
       \ 'typescript.tsx': ['prettier', 'tslint'],
-      \ 'css': ['prettier']
+      \ 'css': ['prettier'],
+      \ 'markdown': ['prettier']
       \ }
-let g:ale_lint_delay = 300
 nmap <silent> <leader>F <Plug>(ale_fix)
 nnoremap <silent> [d :ALEPreviousWrap<CR>
 nnoremap <silent> ]d :ALENextWrap<CR>
