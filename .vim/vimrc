@@ -359,7 +359,8 @@ let g:ale_fixers = {
       \ 'typescript': ['prettier', 'tslint'],
       \ 'typescript.tsx': ['prettier', 'tslint'],
       \ 'css': ['prettier'],
-      \ 'markdown': ['prettier']
+      \ 'markdown': ['prettier'],
+      \ 'graphql': ['prettier']
       \ }
 nmap <silent> <leader>F <Plug>(ale_fix)
 nnoremap <silent> [d :ALEPreviousWrap<CR>

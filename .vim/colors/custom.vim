@@ -58,6 +58,9 @@ highlight Visual         ctermfg=15 ctermbg=6
 " Highlight search matches in black, with a yellow background
 highlight Search         ctermfg=0    ctermbg=11
 
+highlight StatusLine     cterm=reverse
+highlight StatusLineNC   cterm=underline
+
 " Dim line numbers, comments, color columns, the status line, splits and sign
 " columns.
 if &background == "light"
@@ -70,8 +73,8 @@ if &background == "light"
   highlight PmenuSel     ctermfg=7    ctermbg=0
   highlight SpellCap     ctermfg=8    ctermbg=7
   highlight SpellLocal   ctermfg=6                 cterm=inverse
-  highlight StatusLine   ctermfg=0    ctermbg=7    cterm=bold
-  highlight StatusLineNC ctermfg=8    ctermbg=7    cterm=NONE
+  " highlight StatusLine   ctermfg=0    ctermbg=7    cterm=bold
+  " highlight StatusLineNC ctermfg=8    ctermbg=7    cterm=NONE
   highlight VertSplit    ctermfg=8    ctermbg=NONE cterm=NONE
   highlight SignColumn                ctermbg=7
 else
@@ -84,8 +87,8 @@ else
   highlight PmenuSel     ctermfg=8    ctermbg=15
   highlight SpellCap     ctermfg=7    ctermbg=8
   highlight SpellLocal   ctermfg=6                 cterm=inverse
-  highlight StatusLine   ctermfg=15   ctermbg=8    cterm=bold
-  highlight StatusLineNC ctermfg=7    ctermbg=8    cterm=NONE
+  " highlight StatusLine   ctermfg=15   ctermbg=8    cterm=bold
+  " highlight StatusLineNC ctermfg=7    ctermbg=8    cterm=NONE
   highlight VertSplit    ctermfg=7    ctermbg=NONE cterm=NONE
   highlight SignColumn                ctermbg=8
 endif
@@ -96,7 +99,7 @@ augroup CursorLineActiveWindow
   autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
   autocmd WinLeave * setlocal nocursorline
 augroup END
-highlight CursorLine           cterm=none
+" highlight CursorLine           cterm=none
 highlight CursorLineNr         cterm=reverse    ctermfg=3
 
 highlight SpellBad term=standout cterm=underline ctermbg=none
