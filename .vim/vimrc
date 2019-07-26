@@ -313,7 +313,7 @@ set scrolloff=3
 " line columns and ruler
 set number
 set numberwidth=4
-set noruler
+set ruler
 set signcolumn=yes
 
 " indentation settings

@@ -58,6 +58,9 @@ highlight Visual         ctermfg=15 ctermbg=6
 " Highlight search matches in black, with a yellow background
 highlight Search         ctermfg=0    ctermbg=11
 
+" Matching parens
+highlight MatchParen    ctermfg=0 ctermbg=14
+
 highlight StatusLine     cterm=bold,reverse
 highlight StatusLineNC   cterm=underline
 
@@ -79,9 +82,6 @@ if &background == "light"
   highlight Type         cterm=bold,italic
   highlight Boolean      cterm=bold ctermfg=1
   highlight Identifier   cterm=bold
-  highlight Statement    cterm=bold
-  " highlight Constant     ctermfg=1
-  " highlight PreProc      ctermfg=4
 else
   highlight LineNr       ctermfg=7
   highlight Comment      ctermfg=7                  cterm=italic
@@ -96,11 +96,8 @@ else
   highlight SignColumn                ctermbg=8
 
   highlight Type         cterm=bold,italic
-  highlight Boolean      cterm=bold ctermfg=1
+  highlight Boolean      cterm=bold ctermfg=9
   highlight Identifier   cterm=bold
-  highlight Statement    cterm=bold
-  " highlight Constant     ctermfg=9
-  " highlight PreProc      ctermfg=12
 endif
 
 " Only highlight cursorline for current window
