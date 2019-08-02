@@ -148,10 +148,10 @@ module.exports = {
   plugins: [
     'hypercwd',
     'hyper-search',
-    // 'hyper-ayu-light',
     'hyper-font-ligatures',
     'hyperminimal',
     'hyper-ayu',
+    'hyper-ayu-light',
   ],
 
   // in development, you can create a directory under
