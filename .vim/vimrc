@@ -69,7 +69,7 @@ let g:pear_tree_pairs = {
       \          'not_like': '{[^}]*$\|/$',
       \          'until': '[^a-zA-Z0-9-._]',
       \          'not_at': ['[^> ]<[^>]*'],
-      \          'not_in': ['String']
+      \          'not_in': ['String', 'Comment']
       \        },
       \ '<!--': { 'closer': '-->'}
       \ }
@@ -246,7 +246,7 @@ if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor\ --follow
 endif
 " Populate current word in search
-nnoremap <leader>/ :grep '\b<C-R>=expand("<cword>")<CR>\b'<space>
+nnoremap <leader>/ :grep '\b<C-R>=substitute(expand("<cword>"), '#', '\\#', '')<CR>\b'<space>
 
 " Autocomplete
 set wildmenu    " display autocomplete options in command menu
