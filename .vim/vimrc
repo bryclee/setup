@@ -50,7 +50,10 @@ Plug 'w0rp/ale'
 " let g:closetag_xhtml_filenames = '*.js,*.jsx,*.tsx'
 " let g:closetag_emptyTags_caseSensitive = 1
 " pear-tree sometimes fails to smartly close things
-Plug 'tmsvg/pear-tree'
+" Plug 'tmsvg/pear-tree'
+" Using fork for now until https://github.com/tmsvg/pear-tree/pull/32 is
+" merged or addressed, for typescript generics
+Plug 'bryclee/pear-tree', { 'branch': 'wildcardCloser' }
 let g:pear_tree_repeatable_expand = 0
 " let g:pear_tree_smart_openers = 1
 " let g:pear_tree_smart_closers = 1
@@ -68,7 +71,7 @@ let g:pear_tree_pairs = {
       \                  'keygen', 'param', 'source', 'track', 'wbr'],
       \          'not_like': '{[^}]*$\|/$',
       \          'until': '[^a-zA-Z0-9-._]',
-      \          'not_at': ['[^> ]<[^>]*'],
+      \          'not_at': ['[^> ]'],
       \          'not_in': ['String', 'Comment']
       \        },
       \ '<!--': { 'closer': '-->'}
@@ -246,7 +249,7 @@ if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor\ --follow
 endif
 " Populate current word in search
-nnoremap <leader>/ :grep '\b<C-R>=substitute(expand("<cword>"), '#', '\\#', '')<CR>\b'<space>
+nnoremap <leader>/ :grep '\b<C-R>=substitute(expand("<cword>"), '#', '\\#', 'g')<CR>\b'<space>
 
 " Autocomplete
 set wildmenu    " display autocomplete options in command menu

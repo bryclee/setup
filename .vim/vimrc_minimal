@@ -20,7 +20,7 @@ let g:pear_tree_pairs = {
       \                  'keygen', 'param', 'source', 'track', 'wbr'],
       \          'not_like': '{[^}]*$\|/$',
       \          'until': '[^a-zA-Z0-9-._]',
-      \          'not_at': ['[^> ]<[^>]*'],
+      \          'not_at': ['[^> ]'],
       \          'not_in': ['String']
       \        }
       \ }
