@@ -188,18 +188,16 @@ set t_Co=256
 set background=light
 colorscheme custom
 
+set list
+set listchars=tab:\|\ ,trail:·
+set fillchars+=vert:│
+
 " Move file directories away from local directory
 " The trailing // is to use absolute path
 set backupdir=~/.vim/.backup//
 
 " Read if file has changed from outside vim
 set autoread
-
-" Force markdown highlighting for *.md
-" augroup markdown
-"   autocmd!
-"   autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-" augroup END
 
 " For checking syntax highlight of cursor
 function! SynGroup()
@@ -224,10 +222,6 @@ function! TrimWhiteSpace()
 endfunction
 " Autotrim on write...
 nnoremap <leader>w :call TrimWhiteSpace()<CR>:w<CR>
-
-" Trailing dots showing whitespace
-set list
-set listchars=tab:\|\ ,trail:·
 
 " Function for toggling a property
 " Usage: NMapToggle <keybinding> <string property name>
@@ -362,6 +356,7 @@ let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
       \ 'javascript': ['prettier', 'eslint'],
       \ 'javascript.jsx': ['prettier', 'eslint'],
+      \ 'json': ['prettier'],
       \ 'typescript': ['prettier', 'tslint'],
       \ 'typescript.tsx': ['prettier', 'tslint'],
       \ 'css': ['prettier'],
