@@ -1,4 +1,11 @@
-sudo apt-get install -y autogen automake libevent-dev libncurses5-dev
+# These seem like default requirement?
+sudo apt-get install -y automake libtool libevent-dev libncurses5-dev
+
+# Not sure if still need these
+# sudo apt-get install -y autogen m4
+
+# Needed this two last time
+sudo apt-get install -y pkg-config byacc
 
 git clone https://github.com/tmux/tmux sources/tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
