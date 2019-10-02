@@ -5,3 +5,5 @@ if exists('g:pear_tree_pairs')
         \ '"""': { 'closer': '"""' }
         \ })
 endif
+
+setlocal path+=**/*.graphql

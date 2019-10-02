@@ -67,8 +67,8 @@ highlight StatusLineNC   cterm=underline
 " Dim line numbers, comments, color columns, the status line, splits and sign
 " columns.
 if &background == "light"
-  highlight LineNr       ctermfg=8
-  highlight Comment      ctermfg=8                  cterm=italic
+  highlight LineNr       ctermfg=NONE
+  highlight Comment      ctermfg=4                  cterm=italic
   highlight ColorColumn  ctermfg=8    ctermbg=7
   highlight Folded       ctermfg=8    ctermbg=7
   highlight FoldColumn   ctermfg=8    ctermbg=7
@@ -76,15 +76,15 @@ if &background == "light"
   highlight PmenuSel     ctermfg=7    ctermbg=0
   highlight SpellCap     ctermfg=8    ctermbg=7
   highlight SpellLocal   ctermfg=6                  cterm=inverse
-  highlight VertSplit    ctermfg=8    ctermbg=NONE  cterm=NONE
+  highlight VertSplit    ctermfg=NONE ctermbg=NONE  cterm=NONE
   highlight SignColumn                ctermbg=7
 
   highlight Type         cterm=bold,italic
   highlight Boolean      cterm=bold ctermfg=1
   highlight Identifier   cterm=bold
 else
-  highlight LineNr       ctermfg=7
-  highlight Comment      ctermfg=7                  cterm=italic
+  highlight LineNr       ctermfg=NONE
+  highlight Comment      ctermfg=12                 cterm=italic
   highlight ColorColumn  ctermfg=7    ctermbg=8
   highlight Folded       ctermfg=7    ctermbg=8
   highlight FoldColumn   ctermfg=7    ctermbg=8
@@ -92,7 +92,7 @@ else
   highlight PmenuSel     ctermfg=8    ctermbg=15
   highlight SpellCap     ctermfg=7    ctermbg=8
   highlight SpellLocal   ctermfg=6                  cterm=inverse
-  highlight VertSplit    ctermfg=7    ctermbg=NONE  cterm=NONE
+  highlight VertSplit    ctermfg=NONE ctermbg=NONE  cterm=NONE
   highlight SignColumn                ctermbg=8
 
   highlight Type         cterm=bold,italic

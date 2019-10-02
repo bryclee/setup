@@ -36,6 +36,11 @@ Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'henrik/vim-indexed-search'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'justinmk/vim-dirvish'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-apathy'
 
 " Colorschemes
 Plug 'NLKNguyen/papercolor-theme'
@@ -77,45 +82,7 @@ let g:pear_tree_pairs = {
       \ '<!--': { 'closer': '-->'}
       \ }
 
-" Plug 'vim-airline/vim-airline'
-" set noshowmode
 set laststatus=2
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#tab_min_count = 2
-" let g:airline#extensions#tabline#show_buffers = 0
-" let g:airline#extensions#tabline#show_splits = 0
-" let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-" let g:airline#extensions#tabline#tab_nr_type = 2
-" let g:airline#extensions#tabline#show_close_button = 0
-" Trimming some sections earlier so more of the file path can be shown
-    " airline_section_b (hunks, branch)
-    " airline_section_y (fileencoding, fileformat)
-" let g:airline#extensions#default#section_truncate_width = {
-"     \ 'b': 110,
-"     \ 'x': 110,
-"     \ 'y': 120
-"     \ }
-" Abbreviating the vim mode mapping in the bottom left corner
-" let g:airline_mode_map = {
-"     \ '__' : '-',
-"     \ 'c'  : 'C',
-"     \ 'i'  : 'I',
-"     \ 'ic' : 'I',
-"     \ 'ix' : 'I',
-"     \ 'n'  : 'N',
-"     \ 'ni' : 'N',
-"     \ 'no' : 'N',
-"     \ 'R'  : 'R',
-"     \ 'Rv' : 'R',
-"     \ 's'  : 'S',
-"     \ 'S'  : 'S',
-"     \ '' : 'S',
-"     \ 't'  : 'T',
-"     \ 'v'  : 'V',
-"     \ 'V'  : 'V',
-"     \ '' : 'V',
-"     \ }
-" let g:airline#extensions#obsession#enabled = 1
 
 Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-commentary'
@@ -123,10 +90,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
 set updatetime=500 " Write swap file to disk quicker, also gives faster diff updates
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-surround'
-Plug 'justinmk/vim-dirvish'
-Plug 'tpope/vim-vinegar'
 
 " Goyo is nice for text editing. Use :Goyo and :Goyo! to enter goyo mode.
 " Plug 'junegunn/goyo.vim'
@@ -160,22 +123,20 @@ nmap <silent> <leader>r <Plug>(coc-references)
 nmap <silent> <leader>R <Plug>(coc-rename)
 nmap <silent> gh :call CocAction('doHover')<CR>
 inoremap <silent><expr> <c-space> coc#refresh()
-nmap <silent> [D <Plug>(coc-diagnostic-prev)
-nmap <silent> ]D <Plug>(coc-diagnostic-next)
+" <c-space> mapping on vim on mac is BROKEN, this fixes it
+imap <c-@> <c-space>
+nmap <silent> [G <Plug>(coc-diagnostic-prev)
+nmap <silent> ]G <Plug>(coc-diagnostic-next)
 
 " Language specific
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 Plug 'groenewege/vim-less'
 Plug 'ap/vim-css-color'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " Trying using ALEFix instead
 " Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier' }
-Plug 'leafgarland/typescript-vim'
-" vim-jsx-typescript has some indentation bugs, so sticking with vim-tsx even
-" though defunct
-" Plug 'peitalin/vim-jsx-typescript'
-Plug 'tasn/vim-tsx'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'motus/pig.vim'
 Plug 'jparise/vim-graphql'
 Plug 'digitaltoad/vim-pug'
@@ -189,7 +150,7 @@ set background=light
 colorscheme custom
 
 set list
-set listchars=tab:\|\ ,trail:·
+set listchars=tab:\│\ ,trail:·
 set fillchars+=vert:│
 
 " Move file directories away from local directory
@@ -346,8 +307,8 @@ command! -bang -nargs=* AllFiles call fzf#run(fzf#wrap({ 'source': "find -L * -p
 
 " ale
 let g:ale_linters = {
-      \ 'javascript': ['eslint', 'flow'],
-      \ 'javascript.jsx': ['eslint', 'flow'],
+      \ 'javascript': ['eslint', 'flow-language-server'],
+      \ 'javascript.jsx': ['eslint', 'flow-language-server'],
       \ 'css': ['eslint'],
       \ 'typescript': ['tslint', 'tsserver'],
       \ 'typescript.tsx': ['tslint', 'tsserver']
@@ -364,8 +325,8 @@ let g:ale_fixers = {
       \ 'graphql': ['prettier']
       \ }
 nmap <silent> <leader>F <Plug>(ale_fix)
-nnoremap <silent> [d :ALEPreviousWrap<CR>
-nnoremap <silent> ]d :ALENextWrap<CR>
+nnoremap <silent> [g :ALEPreviousWrap<CR>
+nnoremap <silent> ]g :ALENextWrap<CR>
 
 " vim-dirvish
 let g:dirvish_mode = ':sort ,^.*[\/],'
