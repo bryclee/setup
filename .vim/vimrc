@@ -281,7 +281,7 @@ set shiftwidth=2
 set expandtab " tab to spaces
 
 " vimdiff - https://vimways.org/2018/the-power-of-diff/
-set diffopt+=algorithm:patience
+" set diffopt+=algorithm:patience
 
 " Populate edit command relative to the current file
 map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>

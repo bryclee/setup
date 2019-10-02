@@ -1,7 +1,8 @@
 # Installation
 
 ```
-curl -o- https://raw.githubusercontent.com/bryclee/setup/master/new_setup.sh | bash
+wget https://raw.githubusercontent.com/bryclee/setup/master/new_setup.sh
+bash new_setup.sh
 ```
 
 ## Setting up screen
