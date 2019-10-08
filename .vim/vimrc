@@ -60,10 +60,6 @@ Plug 'w0rp/ale'
 " merged or addressed, for typescript generics
 Plug 'bryclee/pear-tree', { 'branch': 'wildcardCloser' }
 let g:pear_tree_repeatable_expand = 0
-" let g:pear_tree_smart_openers = 1
-" let g:pear_tree_smart_closers = 1
-" let g:pear_tree_smart_backspace = 1
-" let g:pear_tree_timeout = 1000
 let g:pear_tree_pairs = {
       \ '(': { 'closer': ')', 'not_in': ['String', 'Comment'] },
       \ '[': { 'closer': ']', 'not_in': ['String', 'Comment'] },
@@ -90,12 +86,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
 set updatetime=500 " Write swap file to disk quicker, also gives faster diff updates
-
-" Goyo is nice for text editing. Use :Goyo and :Goyo! to enter goyo mode.
-" Plug 'junegunn/goyo.vim'
-" let g:goyo_width = 90
-" autocmd! User GoyoEnter set linebreak
-" autocmd! User GoyoLeave set nolinebreak
 
 " LSP
 " Install Coc. Install yarn if not already installed
@@ -129,19 +119,10 @@ nmap <silent> [G <Plug>(coc-diagnostic-prev)
 nmap <silent> ]G <Plug>(coc-diagnostic-next)
 
 " Language specific
-Plug 'pangloss/vim-javascript'
-Plug 'groenewege/vim-less'
+Plug 'sheerun/vim-polyglot'
 Plug 'ap/vim-css-color'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-" Trying using ALEFix instead
-" Plug 'prettier/vim-prettier', { 'do': 'npm install -g prettier' }
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'motus/pig.vim'
-Plug 'jparise/vim-graphql'
-Plug 'digitaltoad/vim-pug'
-" Plug 'plasticboy/vim-markdown'
-" Plug 'prurigro/vim-markdown-concealed'
 
 call plug#end()
 
@@ -253,14 +234,6 @@ set splitright
 " split line
 nnoremap K i<CR><Esc>l:call TrimWhiteSpace()<CR>
 
-" " swapping lines
-" nnoremap <C-j> :m .+1<CR>
-" nnoremap <C-k> :m .-2<CR>
-" inoremap <C-j> <Esc>:m .+1<CR>
-" inoremap <C-k> <Esc>:m .-2<CR>
-" vnoremap <C-j> :m '>+1<CR>gv
-" vnoremap <C-k> :m '<-2<CR>gv
-
 " Folding
 set foldmethod=indent
 set foldlevel=99
@@ -280,18 +253,11 @@ set tabstop=2
 set shiftwidth=2
 set expandtab " tab to spaces
 
-" vimdiff - https://vimways.org/2018/the-power-of-diff/
-" set diffopt+=algorithm:patience
-
 " Populate edit command relative to the current file
 map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " webpack watching
 set backupcopy=yes
-
-" Allow loading of js files from paths described in json files... most common
-" use case
-autocmd Filetype json set suffixesadd+=.js
 
 " Plugin config
 " =============
@@ -346,23 +312,6 @@ if has("persistent_undo")
     set undodir=~/.vim/.undo//
 endif
 nnoremap <leader>u :MundoToggle<CR>
-
-" vim-flow
-" ========
-let g:flow#autoclose = 1
-let g:flow#omnifunc = 0
-let g:flow#enable = 0
-
-" Prettier
-" ========
-" nnoremap <leader>P :PrettierAsync<CR>:w<CR>
-" let external_prettier = TrimStr(system('which prettier'))
-" if !empty(external_prettier)
-"   let g:prettier#exec_cmd_path = external_prettier
-" endif
-" let g:prettier#config#config_precedence = 'prefer-file'
-" let g:prettier#config#single_quote = 'true'
-" let g:prettier#config#bracket_spacing = 'true'
 
 " vim-javascript
 " ==============
