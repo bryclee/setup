@@ -119,10 +119,15 @@ nmap <silent> [G <Plug>(coc-diagnostic-prev)
 nmap <silent> ]G <Plug>(coc-diagnostic-next)
 
 " Language specific
-Plug 'sheerun/vim-polyglot'
+Plug 'pangloss/vim-javascript'
+Plug 'groenewege/vim-less'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'ap/vim-css-color'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'jparise/vim-graphql'
 Plug 'motus/pig.vim'
+Plug 'digitaltoad/vim-pug'
 
 call plug#end()
 
