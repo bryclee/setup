@@ -41,6 +41,7 @@ Plug 'tpope/vim-surround'
 Plug 'justinmk/vim-dirvish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-apathy'
+Plug 'shime/vim-livedown'
 
 " Colorschemes
 Plug 'NLKNguyen/papercolor-theme'
@@ -77,8 +78,6 @@ let g:pear_tree_pairs = {
       \        },
       \ '<!--': { 'closer': '-->'}
       \ }
-
-set laststatus=2
 
 Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-commentary'
@@ -135,9 +134,13 @@ set t_Co=256
 set background=light
 colorscheme custom
 
+" Setting statusline
+set laststatus=2
+set statusline=[%{fugitive#head()}]%*\ %<%f\ %h%m%r%=%-14.(%l:%c%V%)\ %p%%
+
 set list
 set listchars=tab:\│\ ,trail:·
-set fillchars+=vert:│
+" set fillchars+=vert:│
 
 " Move file directories away from local directory
 " The trailing // is to use absolute path
@@ -237,7 +240,7 @@ set splitbelow
 set splitright
 
 " split line
-nnoremap K i<CR><Esc>l:call TrimWhiteSpace()<CR>
+" nnoremap K i<CR><Esc>l:call TrimWhiteSpace()<CR>
 
 " Folding
 set foldmethod=indent

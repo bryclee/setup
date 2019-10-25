@@ -150,8 +150,7 @@ module.exports = {
     'hyper-search',
     'hyper-font-ligatures',
     'hyperminimal',
-    'hyper-ayu',
-    // 'hyper-ayu-light',
+    'hyper-loved',
   ],
 
   // in development, you can create a directory under

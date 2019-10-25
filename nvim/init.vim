@@ -6,4 +6,6 @@ source ~/.vim/vimrc
 set inccommand=split
 
 " Disable guicursor, which shows the cursor as a bar in insert mode
-" set guicursor=
+set guicursor=
+
+set fillchars=vert:\|

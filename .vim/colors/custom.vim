@@ -62,7 +62,7 @@ highlight Search         ctermfg=0    ctermbg=11
 highlight MatchParen    ctermfg=0 ctermbg=14
 
 highlight StatusLine     cterm=bold,reverse
-highlight StatusLineNC   cterm=underline
+highlight StatusLineNC   cterm=reverse
 
 " Dim line numbers, comments, color columns, the status line, splits and sign
 " columns.
