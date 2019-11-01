@@ -62,7 +62,7 @@ highlight Search         ctermfg=0    ctermbg=11
 highlight MatchParen    ctermfg=0 ctermbg=14
 
 highlight StatusLine     cterm=bold,reverse
-highlight StatusLineNC   cterm=reverse
+highlight StatusLineNC   cterm=underline
 
 " Dim line numbers, comments, color columns, the status line, splits and sign
 " columns.
@@ -82,6 +82,7 @@ if &background == "light"
   highlight Type         cterm=bold,italic
   highlight Boolean      cterm=bold ctermfg=1
   highlight Identifier   cterm=bold
+  highlight CursorLineNr cterm=reverse ctermfg=darkyellow
 else
   highlight LineNr       ctermfg=NONE
   highlight Comment      ctermfg=12                 cterm=italic
@@ -98,6 +99,7 @@ else
   highlight Type         cterm=bold,italic
   highlight Boolean      cterm=bold ctermfg=9
   highlight Identifier   cterm=bold
+  highlight CursorLineNr cterm=reverse ctermfg=yellow
 endif
 
 " Only highlight cursorline for current window
@@ -106,8 +108,7 @@ augroup CursorLineActiveWindow
   autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
   autocmd WinLeave * setlocal nocursorline
 augroup END
-highlight CursorLine            cterm=NONE
-highlight CursorLineNr          cterm=reverse   ctermfg=3
+highlight CursorLineNr          cterm=reverse
 
 highlight SpellBad term=standout cterm=underline ctermbg=none
 

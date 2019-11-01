@@ -29,7 +29,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" General pugins
+" General plugins
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-unimpaired'
@@ -42,6 +42,20 @@ Plug 'justinmk/vim-dirvish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-apathy'
 Plug 'shime/vim-livedown'
+Plug 'itchyny/lightline.vim'
+let g:lightline = {
+  \   'active': {
+  \     'left': [ [ 'mode', 'paste' ],
+  \               [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+  \     'right': [ [ 'percent', 'lineinfo' ], [ 'filetype' ] ]
+  \   },
+  \   'component': {
+  \     'filename': '%<%f'
+  \   },
+  \   'component_function': {
+  \     'gitbranch': 'fugitive#head'
+  \   },
+  \ }
 
 " Colorschemes
 Plug 'NLKNguyen/papercolor-theme'
@@ -136,7 +150,14 @@ colorscheme custom
 
 " Setting statusline
 set laststatus=2
-set statusline=[%{fugitive#head()}]%*\ %<%f\ %h%m%r%=%-14.(%l:%c%V%)\ %p%%
+" function! StatusLineGitBranch()
+"   if fugitive#head() != ''
+"     return '[' . fugitive#head() . '] '
+"   else
+"     return ''
+"   endif
+" endfun
+" set statusline=%<%f\ %h%m%r%=%-10.(%l:%c%V%)\ %p%%
 
 set list
 set listchars=tab:\│\ ,trail:·
@@ -240,7 +261,7 @@ set splitbelow
 set splitright
 
 " split line
-" nnoremap K i<CR><Esc>l:call TrimWhiteSpace()<CR>
+nnoremap K i<CR><Esc>l:call TrimWhiteSpace()<CR>
 
 " Folding
 set foldmethod=indent
