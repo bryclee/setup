@@ -12,7 +12,7 @@ module.exports = {
     fontSize: 14,
 
     // font family with optional fallbacks
-    fontFamily: '"Fira Code", monospace',
+    fontFamily: 'monaco, menlo, monospace',
 
     // default font weight: 'normal' or 'bold'
     fontWeight: 'normal',
@@ -145,13 +145,7 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: [
-    'hypercwd',
-    'hyper-search',
-    'hyper-font-ligatures',
-    'hyperminimal',
-    'hyper-loved',
-  ],
+  plugins: ['hypercwd', 'hyper-search', 'hyperminimal', 'hyper-loved'],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here

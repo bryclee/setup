@@ -43,19 +43,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-apathy'
 Plug 'shime/vim-livedown'
 Plug 'itchyny/lightline.vim'
-let g:lightline = {
-  \   'active': {
-  \     'left': [ [ 'mode', 'paste' ],
-  \               [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-  \     'right': [ [ 'percent', 'lineinfo' ], [ 'filetype' ] ]
-  \   },
-  \   'component': {
-  \     'filename': '%<%f'
-  \   },
-  \   'component_function': {
-  \     'gitbranch': 'fugitive#head'
-  \   },
-  \ }
 
 " Colorschemes
 Plug 'NLKNguyen/papercolor-theme'
@@ -98,7 +85,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
-set updatetime=500 " Write swap file to disk quicker, also gives faster diff updates
+set updatetime=200 " Write swap file to disk quicker, also gives faster diff updates
 
 " LSP
 " Install Coc. Install yarn if not already installed
@@ -148,7 +135,7 @@ set t_Co=256
 set background=light
 colorscheme custom
 
-" Setting statusline
+" Setting statusline configurations
 set laststatus=2
 " function! StatusLineGitBranch()
 "   if fugitive#head() != ''
@@ -158,6 +145,24 @@ set laststatus=2
 "   endif
 " endfun
 " set statusline=%<%f\ %h%m%r%=%-10.(%l:%c%V%)\ %p%%
+
+" lightline configuration
+let g:lightline = {
+  \   'active': {
+  \     'left': [ [ 'mode', 'paste' ],
+  \               [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+  \     'right': [ [ 'percent', 'lineinfo' ], [ 'cocstatus', 'filetype' ] ]
+  \   },
+  \   'component': {
+  \     'filename': '%<%f'
+  \   },
+  \   'component_function': {
+  \     'cocstatus': 'coc#status',
+  \     'gitbranch': 'fugitive#head'
+  \   },
+  \ }
+" noshowmode only useful if using a status bar that includes the mode
+set noshowmode
 
 set list
 set listchars=tab:\│\ ,trail:·
