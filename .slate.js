@@ -9,7 +9,7 @@ const TERMINALS = {
   },
 };
 
-const PREFERRED_TERMINAL = TERMINALS.ITERM;
+const PREFERRED_TERMINAL = TERMINALS.HYPER;
 
 const pushLeft = slate.operation('move', {
   x: 'screenOriginX',

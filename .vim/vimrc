@@ -42,7 +42,7 @@ Plug 'justinmk/vim-dirvish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-apathy'
 Plug 'shime/vim-livedown'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 
 " Colorschemes
 Plug 'NLKNguyen/papercolor-theme'
@@ -132,19 +132,18 @@ Plug 'digitaltoad/vim-pug'
 call plug#end()
 
 set t_Co=256
-set background=light
 colorscheme custom
 
 " Setting statusline configurations
 set laststatus=2
-" function! StatusLineGitBranch()
-"   if fugitive#head() != ''
-"     return '[' . fugitive#head() . '] '
-"   else
-"     return ''
-"   endif
-" endfun
-" set statusline=%<%f\ %h%m%r%=%-10.(%l:%c%V%)\ %p%%
+function! StatusLineGitBranch()
+  if fugitive#head() != ''
+    return fugitive#head() . ' | '
+  else
+    return ''
+  endif
+endfun
+set statusline=%{StatusLineGitBranch()}%<%f\ %h%m%r%=%10.(%l:%v%)\ \|\ %4.(%p%%%)
 
 " lightline configuration
 let g:lightline = {
@@ -162,7 +161,7 @@ let g:lightline = {
   \   },
   \ }
 " noshowmode only useful if using a status bar that includes the mode
-set noshowmode
+" set noshowmode
 
 set list
 set listchars=tab:\│\ ,trail:·
