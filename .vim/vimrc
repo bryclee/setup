@@ -318,7 +318,7 @@ let g:ale_fixers = {
       \ 'javascript.jsx': ['prettier', 'eslint'],
       \ 'json': ['prettier'],
       \ 'typescript': ['prettier', 'tslint'],
-      \ 'typescript.tsx': ['prettier', 'tslint'],
+      \ 'typescriptreact': ['prettier', 'tslint'],
       \ 'css': ['prettier'],
       \ 'markdown': ['prettier'],
       \ 'graphql': ['prettier']
