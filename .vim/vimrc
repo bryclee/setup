@@ -143,7 +143,10 @@ function! StatusLineGitBranch()
     return ''
   endif
 endfun
-set statusline=%{StatusLineGitBranch()}%<%f\ %h%m%r%=%10.(%l:%v%)\ \|\ %4.(%p%%%)
+set statusline=
+set statusline+=%{StatusLineGitBranch()}%<%f\ %h%m%r
+set statusline+=%=
+set statusline+=%{coc#status()}\ \|\%8.(%l:%v%)\ \|\ %4.(%p%%%)
 
 " lightline configuration
 let g:lightline = {
