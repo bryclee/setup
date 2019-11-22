@@ -9,7 +9,7 @@ set nocp
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> InstallCoc() }}
 " Plug 'tmsvg/pear-tree'
 " let g:pear_tree_repeatable_expand = 0
@@ -24,6 +24,10 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install() }}
 "       \          'not_in': ['String']
 "       \        }
 "       \ }
+
+Plug 'pangloss/vim-javascript'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 call plug#end()
 
@@ -45,4 +49,4 @@ let mapleader=','
 " " Go to definition
 " nmap <silent> <leader>d <Plug>(coc-definition)
 " nmap <silent> <leader>i <Plug>(coc-implementation)
-nmap <silent> <leader>r <Plug>(coc-references)
+" nmap <silent> <leader>r <Plug>(coc-references)

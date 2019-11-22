@@ -121,7 +121,8 @@ nmap <silent> ]G <Plug>(coc-diagnostic-next)
 " Language specific
 Plug 'pangloss/vim-javascript'
 Plug 'groenewege/vim-less'
-Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'HerringtonDarkholme/yats.vim'
+Plug 'leafgarland/typescript-vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'ap/vim-css-color'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
