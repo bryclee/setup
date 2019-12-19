@@ -80,7 +80,7 @@ if &background == "light"
   highlight Boolean      cterm=bold ctermfg=1
   highlight Identifier   cterm=bold
   highlight CursorLineNr cterm=reverse ctermfg=darkyellow
-  highlight StatusLine   cterm=bold ctermfg=15 ctermbg=14
+  highlight StatusLine   cterm=bold ctermfg=15 ctermbg=6
   highlight StatusLineNC cterm=none ctermfg=0 ctermbg=7
 else
   highlight LineNr       ctermfg=NONE
