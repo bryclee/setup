@@ -1,5 +1,3 @@
-" highlight clear
-
 " For reference - here are the colors we're working off of
 "   NR-16   NR-8    COLOR NAME ~
 "   0       0       Black
@@ -19,27 +17,8 @@
 "   14      3*      Yellow, LightYellow
 "   15      7*      White
 
-let s:colors = {
-      \ 'black': '0',
-      \ 'darkRed': '1',
-      \ 'darkGreen': '2',
-      \ 'darkBrown': '3',
-      \ 'darkBlue': '4',
-      \ 'darkMagenta': '5',
-      \ 'darkCyan': '6',
-      \ 'darkGrey': '8',
-      \ 'lightGrey': '7',
-      \ 'red': '9',
-      \ 'green': '10',
-      \ 'yellow': '11',
-      \ 'blue': '12',
-      \ 'magenta': '13',
-      \ 'cyan': '14',
-      \ 'white': '15',
-      \ 'none': 'none'
-      \ }
-
 if exists("syntax_on")
+  hi clear
   syntax reset
 endif
 
@@ -47,82 +26,91 @@ endif
 let colors_name = "custom"
 
 " Diff highlighting
-highlight DiffAdd        ctermfg=0    ctermbg=10
-highlight DiffChange     ctermfg=0    ctermbg=11
-highlight DiffDelete     ctermfg=0    ctermbg=9
-highlight DiffText       ctermfg=0    ctermbg=3     cterm=bold
+hi DiffAdd        ctermfg=black ctermbg=green
+hi DiffChange     ctermfg=black ctermbg=lightyellow
+hi DiffDelete     ctermfg=black ctermbg=red
+hi DiffText       ctermfg=black ctermbg=yellow cterm=bold
 
 " Invert selected lines in visual mode
-highlight Visual         ctermfg=15 ctermbg=6
+hi Visual         ctermfg=white ctermbg=darkcyan
 
-" Highlight search matches in black, with a yellow background
-highlight Search         ctermfg=0    ctermbg=11
+" hi search matches in black, with a yellow background
+hi Search         ctermfg=black    ctermbg=yellow
 
 " Matching parens
-highlight MatchParen    ctermfg=0 ctermbg=14
+hi MatchParen    ctermfg=black ctermbg=lightcyan
 
 " Dim line numbers, comments, color columns, the status line, splits and sign
 " columns.
 if &background == "light"
-  highlight LineNr       ctermfg=NONE
-  highlight Comment      ctermfg=4                  cterm=italic
-  highlight ColorColumn  ctermfg=8    ctermbg=7
-  highlight Folded       ctermfg=8    ctermbg=7
-  highlight FoldColumn   ctermfg=8    ctermbg=7
-  highlight Pmenu        ctermfg=0    ctermbg=7
-  highlight PmenuSel     ctermfg=7    ctermbg=0
-  highlight SpellCap     ctermfg=8    ctermbg=7
-  highlight SpellLocal   ctermfg=6                  cterm=inverse
-  highlight VertSplit    ctermfg=NONE ctermbg=NONE  cterm=NONE
-  highlight SignColumn                ctermbg=7
+  hi LineNr       ctermfg=gray
+  hi Comment      ctermfg=gray cterm=italic
+  hi ColorColumn  ctermfg=darkgray    ctermbg=gray
+  hi Folded       ctermfg=darkgray    ctermbg=gray
+  hi FoldColumn   ctermfg=darkgray    ctermbg=gray
+  hi Pmenu        ctermfg=black    ctermbg=gray
+  hi PmenuSel     ctermfg=lightgray    ctermbg=black
+  hi SpellCap     ctermfg=darkgray    ctermbg=gray
+  hi SpellLocal   ctermfg=darkcyan                  cterm=inverse
+  hi VertSplit    ctermfg=NONE ctermbg=NONE  cterm=NONE
+  hi SignColumn                ctermbg=lightgray
 
-  highlight Type         cterm=bold,italic
-  highlight Boolean      cterm=bold ctermfg=1
-  highlight Identifier   cterm=bold
-  highlight CursorLineNr cterm=reverse ctermfg=darkyellow
-  highlight StatusLine   cterm=bold ctermfg=15 ctermbg=6
-  highlight StatusLineNC cterm=none ctermfg=0 ctermbg=7
+  hi Type         cterm=bold,italic
+  hi Boolean      cterm=bold ctermfg=darkred
+  hi Identifier   cterm=bold
+
+  hi CursorLineNr cterm=none ctermfg=darkyellow
+  hi StatusLine   cterm=bold ctermfg=black ctermbg=cyan
+  hi StatusLineNC cterm=none ctermfg=black ctermbg=gray
+  hi Directory cterm=bold ctermfg=darkblue
 else
-  highlight LineNr       ctermfg=NONE
-  highlight Comment      ctermfg=12                 cterm=italic
-  highlight ColorColumn  ctermfg=7    ctermbg=8
-  highlight Folded       ctermfg=7    ctermbg=8
-  highlight FoldColumn   ctermfg=7    ctermbg=8
-  highlight Pmenu        ctermfg=15   ctermbg=8
-  highlight PmenuSel     ctermfg=8    ctermbg=15
-  highlight SpellCap     ctermfg=7    ctermbg=8
-  highlight SpellLocal   ctermfg=6                  cterm=inverse
-  highlight VertSplit    ctermfg=NONE ctermbg=NONE  cterm=NONE
-  highlight SignColumn                ctermbg=8
+  hi LineNr       ctermfg=darkgray
+  hi Comment      ctermfg=gray                 cterm=italic
+  hi ColorColumn  ctermfg=lightgray    ctermbg=darkgray
+  hi Folded       ctermfg=lightgray    ctermbg=darkgray
+  hi FoldColumn   ctermfg=lightgray    ctermbg=darkgray
+  hi Pmenu        ctermfg=lightgray   ctermbg=darkgray
+  hi PmenuSel     ctermfg=darkgray    ctermbg=white
+  hi SpellCap     ctermfg=lightgray    ctermbg=darkgray
+  hi SpellLocal   ctermfg=darkcyan                  cterm=inverse
+  hi VertSplit    ctermfg=NONE ctermbg=NONE  cterm=NONE
+  hi SignColumn                ctermbg=darkgray
 
-  highlight Type         cterm=bold,italic
-  highlight Boolean      cterm=bold ctermfg=9
-  highlight Identifier   cterm=bold
-  highlight CursorLineNr cterm=reverse ctermfg=yellow
-  highlight StatusLine   cterm=bold ctermfg=0 ctermbg=6
-  highlight StatusLineNC cterm=none ctermfg=15 ctermbg=8
+  hi Type         cterm=bold,italic
+  hi Boolean      cterm=bold ctermfg=lightred
+  hi Identifier   cterm=bold
+
+  hi CursorLineNr cterm=none ctermfg=yellow
+  hi StatusLine   cterm=bold ctermfg=black ctermbg=lightcyan
+  hi StatusLineNC cterm=none ctermfg=white ctermbg=darkgray
+  hi Directory cterm=bold ctermfg=lightblue
 endif
 
-" Only highlight cursorline for current window
+" Only hi cursorline for current window
 augroup CursorLineActiveWindow
   autocmd!
   autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
   autocmd WinLeave * setlocal nocursorline
 augroup END
-highlight CursorLineNr          cterm=reverse
 
-highlight SpellBad term=standout cterm=underline ctermbg=none
+hi SpellBad term=standout cterm=underline ctermbg=none
 
 " To allow italics in default vim
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 
 " Plugins
-highlight GitGutterAdd      ctermfg=2    ctermbg=none
-highlight GitGutterChange   ctermfg=3    ctermbg=none
-highlight GitGutterDelete   ctermfg=1    ctermbg=none
-highlight CocInfoSign       ctermfg=3
-highlight CocInfoFloat      ctermfg=none
+hi GitGutterAdd      ctermfg=darkgreen    ctermbg=none
+hi GitGutterChange   ctermfg=darkyellow    ctermbg=none
+hi GitGutterDelete   ctermfg=darkred    ctermbg=none
+hi CocInfoSign       ctermfg=brown
+hi CocInfoFloat      ctermfg=none
 
 " Language specific options
-highlight link graphqlConstant Type
+hi link graphqlConstant Type
+hi markdownCode ctermfg=red
+hi markdownH1 cterm=bold
+hi markdownH2 cterm=bold
+hi markdownH3 cterm=none
+hi markdownH4 cterm=none
+hi markdownH5 cterm=none
