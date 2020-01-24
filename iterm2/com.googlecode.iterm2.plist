@@ -14,6 +14,8 @@
 	<false/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
+	<key>ApplePressAndHoldEnabled</key>
+	<false/>
 	<key>AppleScrollAnimationEnabled</key>
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
@@ -2625,6 +2627,8 @@
 	<true/>
 	<key>DisableFullscreenTransparency</key>
 	<false/>
+	<key>DisableMetalWhenIdle</key>
+	<false/>
 	<key>EnableDivisionView</key>
 	<true/>
 	<key>EnableProxyIcon</key>
@@ -2745,9 +2749,9 @@
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 0 1680 1027 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>840 0 834 1027 0 0 1680 1027 </string>
+	<string>336 0 970 1027 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>0 0 970 1027 0 0 1680 1027 </string>
+	<string>0 0 1680 1027 0 0 1680 1027 </string>
 	<key>NeverWarnAboutShortLivedSessions_97BA57D3-1060-4E76-8470-821DCB66BFDE</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_97BA57D3-1060-4E76-8470-821DCB66BFDE_selection</key>
@@ -4625,24 +4629,27 @@
 	</array>
 	<key>NoSyncAllAppVersions</key>
 	<array>
+		<string>3.3.8beta3</string>
 		<string>3.3.5beta2</string>
-		<string>3.3.0beta11</string>
 		<string>3.3.2beta1</string>
 		<string>3.3.7beta1</string>
 		<string>3.3.7beta3</string>
-		<string>3.3.0beta13</string>
 		<string>3.3.1beta1</string>
 		<string>3.3.8beta2</string>
-		<string>3.3.0beta15</string>
 		<string>3.3.3beta2</string>
 		<string>3.3.0beta16</string>
+		<string>3.3.0beta15</string>
 		<string>3.3.5beta1</string>
+		<string>3.3.0beta13</string>
 		<string>3.3.5beta3</string>
+		<string>3.3.0beta11</string>
 		<string>3.3.0beta8</string>
 		<string>3.3.4beta1</string>
 		<string>3.3.7beta2</string>
 		<string>3.3.7beta4</string>
 		<string>3.3.8beta1</string>
+		<string>3.3.8beta4</string>
+		<string>3.3.8beta5</string>
 	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
@@ -4656,7 +4663,7 @@
 		<key>screenFrame</key>
 		<string>{{0, 0}, {1680, 1050}}</string>
 		<key>topLeft</key>
-		<string>{507, 779}</string>
+		<string>{531, 839}</string>
 	</dict>
 	<key>NoSyncHaveRequestedFullDiskAccess</key>
 	<true/>
@@ -4667,7 +4674,7 @@
 	<key>NoSyncLastTipTime</key>
 	<real>588531153.76414204</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>145</integer>
+	<integer>153</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -5511,6 +5518,8 @@
 	<integer>4</integer>
 	<key>PerformDNSLookups</key>
 	<false/>
+	<key>PerformDictionaryLookupOnQuickLook</key>
+	<false/>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -5565,7 +5574,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-12-16T20:00:01Z</date>
+	<date>2020-01-21T17:53:31Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>
@@ -5575,6 +5584,8 @@
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
+	<true/>
+	<key>ShowMetalFPSmeter</key>
 	<true/>
 	<key>ShowPaneTitles</key>
 	<true/>
@@ -5635,7 +5646,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.8beta2</string>
+	<string>3.3.8beta5</string>
 	<key>kCPFavoritesUserDefaultsKey</key>
 	<array>
 		<data>

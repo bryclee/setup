@@ -28,44 +28,57 @@ let colors_name = "custom"
 " Diff highlighting
 hi DiffAdd        ctermfg=black ctermbg=green
 hi DiffChange     ctermfg=black ctermbg=lightyellow
-hi DiffDelete     ctermfg=black ctermbg=red
 hi DiffText       ctermfg=black ctermbg=yellow cterm=bold
+hi DiffDelete     ctermfg=black ctermbg=red
 
-" Invert selected lines in visual mode
 hi Visual         ctermfg=white ctermbg=darkcyan
-
-" hi search matches in black, with a yellow background
 hi Search         ctermfg=black    ctermbg=yellow
-
-" Matching parens
-hi MatchParen    ctermfg=black ctermbg=lightcyan
+hi MatchParen    ctermfg=white ctermbg=darkcyan
 
 " Dim line numbers, comments, color columns, the status line, splits and sign
 " columns.
 if &background == "light"
   hi LineNr       ctermfg=gray
-  hi Comment      ctermfg=gray cterm=italic
   hi ColorColumn  ctermfg=darkgray    ctermbg=gray
   hi Folded       ctermfg=darkgray    ctermbg=gray
   hi FoldColumn   ctermfg=darkgray    ctermbg=gray
-  hi Pmenu        ctermfg=black    ctermbg=gray
+  hi Pmenu        ctermfg=black    ctermbg=lightgray
   hi PmenuSel     ctermfg=lightgray    ctermbg=black
   hi SpellCap     ctermfg=darkgray    ctermbg=gray
   hi SpellLocal   ctermfg=darkcyan                  cterm=inverse
   hi VertSplit    ctermfg=NONE ctermbg=NONE  cterm=NONE
   hi SignColumn                ctermbg=lightgray
 
-  hi Type         cterm=bold,italic
-  hi Boolean      cterm=bold ctermfg=darkred
-  hi Identifier   cterm=bold
-
-  hi CursorLineNr cterm=none ctermfg=darkyellow
-  hi StatusLine   cterm=bold ctermfg=black ctermbg=cyan
+  hi Comment cterm=italic ctermfg=gray
+  hi Error ctermfg=red ctermbg=lightred
+  hi CursorLineNr cterm=bold ctermfg=darkyellow
+  hi StatusLine   cterm=bold ctermfg=white ctermbg=darkcyan
   hi StatusLineNC cterm=none ctermfg=black ctermbg=gray
+  hi TabLine cterm=none ctermbg=gray
+  hi TabLineFill cterm=none ctermbg=darkcyan
   hi Directory cterm=bold ctermfg=darkblue
+
+  hi Special ctermfg=darkred
+  hi Constant cterm=none ctermfg=darkred
+  hi Statement ctermfg=red
+  hi Operator ctermfg=darkblue
+  hi Label ctermfg=darkblue
+  hi KeyWord ctermfg=darkblue
+  hi Conditional  cterm=bold ctermfg=darkred
+  hi StorageClass cterm=bold ctermfg=darkblue
+  hi Type cterm=bold ctermfg=darkmagenta
+  hi Identifier   cterm=none ctermfg=darkblue
+  hi Boolean cterm=bold ctermfg=darkgreen
+  hi Function     cterm=none
+  hi Include cterm=bold ctermfg=darkred
+  hi PreProc ctermfg=darkred
+  hi String ctermfg=darkgreen
+  hi Underlined cterm=underline ctermfg=darkblue
+  hi Title cterm=bold ctermfg=darkmagenta
+
+  hi markdownCode ctermfg=red ctermbg=none
 else
   hi LineNr       ctermfg=darkgray
-  hi Comment      ctermfg=gray                 cterm=italic
   hi ColorColumn  ctermfg=lightgray    ctermbg=darkgray
   hi Folded       ctermfg=lightgray    ctermbg=darkgray
   hi FoldColumn   ctermfg=lightgray    ctermbg=darkgray
@@ -76,14 +89,34 @@ else
   hi VertSplit    ctermfg=NONE ctermbg=NONE  cterm=NONE
   hi SignColumn                ctermbg=darkgray
 
-  hi Type         cterm=bold,italic
-  hi Boolean      cterm=bold ctermfg=lightred
-  hi Identifier   cterm=bold
-
-  hi CursorLineNr cterm=none ctermfg=yellow
+  hi Comment cterm=italic ctermfg=gray
+  hi Error ctermfg=lightred ctermbg=darkmagenta
+  hi CursorLineNr cterm=bold ctermfg=yellow
   hi StatusLine   cterm=bold ctermfg=black ctermbg=lightcyan
   hi StatusLineNC cterm=none ctermfg=white ctermbg=darkgray
+  hi TabLine cterm=none ctermbg=darkgray
+  hi TabLineFill cterm=none ctermbg=lightgray
   hi Directory cterm=bold ctermfg=lightblue
+
+  hi Special ctermfg=lightyellow
+  hi Constant cterm=none ctermfg=lightyellow
+  hi Statement ctermfg=yellow
+  hi Operator ctermfg=cyan
+  hi Label ctermfg=cyan
+  hi KeyWord ctermfg=cyan
+  hi Conditional  cterm=bold ctermfg=yellow
+  hi StorageClass cterm=bold ctermfg=cyan
+  hi Type cterm=bold ctermfg=lightgreen
+  hi Identifier   cterm=none ctermfg=cyan
+  hi Boolean cterm=bold ctermfg=magenta
+  hi Function     cterm=none
+  hi Include cterm=bold ctermfg=lightyellow
+  hi PreProc ctermfg=lightyellow
+  hi String ctermfg=lightmagenta
+  hi Underlined cterm=underline ctermfg=cyan
+  hi Title cterm=bold ctermfg=lightgreen
+
+  hi markdownCode ctermfg=yellow ctermbg=none
 endif
 
 " Only hi cursorline for current window
@@ -92,6 +125,14 @@ augroup CursorLineActiveWindow
   autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
   autocmd WinLeave * setlocal nocursorline
 augroup END
+
+if &t_Co >= 256
+  if &background == "light"
+    hi CursorLine cterm=none ctermbg=254
+  else
+    hi CursorLine cterm=none ctermbg=237
+  endif
+endif
 
 hi SpellBad term=standout cterm=underline ctermbg=none
 
@@ -107,10 +148,9 @@ hi CocInfoSign       ctermfg=brown
 hi CocInfoFloat      ctermfg=none
 
 " Language specific options
-hi link graphqlConstant Type
-hi markdownCode ctermfg=red
-hi markdownH1 cterm=bold
-hi markdownH2 cterm=bold
-hi markdownH3 cterm=none
-hi markdownH4 cterm=none
-hi markdownH5 cterm=none
+hi link graphqlConstant Constant
+" hi markdownH1 cterm=bold
+" hi markdownH2 cterm=bold
+" hi markdownH3 cterm=none
+" hi markdownH4 cterm=none
+" hi markdownH5 cterm=none
