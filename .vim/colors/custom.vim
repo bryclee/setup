@@ -52,14 +52,14 @@ if &background == "light"
   hi Comment cterm=italic ctermfg=gray
   hi Error ctermfg=red ctermbg=lightred
   hi CursorLineNr cterm=bold ctermfg=darkyellow
-  hi StatusLine   cterm=bold ctermfg=white ctermbg=darkcyan
+  hi StatusLine   cterm=bold ctermfg=white ctermbg=darkblue
   hi StatusLineNC cterm=none ctermfg=black ctermbg=gray
   hi TabLine cterm=none ctermbg=gray
-  hi TabLineFill cterm=none ctermbg=darkcyan
+  hi TabLineFill cterm=none ctermbg=darkblue
   hi Directory cterm=bold ctermfg=darkblue
 
   hi Special ctermfg=darkred
-  hi Constant cterm=none ctermfg=darkred
+  hi Constant cterm=bold ctermfg=darkgreen
   hi Statement ctermfg=red
   hi Operator ctermfg=darkblue
   hi Label ctermfg=darkblue
@@ -99,7 +99,7 @@ else
   hi Directory cterm=bold ctermfg=lightblue
 
   hi Special ctermfg=lightyellow
-  hi Constant cterm=none ctermfg=lightyellow
+  hi Constant cterm=none ctermfg=lightmagenta
   hi Statement ctermfg=yellow
   hi Operator ctermfg=cyan
   hi Label ctermfg=cyan
@@ -108,11 +108,11 @@ else
   hi StorageClass cterm=bold ctermfg=cyan
   hi Type cterm=bold ctermfg=lightgreen
   hi Identifier   cterm=none ctermfg=cyan
-  hi Boolean cterm=bold ctermfg=magenta
+  hi Boolean cterm=bold ctermfg=lightmagenta
   hi Function     cterm=none
   hi Include cterm=bold ctermfg=lightyellow
   hi PreProc ctermfg=lightyellow
-  hi String ctermfg=lightmagenta
+  hi String cterm=none ctermfg=lightmagenta
   hi Underlined cterm=underline ctermfg=cyan
   hi Title cterm=bold ctermfg=lightgreen
 
@@ -141,16 +141,19 @@ let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 
 " Plugins
-hi GitGutterAdd      ctermfg=darkgreen    ctermbg=none
-hi GitGutterChange   ctermfg=darkyellow    ctermbg=none
-hi GitGutterDelete   ctermfg=darkred    ctermbg=none
-hi CocInfoSign       ctermfg=brown
-hi CocInfoFloat      ctermfg=none
+function! SetPluginHighlights()
+  hi link CocInfoSign MoreMsg
+  hi link CocWarningSign WarningMsg
+  hi link CocErrorSign ErrorMsg
+  hi GitGutterAdd      ctermfg=darkgreen    ctermbg=none
+  hi GitGutterChange   ctermfg=darkyellow    ctermbg=none
+  hi GitGutterDelete   ctermfg=darkred    ctermbg=none
+endfun
+
+augroup PluginHighlights
+  autocmd!
+  autocmd ColorScheme * call SetPluginHighlights()
+augroup END
 
 " Language specific options
 hi link graphqlConstant Constant
-" hi markdownH1 cterm=bold
-" hi markdownH2 cterm=bold
-" hi markdownH3 cterm=none
-" hi markdownH4 cterm=none
-" hi markdownH5 cterm=none

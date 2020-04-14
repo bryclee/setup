@@ -52,25 +52,23 @@ Plug 'w0rp/ale'
 " Plug 'jiangmiao/auto-pairs'
 " let g:AutoPairsMapSpace = 0
 " let g:AutoPairsMultilineClose = 0
-Plug 'tmsvg/pear-tree'
-let g:pear_tree_repeatable_expand = 0
-let g:pear_tree_pairs = {
-      \ '(': { 'closer': ')', 'not_in': ['String', 'Comment'] },
-      \ '[': { 'closer': ']', 'not_in': ['String', 'Comment'] },
-      \ '{': { 'closer': '}', 'not_in': ['String', 'Comment'] },
-      \ "'": { 'closer': "'" },
-      \ '"': { 'closer': '"' },
-      \ }
-      " \ '<*>': { 'closer': '</*>',
-      " \          'not_if': ['br', 'hr', 'img', 'input', 'link', 'meta',
-      " \                  'area', 'base', 'col', 'command', 'embed',
-      " \                  'keygen', 'param', 'source', 'track', 'wbr'],
-      " \          'not_like': '{[^}]*$\|/$',
-      " \          'until': '[^a-zA-Z0-9-._]',
-      " \          'not_at': ['[^> ]'],
-      " \          'not_in': ['String', 'Comment']
-      " \        },
-      " \ '<!--': { 'closer': '-->'}
+" Plug 'tmsvg/pear-tree'
+" let g:pear_tree_repeatable_expand = 0
+" let g:pear_tree_pairs = {
+"       \ '(': { 'closer': ')', 'not_in': ['String', 'Comment'] },
+"       \ '[': { 'closer': ']', 'not_in': ['String', 'Comment'] },
+"       \ '{': { 'closer': '}', 'not_in': ['String', 'Comment'] },
+"       \ }
+"       " \ '<*>': { 'closer': '</*>',
+"       " \          'not_if': ['br', 'hr', 'img', 'input', 'link', 'meta',
+"       " \                  'area', 'base', 'col', 'command', 'embed',
+"       " \                  'keygen', 'param', 'source', 'track', 'wbr'],
+"       " \          'not_like': '{[^}]*$\|/$',
+"       " \          'until': '[^a-zA-Z0-9-._]',
+"       " \          'not_at': ['[^> ]'],
+"       " \          'not_in': ['String', 'Comment']
+"       " \        },
+"       " \ '<!--': { 'closer': '-->'}
 Plug 'alvan/vim-closetag', { 'for': 'html,javascript,typescriptreact' }
 let g:closetag_regions = {
       \ 'typescript': 'jsxRegion,tsxRegion',
@@ -131,6 +129,14 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 Plug 'motus/pig.vim'
 Plug 'digitaltoad/vim-pug'
+Plug 'luochen1990/rainbow'
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+      \   'ctermfgs': ['red', 'blue', 'darkcyan', 'magenta'],
+      \   'separately': {
+      \     'html': 0
+      \   }
+      \ }
 
 call plug#end()
 
@@ -300,12 +306,14 @@ set backupcopy=yes
 " Plugin config
 " =============
 
-" fzf.vim
-autocmd! filetype fzf
-autocmd  filetype fzf set laststatus=0
-  \| autocmd BufLeave <buffer> set laststatus=2
 map <C-T> :FZF<CR>
 map <C-P> :Buffers<CR>
+if has('nvim') || has('patch-8.2-191')
+  let g:fzf_layout = {
+        \   'window': { 'width': 0.7, 'height': 0.8 }
+        \ }
+  " \   'window': 'exec winheight(0)/3."new"'
+endif
 
 command! -bang -nargs=* AllFiles call fzf#run(fzf#wrap({ 'source': "find -L * -path '*/\.*' -prune -o -type f -print -o -type l -print 2> /dev/null" }))
 
@@ -315,7 +323,8 @@ let g:ale_linters = {
       \ 'javascript.jsx': ['eslint', 'flow-language-server'],
       \ 'css': ['eslint'],
       \ 'typescript': ['tslint', 'tsserver'],
-      \ 'typescript.tsx': ['tslint', 'tsserver']
+      \ 'typescript.tsx': ['tslint', 'tsserver'],
+      \ 'clojure': ['clj-kondo']
       \ }
 let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
