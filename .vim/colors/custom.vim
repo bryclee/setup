@@ -92,10 +92,10 @@ else
   hi Comment cterm=italic ctermfg=gray
   hi Error ctermfg=lightred ctermbg=darkmagenta
   hi CursorLineNr cterm=bold ctermfg=yellow
-  hi StatusLine   cterm=bold ctermfg=black ctermbg=lightcyan
+  hi StatusLine   cterm=bold ctermfg=black ctermbg=lightblue
   hi StatusLineNC cterm=none ctermfg=white ctermbg=darkgray
   hi TabLine cterm=none ctermbg=darkgray
-  hi TabLineFill cterm=none ctermbg=lightgray
+  hi TabLineFill cterm=none ctermbg=lightblue
   hi Directory cterm=bold ctermfg=lightblue
 
   hi Special ctermfg=lightyellow

@@ -42,6 +42,12 @@ Plug 'justinmk/vim-dirvish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-apathy'
 Plug 'shime/vim-livedown'
+" Need to understand the following before fixing
+" - What are mappings? Need equivalent to `-` to see all files/entries
+"   - `-` is to reduce header level, `=` is to increase
+"   - linking with [enter] is nice, but not easy to browse through all links?
+" - How to generate the index?
+" Plug 'vimwiki/vimwiki'
 " Plug 'itchyny/lightline.vim'
 
 " Colorschemes
@@ -151,11 +157,23 @@ function! StatusLineGitBranch()
   else
     return ''
   endif
-endfun
+endfunction
+function! CocStatus() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info) | return '' | endif
+  let msgs = []
+  if get(info, 'error', 0)
+    call add(msgs, '!' . info['error'])
+  endif
+  if get(info, 'warning', 0)
+    call add(msgs, '?' . info['warning'])
+  endif
+  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
+endfunction
 set statusline=
 set statusline+=%{StatusLineGitBranch()}%<%f\ %h%m%r
 set statusline+=%=
-set statusline+=%{coc#status()}\ \|\%8.(%l:%v%)\ \|\ %4.(%p%%%)
+set statusline+=%{CocStatus()}\ \|\%8.(%l:%v%)\ \|\ %4.(%p%%%)
 
 " lightline configuration
 let g:lightline = {
@@ -191,9 +209,9 @@ function! SynGroup()
   echo join(map(synstack(line('.'), col('.')), { key, val -> synIDattr(val, 'name') . ' -> ' . synIDattr(synIDtrans(val), 'name') }), "\n")
 endfun
 
-function! TrimStr(str)
-  return substitute(a:str, '^\s*\(.\{-}\)\s*$', '\1', '')
-endfunction
+" function! TrimStr(str)
+"   return substitute(a:str, '^\s*\(.\{-}\)\s*$', '\1', '')
+" endfunction
 
 " Trim trailing whitespace on write.
 function! TrimWhiteSpace()
@@ -207,7 +225,7 @@ function! TrimWhiteSpace()
     call cursor(l, c)
 endfunction
 " Autotrim on write...
-nnoremap <leader>w :call TrimWhiteSpace()<CR>:w<CR>
+" nnoremap <leader>w :call TrimWhiteSpace()<CR>:w<CR>
 
 " Function for toggling a property
 " Usage: NMapToggle <keybinding> <string property name>
@@ -276,7 +294,7 @@ set splitbelow
 set splitright
 
 " split line
-nnoremap K i<CR><Esc>l:call TrimWhiteSpace()<CR>
+" nnoremap K i<CR><Esc>l:call TrimWhiteSpace()<CR>
 
 " Folding
 set foldmethod=indent
@@ -303,15 +321,19 @@ map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " webpack watching
 set backupcopy=yes
 
+inoremap <expr> {<CR> col(".") == col("$") ? '{<CR>}<Esc>O' : '{<CR>'
+inoremap <expr> [<CR> col(".") == col("$") ? '[<CR>]<Esc>O' : '[<CR>'
+inoremap <expr> (<CR> col(".") == col("$") ? '(<CR>)<Esc>O' : '(<CR>'
+
 " Plugin config
 " =============
 
 map <C-T> :FZF<CR>
 map <C-P> :Buffers<CR>
 if has('nvim') || has('patch-8.2-191')
-  let g:fzf_layout = {
-        \   'window': { 'width': 0.7, 'height': 0.8 }
-        \ }
+  " let g:fzf_layout = {
+  "       \   'window': { 'width': 0.7, 'height': 0.8 }
+  "       \ }
   " \   'window': 'exec winheight(0)/3."new"'
 endif
 
@@ -335,7 +357,8 @@ let g:ale_fixers = {
       \ 'typescriptreact': ['prettier', 'tslint'],
       \ 'css': ['prettier'],
       \ 'markdown': ['prettier'],
-      \ 'graphql': ['prettier']
+      \ 'graphql': ['prettier'],
+      \ 'java': ['google_java_format']
       \ }
 nmap <silent> <leader>F <Plug>(ale_fix)
 nnoremap <silent> [g :ALEPreviousWrap<CR>
