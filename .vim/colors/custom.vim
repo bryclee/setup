@@ -47,7 +47,7 @@ if &background == "light"
   hi SpellCap     ctermfg=darkgray    ctermbg=gray
   hi SpellLocal   ctermfg=darkcyan                  cterm=inverse
   hi VertSplit    ctermfg=NONE ctermbg=NONE  cterm=NONE
-  hi SignColumn                ctermbg=lightgray
+  hi clear SignColumn
 
   hi Comment cterm=italic ctermfg=gray
   hi Error ctermfg=red ctermbg=lightred
@@ -87,7 +87,7 @@ else
   hi SpellCap     ctermfg=lightgray    ctermbg=darkgray
   hi SpellLocal   ctermfg=darkcyan                  cterm=inverse
   hi VertSplit    ctermfg=NONE ctermbg=NONE  cterm=NONE
-  hi SignColumn                ctermbg=darkgray
+  hi clear SignColumn
 
   hi Comment cterm=italic ctermfg=gray
   hi Error ctermfg=lightred ctermbg=darkmagenta

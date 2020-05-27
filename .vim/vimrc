@@ -55,26 +55,11 @@ Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'w0rp/ale'
 
-" Plug 'jiangmiao/auto-pairs'
-" let g:AutoPairsMapSpace = 0
-" let g:AutoPairsMultilineClose = 0
-" Plug 'tmsvg/pear-tree'
-" let g:pear_tree_repeatable_expand = 0
-" let g:pear_tree_pairs = {
-"       \ '(': { 'closer': ')', 'not_in': ['String', 'Comment'] },
-"       \ '[': { 'closer': ']', 'not_in': ['String', 'Comment'] },
-"       \ '{': { 'closer': '}', 'not_in': ['String', 'Comment'] },
-"       \ }
-"       " \ '<*>': { 'closer': '</*>',
-"       " \          'not_if': ['br', 'hr', 'img', 'input', 'link', 'meta',
-"       " \                  'area', 'base', 'col', 'command', 'embed',
-"       " \                  'keygen', 'param', 'source', 'track', 'wbr'],
-"       " \          'not_like': '{[^}]*$\|/$',
-"       " \          'until': '[^a-zA-Z0-9-._]',
-"       " \          'not_at': ['[^> ]'],
-"       " \          'not_in': ['String', 'Comment']
-"       " \        },
-"       " \ '<!--': { 'closer': '-->'}
+Plug 'rstacruz/vim-closer'
+augroup closer-custom
+  au!
+  au FileType graphql let b:closer = 1 | let b:closer_flags = '([{'
+augroup END
 Plug 'alvan/vim-closetag', { 'for': 'html,javascript,typescriptreact' }
 let g:closetag_regions = {
       \ 'typescript': 'jsxRegion,tsxRegion',
@@ -160,7 +145,7 @@ function! StatusLineGitBranch()
 endfunction
 function! CocStatus() abort
   let info = get(b:, 'coc_diagnostic_info', {})
-  if empty(info) | return '' | endif
+  if empty(info) | return get(g:, 'coc_status', '') | endif
   let msgs = []
   if get(info, 'error', 0)
     call add(msgs, '!' . info['error'])
@@ -171,9 +156,11 @@ function! CocStatus() abort
   return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
 endfunction
 set statusline=
+" Left section
 set statusline+=%{StatusLineGitBranch()}%<%f\ %h%m%r
+" Right section
 set statusline+=%=
-set statusline+=%{CocStatus()}\ \|\%8.(%l:%v%)\ \|\ %4.(%p%%%)
+set statusline+=%{CocStatus()}\ \|\%8.(%l:%v%)\ %4.(%p%%%)
 
 " lightline configuration
 let g:lightline = {
@@ -261,11 +248,18 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-" Buffers
+" Buffers/Windows navigation
 nnoremap <leader>bd :b# <BAR> bd #<CR> " In case you want to leave the window open
 set hidden
 nnoremap <silent> <leader>o :call BackBuffer()<CR>
 nnoremap <silent> <leader>i :call ForwardBuffer()<CR>
+
+" Mapping <C-W>n to go to window n
+let i = 1
+while i <= 9
+  execute 'nnoremap ' i . '<C-W>' . ' :' . i . 'wincmd w<CR>'
+  let i = i + 1
+endwhile
 
 " Navigate via command provided until buffer changes or there are no more
 " navigation changes. Mostly for the buffer changes though
@@ -321,9 +315,9 @@ map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " webpack watching
 set backupcopy=yes
 
-inoremap <expr> {<CR> col(".") == col("$") ? '{<CR>}<Esc>O' : '{<CR>'
-inoremap <expr> [<CR> col(".") == col("$") ? '[<CR>]<Esc>O' : '[<CR>'
-inoremap <expr> (<CR> col(".") == col("$") ? '(<CR>)<Esc>O' : '(<CR>'
+" inoremap <expr> {<CR> col(".") == col("$") ? '{<CR>}<Esc>O' : '{<CR>'
+" inoremap <expr> [<CR> col(".") == col("$") ? '[<CR>]<Esc>O' : '[<CR>'
+" inoremap <expr> (<CR> col(".") == col("$") ? '(<CR>)<Esc>O' : '(<CR>'
 
 " Plugin config
 " =============
