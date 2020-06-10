@@ -4,5 +4,7 @@
   "typescript.suggest.completeFunctionCalls": false,
   "javascript.suggest.completeFunctionCalls": false,
   "tsserver.log": "verbose",
-  "tsserver.trace.server": "verbose"
+  "tsserver.trace.server": "verbose",
+  "tsserver.maxTsServerMemory": 4000,
+  "tsserver.ignoreLocalTsserver": true
 }

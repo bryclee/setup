@@ -58,7 +58,7 @@ Plug 'w0rp/ale'
 Plug 'rstacruz/vim-closer'
 augroup closer-custom
   au!
-  au FileType graphql let b:closer = 1 | let b:closer_flags = '([{'
+  au FileType * let b:closer = 1 | let b:closer_flags = '([{'
 augroup END
 Plug 'alvan/vim-closetag', { 'for': 'html,javascript,typescriptreact' }
 let g:closetag_regions = {
@@ -86,7 +86,7 @@ function! InstallCoc()
   endif
   call coc#util#install()
 endfunction
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> InstallCoc() }}
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> InstallCoc() }}
 let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-tsserver']
 
 " coc.nvim
@@ -143,9 +143,8 @@ function! StatusLineGitBranch()
     return ''
   endif
 endfunction
-function! CocStatus() abort
-  let info = get(b:, 'coc_diagnostic_info', {})
-  if empty(info) | return get(g:, 'coc_status', '') | endif
+function! CodeStatus() abort
+  let info = ale#statusline#Count(bufnr('%'))
   let msgs = []
   if get(info, 'error', 0)
     call add(msgs, '!' . info['error'])
@@ -153,14 +152,17 @@ function! CocStatus() abort
   if get(info, 'warning', 0)
     call add(msgs, '?' . info['warning'])
   endif
-  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
+  if len(get(g:, 'coc_status', ''))
+    call add(msgs, get(g:, 'coc_status', ''))
+  endif
+  return join(msgs, ',')
 endfunction
 set statusline=
 " Left section
 set statusline+=%{StatusLineGitBranch()}%<%f\ %h%m%r
 " Right section
 set statusline+=%=
-set statusline+=%{CocStatus()}\ \|\%8.(%l:%v%)\ %4.(%p%%%)
+set statusline+=%{CodeStatus()}\ \|\%8.(%l:%v%)\ %4.(%p%%%)
 
 " lightline configuration
 let g:lightline = {
@@ -231,7 +233,7 @@ set hlsearch
 nnoremap <silent> <Leader><Leader> :noh<CR><Esc>
 " Use ag for search
 if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor\ --follow
+    set grepprg=ag\ --vimgrep\ --follow
 endif
 " Populate current word in search
 nnoremap <leader>/ :grep '\b<C-R>=substitute(expand("<cword>"), '#', '\\#', 'g')<CR>\b'<space>
@@ -249,7 +251,7 @@ nnoremap gj j
 nnoremap gk k
 
 " Buffers/Windows navigation
-nnoremap <leader>bd :b# <BAR> bd #<CR> " In case you want to leave the window open
+nnoremap <leader>bd :call BackBuffer() \| bd #<CR> " In case you want to leave the window open
 set hidden
 nnoremap <silent> <leader>o :call BackBuffer()<CR>
 nnoremap <silent> <leader>i :call ForwardBuffer()<CR>

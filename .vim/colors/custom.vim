@@ -47,6 +47,7 @@ if &background == "light"
   hi SpellCap     ctermfg=darkgray    ctermbg=gray
   hi SpellLocal   ctermfg=darkcyan                  cterm=inverse
   hi VertSplit    ctermfg=NONE ctermbg=NONE  cterm=NONE
+  hi Folded       ctermbg=NONE
   hi clear SignColumn
 
   hi Comment cterm=italic ctermfg=gray
@@ -87,6 +88,7 @@ else
   hi SpellCap     ctermfg=lightgray    ctermbg=darkgray
   hi SpellLocal   ctermfg=darkcyan                  cterm=inverse
   hi VertSplit    ctermfg=NONE ctermbg=NONE  cterm=NONE
+  hi Folded       ctermbg=NONE
   hi clear SignColumn
 
   hi Comment cterm=italic ctermfg=gray
@@ -95,7 +97,7 @@ else
   hi StatusLine   cterm=bold ctermfg=black ctermbg=lightblue
   hi StatusLineNC cterm=none ctermfg=white ctermbg=darkgray
   hi TabLine cterm=none ctermbg=darkgray
-  hi TabLineFill cterm=none ctermbg=lightblue
+  hi TabLineFill cterm=none ctermbg=white
   hi Directory cterm=bold ctermfg=lightblue
 
   hi Special ctermfg=lightyellow
@@ -120,19 +122,19 @@ else
 endif
 
 " Only hi cursorline for current window
-augroup CursorLineActiveWindow
-  autocmd!
-  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-  autocmd WinLeave * setlocal nocursorline
-augroup END
+" augroup CursorLineActiveWindow
+"   autocmd!
+"   autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+"   autocmd WinLeave * setlocal nocursorline
+" augroup END
 
-if &t_Co >= 256
-  if &background == "light"
-    hi CursorLine cterm=none ctermbg=254
-  else
-    hi CursorLine cterm=none ctermbg=237
-  endif
-endif
+" if &t_Co >= 256
+"   if &background == "light"
+"     hi CursorLine cterm=none ctermbg=254
+"   else
+"     hi CursorLine cterm=none ctermbg=237
+"   endif
+" endif
 
 hi SpellBad term=standout cterm=underline ctermbg=none
 
@@ -144,7 +146,8 @@ let &t_ZR="\e[23m"
 function! SetPluginHighlights()
   hi link CocInfoSign MoreMsg
   hi link CocWarningSign WarningMsg
-  hi link CocErrorSign ErrorMsg
+  hi link CocErrorSign Error
+  hi link AleErrorSign ErrorMsg
   hi GitGutterAdd      ctermfg=darkgreen    ctermbg=none
   hi GitGutterChange   ctermfg=darkyellow    ctermbg=none
   hi GitGutterDelete   ctermfg=darkred    ctermbg=none
