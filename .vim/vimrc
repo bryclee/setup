@@ -15,7 +15,8 @@ autocmd BufRead,BufNewFile *.eslintrc set filetype=json
 " set path+=**        " improve find
 set wildignorecase  " case insensitive file autocomplete
 set mouse=a         " enable mouse
-let mapleader=','   " Set the leader key
+nnoremap <space> <nop>
+let mapleader=' '   " Set the leader key
 
 " https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md
 set nomodeline
@@ -84,7 +85,6 @@ function! InstallCoc()
   if !executable('yarn')
     !npm install -g yarn
   endif
-  call coc#util#install()
 endfunction
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> InstallCoc() }}
 let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-tsserver']
@@ -245,10 +245,10 @@ set wildmode=longest,list:longest " Set autocomplete default replacement behavio
 set completeopt=menu " How menu shows
 
 " Bind j and k to move by visual line if text is there
-nnoremap j gj
-nnoremap k gk
-nnoremap gj j
-nnoremap gk k
+" nnoremap j gj
+" nnoremap k gk
+" nnoremap gj j
+" nnoremap gk k
 
 " Buffers/Windows navigation
 nnoremap <leader>bd :call BackBuffer() \| bd #<CR> " In case you want to leave the window open
@@ -327,10 +327,12 @@ set backupcopy=yes
 map <C-T> :FZF<CR>
 map <C-P> :Buffers<CR>
 if has('nvim') || has('patch-8.2-191')
-  " let g:fzf_layout = {
+  let g:fzf_layout = {
+        \ 'window': 'enew'
+        \ }
+        " \   'window': 'exec winheight(0)/2."new"'
   "       \   'window': { 'width': 0.7, 'height': 0.8 }
-  "       \ }
-  " \   'window': 'exec winheight(0)/3."new"'
+  let g:fzf_preview_window = 'up:50%'
 endif
 
 command! -bang -nargs=* AllFiles call fzf#run(fzf#wrap({ 'source': "find -L * -path '*/\.*' -prune -o -type f -print -o -type l -print 2> /dev/null" }))
@@ -342,7 +344,8 @@ let g:ale_linters = {
       \ 'css': ['eslint'],
       \ 'typescript': ['tslint', 'tsserver'],
       \ 'typescript.tsx': ['tslint', 'tsserver'],
-      \ 'clojure': ['clj-kondo']
+      \ 'clojure': ['clj-kondo'],
+      \ 'yaml': ['yamllint']
       \ }
 let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
