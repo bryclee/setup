@@ -51,6 +51,7 @@ if &background == "light"
   hi clear SignColumn
 
   hi Comment cterm=italic ctermfg=gray
+  " hi Comment cterm=italic,standout ctermfg=darkgray
   hi Error ctermfg=red ctermbg=lightred
   hi CursorLineNr cterm=bold ctermfg=darkyellow
   hi StatusLine   cterm=bold ctermfg=white ctermbg=darkblue

@@ -1,10 +1,14 @@
 {
   "suggest.noselect": false,
-  "suggest.autoTrigger": "none",
+  "suggest.autoTrigger": "always",
   "typescript.suggest.completeFunctionCalls": false,
   "javascript.suggest.completeFunctionCalls": false,
-  "tsserver.log": "verbose",
-  "tsserver.trace.server": "verbose",
-  "tsserver.maxTsServerMemory": 4000,
-  "tsserver.ignoreLocalTsserver": true
+  "tsserver.ignoreLocalTsserver": true,
+  "languageserver": {
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": ["server", "-m", "stream"],
+      "filetypes": ["graphql"]
+    }
+  }
 }

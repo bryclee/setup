@@ -43,16 +43,13 @@ Plug 'justinmk/vim-dirvish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-apathy'
 Plug 'shime/vim-livedown'
+Plug 'xavierchow/vim-sequence-diagram'
 " Need to understand the following before fixing
 " - What are mappings? Need equivalent to `-` to see all files/entries
 "   - `-` is to reduce header level, `=` is to increase
 "   - linking with [enter] is nice, but not easy to browse through all links?
 " - How to generate the index?
 " Plug 'vimwiki/vimwiki'
-" Plug 'itchyny/lightline.vim'
-
-" Colorschemes
-Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'w0rp/ale'
 
