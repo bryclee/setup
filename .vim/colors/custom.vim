@@ -42,16 +42,16 @@ if &background == "light"
   hi ColorColumn  ctermfg=darkgray    ctermbg=gray
   hi Folded       ctermfg=darkgray    ctermbg=gray
   hi FoldColumn   ctermfg=darkgray    ctermbg=gray
-  hi Pmenu        ctermfg=black    ctermbg=lightgray
-  hi PmenuSel     ctermfg=lightgray    ctermbg=black
+  hi Pmenu        ctermfg=none ctermbg=lightgray
+  hi PmenuSel     cterm=reverse ctermfg=none ctermbg=lightgray
   hi SpellCap     ctermfg=darkgray    ctermbg=gray
   hi SpellLocal   ctermfg=darkcyan                  cterm=inverse
   hi VertSplit    ctermfg=NONE ctermbg=NONE  cterm=NONE
   hi Folded       ctermbg=NONE
+  hi Conceal      ctermfg=NONE ctermbg=gray
   hi clear SignColumn
 
   hi Comment cterm=italic ctermfg=gray
-  " hi Comment cterm=italic,standout ctermfg=darkgray
   hi Error ctermfg=red ctermbg=lightred
   hi CursorLineNr cterm=bold ctermfg=darkyellow
   hi StatusLine   cterm=bold ctermfg=white ctermbg=darkblue
@@ -84,12 +84,13 @@ else
   hi ColorColumn  ctermfg=lightgray    ctermbg=darkgray
   hi Folded       ctermfg=lightgray    ctermbg=darkgray
   hi FoldColumn   ctermfg=lightgray    ctermbg=darkgray
-  hi Pmenu        ctermfg=lightgray   ctermbg=darkgray
-  hi PmenuSel     ctermfg=darkgray    ctermbg=white
+  hi Pmenu        cterm=reverse ctermfg=none   ctermbg=darkgray
+  hi PmenuSel     cterm=reverse ctermfg=none    ctermbg=darkgray
   hi SpellCap     ctermfg=lightgray    ctermbg=darkgray
   hi SpellLocal   ctermfg=darkcyan                  cterm=inverse
   hi VertSplit    ctermfg=NONE ctermbg=NONE  cterm=NONE
   hi Folded       ctermbg=NONE
+  hi Conceal      ctermfg=NONE ctermbg=darkgray
   hi clear SignColumn
 
   hi Comment cterm=italic ctermfg=gray
@@ -152,6 +153,8 @@ function! SetPluginHighlights()
   hi GitGutterAdd      ctermfg=darkgreen    ctermbg=none
   hi GitGutterChange   ctermfg=darkyellow    ctermbg=none
   hi GitGutterDelete   ctermfg=darkred    ctermbg=none
+  hi clear htmlStrike
+  hi link htmlStrike Conceal
 endfun
 
 augroup PluginHighlights

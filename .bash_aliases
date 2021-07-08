@@ -1,5 +1,10 @@
 # Bash aliases - executed from ~/.bashrc
 
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
 # Git aliases
 alias gs="git status"
 alias ga="git add"
@@ -8,6 +13,15 @@ alias gg="git graph"
 alias gco="git checkout"
 alias gpul="git pull"
 alias gpush="git push"
+
+# FZF setting -- allow symlinks
+if [ -n "$(which ag)" ]
+then
+    # Set FZF to use ag
+    export FZF_DEFAULT_COMMAND='ag -l --nocolor --hidden -g ""'
+    # Default ag to follow symlinks
+    alias ag='ag -f'
+fi
 
 # FZF aliases/functions
 function fgb() {
@@ -66,4 +80,3 @@ function zf() {
 
   [[ -n "$target" ]] && _z $target
 }
-

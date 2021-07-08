@@ -2,13 +2,13 @@
 
 function safelyLink {
   for file in "$@"
-  do 
+  do
     ./safelyLink.sh $file ~
   done
 }
 
 # Link files from here to home dir
-safelyLink .vim .inputrc .gitconfig .bash_profile .bash_aliases .profile .bashrc \
+safelyLink .vim .inputrc .gitconfig .bash_profile .bash_aliases .profile .bashrc .zshrc \
     .tmux.conf .agignore .gitignore_global .slate.js .hyper.js .prettierrc.js .eslintrc.js
 
 mkdir -p ~/.config

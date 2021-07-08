@@ -88,11 +88,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -123,15 +118,6 @@ fi
 export PATH="$HOME/setup/bin:$PATH"
 
 [[ -f /usr/local/etc/bash_completion ]] && . /usr/local/etc/bash_completion
-
-# FZF setting -- allow symlinks
-if [ -n "$(which ag)" ]
-then
-    # Set FZF to use ag
-    export FZF_DEFAULT_COMMAND='ag -l --nocolor --hidden -g ""'
-    # Default ag to follow symlinks
-    alias ag='ag -f'
-fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

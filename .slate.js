@@ -9,7 +9,7 @@ const TERMINALS = {
   },
 };
 
-const PREFERRED_TERMINAL = TERMINALS.ITERM;
+const PREFERRED_TERMINAL = TERMINALS.HYPER;
 
 const pushLeft = slate.operation('move', {
   x: 'screenOriginX',
@@ -71,11 +71,11 @@ const throwLeft = slate.operation('throw', {
   height: 'min({windowSizeY,screenSizeY})',
 });
 
-const launchOrFocusTerm = win => {
+const launchOrFocusTerm = (win) => {
   const { name, launch } = PREFERRED_TERMINAL;
   let termPresent = false;
 
-  slate.eachApp(app => {
+  slate.eachApp((app) => {
     if (app.name() === name) {
       termPresent = true;
     }

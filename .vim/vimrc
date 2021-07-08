@@ -42,7 +42,8 @@ Plug 'tpope/vim-surround'
 Plug 'justinmk/vim-dirvish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-apathy'
-Plug 'shime/vim-livedown'
+" Plug 'shime/vim-livedown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'xavierchow/vim-sequence-diagram'
 " Need to understand the following before fixing
 " - What are mappings? Need equivalent to `-` to see all files/entries
@@ -76,6 +77,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
 set updatetime=200 " Write swap file to disk quicker, also gives faster diff updates
 
+" coc.nvim
 " LSP
 " Install Coc. Install yarn if not already installed
 function! InstallCoc()
@@ -85,8 +87,6 @@ function! InstallCoc()
 endfunction
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> InstallCoc() }}
 let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-tsserver']
-
-" coc.nvim
 " ===================
 " Set tab completion
 inoremap <silent><expr> <TAB>
@@ -102,9 +102,64 @@ nmap <silent> <leader>R <Plug>(coc-rename)
 nmap <silent> gh :call CocAction('doHover')<CR>
 inoremap <silent><expr> <c-space> coc#refresh()
 " <c-space> mapping on vim on mac is BROKEN, this fixes it
-imap <c-@> <c-space>
 nmap <silent> [G <Plug>(coc-diagnostic-prev)
 nmap <silent> ]G <Plug>(coc-diagnostic-next)
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" vim-lsp
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'mattn/vim-lsp-settings'
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+" let g:lsp_virtual_text_enabled = 0
+" let g:lsp_diagnostics_float_cursor = 1
+" " let g:lsp_highlight_references_enabled = 0
+
+" function! s:on_lsp_buffer_enabled() abort
+"     setlocal omnifunc=lsp#complete
+"     setlocal signcolumn=yes
+"     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+"     nmap <buffer> <leader>d <plug>(lsp-definition)
+"     nmap <buffer> <leader>r <plug>(lsp-references)
+"     nmap <buffer> <leader>i <plug>(lsp-implementation)
+"     nmap <buffer> <leader>t <plug>(lsp-type-definition)
+"     nmap <buffer> <leader>R <plug>(lsp-rename)
+"     nmap <buffer> [G <Plug>(lsp-previous-diagnostic)
+"     nmap <buffer> ]G <Plug>(lsp-next-diagnostic)
+"     nmap <buffer> K <plug>(lsp-hover)
+"     imap <buffer> <c-space> <Plug>(asyncomplete_force_refresh)
+"     imap <c-@> <c-space>
+
+"     " refer to doc to add more commands
+" endfunction
+
+" " Dedupe results
+" function! s:my_asyncomplete_preprocessor(options, matches) abort
+"   let l:visited = {}
+"   let l:items = []
+"   for [l:source_name, l:matches] in items(a:matches)
+"     for l:item in l:matches['items']
+"       if stridx(l:item['word'], a:options['base']) == 0
+"         if !has_key(l:visited, l:item['word'])
+"           call add(l:items, l:item)
+"           let l:visited[l:item['word']] = 1
+"         endif
+"       endif
+"     endfor
+"   endfor
+
+"   call asyncomplete#preprocess_complete(a:options, l:items)
+" endfunction
+
+" let g:asyncomplete_preprocessor = [function('s:my_asyncomplete_preprocessor')]
+
+" augroup lsp_install
+"     au!
+"     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+"     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+" augroup END
 
 " Language specific
 Plug 'pangloss/vim-javascript'
@@ -125,6 +180,13 @@ let g:rainbow_conf = {
       \     'html': 0
       \   }
       \ }
+Plug 'plasticboy/vim-markdown'
+let g:vim_markdown_new_list_item_indent = 0
+let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_strikethrough = 1
+" let g:vim_markdown_auto_insert_bullets = 0
+
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
@@ -242,10 +304,10 @@ set wildmode=longest,list:longest " Set autocomplete default replacement behavio
 set completeopt=menu " How menu shows
 
 " Bind j and k to move by visual line if text is there
-" nnoremap j gj
-" nnoremap k gk
-" nnoremap gj j
-" nnoremap gk k
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 
 " Buffers/Windows navigation
 nnoremap <leader>bd :call BackBuffer() \| bd #<CR> " In case you want to leave the window open
@@ -356,7 +418,7 @@ let g:ale_fixers = {
       \ 'graphql': ['prettier'],
       \ 'java': ['google_java_format']
       \ }
-nmap <silent> <leader>F <Plug>(ale_fix)
+" let g:ale_virtualtext_cursor = 1
 nnoremap <silent> [g :ALEPreviousWrap<CR>
 nnoremap <silent> ]g :ALENextWrap<CR>
 
@@ -397,3 +459,9 @@ function! CheckSessionExists()
 endfunction
 
 au VimEnter * call CheckSessionExists()
+
+augroup SyntaxSync
+  autocmd!
+  au BufEnter *.js,*.jsx,*.ts,*.tsx,*.graphql syntax sync fromstart
+  " au BufLeave *.js,*.jsx,*.ts,*.tsx,*.graphql syntax sync clear
+augroup END
