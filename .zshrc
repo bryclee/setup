@@ -20,8 +20,6 @@ export PROMPT='%(?..%F{red}!%? )%B%F{blue}%~%b%f %# '
 
 source ~/.bash_aliases
 
-[[ -e ~/.zshrc_local ]] && source ~/.zshrc_local
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -38,3 +36,5 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # colorized ls
 alias ls='ls -G'
+
+[[ -e ~/.zshrc_local ]] && source ~/.zshrc_local

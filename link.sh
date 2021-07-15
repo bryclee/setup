@@ -15,4 +15,5 @@ mkdir -p ~/.config
 mkdir -p ~/.nvm
 
 ./safelyLink.sh nvim ~/.config
+./safelyLink.sh kitty ~/.config
 ./safelyLink.sh .nvm/default-packages ~/.nvm

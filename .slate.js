@@ -7,9 +7,13 @@ const TERMINALS = {
     name: 'iTerm2',
     launch: '/Applications/iTerm.app/Contents/MacOS/iTerm2',
   },
+  KITTY: {
+    name: 'kitty',
+    launch: '/Applications/Kitty.app/Contents/MacOS/kitty',
+  },
 };
 
-const PREFERRED_TERMINAL = TERMINALS.HYPER;
+const PREFERRED_TERMINAL = TERMINALS.KITTY;
 
 const pushLeft = slate.operation('move', {
   x: 'screenOriginX',
