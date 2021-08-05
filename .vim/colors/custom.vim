@@ -31,9 +31,10 @@ hi DiffChange     ctermfg=black ctermbg=lightyellow
 hi DiffText       ctermfg=black ctermbg=yellow cterm=bold
 hi DiffDelete     ctermfg=black ctermbg=red
 
-hi Visual         ctermfg=white ctermbg=darkcyan
+" hi Visual         ctermfg=white ctermbg=darkcyan
+" hi Visual         cterm=standout
 hi Search         ctermfg=black    ctermbg=yellow
-hi MatchParen    ctermfg=white ctermbg=darkcyan
+hi MatchParen     ctermfg=white ctermbg=darkcyan
 
 " Dim line numbers, comments, color columns, the status line, splits and sign
 " columns.
