@@ -387,6 +387,8 @@ set backupcopy=yes
 " inoremap <expr> [<CR> col(".") == col("$") ? '[<CR>]<Esc>O' : '[<CR>'
 " inoremap <expr> (<CR> col(".") == col("$") ? '(<CR>)<Esc>O' : '(<CR>'
 
+nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
+
 " Plugin config
 " =============
 
