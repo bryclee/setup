@@ -18,6 +18,8 @@ brew install moreutils the_silver_searcher bash-completion
 
 # More installs
 # . ./install/iterm2.osx.sh
+. ./install/fzf.osx.sh
 . ./install/alfred.osx.sh
 . ./install/kitty.osx.sh
 . ./install/slate.osx.sh
+. ./install/nvim.osx.sh
