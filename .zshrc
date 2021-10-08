@@ -5,6 +5,7 @@ bindkey -v
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
+bindkey "^R" history-incremental-pattern-search-backward
 
 # The following lines were added by compinstall
 
@@ -38,3 +39,6 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 alias ls='ls -G'
 
 [[ -e ~/.zshrc_local ]] && source ~/.zshrc_local
+
+# tmux-sessionizer https://github.com/ThePrimeagen/.dotfiles/blob/9990fea97c007d4c1f51481dd54cc74fcfc5e21d/zsh/.zsh_profile#L26
+bindkey -s ^f "tmux-sessionizer\n"

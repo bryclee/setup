@@ -1,5 +1,5 @@
 {
-  "suggest.noselect": false,
+  "suggest.noselect": true,
   "suggest.autoTrigger": "always",
   "typescript.suggest.completeFunctionCalls": false,
   "javascript.suggest.completeFunctionCalls": false,

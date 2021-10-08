@@ -1,4 +1,4 @@
-brew cask install alfred
+brew install --cask alfred
 
 # Below doesn't work... but I really wish it did.
 # /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.symbolichotkeys.plist \

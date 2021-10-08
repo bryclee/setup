@@ -90,7 +90,7 @@ let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-tsserver']
 " ===================
 " Set tab completion
 inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-y>" : "\<TAB>"
+  \ pumvisible() ? coc#_select_confirm() : "\<TAB>"
 
 " Go to definition
 nmap <silent> <leader>d <Plug>(coc-definition)
@@ -308,6 +308,13 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
+
+" Center after navigating to next/previous
+" nnoremap n nzz
+" nnoremap N Nzz
+let g:indexed_search_center = 1
+nnoremap <c-o> <c-o>zz
+nnoremap <c-i> <c-i>zz
 
 " Buffers/Windows navigation
 nnoremap <leader>bd :call BackBuffer() \| bd #<CR> " In case you want to leave the window open
