@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(cat ~/.z | cut -f 1 -d "|" | fzf)
+    selected=$(cat ~/.z | tr -s ' ' | cut -f 1 -d "|" | fzf)
 fi
 
 if [[ -z $selected ]]; then

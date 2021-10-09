@@ -41,4 +41,4 @@ alias ls='ls -G'
 [[ -e ~/.zshrc_local ]] && source ~/.zshrc_local
 
 # tmux-sessionizer https://github.com/ThePrimeagen/.dotfiles/blob/9990fea97c007d4c1f51481dd54cc74fcfc5e21d/zsh/.zsh_profile#L26
-bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^f "tmux-s\n"

@@ -6,13 +6,13 @@ set bs=indent,eol,start     " allow backspace to jump over these items
 set ic              " ignore case
 syntax on           " Syntax highlighting
 filetype plugin indent on
-" Disable bell sound with visualbell and disable flashing
-set visualbell
-set t_vb=
+" Disable error bells
+set noerrorbells
+"
 " Setting filetypes
 autocmd BufRead,BufNewFile *.babelrc set filetype=json
 autocmd BufRead,BufNewFile *.eslintrc set filetype=json
-" set path+=**        " improve find
+
 set wildignorecase  " case insensitive file autocomplete
 set mouse=a         " enable mouse
 nnoremap <space> <nop>
@@ -42,43 +42,16 @@ Plug 'tpope/vim-surround'
 Plug 'justinmk/vim-dirvish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-apathy'
-" Plug 'shime/vim-livedown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'xavierchow/vim-sequence-diagram'
-" Need to understand the following before fixing
-" - What are mappings? Need equivalent to `-` to see all files/entries
-"   - `-` is to reduce header level, `=` is to increase
-"   - linking with [enter] is nice, but not easy to browse through all links?
-" - How to generate the index?
-" Plug 'vimwiki/vimwiki'
-
 Plug 'w0rp/ale'
-
 Plug 'rstacruz/vim-closer'
-augroup closer-custom
-  au!
-  au FileType * let b:closer = 1 | let b:closer_flags = '([{'
-augroup END
-Plug 'alvan/vim-closetag', { 'for': 'html,javascript,typescriptreact' }
-let g:closetag_regions = {
-      \ 'typescript': 'jsxRegion,tsxRegion',
-      \ 'typescriptreact': 'jsxRegion,tsxRegion',
-      \ 'javascript': 'jsxRegion',
-      \ 'javascript.jsx': 'jsxRegion'
-      \ }
-let g:closetag_filenames = '*.html,*.js,*.jsx,*.tsx'
-let g:closetag_xhtml_filenames = '*.js,*.jsx,*.tsx'
-let g:closetag_emptyTags_caseSensitive = 1
-
-Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
-set updatetime=200 " Write swap file to disk quicker, also gives faster diff updates
+Plug 'junegunn/goyo.vim'
 
-" coc.nvim
-" LSP
 " Install Coc. Install yarn if not already installed
 function! InstallCoc()
   if !executable('yarn')
@@ -86,80 +59,6 @@ function! InstallCoc()
   endif
 endfunction
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> InstallCoc() }}
-let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-tsserver']
-" ===================
-" Set tab completion
-inoremap <silent><expr> <TAB>
-  \ pumvisible() ? coc#_select_confirm() : "\<TAB>"
-
-" Go to definition
-nmap <silent> <leader>d <Plug>(coc-definition)
-nmap <silent> <leader>D <Plug>(coc-type-definition)
-nmap <silent> <C-W><leader>d :call CocActionAsync('jumpDefinition', 'tabe')<CR>
-nmap <silent> <leader>i <Plug>(coc-implementation)
-nmap <silent> <leader>r <Plug>(coc-references)
-nmap <silent> <leader>R <Plug>(coc-rename)
-nmap <silent> gh :call CocAction('doHover')<CR>
-inoremap <silent><expr> <c-space> coc#refresh()
-" <c-space> mapping on vim on mac is BROKEN, this fixes it
-nmap <silent> [G <Plug>(coc-diagnostic-prev)
-nmap <silent> ]G <Plug>(coc-diagnostic-next)
-
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" vim-lsp
-" Plug 'prabirshrestha/vim-lsp'
-" Plug 'mattn/vim-lsp-settings'
-" Plug 'prabirshrestha/asyncomplete.vim'
-" Plug 'prabirshrestha/asyncomplete-lsp.vim'
-
-" let g:lsp_virtual_text_enabled = 0
-" let g:lsp_diagnostics_float_cursor = 1
-" " let g:lsp_highlight_references_enabled = 0
-
-" function! s:on_lsp_buffer_enabled() abort
-"     setlocal omnifunc=lsp#complete
-"     setlocal signcolumn=yes
-"     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-"     nmap <buffer> <leader>d <plug>(lsp-definition)
-"     nmap <buffer> <leader>r <plug>(lsp-references)
-"     nmap <buffer> <leader>i <plug>(lsp-implementation)
-"     nmap <buffer> <leader>t <plug>(lsp-type-definition)
-"     nmap <buffer> <leader>R <plug>(lsp-rename)
-"     nmap <buffer> [G <Plug>(lsp-previous-diagnostic)
-"     nmap <buffer> ]G <Plug>(lsp-next-diagnostic)
-"     nmap <buffer> K <plug>(lsp-hover)
-"     imap <buffer> <c-space> <Plug>(asyncomplete_force_refresh)
-"     imap <c-@> <c-space>
-
-"     " refer to doc to add more commands
-" endfunction
-
-" " Dedupe results
-" function! s:my_asyncomplete_preprocessor(options, matches) abort
-"   let l:visited = {}
-"   let l:items = []
-"   for [l:source_name, l:matches] in items(a:matches)
-"     for l:item in l:matches['items']
-"       if stridx(l:item['word'], a:options['base']) == 0
-"         if !has_key(l:visited, l:item['word'])
-"           call add(l:items, l:item)
-"           let l:visited[l:item['word']] = 1
-"         endif
-"       endif
-"     endfor
-"   endfor
-
-"   call asyncomplete#preprocess_complete(a:options, l:items)
-" endfunction
-
-" let g:asyncomplete_preprocessor = [function('s:my_asyncomplete_preprocessor')]
-
-" augroup lsp_install
-"     au!
-"     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-"     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-" augroup END
 
 " Language specific
 Plug 'pangloss/vim-javascript'
@@ -172,29 +71,15 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 Plug 'motus/pig.vim'
 Plug 'digitaltoad/vim-pug'
-Plug 'luochen1990/rainbow'
-let g:rainbow_active = 1
-let g:rainbow_conf = {
-      \   'ctermfgs': ['red', 'blue', 'darkcyan', 'magenta'],
-      \   'separately': {
-      \     'html': 0
-      \   }
-      \ }
 Plug 'plasticboy/vim-markdown'
-let g:vim_markdown_new_list_item_indent = 0
-let g:vim_markdown_conceal_code_blocks = 0
-let g:vim_markdown_strikethrough = 1
-" let g:vim_markdown_auto_insert_bullets = 0
-
-Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
 set t_Co=256
 colorscheme custom
 
-" Setting statusline configurations
-set laststatus=2
+set updatetime=200 " Write swap file to disk quicker, gives faster diff updates for git-gutter
+set laststatus=2 " Setting statusline configurations
 function! StatusLineGitBranch()
   if fugitive#head() != ''
     return fugitive#head() . ' | '
@@ -223,24 +108,6 @@ set statusline+=%{StatusLineGitBranch()}%<%f\ %h%m%r
 set statusline+=%=
 set statusline+=%{CodeStatus()}\ \|\%8.(%l:%v%)\ %4.(%p%%%)
 
-" lightline configuration
-let g:lightline = {
-  \   'active': {
-  \     'left': [ [ 'mode', 'paste' ],
-  \               [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-  \     'right': [ [ 'percent', 'lineinfo' ], [ 'cocstatus', 'filetype' ] ]
-  \   },
-  \   'component': {
-  \     'filename': '%<%f'
-  \   },
-  \   'component_function': {
-  \     'cocstatus': 'coc#status',
-  \     'gitbranch': 'fugitive#head'
-  \   },
-  \ }
-" noshowmode only useful if using a status bar that includes the mode
-" set noshowmode
-
 set list
 set listchars=tab:\│\ ,trail:·
 " set fillchars+=vert:│
@@ -257,35 +124,6 @@ function! SynGroup()
   echo join(map(synstack(line('.'), col('.')), { key, val -> synIDattr(val, 'name') . ' -> ' . synIDattr(synIDtrans(val), 'name') }), "\n")
 endfun
 
-" function! TrimStr(str)
-"   return substitute(a:str, '^\s*\(.\{-}\)\s*$', '\1', '')
-" endfunction
-
-" Trim trailing whitespace on write.
-function! TrimWhiteSpace()
-    " Save the last searched
-    let _s = @/
-    " Save the current cursor position
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    let @/ = _s
-    call cursor(l, c)
-endfunction
-" Autotrim on write...
-" nnoremap <leader>w :call TrimWhiteSpace()<CR>:w<CR>
-
-" Function for toggling a property
-" Usage: NMapToggle <keybinding> <string property name>
-function! NMapToggle(key, opt)
-    " Create chained command string, toggle property and get value of property
-    let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
-    " nnoremap with new cmd
-    exec 'nnoremap '.a:key.' '.cmd
-endfunction
-" Apply variable number of args to NMapToggle?
-command! -nargs=+ NMapToggle call NMapToggle(<f-args>)
-
 " Search
 set incsearch
 set hlsearch
@@ -294,6 +132,7 @@ nnoremap <silent> <Leader><Leader> :noh<CR><Esc>
 if executable('ag')
     set grepprg=ag\ --vimgrep\ --follow
 endif
+
 " Populate current word in search
 nnoremap <leader>/ :grep '\b<C-R>=substitute(expand("<cword>"), '#', '\\#', 'g')<CR>\b'<space>
 
@@ -355,9 +194,6 @@ endfunction
 set splitbelow
 set splitright
 
-" split line
-" nnoremap K i<CR><Esc>l:call TrimWhiteSpace()<CR>
-
 " Folding
 set foldmethod=indent
 set foldlevel=99
@@ -383,91 +219,13 @@ map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " webpack watching
 set backupcopy=yes
 
-" inoremap <expr> {<CR> col(".") == col("$") ? '{<CR>}<Esc>O' : '{<CR>'
-" inoremap <expr> [<CR> col(".") == col("$") ? '[<CR>]<Esc>O' : '[<CR>'
-" inoremap <expr> (<CR> col(".") == col("$") ? '(<CR>)<Esc>O' : '(<CR>'
-
-nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
-
-" Plugin config
-" =============
-
-map <C-T> :FZF<CR>
-map <C-P> :Buffers<CR>
-if has('nvim') || has('patch-8.2-191')
-  let g:fzf_layout = {
-        \ 'window': 'enew'
-        \ }
-        " \   'window': 'exec winheight(0)/2."new"'
-  "       \   'window': { 'width': 0.7, 'height': 0.8 }
-  let g:fzf_preview_window = 'up:50%'
-endif
-
-command! -bang -nargs=* AllFiles call fzf#run(fzf#wrap({ 'source': "find -L * -path '*/\.*' -prune -o -type f -print -o -type l -print 2> /dev/null" }))
-
-" ale
-let g:ale_linters = {
-      \ 'javascript': ['eslint', 'flow-language-server'],
-      \ 'javascript.jsx': ['eslint', 'flow-language-server'],
-      \ 'css': ['eslint'],
-      \ 'typescript': ['tslint', 'tsserver'],
-      \ 'typescript.tsx': ['tslint', 'tsserver'],
-      \ 'clojure': ['clj-kondo'],
-      \ 'yaml': ['yamllint']
-      \ }
-let g:ale_fixers = {
-      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-      \ 'javascript': ['prettier', 'eslint'],
-      \ 'javascript.jsx': ['prettier', 'eslint'],
-      \ 'json': ['prettier'],
-      \ 'typescript': ['prettier', 'tslint'],
-      \ 'typescriptreact': ['prettier', 'tslint'],
-      \ 'css': ['prettier'],
-      \ 'markdown': ['prettier'],
-      \ 'graphql': ['prettier'],
-      \ 'java': ['google_java_format']
-      \ }
-" let g:ale_virtualtext_cursor = 1
-nnoremap <silent> [g :ALEPreviousWrap<CR>
-nnoremap <silent> ]g :ALENextWrap<CR>
-
-" vim-dirvish
-let g:dirvish_mode = ':sort ,^.*[\/],'
-augroup dirvish_config
-  autocmd!
-  " autocmd filetype dirvish silent! unmap <buffer> /
-  " autocmd filetype dirvish silent! unmap <buffer> ?
-  " autocmd filetype dirvish silent! unmap <buffer> p
-  autocmd filetype dirvish silent! unmap <buffer> <c-p>
-  autocmd filetype dirvish setlocal nonumber
-augroup END
-
-" mundo.vim
-" =========
-if has("persistent_undo")
-    set undofile
-    set undodir=~/.vim/.undo//
-endif
-nnoremap <leader>u :MundoToggle<CR>
-
-" vim-javascript
-" ==============
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_flow = 1
+nnoremap <silent> <C-f> :silent !tmux neww tmux-s<CR>
 
 " After we're done with all the common config, check if there's a system local
 " config to source
 if filereadable(expand('~/.vimrc_local'))
   source ~/.vimrc_local
 endif
-
-function! CheckSessionExists()
-  if !argc() && filereadable('Session.vim')
-    echo 'Existing session exists: Session.vim, it can be loaded with :source Session.vim'
-  endif
-endfunction
-
-au VimEnter * call CheckSessionExists()
 
 augroup SyntaxSync
   autocmd!
