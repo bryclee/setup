@@ -60,18 +60,24 @@ function! InstallCoc()
 endfunction
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> InstallCoc() }}
 
-" Language specific
-Plug 'pangloss/vim-javascript'
-Plug 'groenewege/vim-less'
-" Plug 'HerringtonDarkholme/yats.vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'ap/vim-css-color'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'jparise/vim-graphql'
-Plug 'motus/pig.vim'
-Plug 'digitaltoad/vim-pug'
-Plug 'plasticboy/vim-markdown'
+if !has("nvim")
+  " Language specific
+  Plug 'pangloss/vim-javascript'
+  Plug 'groenewege/vim-less'
+  " Plug 'HerringtonDarkholme/yats.vim'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'MaxMEllon/vim-jsx-pretty'
+  Plug 'ap/vim-css-color'
+  Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+  Plug 'jparise/vim-graphql'
+  Plug 'motus/pig.vim'
+  Plug 'digitaltoad/vim-pug'
+  Plug 'plasticboy/vim-markdown'
+endif
+
+if has("nvim")
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'branch': '0.5-compat'}
+endif
 
 call plug#end()
 
@@ -115,6 +121,10 @@ set listchars=tab:\│\ ,trail:·
 " Move file directories away from local directory
 " The trailing // is to use absolute path
 set backupdir=~/.vim/.backup//
+if has("persistent_undo")
+    set undofile
+    set undodir=~/.vim/.undo//
+endif
 
 " Read if file has changed from outside vim
 set autoread
