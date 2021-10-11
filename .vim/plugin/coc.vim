@@ -1,3 +1,7 @@
+if has("nvim")
+  finish
+endif
+
 " coc.nvim
 let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-tsserver']
 " ===================
