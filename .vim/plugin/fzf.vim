@@ -1,9 +1,19 @@
-" map <C-T> :FZF<CR>
-" map <C-P> :Buffers<CR>
+if has("nvim")
+  finish
+endif
 
-" command! -bang -nargs=* AllFiles call fzf#run(fzf#wrap({ 'source': "find -L * -path '*/\.*' -prune -o -type f -print -o -type l -print 2> /dev/null" }))
+command! -bang -nargs=* AllFiles call fzf#run(fzf#wrap({ 'source': "rg --hidden --no-ignore --files" }))
 
+nnoremap <C-T> :FZF<CR>
+nnoremap <C-P> :Buffers<CR>
+nnoremap <leader>tt :AllFiles<CR>
 
+let g:fzf_layout = {
+      \ 'window': {
+        \ 'width': 0.8,
+        \ 'height': 0.8
+      \ }
+    \ }
 " if has('nvim') || has('patch-8.2-191')
 "   let g:fzf_layout = {
 "         \ 'window': 'enew'
