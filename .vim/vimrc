@@ -34,8 +34,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-unimpaired'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf'
+" Plug 'junegunn/fzf.vim'
 Plug 'henrik/vim-indexed-search'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
@@ -45,7 +45,7 @@ Plug 'tpope/vim-apathy'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'xavierchow/vim-sequence-diagram'
 Plug 'w0rp/ale'
-Plug 'rstacruz/vim-closer'
+" Plug 'rstacruz/vim-closer'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
@@ -60,6 +60,8 @@ function! InstallCoc()
 endfunction
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> InstallCoc() }}
 
+Plug 'plasticboy/vim-markdown'
+
 if !has("nvim")
   " Language specific
   Plug 'pangloss/vim-javascript'
@@ -72,11 +74,11 @@ if !has("nvim")
   Plug 'jparise/vim-graphql'
   Plug 'motus/pig.vim'
   Plug 'digitaltoad/vim-pug'
-  Plug 'plasticboy/vim-markdown'
-endif
-
-if has("nvim")
+else
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'branch': '0.5-compat'}
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 endif
 
 call plug#end()
@@ -122,8 +124,8 @@ set listchars=tab:\│\ ,trail:·
 " The trailing // is to use absolute path
 set backupdir=~/.vim/.backup//
 if has("persistent_undo")
-    set undofile
-    set undodir=~/.vim/.undo//
+  set undofile
+  set undodir=~/.vim/.undo//
 endif
 
 " Read if file has changed from outside vim
@@ -139,8 +141,10 @@ set incsearch
 set hlsearch
 nnoremap <silent> <Leader><Leader> :noh<CR><Esc>
 " Use ag for search
-if executable('ag')
-    set grepprg=ag\ --vimgrep\ --follow
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+elseif executable('ag')
+  set grepprg=ag\ --vimgrep\ --follow
 endif
 
 " Populate current word in search
@@ -225,6 +229,7 @@ set expandtab " tab to spaces
 
 " Populate edit command relative to the current file
 map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+map <leader>md :!mkdir <C-R>=expand("%:p:h") . "/" <CR>
 
 " webpack watching
 set backupcopy=yes

@@ -1,7 +1,8 @@
-map <C-T> :FZF<CR>
-map <C-P> :Buffers<CR>
+" map <C-T> :FZF<CR>
+" map <C-P> :Buffers<CR>
 
-command! -bang -nargs=* AllFiles call fzf#run(fzf#wrap({ 'source': "find -L * -path '*/\.*' -prune -o -type f -print -o -type l -print 2> /dev/null" }))
+" command! -bang -nargs=* AllFiles call fzf#run(fzf#wrap({ 'source': "find -L * -path '*/\.*' -prune -o -type f -print -o -type l -print 2> /dev/null" }))
+
 
 " if has('nvim') || has('patch-8.2-191')
 "   let g:fzf_layout = {

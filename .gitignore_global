@@ -1,4 +1,5 @@
 .vscode/
+.git/
 *.lock
 *.swp
 *.swo
