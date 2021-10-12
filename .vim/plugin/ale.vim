@@ -6,7 +6,8 @@ let g:ale_linters = {
       \ 'typescript.tsx': ['tslint', 'tsserver'],
       \ 'clojure': ['clj-kondo'],
       \ 'yaml': ['yamllint'],
-      \ 'graphql': []
+      \ 'graphql': [],
+      \ 'json': ['jsonlint'],
       \ }
 let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],

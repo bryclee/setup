@@ -1,4 +1,4 @@
-sudo apt-get install -y silversearcher-ag bash-completion
+sudo apt-get install -y silversearcher-ag bash-completion ripgrep fzf
 
 # For gnome desktop, set key repeat rate
 if [ -n "$(which gsettings)" ]

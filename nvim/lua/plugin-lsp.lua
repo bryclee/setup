@@ -6,16 +6,29 @@ local cmp = require('cmp')
 vim.o.completeopt = 'menu,menuone,noselect'
 
 cmp.setup {
-  snippets = nil,
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
   mapping = {
-    ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+    ['<Tab>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true
+    }),
     ['<C-Space>'] = cmp.mapping.complete(),
   },
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'luasnip' },
     { name = 'buffer' },
   }
 }
+
+vim.cmd "highlight LspDiagnosticsDefaultHint ctermfg=darkgray"
+vim.cmd "highlight LspDiagnosticsDefaultWarning ctermbg=lightyellow"
+vim.cmd "highlight LspDiagnosticsDefaultError ctermbg=lightred"
+vim.cmd "highlight LspReferenceRead ctermbg=lightgray"
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -34,6 +47,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>R', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+
+  vim.api.nvim_command("autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()")
+  vim.api.nvim_command("autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()")
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -55,12 +71,3 @@ for lsp, config in pairs(servers) do
     capabilities = capabilities,
   }
 end
-
---[[
---TODO:
---* lspinstall?
---* signature hover
---* hover on hold
---* snippets?
---* statusline
---]]
