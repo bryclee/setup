@@ -9,6 +9,6 @@ set fillchars=vert:\|
 autocmd TermOpen * startinsert
 
 lua require('plugin-treesitter')
-lua require('plugin-telescope')
+" lua require('plugin-telescope')
 lua require('plugin-lsp')
 lua require('keymaps')
