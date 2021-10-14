@@ -1,22 +1,53 @@
 #!/bin/bash
 
 GITHUB_USER=bryclee
+GITHUB_URL=https://github.com
+
+worktree=false
+
+while getopts "w" opt; do
+  case $opt in
+    w)
+      worktree=true
+      ;;
+  esac
+done
+
+shift $(($OPTIND - 1))
 
 ARGS=(${1//\// })
 ORG=${ARGS[0]}
 REPO=${ARGS[1]}
-ORIGIN=https://github.com/${GITHUB_USER}/$REPO.git
-UPSTREAM=https://github.com/${ORG}/$REPO.git
+ORIGIN="${GITHUB_URL}/${GITHUB_USER}/$REPO"
+UPSTREAM="${GITHUB_URL}/${ORG}/$REPO"
+DEST=${2:-$REPO}
 
-git clone $ORIGIN
+if ! $worktree; then
+  git clone $ORIGIN $DEST
+  pushd $DEST
 
-if [ ! -d "$REPO" ]
-then
-  exit
+  if [ ! -d "$DEST" ]
+  then
+    exit
+  fi
+
+  git remote add upstream $UPSTREAM
+  git config --local user.email pygmize.me@gmail.com
+  popd
+else
+  mkdir $DEST
+  pushd $DEST
+
+  git clone --bare $ORIGIN .bare
+
+  if [ ! -d ".bare" ]
+  then
+    exit
+  fi
+
+  echo "gitdir: ./.bare" > .git
+  git config remote.origin.fetch 'refs/head/*:refs/heads/*'
+  git remote add upstream $UPSTREAM
+  git config --local user.email pygmize.me@gmail.com
+  popd
 fi
-
-pushd $REPO
-git remote add upstream $UPSTREAM
-git config --local user.email pygmize.me@gmail.com
-popd
-
