@@ -86,6 +86,7 @@ else
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/nvim-cmp'
 
   Plug 'L3MON4D3/LuaSnip'
@@ -166,6 +167,32 @@ set complete=.,b,u,] " Autocomplete sources
 set wildmode=longest:full " Set autocomplete default replacement behavior
 " set completeopt=menu " How menu shows
 
+" Using splits
+set splitbelow
+set splitright
+
+" Folding
+set foldmethod=indent
+set foldlevel=99
+
+" Center cursor
+set scrolloff=3
+
+" line columns and ruler
+set number
+set numberwidth=4
+set ruler
+set signcolumn=yes
+
+" indentation settings
+set autoindent
+set tabstop=2
+set shiftwidth=2
+set expandtab " tab to spaces
+
+" webpack watching
+set backupcopy=yes
+
 " Bind j and k to move by visual line if text is there
 nnoremap j gj
 nnoremap k gk
@@ -214,35 +241,9 @@ function! UntilBufferChange(cmd)
   endwhile
 endfunction
 
-" Using splits
-set splitbelow
-set splitright
-
-" Folding
-set foldmethod=indent
-set foldlevel=99
-
-" Center cursor
-set scrolloff=3
-
-" line columns and ruler
-set number
-set numberwidth=4
-set ruler
-set signcolumn=yes
-
-" indentation settings
-set autoindent
-set tabstop=2
-set shiftwidth=2
-set expandtab " tab to spaces
-
 " Populate edit command relative to the current file
 map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>md :!mkdir <C-R>=expand("%:p:h") . "/" <CR>
-
-" webpack watching
-set backupcopy=yes
 
 nnoremap <silent> <C-f> :silent !tmux neww tmux-s<CR>
 

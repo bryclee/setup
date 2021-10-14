@@ -156,7 +156,6 @@ function! SetPluginHighlights()
   hi GitGutterDelete   ctermfg=darkred    ctermbg=none
   hi clear htmlStrike
   hi link htmlStrike Conceal
-  hi link FloatBorder Pmenu
 endfun
 
 augroup PluginHighlights

@@ -2,10 +2,10 @@
 
 - nvim-lsp
   - [x] graphql server
-    - update graphql-language-service-server
+    - [ ] update graphql-language-service-server
   - lspinstall
   - signature hover in insert mode (lsp_signature?)
-  - hover action on hold
+  - [x] hover action on hold
   - statusline?
   - snippets?
 - telescope
