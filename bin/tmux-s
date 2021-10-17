@@ -1,24 +1,27 @@
 #!/usr/bin/env bash
 
-if [[ $# -eq 1 ]]; then
+if [[ -n "$1" ]]; then
     selected=$1
 else
-    selected=$(( find ~/Projects -maxdepth 2 -type d; echo "$HOME/setup"; echo "$HOME/pypl-setup" ) | fzf)
+    # selected=$(( find ~/Projects -maxdepth 2 -type d; echo "$HOME/setup"; echo "$HOME/pypl-setup" ) | fzf)
+    selected=$(cat ~/.z | tr -s ' ' | cut -f 1 -d "|" | fzf)
 fi
 
-if [[ -z $selected ]]; then
+if [[ -z "$selected" ]]; then
     exit 0
 fi
 
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
+selected_path=$({ cd $selected; pwd; })
+
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
+    tmux new-session -s $selected_name -c ${selected_path}
     exit 0
 fi
 
 if ! tmux has-session -t $selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
+    tmux new-session -ds $selected_name -c ${selected_path}
 fi
 
 if [[ -z $TMUX ]]; then

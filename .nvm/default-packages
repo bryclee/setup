@@ -2,3 +2,7 @@ nrm
 yarn
 prettier
 onchange
+graphql
+graphql-language-service-cli
+typescript
+typescript-language-server

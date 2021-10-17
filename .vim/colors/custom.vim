@@ -32,7 +32,7 @@ hi DiffText       ctermfg=black ctermbg=yellow cterm=bold
 hi DiffDelete     ctermfg=black ctermbg=red
 
 " hi Visual         ctermfg=white ctermbg=darkcyan
-" hi Visual         cterm=standout
+hi Visual         cterm=standout
 " hi Search         ctermfg=black    ctermbg=yellow
 " hi MatchParen     ctermfg=white ctermbg=darkcyan
 
@@ -78,6 +78,8 @@ if &background == "light"
   hi String ctermfg=darkgreen
   hi Underlined cterm=underline ctermfg=darkblue
   hi Title cterm=bold ctermfg=darkmagenta
+  hi Search ctermbg=lightyellow
+  hi CursorHold ctermbg=lightgray
 
   hi markdownCode ctermfg=red ctermbg=none
 else
@@ -85,7 +87,7 @@ else
   hi ColorColumn  ctermfg=lightgray    ctermbg=darkgray
   hi Folded       ctermfg=lightgray    ctermbg=darkgray
   hi FoldColumn   ctermfg=lightgray    ctermbg=darkgray
-  hi Pmenu        cterm=reverse ctermfg=none   ctermbg=darkgray
+  hi Pmenu        ctermfg=none   ctermbg=darkgray
   hi PmenuSel     cterm=reverse ctermfg=none    ctermbg=darkgray
   hi SpellCap     ctermfg=lightgray    ctermbg=darkgray
   hi SpellLocal   ctermfg=darkcyan                  cterm=inverse
@@ -120,6 +122,8 @@ else
   hi String cterm=none ctermfg=lightmagenta
   hi Underlined cterm=underline ctermfg=cyan
   hi Title cterm=bold ctermfg=lightgreen
+  hi Search ctermfg=black ctermbg=yellow
+  hi CursorHold ctermbg=darkgray
 
   hi markdownCode ctermfg=yellow ctermbg=none
 endif
