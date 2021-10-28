@@ -4,21 +4,25 @@ set -e
 note_name=$1
 target_date=$(date +%Y-%m-%d)
 
-if [ -z "$note_name" ]
-then
-    vi todo.md
-    exit
+cd ~/Projects/notes/
+path=$(pwd)
+
+if [ -z "$note_name" ]; then
+  file="todo.md"
+else
+  target_date=$(date ${day_modifier:+-v}$day_modifier +%Y-%m-%d)
+  note_filename="${target_date}${note_name:+_}${note_name}.md"
+  file="_daily/${note_filename}"
+
+  if [ ! -e "$path/$file" ]; then
+    echo "# ${note_name:-Notes}" >> $path/$file
+    echo "" >> $path/$file
+    echo "" >> $path/$file
+  fi
 fi
 
-target_date=$(date ${day_modifier:+-v}$day_modifier +%Y-%m-%d)
-note_filename="${target_date}${note_name:+_}${note_name}.md"
-file="_daily/${note_filename}"
-
-if [ ! -e "$file" ]
-then
-    echo "# ${note_name:-Notes}" >> $file
-    echo "" >> $file
-    echo "" >> $file
+if [ -n "${VIM+x}"]; then
+  echo $path/$file
+else
+  $EDITOR +3 $file
 fi
-
-$EDITOR +3 $file

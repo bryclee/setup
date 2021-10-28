@@ -3,6 +3,7 @@ command! -bang -nargs=* AllFiles call fzf#run(fzf#wrap({ 'source': "rg --hidden 
 nnoremap <C-T> :FZF<CR>
 nnoremap <C-P> :Buffers<CR>
 nnoremap <leader>tt :AllFiles<CR>
+nnoremap <leader>tm :Marks<CR>
 
 let g:fzf_layout = {
       \ 'window': { 'width': 0.8, 'height': 0.9 } }

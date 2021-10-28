@@ -41,7 +41,6 @@ Plug 'justinmk/vim-dirvish'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-apathy'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'xavierchow/vim-sequence-diagram'
 Plug 'w0rp/ale'
 " Plug 'rstacruz/vim-closer'
 Plug 'tpope/vim-commentary'
@@ -150,8 +149,15 @@ endfun
 
 " Search
 set incsearch
-set hlsearch
-nnoremap <silent> <Leader><Leader> :noh<CR><Esc>
+set nohlsearch
+nnoremap <Leader><Leader> :set hls!<CR><Esc>
+
+augroup vimrc-incsearch-highlight
+  autocmd!
+  autocmd CmdlineEnter /,\? :set hlsearch
+  autocmd CmdlineLeave /,\? :set nohlsearch
+augroup END
+
 " Use ag for search
 if executable('rg')
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
@@ -164,7 +170,7 @@ nnoremap <leader>/ :grep '\b<C-R>=substitute(expand("<cword>"), '#', '\\#', 'g')
 
 " Autocomplete
 set complete=.,b,u,] " Autocomplete sources
-set wildmode=longest:full " Set autocomplete default replacement behavior
+set wildmode=list:longest " Set autocomplete default replacement behavior
 " set completeopt=menu " How menu shows
 
 " Using splits
@@ -202,7 +208,7 @@ nnoremap gk k
 " Center after navigating to next/previous
 " nnoremap n nzz
 " nnoremap N Nzz
-let g:indexed_search_center = 1
+" let g:indexed_search_center = 1
 nnoremap <c-o> <c-o>zz
 nnoremap <c-i> <c-i>zz
 
@@ -258,3 +264,14 @@ augroup SyntaxSync
   au BufEnter *.js,*.jsx,*.ts,*.tsx,*.graphql syntax sync fromstart
   " au BufLeave *.js,*.jsx,*.ts,*.tsx,*.graphql syntax sync clear
 augroup END
+
+command! -nargs=? -bang Daily call FunDaily(<f-args>)
+fun! FunDaily(...)
+  if a:0
+    let l:f = a:1
+  else
+    let l:f = ""
+  endif
+  let l:file = trim(system('~/Projects/notes/daily ' . l:f))
+  execute 'edit ' . l:file
+endfunction
