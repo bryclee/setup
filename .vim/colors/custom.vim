@@ -26,13 +26,13 @@ endif
 let colors_name = "custom"
 
 " Diff highlighting
-hi DiffAdd        ctermfg=black ctermbg=green
-hi DiffChange     ctermfg=black ctermbg=lightyellow
-hi DiffText       ctermfg=black ctermbg=yellow cterm=bold
-hi DiffDelete     ctermfg=black ctermbg=red
+hi DiffAdd        ctermfg=black ctermbg=darkgreen
+hi DiffChange     ctermfg=none ctermbg=darkyellow
+hi DiffText       ctermfg=black ctermbg=darkyellow cterm=bold
+hi DiffDelete     ctermfg=black ctermbg=darkred
 
 " hi Visual         ctermfg=white ctermbg=darkcyan
-hi Visual         cterm=standout
+hi Visual         cterm=standout ctermbg=none
 " hi Search         ctermfg=black    ctermbg=yellow
 " hi MatchParen     ctermfg=white ctermbg=darkcyan
 
@@ -55,9 +55,9 @@ if &background == "light"
   hi Comment cterm=italic ctermfg=gray
   hi Error ctermfg=red ctermbg=lightred
   hi CursorLineNr cterm=bold ctermfg=darkyellow
-  hi StatusLine   cterm=bold ctermfg=white ctermbg=darkblue
-  hi StatusLineNC cterm=none ctermfg=black ctermbg=gray
-  hi TabLine cterm=none ctermbg=gray
+  hi StatusLine   cterm=bold,reverse ctermfg=darkblue ctermbg=none
+  hi StatusLineNC cterm=none ctermfg=darkgray ctermbg=gray
+  hi TabLine cterm=none ctermfg=darkgray ctermbg=gray
   hi TabLineFill cterm=none ctermbg=darkblue
   hi Directory cterm=bold ctermfg=darkblue
 
@@ -83,47 +83,52 @@ if &background == "light"
 
   hi markdownCode ctermfg=red ctermbg=none
 else
-  hi LineNr       ctermfg=darkgray
-  hi ColorColumn  ctermfg=lightgray    ctermbg=darkgray
-  hi Folded       ctermfg=lightgray    ctermbg=darkgray
-  hi FoldColumn   ctermfg=lightgray    ctermbg=darkgray
-  hi Pmenu        ctermfg=none   ctermbg=darkgray
-  hi PmenuSel     cterm=reverse ctermfg=none    ctermbg=darkgray
-  hi SpellCap     ctermfg=lightgray    ctermbg=darkgray
+  hi LineNr       ctermfg=15
+  hi ColorColumn  ctermfg=15    ctermbg=8
+  hi Folded       ctermfg=15    ctermbg=8
+  hi FoldColumn   ctermfg=15    ctermbg=8
+  hi Pmenu        ctermfg=none   ctermbg=8
+  hi PmenuSel     cterm=reverse ctermfg=none    ctermbg=8
+  hi SpellCap     ctermfg=15    ctermbg=8
   hi SpellLocal   ctermfg=darkcyan                  cterm=inverse
   hi VertSplit    ctermfg=NONE ctermbg=NONE  cterm=NONE
   hi Folded       ctermbg=NONE
-  hi Conceal      ctermfg=NONE ctermbg=darkgray
+  hi Conceal      ctermfg=7 ctermbg=none
   hi clear SignColumn
 
-  hi Comment cterm=italic ctermfg=gray
-  hi Error ctermfg=lightred ctermbg=darkmagenta
+  hi Comment cterm=italic ctermfg=7
+  hi Error ctermfg=red ctermbg=darkred
   hi CursorLineNr cterm=bold ctermfg=yellow
-  hi StatusLine   cterm=bold ctermfg=black ctermbg=lightblue
-  hi StatusLineNC cterm=none ctermfg=white ctermbg=darkgray
-  hi TabLine cterm=none ctermbg=darkgray
+  hi StatusLine   cterm=bold,reverse ctermfg=cyan ctermbg=none
+  hi StatusLineNC cterm=none ctermfg=7 ctermbg=8
+  hi TabLine cterm=none ctermfg=7 ctermbg=8
   hi TabLineFill cterm=none ctermbg=white
-  hi Directory cterm=bold ctermfg=lightblue
+  hi Directory cterm=bold ctermfg=cyan
 
-  hi Special ctermfg=lightyellow
-  hi Constant cterm=none ctermfg=lightmagenta
-  hi Statement ctermfg=yellow
-  hi Operator ctermfg=cyan
-  hi Label ctermfg=cyan
+  hi Special ctermfg=red
+  hi Constant cterm=bold ctermfg=green
+  hi Statement ctermfg=darkred
+  hi Operator ctermfg=darkcyan
+  hi Label ctermfg=darkcyan
   hi KeyWord ctermfg=cyan
-  hi Conditional  cterm=bold ctermfg=yellow
+  hi Conditional  cterm=bold ctermfg=red
   hi StorageClass cterm=bold ctermfg=cyan
-  hi Type cterm=bold ctermfg=lightgreen
+  hi Type cterm=bold ctermfg=magenta
   hi Identifier   cterm=none ctermfg=cyan
-  hi Boolean cterm=bold ctermfg=lightmagenta
+  hi Boolean cterm=bold ctermfg=green
   hi Function     cterm=none
-  hi Include cterm=bold ctermfg=lightyellow
-  hi PreProc ctermfg=lightyellow
-  hi String cterm=none ctermfg=lightmagenta
+  hi Include cterm=bold ctermfg=red
+  hi PreProc ctermfg=red
+  hi String ctermfg=green
   hi Underlined cterm=underline ctermfg=cyan
-  hi Title cterm=bold ctermfg=lightgreen
-  hi Search ctermfg=black ctermbg=yellow
-  hi CursorHold ctermbg=darkgray
+  hi Title cterm=bold ctermfg=magenta
+  hi Search ctermbg=yellow
+  hi CursorHold ctermbg=8
+
+  hi MoreMsg ctermfg=green
+  hi SpecialKey ctermfg=cyan
+  hi Question ctermfg=green
+  hi WarningMsg ctermfg=magenta
 
   hi markdownCode ctermfg=yellow ctermbg=none
 endif

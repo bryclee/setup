@@ -4,9 +4,10 @@ nnoremap <C-T> :FZF<CR>
 nnoremap <C-P> :Buffers<CR>
 nnoremap <leader>tt :AllFiles<CR>
 nnoremap <leader>tm :Marks<CR>
+nnoremap <leader>tl :Lines<CR>
 
 let g:fzf_layout = {
-      \ 'window': { 'width': 0.8, 'height': 0.9 } }
+      \ 'window': { 'width': 0.9, 'height': 0.9 } }
 
 " if has('nvim') || has('patch-8.2-191')
 "   let g:fzf_layout = {
