@@ -259,19 +259,8 @@ if filereadable(expand('~/.vimrc_local'))
   source ~/.vimrc_local
 endif
 
-augroup SyntaxSync
-  autocmd!
-  au BufEnter *.js,*.jsx,*.ts,*.tsx,*.graphql syntax sync fromstart
-  " au BufLeave *.js,*.jsx,*.ts,*.tsx,*.graphql syntax sync clear
-augroup END
-
-command! -nargs=? -bang Daily call FunDaily(<f-args>)
-fun! FunDaily(...)
-  if a:0
-    let l:f = a:1
-  else
-    let l:f = ""
-  endif
-  let l:file = trim(system('~/Projects/notes/daily ' . l:f))
-  execute 'edit ' . l:file
-endfunction
+" augroup SyntaxSync
+"   autocmd!
+"   au BufEnter *.js,*.jsx,*.ts,*.tsx,*.graphql syntax sync fromstart
+"   " au BufLeave *.js,*.jsx,*.ts,*.tsx,*.graphql syntax sync clear
+" augroup END

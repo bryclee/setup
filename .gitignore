@@ -2,6 +2,6 @@
 .vim/plugged
 .vim/disabled
 .vim/.netrwhist
-.vim/autoload
+.vim/autoload/plug.vim
 .vim/sessions
 sources

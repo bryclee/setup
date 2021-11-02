@@ -37,3 +37,6 @@ function! s:toggleTodo() abort
 endfunction
 
 nmap <buffer> <silent> <enter> :call <SID>toggleTodo()<CR>
+
+command! -nargs=? -bang -buffer Daily call daily#daily_name(<f-args>)
+command! -bang -buffer DailyLink call daily#daily_line()

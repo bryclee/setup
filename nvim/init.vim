@@ -2,6 +2,7 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath =&runtimepath
 source ~/.vim/vimrc
 
+set guicursor=
 set inccommand=split " Live preview substitute command results
 set fillchars=vert:\|
 
