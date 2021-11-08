@@ -20,7 +20,6 @@ cmp.setup {
   },
   mapping = {
     ['<Tab>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
       select = true
     }),
     ['<C-Space>'] = cmp.mapping.complete(),
@@ -30,13 +29,19 @@ cmp.setup {
     { name = 'luasnip' },
     { name = 'buffer' },
     { name = 'path' }
-  }
+  },
+  experimental = {
+    ghost_text = true,
+  },
+  completion = {
+    keyword_length = 3,
+  },
 }
 
-vim.cmd "highlight LspDiagnosticsDefaultHint ctermfg=darkgray"
-vim.cmd "highlight LspDiagnosticsDefaultWarning ctermbg=lightyellow"
-vim.cmd "highlight LspDiagnosticsDefaultError ctermbg=lightred"
-vim.cmd "highlight LspReferenceRead ctermbg=lightgray"
+vim.cmd "highlight link LspDiagnosticsDefaultHint MoreMsg"
+vim.cmd "highlight link LspDiagnosticsDefaultWarning WarningMsg"
+vim.cmd "highlight link LspDiagnosticsDefaultError Error"
+vim.cmd "highlight link LspReferenceRead CursorHold"
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
