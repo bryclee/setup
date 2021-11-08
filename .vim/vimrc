@@ -78,7 +78,9 @@ if !has("nvim")
   Plug 'digitaltoad/vim-pug'
 else
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'branch': '0.5-compat'}
-  " Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'ThePrimeagen/harpoon'
   " Plug 'nvim-telescope/telescope.nvim'
   " Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 

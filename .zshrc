@@ -37,6 +37,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # colorized ls
 alias ls='ls -G'
+export FZF_DEFAULT_OPTS="--bind alt-a:select-all,alt-d:deselect-all,ctrl-s:toggle-sort"
 
 [[ -e ~/.zshrc_local ]] && source ~/.zshrc_local
 
