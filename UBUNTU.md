@@ -9,3 +9,9 @@ Other useful things to install (via `apt`)
 
 - kitty
 - configure workspaces
+  - mapping for switching to workspaces, sending window to workspaces
+- map caps to esc
+- window manager?
+  - find one that works with desktop?
+  - dmenu + xmonad for bare one
+  - mod+shift+q to exit
