@@ -19,6 +19,9 @@ function! daily#daily_line() abort
   let l:filename = l:lineitems[3]
   let l:filename = substitute(l:filename, '\s', '-', 'g')
   let l:filename = substitute(l:filename, '[^0-9A-Za-z-_]', '', 'g')
+  call inputsave()
+  let l:filename = input('Daily name: ', l:filename)
+  call inputrestore()
   let l:file = trim(system(s:daily_script . ' ' . shellescape(l:filename)))
   let l:file = substitute(l:file, expand('%:p:h'), '.', '')
   call setline(line("."), l:lineitems[1] . '[' . l:lineitems[3] . '](' . l:file . ')')
