@@ -108,6 +108,9 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# Set vim as default editor
+export EDITOR="vi"
+
 # My additions
 if [ -f ~/.bashrc_local ]
 then
@@ -122,9 +125,6 @@ export PATH="$HOME/setup/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Set vim as default editor
-export EDITOR="vi"
 
 # Load z
 . ~/setup/z/z.sh

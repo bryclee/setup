@@ -37,3 +37,5 @@ install tmux with brew
 ```
 brew install tmux
 ```
+
+TODO: setup git cache control?
