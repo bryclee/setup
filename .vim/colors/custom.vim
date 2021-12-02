@@ -57,7 +57,7 @@ if &background == "light"
   hi CursorLineNr cterm=bold ctermfg=darkyellow
   hi StatusLine   cterm=bold,reverse ctermfg=darkblue ctermbg=none
   hi StatusLineNC cterm=none ctermfg=darkgray ctermbg=gray
-  hi TabLine cterm=none ctermfg=darkgray ctermbg=gray
+  hi TabLine cterm=underline ctermfg=darkgray ctermbg=gray
   hi TabLineFill cterm=none ctermbg=darkblue
   hi Directory cterm=bold ctermfg=darkblue
 
@@ -101,7 +101,7 @@ else
   hi CursorLineNr cterm=bold ctermfg=yellow
   hi StatusLine   cterm=bold,reverse ctermfg=cyan ctermbg=none
   hi StatusLineNC cterm=none ctermfg=7 ctermbg=8
-  hi TabLine cterm=none ctermfg=7 ctermbg=8
+  hi TabLine cterm=underline ctermfg=7 ctermbg=8
   hi TabLineFill cterm=none ctermbg=white
   hi Directory cterm=bold ctermfg=cyan
 
