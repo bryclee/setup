@@ -39,3 +39,15 @@ brew install tmux
 ```
 
 TODO: setup git cache control?
+
+setup git
+
+```
+echo 'machine github.com login <login> password <PAT> protocol https' > ~/.netrc
+# First time gpg setup
+gpg --gen-key
+gpg -e -r <email-used-for-gpg> ~/.netrc
+git config credential.helper "netrc -f ~/.netrc.gpg -v"
+# Remove clear text netrc file
+rm ~/.netrc
+```
