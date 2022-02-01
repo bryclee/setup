@@ -58,7 +58,7 @@ if &background == "light"
   hi StatusLine   cterm=bold,reverse ctermfg=darkblue ctermbg=none
   hi StatusLineNC cterm=none ctermfg=darkgray ctermbg=gray
   hi TabLine cterm=underline ctermfg=darkgray ctermbg=gray
-  hi TabLineFill cterm=none ctermbg=darkblue
+  hi TabLineFill cterm=underline ctermbg=darkblue
   hi Directory cterm=bold ctermfg=darkblue
 
   hi Special ctermfg=darkred
@@ -83,7 +83,7 @@ if &background == "light"
 
   hi markdownCode ctermfg=red ctermbg=none
 else
-  hi LineNr       ctermfg=15
+  hi LineNr       ctermfg=8
   hi ColorColumn  ctermfg=15    ctermbg=8
   hi Folded       ctermfg=15    ctermbg=8
   hi FoldColumn   ctermfg=15    ctermbg=8
@@ -96,13 +96,13 @@ else
   hi Conceal      ctermfg=7 ctermbg=none
   hi clear SignColumn
 
-  hi Comment cterm=italic ctermfg=7
+  hi Comment cterm=italic ctermfg=8
   hi Error ctermfg=red ctermbg=darkred
   hi CursorLineNr cterm=bold ctermfg=yellow
-  hi StatusLine   cterm=bold,reverse ctermfg=cyan ctermbg=none
-  hi StatusLineNC cterm=none ctermfg=7 ctermbg=8
+  hi StatusLine   cterm=bold,reverse ctermfg=blue ctermbg=none
+  hi StatusLineNC cterm=none ctermfg=7 ctermbg=0
   hi TabLine cterm=underline ctermfg=7 ctermbg=8
-  hi TabLineFill cterm=none ctermbg=white
+  hi TabLineFill cterm=underline ctermbg=0
   hi Directory cterm=bold ctermfg=cyan
 
   hi Special ctermfg=red

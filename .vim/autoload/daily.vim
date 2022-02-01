@@ -25,5 +25,6 @@ function! daily#daily_line() abort
   let l:file = trim(system(s:daily_script . ' ' . shellescape(l:filename)))
   let l:file = substitute(l:file, expand('%:p:h'), '.', '')
   call setline(line("."), l:lineitems[1] . '[' . l:lineitems[3] . '](' . l:file . ')')
+  execute 'w'
   execute 'edit ' . l:file
 endfunction

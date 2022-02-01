@@ -168,7 +168,11 @@ elseif executable('ag')
 endif
 
 " Populate current word in search
-nnoremap <leader>/ :grep '\b<C-R>=substitute(expand("<cword>"), '#', '\\#', 'g')<CR>\b'<space>
+if executable('rg')
+  nnoremap <leader>/ :Rg \b<C-R>=substitute(expand("<cword>"), '#', '\\#', 'g')<CR>\b<CR>
+else
+  nnoremap <leader>/ :grep '\b<C-R>=substitute(expand("<cword>"), '#', '\\#', 'g')<CR>\b'<space>
+endif
 
 " Autocomplete
 set complete=.,b,u,] " Autocomplete sources
