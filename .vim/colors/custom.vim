@@ -93,7 +93,7 @@ else
   hi SpellLocal   ctermfg=darkcyan                  cterm=inverse
   hi VertSplit    ctermfg=NONE ctermbg=NONE  cterm=NONE
   hi Folded       ctermbg=NONE
-  hi Conceal      ctermfg=7 ctermbg=none
+  hi Conceal      ctermfg=8 ctermbg=0
   hi clear SignColumn
 
   hi Comment cterm=italic ctermfg=8

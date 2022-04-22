@@ -5,11 +5,12 @@ let g:markdown_fenced_languages = ['javascript', 'json']
 
 setlocal conceallevel=2
 
-syntax match TodoItemFinished '\zs\[[xX]\]\ze' containedin=mkdListItemLine
-syntax match TodoItemUnfinished '\zs\[ \]\ze' containedin=mkdListItemLine
+syntax match TodoItemFinished '\[\zs[xX]\ze\]' containedin=mkdListItemLine
+syntax match TodoItemUnfinished '\[\zs \ze\]' containedin=mkdListItemLine
 
 hi def link TodoItemUnfinished Todo
 hi def link TodoItemFinished Conceal
+hi mkdCode ctermbg=0 ctermfg=green
 
 " function! s:markTodos()
 "   call matchadd('TodoItemUnfinished', '- \zs\[ \]\ze')

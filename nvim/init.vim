@@ -4,7 +4,7 @@ source ~/.vim/vimrc
 
 set guicursor=
 set inccommand=split " Live preview substitute command results
-set fillchars=vert:\|
+" set fillchars=vert:\|
 
 " Start terminal mode on opening a terminal window
 autocmd TermOpen * startinsert

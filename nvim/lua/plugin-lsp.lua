@@ -30,9 +30,7 @@ cmp.setup {
     { name = 'buffer' },
     { name = 'path' }
   },
-  experimental = {
-    ghost_text = true,
-  },
+  experimental = {},
   completion = {
     keyword_length = 3,
   },
@@ -58,9 +56,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<leader>R', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {border = "single"}})<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {border = "single"}})<CR>', opts)
-  buf_set_keymap('n', '<C-space>', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({border = "single"})<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev({float = {border = "single"}})<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next({float = {border = "single"}})<CR>', opts)
+  buf_set_keymap('n', '<C-space>', '<cmd>lua vim.diagnostic.open_float({border = "single"})<CR>', opts)
 
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_command("autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()")
