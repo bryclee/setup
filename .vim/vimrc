@@ -77,12 +77,11 @@ if !has("nvim")
   Plug 'motus/pig.vim'
   Plug 'digitaltoad/vim-pug'
 else
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'branch': '0.5-compat'}
+  " Neovim specific plugins
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'ThePrimeagen/harpoon'
-  " Plug 'nvim-telescope/telescope.nvim'
-  " Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/cmp-nvim-lsp'

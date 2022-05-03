@@ -49,14 +49,14 @@ if &background == "light"
   hi SpellLocal   ctermfg=darkcyan                  cterm=inverse
   hi VertSplit    ctermfg=NONE ctermbg=NONE  cterm=NONE
   hi Folded       ctermbg=NONE
-  hi Conceal      ctermfg=NONE ctermbg=gray
+  hi Conceal      ctermfg=0 ctermbg=8
   hi clear SignColumn
 
   hi Comment cterm=italic ctermfg=gray
   hi Error ctermfg=red ctermbg=lightred
   hi CursorLineNr cterm=bold ctermfg=darkyellow
   hi StatusLine   cterm=bold,reverse ctermfg=darkblue ctermbg=none
-  hi StatusLineNC cterm=none ctermfg=darkgray ctermbg=gray
+  hi StatusLineNC cterm=underline ctermfg=darkgray ctermbg=gray
   hi TabLine cterm=underline ctermfg=darkgray ctermbg=gray
   hi TabLineFill cterm=underline ctermbg=darkblue
   hi Directory cterm=bold ctermfg=darkblue
@@ -100,7 +100,7 @@ else
   hi Error ctermfg=red ctermbg=darkred
   hi CursorLineNr cterm=bold ctermfg=yellow
   hi StatusLine   cterm=bold,reverse ctermfg=blue ctermbg=none
-  hi StatusLineNC cterm=none ctermfg=7 ctermbg=0
+  hi StatusLineNC cterm=underline ctermfg=7 ctermbg=0
   hi TabLine cterm=underline ctermfg=7 ctermbg=8
   hi TabLineFill cterm=underline ctermbg=0
   hi Directory cterm=bold ctermfg=cyan

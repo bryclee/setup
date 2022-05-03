@@ -2,6 +2,8 @@ vim.lsp.set_log_level('debug')
 
 local nvim_lsp = require('lspconfig')
 local cmp = require('cmp')
+-- local lsp_status = require('lsp-status')
+local luasnip = require('luasnip')
 
 vim.o.completeopt = 'menu,menuone,noselect'
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
@@ -15,7 +17,7 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 cmp.setup {
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+      luasnip.lsp_expand(args.body)
     end,
   },
   mapping = {
@@ -23,6 +25,20 @@ cmp.setup {
       select = true
     }),
     ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-n>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end,
+    ['<C-p>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end,
   },
   sources = {
     { name = 'nvim_lsp' },
@@ -35,6 +51,11 @@ cmp.setup {
     keyword_length = 3,
   },
 }
+
+-- lsp_status.register_progress()
+-- lsp_status.config {
+--   diagnostics = false,
+-- }
 
 vim.cmd "highlight link LspDiagnosticsDefaultHint MoreMsg"
 vim.cmd "highlight link LspDiagnosticsDefaultWarning WarningMsg"
@@ -68,16 +89,24 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+-- capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities)
 
 local servers = {
   tsserver = {
     cmd = { "typescript-language-server", "--stdio", "--tsserver-path", "tsserver" },
+    init_options = {
+      preferences = {
+        includeCompletionsWithSnippetText = true,
+        includeCompletionsForImportStatements = true,
+      }
+    }
   },
   graphql = {}
 }
 for lsp, config in pairs(servers) do
   nvim_lsp[lsp].setup {
     cmd = config.cmd,
+    init_options = config.init_options,
     on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,

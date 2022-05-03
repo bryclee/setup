@@ -19,3 +19,4 @@
 - notes
   - [x] DailyLink to create current line as a dated note
   - [ ] DailyLink command on visual selection to use only portion of text
+  - [ ] DailyLink doesn't properly update line if tabWidth is set to 4
