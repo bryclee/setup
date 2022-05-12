@@ -53,3 +53,9 @@ rm ~/.netrc
 ```
 
 [Install node](./install/node.linux.sh)
+
+Install rg
+
+```
+brew install rg
+```

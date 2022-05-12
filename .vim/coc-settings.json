@@ -1,4 +1,5 @@
 {
+  "diagnostic.warningSign": "W",
   "suggest.noselect": true,
   "suggest.autoTrigger": "always",
   "typescript.suggest.completeFunctionCalls": false,
