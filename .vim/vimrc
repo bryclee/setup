@@ -48,6 +48,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/goyo.vim'
+Plug 'itchyny/lightline.vim'
 
 Plug 'plasticboy/vim-markdown'
 
@@ -95,7 +96,7 @@ endif
 
 call plug#end()
 
-set t_Co=256
+set t_Co=16
 colorscheme custom
 
 set updatetime=200 " Write swap file to disk quicker, gives faster diff updates for git-gutter
@@ -150,14 +151,8 @@ endfun
 
 " Search
 set incsearch
-set nohlsearch
-nnoremap <Leader><Leader> :set hls!<CR><Esc>
-
-augroup vimrc-incsearch-highlight
-  autocmd!
-  autocmd CmdlineEnter /,\? :set hlsearch
-  autocmd CmdlineLeave /,\? :set nohlsearch
-augroup END
+set hlsearch
+nnoremap <Leader><Leader> <silent> :nohl<CR><Esc>
 
 " Use ag for search
 if executable('rg')
