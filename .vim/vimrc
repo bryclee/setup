@@ -152,7 +152,7 @@ endfun
 " Search
 set incsearch
 set hlsearch
-nnoremap <Leader><Leader> <silent> :nohl<CR><Esc>
+nnoremap <silent> <leader><leader> :nohl<CR><Esc>
 
 " Use ag for search
 if executable('rg')
