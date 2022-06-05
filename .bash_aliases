@@ -14,6 +14,17 @@ alias gco="git checkout"
 alias gpul="git pull"
 alias gpush="git push"
 
+# FZF setting -- allow symlinks
+if [ -n "$(which rg)" ]; then
+  # Set FZF default to use rg
+  export FZF_DEFAULT_COMMAND='rg --files --hidden --follow .'
+elif [ -n "$(which ag)" ]; then
+  # Set FZF default to use ag
+  export FZF_DEFAULT_COMMAND='ag -l --nocolor --hidden -g ""'
+  # Default ag to follow symlinks
+  alias ag='ag -f'
+fi
+
 # FZF aliases/functions
 function fgb() {
   git branch --format='%(refname:short)' |

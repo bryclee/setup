@@ -11,6 +11,10 @@ let g:lightline = {
   \   'component_function': {
   \     'gitbranch': 'FugitiveHead'
   \   },
+  \   'enable': {
+  \     'statusline': 1,
+  \     'tabline': 0,
+  \   }
   \  }
 
 set noshowmode

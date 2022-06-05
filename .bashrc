@@ -133,14 +133,3 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -n "$(which fzf)" ] && bind '"":"tmux-s\n"'
-
-# FZF setting -- allow symlinks
-if [ -n "$(which rg)" ]; then
-  # Set FZF default to use rg
-  export FZF_DEFAULT_COMMAND='rg --files --hidden --follow .'
-elif [ -n "$(which ag)" ]; then
-  # Set FZF default to use ag
-  export FZF_DEFAULT_COMMAND='ag -l --nocolor --hidden -g ""'
-  # Default ag to follow symlinks
-  alias ag='ag -f'
-fi
