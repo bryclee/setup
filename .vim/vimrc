@@ -200,6 +200,8 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
+nnoremap <Down> gj
+nnoremap <Up> gk
 
 " Center after navigating to next/previous
 " nnoremap n nzz
