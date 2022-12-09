@@ -5,6 +5,7 @@
   "typescript.suggest.completeFunctionCalls": false,
   "javascript.suggest.completeFunctionCalls": false,
   "tsserver.ignoreLocalTsserver": true,
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "languageserver": {
     "graphql": {
       "command": "graphql-lsp",

@@ -18,12 +18,12 @@ let s:aqua = [ '#00ffff', 14 ]
 let s:white = [ '#ffffff', 15 ]
 
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
-let s:p.normal.left = [ [ s:black, s:blue ], [ s:white, s:gray ] ]
+let s:p.normal.left = [ [ s:black, s:blue ], [ s:white, s:gray ], [ s:silver, s:black ] ]
 let s:p.normal.middle = [ [ s:silver, s:black ] ]
 let s:p.normal.right = [ [ s:black, s:blue ], [ s:white, s:gray ] ]
 let s:p.normal.error = [ [ s:black, s:red ] ]
 let s:p.normal.warning = [ [ s:black, s:yellow ] ]
-let s:p.inactive.left =  [ [ s:silver, s:gray ], [ s:gray, s:black ] ]
+let s:p.inactive.left =  [ [ s:silver, s:black ] ]
 let s:p.inactive.middle = [ [ s:silver, s:black ] ]
 let s:p.inactive.right = [ [ s:silver, s:gray ], [ s:gray, s:black ] ]
 let s:p.insert.left = [ [ s:white, s:green ], [ s:white, s:gray ] ]
@@ -39,18 +39,38 @@ let s:p.tabline.right = copy(s:p.normal.right)
 
 let g:lightline#colorscheme#custom#palette = lightline#colorscheme#flatten(s:p)
 
+function! CodeStatus() abort
+  let info = ale#statusline#Count(bufnr('%'))
+  let msgs = []
+  if len(get(b:, 'coc_current_function', ''))
+    call add(msgs, get(b:, 'coc_current_function', ''))
+  endif
+  if get(info, 'error', 0)
+    call add(msgs, '!' . info['error'])
+  endif
+  if get(info, 'warning', 0)
+    call add(msgs, '?' . info['warning'])
+  endif
+  if len(get(g:, 'coc_status', ''))
+    call add(msgs, get(g:, 'coc_status', ''))
+  endif
+  return join(msgs, ' >')
+endfunction
+
 let g:lightline = {
   \   'colorscheme': 'custom',
   \   'active': {
   \     'left': [ [ 'mode', 'paste' ],
-  \               [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-  \     'right': [ [ 'percent', 'lineinfo' ], [ 'filetype' ] ]
+  \               [ 'gitbranch'],
+  \               [ 'readonly', 'filename', 'modified' ] ],
+  \     'right': [ [ 'percent', 'lineinfo' ], [ 'codestatus', 'filetype' ] ]
   \   },
   \   'component': {
   \     'filename': '%<%f'
   \   },
   \   'component_function': {
-  \     'gitbranch': 'FugitiveHead'
+  \     'gitbranch': 'FugitiveHead',
+  \     'codestatus': 'CodeStatus'
   \   },
   \  }
 

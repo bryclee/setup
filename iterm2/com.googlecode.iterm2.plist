@@ -4893,13 +4893,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.91925609111785889</real>
+				<real>0.53133636713027954</real>
 				<key>Color Space</key>
 				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.4805799126625061</real>
+				<real>0.33018267154693604</real>
 				<key>Red Component</key>
-				<real>0.25763672590255737</real>
+				<real>0.84925031661987305</real>
 			</dict>
 			<key>Cursor Guide Color</key>
 			<dict>
@@ -5290,7 +5290,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<false/>
 			<key>Normal Font</key>
-			<string>Monaco 13</string>
+			<string>InputMono-Regular 14</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Option Key Sends</key>
@@ -5730,6 +5730,8 @@
 			<key>Use Bright Bold</key>
 			<false/>
 			<key>Use Canonical Parser</key>
+			<false/>
+			<key>Use Cursor Guide</key>
 			<false/>
 			<key>Use Italic Font</key>
 			<true/>

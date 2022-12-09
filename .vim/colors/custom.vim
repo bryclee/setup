@@ -78,8 +78,9 @@ if &background == "light"
   hi String ctermfg=darkgreen
   hi Underlined cterm=underline ctermfg=darkblue
   hi Title cterm=bold ctermfg=darkmagenta
-  hi Search ctermbg=lightyellow
+  " hi Search ctermbg=lightyellow
   hi CursorHold ctermbg=lightgray
+  hi CursorColumn ctermbg=lightgray
 
   hi markdownCode ctermfg=red ctermbg=none
 else
@@ -97,7 +98,7 @@ else
   hi clear SignColumn
 
   hi Comment cterm=italic ctermfg=8
-  hi Error ctermfg=red ctermbg=darkred
+  hi Error ctermfg=0 ctermbg=darkred
   hi CursorLineNr cterm=bold ctermfg=yellow
   hi StatusLine   cterm=bold,reverse ctermfg=blue ctermbg=none
   hi StatusLineNC cterm=underline ctermfg=7 ctermbg=0
@@ -122,8 +123,9 @@ else
   hi String ctermfg=green
   hi Underlined cterm=underline ctermfg=cyan
   hi Title cterm=bold ctermfg=magenta
-  hi Search ctermbg=yellow
-  hi CursorHold ctermbg=8
+  " hi Search ctermbg=yellow
+  hi CursorHold ctermbg=0
+  hi CursorColumn ctermbg=8
 
   hi MoreMsg ctermfg=green
   hi SpecialKey ctermfg=cyan
@@ -160,6 +162,7 @@ function! SetPluginHighlights()
   hi link CocWarningSign WarningMsg
   hi link CocErrorSign Error
   hi link AleErrorSign ErrorMsg
+  hi link CocHighlightText CursorHold
   hi GitGutterAdd      ctermfg=darkgreen    ctermbg=none
   hi GitGutterChange   ctermfg=darkyellow    ctermbg=none
   hi GitGutterDelete   ctermfg=darkred    ctermbg=none

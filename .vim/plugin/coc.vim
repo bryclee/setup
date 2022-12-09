@@ -1,28 +1,33 @@
-if has("nvim")
-  finish
-endif
+" if has("nvim")
+"   finish
+" endif
 
 " coc.nvim
 let g:coc_global_extensions = ['coc-json', 'coc-html', 'coc-tsserver']
-" ===================
-" Set tab completion
-inoremap <silent><expr> <TAB>
-  \ pumvisible() ? coc#_select_confirm() : "\<TAB>"
 
-" Go to definition
-nmap <silent> <leader>d <Plug>(coc-definition)
-nmap <silent> <leader>D <Plug>(coc-type-definition)
-nmap <silent> <C-W><leader>d :call CocActionAsync('jumpDefinition', 'tabe')<CR>
-nmap <silent> <leader>i <Plug>(coc-implementation)
-nmap <silent> <leader>r <Plug>(coc-references)
-nmap <silent> <leader>R <Plug>(coc-rename)
-nmap <silent> gh :call CocAction('doHover')<CR>
-" <c-space> mapping on vim on mac has issues, this fixes it
-inoremap <silent><expr> <c-space> coc#refresh()
-nmap <silent> [G <Plug>(coc-diagnostic-prev)
-nmap <silent> ]G <Plug>(coc-diagnostic-next)
+function! CocMappings()
+  " ===================
+  " Set tab completion
+  inoremap <silent><expr> <TAB>
+        \ coc#pum#visible() ? coc#_select_confirm() : "\<TAB>"
 
-autocmd CursorHold * silent call CocActionAsync('highlight')
+  " Go to definition
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gD <Plug>(coc-type-definition)
+  nmap <silent> <C-W>gd :call CocActionAsync('jumpDefinition', 'tabe')<CR>
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+  nmap <silent> <leader>R <Plug>(coc-rename)
+  nmap <silent> gh :call CocAction('doHover')<CR>
+  " <c-space> mapping on vim on mac has issues, this fixes it
+  inoremap <silent><expr> <c-space> coc#refresh()
+  nmap <silent> [d <Plug>(coc-diagnostic-prev)
+  nmap <silent> ]d <Plug>(coc-diagnostic-next)
+
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+endfunction
+
+call CocMappings()
 
 " vim-lsp
 " Plug 'prabirshrestha/vim-lsp'
