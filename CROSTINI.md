@@ -1,10 +1,3 @@
-Change password for user and for root
-
-```
-sudo passwd root
-sudo passwd <user>
-```
-
 Install C compiler tools for `TsInstall` and other tools
 
 ```
@@ -28,9 +21,9 @@ Setup git cache for PAT
 
 ```
 echo 'machine github.com login <login> password <PAT> protocol https' > ~/.netrc
-# First time gpg setup
+
 gpg --gen-key
-gpg -e -r <email-used-for-gpg> ~/.netrc
+gpg -e -r <email-used-for-gpg> ~/.netrc # Should be re-run if regenerating password
 git config credential.helper "netrc -f ~/.netrc.gpg -v"
 # Remove clear text netrc file
 rm ~/.netrc
