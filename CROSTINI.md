@@ -11,33 +11,17 @@ Install C compiler tools for `TsInstall` and other tools
 sudo apt install build-essential gcc
 ```
 
-Install snap
-
-```
-sudo apt install libsquashfuse0 squashfuse fuse
-sudo apt install snapd
-```
-
-Install neovim with snap
-
-```
-sudo snap install nvim --classic
-# may need to fix permission when installing with snap
-sudo chmod 755 /
-echo 'alias vi=nvim' >> ~/.bashrc_local
-sudo update-alternatives --install /usr/bin/editor editor $(which nvim) 100
-```
-
 Install [brew](https://brew.sh)
 
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-Install tmux with brew
+Install tmux and neovim with brew
 
 ```
 brew install tmux
+brew install neovim
 ```
 
 Setup git cache for PAT
