@@ -162,7 +162,12 @@ function! SetPluginHighlights()
   hi link CocWarningSign WarningMsg
   hi link CocErrorSign Error
   hi link AleErrorSign ErrorMsg
+  hi link CocErrorFloat DiagnosticError
   hi link CocHighlightText CursorHold
+  hi link CocFloating Pmenu
+  hi link CocMenuSel PmenuSel
+  hi link CocPumVirtualText Comment
+  hi link FgCocErrorFloatBgCocFloating CocErrorFloat
   hi GitGutterAdd      ctermfg=darkgreen    ctermbg=none
   hi GitGutterChange   ctermfg=darkyellow    ctermbg=none
   hi GitGutterDelete   ctermfg=darkred    ctermbg=none
