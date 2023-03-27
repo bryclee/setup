@@ -88,8 +88,8 @@ else
   hi ColorColumn  ctermfg=15    ctermbg=0
   hi Folded       ctermfg=15    ctermbg=8
   hi FoldColumn   ctermfg=15    ctermbg=8
-  hi Pmenu        ctermfg=none   ctermbg=8
-  hi PmenuSel     cterm=reverse ctermfg=none    ctermbg=8
+  hi Pmenu        ctermfg=none   ctermbg=0
+  hi PmenuSel     cterm=reverse ctermfg=none    ctermbg=0
   hi SpellCap     ctermfg=15    ctermbg=8
   hi SpellLocal   ctermfg=darkcyan                  cterm=inverse
   hi VertSplit    ctermfg=NONE ctermbg=NONE  cterm=NONE
@@ -168,6 +168,9 @@ function! SetPluginHighlights()
   hi link CocMenuSel PmenuSel
   hi link CocPumVirtualText Comment
   hi link FgCocErrorFloatBgCocFloating CocErrorFloat
+  hi link FgCocInfoFloatBgCocFloating CocInfoFloat
+  hi link FgCocWarnFloatBgCocFloating CocWarnFloat
+  hi link CocListLine CursorLine
   hi GitGutterAdd      ctermfg=darkgreen    ctermbg=none
   hi GitGutterChange   ctermfg=darkyellow    ctermbg=none
   hi GitGutterDelete   ctermfg=darkred    ctermbg=none
