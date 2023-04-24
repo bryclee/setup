@@ -22,10 +22,11 @@ let g:fzf_action = {
       \ 'ctrl-x': 'split',
       \ 'ctrl-v': 'vsplit' }
 
-"   let g:fzf_layout = {
-      "         \ 'window': 'enew'
-"         \ }
-"         " \   'window': 'exec winheight(0)/2."new"'
-"   "       \   'window': { 'width': 0.7, 'height': 0.8 }
+let g:fzf_layout = {
+      \ 'window': 'enew'
+      \ }
+let g:fzf_preview_window = ['right,50%,<70(up,40%)', 'ctrl-/']
+        " \   'window': 'exec winheight(0)/2."new"'
+  "       \   'window': { 'width': 0.7, 'height': 0.8 }
 "   let g:fzf_preview_window = 'up:50%'
 " endif
