@@ -30,3 +30,7 @@ let g:fzf_preview_window = ['right,50%,<70(up,40%)', 'ctrl-/']
   "       \   'window': { 'width': 0.7, 'height': 0.8 }
 "   let g:fzf_preview_window = 'up:50%'
 " endif
+
+highlight fzf1 ctermfg=none ctermbg=0
+highlight fzf2 ctermfg=none ctermbg=0
+highlight fzf3 ctermfg=none ctermbg=0
