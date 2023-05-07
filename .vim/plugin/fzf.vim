@@ -11,69 +11,26 @@ function! s:warn(message) abort
     return 0
 endfunction
 
-function! GetJumps()
+function! Jumplist()
   redir => cout
   silent jumps
   redir END
-  return reverse(split(cout, "\n")[1:])
+  let s:last_jumplist = reverse(split(cout, "\n")[1:])
+  let s:jump_start = get(filter(map(copy(s:last_jumplist),
+        \ {key, val -> val[0] == ">" ? key : -1}),
+        \ 'v:val > -1'), 0, 0)
+
+  call fzf#run(fzf#wrap({
+        \ 'source': s:last_jumplist,
+        \ 'sink': function('GoToJump'),
+        \ 'options': ['--no-sort', '--bind', 'load:pos(' . (s:jump_start + 1) . ')'] }))
 endfunction
 function! GoToJump(jump)
     let jumpnumber = split(a:jump, '\s\+')[0]
-    execute "normal " . jumpnumber . "\<c-o>"
+    let pos = index(s:last_jumplist, a:jump)
+    execute "normal " . jumpnumber . (pos >= s:jump_start ? "\<c-o>" : "\<c-i>")
 endfunction
-command! Jumps call fzf#run(fzf#wrap({
-        \ 'source': GetJumps(),
-        \ 'sink': function('GoToJump'),
-        \ 'options': '--no-sort'}))
-
-" function GoTo(jumpline)
-"   let values = split(a:jumpline, ":")
-"   execute "e ".values[0]
-"   call cursor(str2nr(values[1]), str2nr(values[2]))
-"   execute "normal zvzz"
-" endfunction
-
-" function GetLine(bufnr, lnum)
-"   let lines = getbufline(a:bufnr, a:lnum)
-"   if len(lines)>0
-"     return trim(lines[0])
-"   else
-"     return ''
-"   endif
-" endfunction
-
-" function Getjumps()
-"     let jumps = []
-"     let raw_jumps = reverse(copy(getjumplist()[0]))
-"     for it in raw_jumps
-"         if bufexists(it.bufnr)
-"             call add(jumps, it)
-"         endif
-"     endfor
-"     return jumps
-" endfunction
-
-" function! Jumps()
-"   " Get jumps with filename added
-"   let tmp_jump = Getjumps()
-"   if(tmp_jump == [])
-"         call s:warn('Empty jump list!')
-"         return
-"   endif
-"   let jumps = map(Getjumps(),
-"     \ { key, val -> extend(val, {'fname': getbufinfo(val.bufnr)[0].name }) })
-
-"   let jumptext = map(copy(jumps), { index, val ->
-"       \ (val.fname).':'.(val.lnum).':'.(val.col+1).': '.GetLine(val.bufnr, val.lnum) })
-
-"   call fzf#run(fzf#vim#with_preview(fzf#wrap({
-"         \ 'source': jumptext,
-"         \ 'column': 1,
-"         \ 'options': ['--delimiter', ':', '--bind', 'alt-a:select-all,alt-d:deselect-all', '--preview-window', '+{2}-/2'],
-"         \ 'sink': function('GoTo')})))
-" endfunction
-
-" command! Jumps call Jumps()
+command! Jumps call Jumplist()
 
 function! Changes()
   let changes  = reverse(copy(getchangelist()[0]))
@@ -106,7 +63,7 @@ command! -bang -nargs=? -complete=dir BLines
 nnoremap <C-T> :FZF<CR>
 nnoremap <C-P> :Buffers<CR>
 nnoremap <leader>t :AllFiles<CR>
-nnoremap <leader>O :Jumps<CR>
+nnoremap <leader>j :Jumps<CR>
 nnoremap <leader>C :Changes<CR>
 nnoremap <leader>/ :BLines<CR>
 nnoremap <leader>p :Lines<CR>
