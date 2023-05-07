@@ -23,7 +23,8 @@ function! GoToJump(jump)
 endfunction
 command! Jumps call fzf#run(fzf#wrap({
         \ 'source': GetJumps(),
-        \ 'sink': function('GoToJump')}))
+        \ 'sink': function('GoToJump'),
+        \ 'options': '--no-sort'}))
 
 " function GoTo(jumpline)
 "   let values = split(a:jumpline, ":")
@@ -94,7 +95,7 @@ endfunction
 command! Changes call Changes()
 
 command! -bang -nargs=? -complete=dir BLines
-      \ call fzf#vim#buffer_lines(<q-args>, {'window': {'width': 1, 'height': 0.4, 'relative': v:true, 'yoffset': 1.0}}, <bang>0)
+      \ call fzf#vim#buffer_lines(<q-args>, {'window': {'width': 1, 'height': 0.4, 'relative': v:true, 'yoffset': 1.0}, 'options': ['--no-sort']}, <bang>0)
 
 " ========
 " Mappings
