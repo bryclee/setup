@@ -95,7 +95,10 @@ endfunction
 command! Changes call Changes()
 
 command! -bang -nargs=? -complete=dir BLines
-      \ call fzf#vim#buffer_lines(<q-args>, {'window': {'width': 1, 'height': 0.4, 'relative': v:true, 'yoffset': 1.0}, 'options': ['--no-sort']}, <bang>0)
+      \ call fzf#vim#buffer_lines(<q-args>, {
+      \ 'window': {'width': 1, 'height': 0.4, 'relative': v:true, 'yoffset': 1.0},
+      \ 'options': ['--no-sort', '--scroll-off=3', '--bind', 'load:pos(' . line('.') . ')']
+      \ }, <bang>0)
 
 " ========
 " Mappings
