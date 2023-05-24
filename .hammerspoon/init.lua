@@ -34,6 +34,7 @@ hs.hotkey.bind(hyper, "n", function()
     currentScreen = currentWindow:screen()
 
     currentWindow:moveToScreen(currentScreen:next())
+    hs.grid.maximizeWindow(currentWindow)
 end)
 
 hs.hotkey.bind(meh, "n", function()
