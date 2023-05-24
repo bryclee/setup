@@ -30,26 +30,8 @@ function! GoToJump(jump)
     let pos = index(s:last_jumplist, a:jump)
     execute "normal " . jumpnumber . (pos >= s:jump_start ? "\<c-o>" : "\<c-i>")
 endfunction
+
 command! Jumps call Jumplist()
-
-function! Changes()
-  let changes  = reverse(copy(getchangelist()[0]))
-  if(changes == [])
-        call s:warn('Empty change list!')
-        return
-  endif
-
-  let changetext = map(copy(changes), { index, val ->
-      \ expand('%').':'.(val.lnum).':'.(val.col+1).': '.GetLine(bufnr('%'), val.lnum) })
-
-  call fzf#run(fzf#vim#with_preview(fzf#wrap({
-        \ 'source': changetext,
-        \ 'column': 1,
-        \ 'options': ['--delimiter', ':', '--bind', 'alt-a:select-all,alt-d:deselect-all', '--preview-window', '+{2}-/2'],
-        \ 'sink': function('GoTo')})))
-endfunction
-
-command! Changes call Changes()
 
 command! -bang -nargs=? -complete=dir BLines
       \ call fzf#vim#buffer_lines(<q-args>, {
@@ -63,8 +45,7 @@ command! -bang -nargs=? -complete=dir BLines
 nnoremap <C-T> :FZF<CR>
 nnoremap <C-P> :Buffers<CR>
 nnoremap <leader>t :AllFiles<CR>
-nnoremap <leader>j :Jumps<CR>
-nnoremap <leader>C :Changes<CR>
+nnoremap <leader>o :Jumps<CR>
 nnoremap <leader>/ :BLines<CR>
 nnoremap <leader>p :Lines<CR>
 

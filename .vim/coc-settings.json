@@ -4,6 +4,7 @@
   "suggest.autoTrigger": "always",
   "typescript.suggest.completeFunctionCalls": false,
   "javascript.suggest.completeFunctionCalls": false,
+  "html.autoCreateQuotes": false,
   "tsserver.ignoreLocalTsserver": true,
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "languageserver": {

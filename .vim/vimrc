@@ -189,8 +189,9 @@ nnoremap <c-i> <c-i>zz
 " Buffers/Windows navigation
 nnoremap <leader>bd :call BackBuffer() \| bd #<CR> " In case you want to leave the window open
 set hidden
-nnoremap <silent> <leader>o :call BackBuffer()<CR>
-nnoremap <silent> <leader>i :call ForwardBuffer()<CR>
+" Below replaced with fzf.vim jumps list
+" nnoremap <silent> <leader>o :call BackBuffer()<CR>
+" nnoremap <silent> <leader>i :call ForwardBuffer()<CR>
 
 " Mapping <C-W>n to go to window n
 let i = 1

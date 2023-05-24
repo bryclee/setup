@@ -1,4 +1,4 @@
-const TERMINALS = {
+const APPS = {
   HYPER: {
     name: 'Hyper',
     launch: '/Applications/Hyper.app/Contents/MacOS/Hyper',
@@ -11,9 +11,28 @@ const TERMINALS = {
     name: 'kitty',
     launch: '/Applications/Kitty.app/Contents/MacOS/kitty',
   },
+  OUTLOOK_PWA: {
+    name: 'Outlook (PWA)',
+    launch:
+      '/Users/bryalee/Applications/Edge\\ Apps.localized/Outlook\\ (PWA).app',
+  },
+  SLACK: {
+    name: 'Slack',
+    launch: '/Applications/Slack.app',
+  },
+  EDGE: {
+    name: 'Microsoft Edge',
+    launch: '/Applications/Microsoft\\ Edge.app',
+  },
+  TEAMS: {
+    name: 'Microsoft Teams',
+    launch: '/Applications/Microsoft\\ Teams.app',
+  },
+  LOGSEQ: {
+    name: 'Logseq',
+    launch: '/Applications/Logseq.app',
+  },
 }
-
-const PREFERRED_TERMINAL = TERMINALS.KITTY
 
 const pushLeft = slate.operation('move', {
   x: 'screenOriginX',
@@ -75,24 +94,26 @@ const throwLeft = slate.operation('throw', {
   height: 'min({windowSizeY,screenSizeY})',
 })
 
-const launchOrFocusTerm = (win) => {
-  const { name, launch } = PREFERRED_TERMINAL
-  let termPresent = false
+const launchOrFocus = (app) => {
+  return (win) => {
+    const { name, launch } = app
+    let termPresent = false
 
-  slate.eachApp((app) => {
-    if (app.name() === name) {
-      termPresent = true
+    slate.eachApp((app) => {
+      if (app.name() === name) {
+        termPresent = true
+      }
+    })
+
+    if (!termPresent) {
+      slate.shell(launch)
+    } else {
+      win.doOperation(
+        slate.operation('focus', {
+          app: name,
+        })
+      )
     }
-  })
-
-  if (!termPresent) {
-    slate.shell(launch)
-  } else {
-    win.doOperation(
-      slate.operation('focus', {
-        app: name,
-      })
-    )
   }
 }
 
@@ -109,9 +130,21 @@ slate.bindAll({
   'h:alt,shift,ctrl': throwLeft,
   'l:alt,shift,ctrl': throwRight,
 
-  't:alt,shift': launchOrFocusTerm,
+  // App focus
+  // Terminal
+  't:alt,shift': launchOrFocus(APPS.ITERM),
+  // Email
+  'e:alt,shift': launchOrFocus(APPS.OUTLOOK_PWA),
+  // Chat
+  'c:alt,shift': launchOrFocus(APPS.SLACK),
+  // Browser
+  'b:alt,shift': launchOrFocus(APPS.EDGE),
+  // Video
+  'v:alt,shift': launchOrFocus(APPS.TEAMS),
+  // Notes
+  'q:alt,shift': launchOrFocus(APPS.LOGSEQ),
 
   'g:alt,shift': slate.operation('grid'),
 
-  'r:alt,shift': slate.operation('relaunch'),
+  'r:alt,shift,ctrl': slate.operation('relaunch'),
 })
