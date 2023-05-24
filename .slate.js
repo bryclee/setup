@@ -32,6 +32,10 @@ const APPS = {
     name: 'Logseq',
     launch: '/Applications/Logseq.app',
   },
+  SPOTIFY: {
+    name: 'Spotify',
+    launch: '/Applications/Spotify.app',
+  },
 }
 
 const pushLeft = slate.operation('move', {
@@ -143,6 +147,8 @@ slate.bindAll({
   'v:alt,shift': launchOrFocus(APPS.TEAMS),
   // Notes
   'q:alt,shift': launchOrFocus(APPS.LOGSEQ),
+  // Music
+  'm:alt,shift': launchOrFocus(APPS.SPOTIFY),
 
   'g:alt,shift': slate.operation('grid'),
 
