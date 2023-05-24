@@ -14,27 +14,27 @@ const APPS = {
   OUTLOOK_PWA: {
     name: 'Outlook (PWA)',
     launch:
-      '/Users/bryalee/Applications/Edge\\ Apps.localized/Outlook\\ (PWA).app',
+      '/Users/bryalee/Applications/Edge Apps.localized/Outlook (PWA).app/Contents/MacOS/app_mode_loader',
   },
   SLACK: {
     name: 'Slack',
-    launch: '/Applications/Slack.app',
+    launch: '/Applications/Slack.app/Contents/MacOS/Slack',
   },
   EDGE: {
     name: 'Microsoft Edge',
-    launch: '/Applications/Microsoft\\ Edge.app',
+    launch: '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge',
   },
   TEAMS: {
     name: 'Microsoft Teams',
-    launch: '/Applications/Microsoft\\ Teams.app',
+    launch: '/Applications/Microsoft Teams.app/Contents/MacOS/Teams',
   },
   LOGSEQ: {
     name: 'Logseq',
-    launch: '/Applications/Logseq.app',
+    launch: '/Applications/Logseq.app/Contents/MacOS/Logseq',
   },
   SPOTIFY: {
     name: 'Spotify',
-    launch: '/Applications/Spotify.app',
+    launch: '/Applications/Spotify.app/Contents/MacOS/Spotify',
   },
 }
 
@@ -110,7 +110,7 @@ const launchOrFocus = (app) => {
     })
 
     if (!termPresent) {
-      slate.shell(launch)
+      slate.shell(launch.replace(' ', '\\ ', 'g'))
     } else {
       win.doOperation(
         slate.operation('focus', {
