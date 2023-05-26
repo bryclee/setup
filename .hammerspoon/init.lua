@@ -58,6 +58,21 @@ hs.hotkey.bind(meh, "=", function()
     hs.grid.maximizeWindow(hs.window.focusedWindow())
 end)
 
+hs.hotkey.bind(hyper, "u", function()
+    hs.eventtap.keyStrokes("thisisunsafe")
+end)
+
+hs.hotkey.showHotkeys(meh, "/")
+hs.hints.style = 'vimperator'
+hs.hints.fontSize = '10.0'
+hs.hints.showTitleThresh = 0
+hs.hotkey.bind(meh, "f", function()
+    hs.hints.windowHints()
+end)
+-- hs.hotkey.bind('alt', 'a', function()
+--     hs.window.switcher.previousWindow()
+-- end)
+
 -- todo
 -- focus window on next screen
 -- center cursor on window
