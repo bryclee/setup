@@ -1,0 +1,16 @@
+{
+  "name": "logseq-custom-theme",
+  "version": "1.0.0",
+  "logseq-version": "v0.8.9",
+  "description": "A clean theme for Logseq, focusing on long time writing experience.",
+  "logseq": {
+    "themes": [
+      {
+        "name": "Personal theme",
+        "url": "./custom.css",
+        "description": "A custom theme focus on UI bug fix and mobile improvement"
+      }
+    ],
+    "id": "personal_theme"
+  }
+}

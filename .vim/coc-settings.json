@@ -14,5 +14,6 @@
       "filetypes": ["graphql"]
     }
   },
-  "outline.sortBy": "position"
+  "outline.sortBy": "position",
+  "list.floatPreview": true
 }
