@@ -24,6 +24,8 @@ function! CocMappings()
   nmap <silent> [d <Plug>(coc-diagnostic-prev)
   nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
+  nnoremap <silent> <space>co  :call CocAction('showOutline')<CR>
+
   autocmd CursorHold * silent call CocActionAsync('highlight')
 endfunction
 

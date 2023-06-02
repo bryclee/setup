@@ -13,5 +13,6 @@
       "args": ["server", "-m", "stream"],
       "filetypes": ["graphql"]
     }
-  }
+  },
+  "outline.sortBy": "position"
 }
