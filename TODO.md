@@ -9,6 +9,7 @@
 - colorscheme
   - Pmenu, conceal: use 7, 8, or 15?
     - is it common in colorschemes for normal on 8 to be unreadable? try other colorschemes
+  - [ ] set term colors, so that we can use `set termguicolors` for `highlight-colors` and `css-colors` plugins
 - fzf
   - [x] send to qf list
     - [x] ctrl-q to send to QF list, alt-a to mark all, tab then enter to mark one

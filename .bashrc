@@ -88,6 +88,12 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# My additions
+if [ -f ~/.bashrc_local ]
+then
+    . ~/.bashrc_local
+fi
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -110,12 +116,6 @@ fi
 
 # Set vim as default editor
 export EDITOR="vi"
-
-# My additions
-if [ -f ~/.bashrc_local ]
-then
-    . ~/.bashrc_local
-fi
 
 # Add setup bin to path
 export PATH="$HOME/setup/bin:$PATH"

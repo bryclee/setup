@@ -6,7 +6,7 @@ set bs=indent,eol,start     " allow backspace to jump over these items
 set ic              " ignore case
 syntax on           " Syntax highlighting
 filetype plugin indent on
-" Disable error bells
+
 set noerrorbells
 "
 " Setting filetypes
@@ -69,17 +69,24 @@ if !has("nvim")
   " Plug 'HerringtonDarkholme/yats.vim'
   Plug 'leafgarland/typescript-vim'
   Plug 'MaxMEllon/vim-jsx-pretty'
-  Plug 'ap/vim-css-color'
   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
   Plug 'jparise/vim-graphql'
   Plug 'motus/pig.vim'
   Plug 'digitaltoad/vim-pug'
+  Plug 'ap/vim-css-color'
 else
   " Neovim specific plugins
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'ThePrimeagen/harpoon'
+  Plug 'brenoprata10/nvim-highlight-colors'
+
+  " Clojure REPL support. Not entirely sure if it works as expected though
+  " Plug 'Olical/conjure'
+  " Plug 'tpope/vim-dispatch'
+  " Plug 'radenling/vim-dispatch-neovim'
+  " Plug 'clojure-vim/vim-jack-in'
 
   " Plug 'neovim/nvim-lspconfig'
   " Plug 'hrsh7th/cmp-nvim-lsp'
