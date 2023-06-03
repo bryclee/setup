@@ -4,30 +4,30 @@ command! -bang -nargs=* AllFiles call fzf#run(fzf#wrap({ 'source': "rg --hidden 
 " === Jumps list and Change list
 " ===
 " from https://github.com/junegunn/fzf.vim/issues/865
-function! s:warn(message) abort
-    echohl WarningMsg
-    echomsg a:message
-    echohl None
-    return 0
-endfunction
 
 function! Jumplist()
-  redir => cout
-  silent jumps
-  redir END
-  let s:last_jumplist = reverse(split(cout, "\n")[1:])
-  let s:jump_start = get(filter(map(copy(s:last_jumplist),
-        \ {key, val -> val[0] == ">" ? key : -1}),
-        \ 'v:val > -1'), 0, 0)
+  " redir => cout
+  " silent jumps
+  " redir END
+  let jumplist = getjumplist()
+  let raw_jumps = reverse(copy(jumplist[0]))
+  let s:jump_start = len(raw_jumps) - jumplist[1] - 1
+  let jumps = map(copy(raw_jumps), { index, val ->
+        \ (bufname(val.bufnr)) . ':' . (val.lnum) . ':' . (val.col+1) . ': ' . (trim(get(getbufline(val.bufnr, val.lnum), 0, ''))) })
+        " \ (getbufinfo(val.bufnr)[0].name) . ':' . (val.lnum) . ':' . (val.col+1) . ': ' . (trim(get(getbufline(val.bufnr, val.lnum), 0, ''))) })
+  let s:last_jumplist = jumps
+  " let s:last_jumplist = reverse(split(cout, "\n")[1:])
 
-  call fzf#run(fzf#wrap({
-        \ 'source': s:last_jumplist,
+  call fzf#run(fzf#vim#with_preview(fzf#wrap({
+        \ 'source': jumps,
         \ 'sink': function('GoToJump'),
-        \ 'options': ['--no-sort', '--bind', 'load:pos(' . (s:jump_start + 1) . ')'] }))
+        \ 'options': ['--delimiter', ':', '--no-sort', '--bind', 'load:pos(' . (s:jump_start + 1) . ')', '--preview-window', '+{2}-/2'] })))
 endfunction
 function! GoToJump(jump)
-    let jumpnumber = split(a:jump, '\s\+')[0]
+    " let jumpnumber = split(a:jump, '\s\+')[0]
     let pos = index(s:last_jumplist, a:jump)
+    let jumpnumber = abs(pos - s:jump_start)
+    " echom pos . ':' . s:jump_start . ':' . jumpnumber
     execute "normal " . jumpnumber . (pos >= s:jump_start ? "\<c-o>" : "\<c-i>")
 endfunction
 
