@@ -10,11 +10,11 @@ function! s:format_jumplist_buffer(idx, bufnr, lnum, start)
   let target = printf("%s:%d", name, a:lnum)
   let selected = a:start == a:idx
   let rel = a:idx - a:start
-  let command = rel < 0 ? "i" : rel > 0 ? "o" : "x"
+  " let command = rel < 0 ? "i" : rel > 0 ? "o" : "x"
   return  printf("%s\t%d\t%s\t%s\t%s",
         \ target,
         \ a:lnum,
-        \ command . abs(rel),
+        \ rel,
         \ printf("\x1b[%sm%s\x1b[m", selected ? ';1' : '', target),
         \ printf("\x1b[90m%s\x1b[m", trim(get(getbufline(a:bufnr, a:lnum), 0, ''))))
 endfunction
@@ -37,12 +37,12 @@ function! Jumplist()
   call fzf#run(fzf#vim#with_preview(fzf#wrap({
         \ 'source': last_jumplist,
         \ 'sink': function('s:goToJump'),
-        \ 'options': ['-d', '\t', '--with-nth', '4..', '--no-sort', '--bind', 'load:pos(' . (jump_start + 1) . ')', '--preview-window', '+{2}-/2', '--ansi'] })))
+        \ 'options': ['-d', '\t', '--with-nth', '3..', '--no-sort', '--bind', 'load:pos(' . (jump_start + 1) . ')', '--preview-window', '+{2}-/2', '--ansi'] })))
 endfunction
 function! s:goToJump(jump)
     let command = split(a:jump, '\t')[2]
-    if (command != 'x')
-      execute "normal " . command[1:] . (command[:0] == 'i' ? "\<c-i>" : "\<c-o>")
+    if (command != '0')
+      execute "normal " . abs(command) . (command[:0] == '-' ? "\<c-i>" : "\<c-o>")
     endif
 endfunction
 
