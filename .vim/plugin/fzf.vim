@@ -6,7 +6,7 @@ command! -bang -nargs=* AllFiles call fzf#run(fzf#wrap({ 'source': "rg --hidden 
 " from https://github.com/junegunn/fzf.vim/issues/865
 
 function! s:format_jumplist_buffer(idx, bufnr, lnum, start)
-  let name = fnamemodify(bufname(a:bufnr), ":p:~:.")
+  let name = fnamemodify(bufname(a:bufnr), ":~:.")
   let target = printf("%s:%d", name, a:lnum)
   let selected = a:start == a:idx
   let rel = a:idx - a:start
@@ -15,8 +15,8 @@ function! s:format_jumplist_buffer(idx, bufnr, lnum, start)
         \ target,
         \ a:lnum,
         \ command . abs(rel),
-        \ (selected ? printf("\x1b[34m") : "") . target,
-        \ trim(get(getbufline(a:bufnr, a:lnum), 0, '')) . (selected ? printf("\x1b[m") : ""))
+        \ printf("\x1b[%sm%s\x1b[m", selected ? ';1' : '', target),
+        \ printf("\x1b[90m%s\x1b[m", trim(get(getbufline(a:bufnr, a:lnum), 0, ''))))
 endfunction
 
 function! Jumplist()
@@ -37,7 +37,7 @@ function! Jumplist()
   call fzf#run(fzf#vim#with_preview(fzf#wrap({
         \ 'source': last_jumplist,
         \ 'sink': function('s:goToJump'),
-        \ 'options': ['--ansi', '-d', '\t', '--with-nth', '4..', '--no-sort', '--bind', 'load:pos(' . (jump_start + 1) . ')', '--preview-window', '+{2}-/2'] })))
+        \ 'options': ['-d', '\t', '--with-nth', '4..', '--no-sort', '--bind', 'load:pos(' . (jump_start + 1) . ')', '--preview-window', '+{2}-/2', '--ansi'] })))
 endfunction
 function! s:goToJump(jump)
     let command = split(a:jump, '\t')[2]
