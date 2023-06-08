@@ -22,32 +22,21 @@ ORIGIN="${GITHUB_URL}/${GITHUB_USER}/$REPO"
 UPSTREAM="${GITHUB_URL}/${ORG}/$REPO"
 DEST=${2:-$REPO}
 
-if ! $worktree; then
-  git clone $ORIGIN $DEST
-  pushd $DEST
+git clone $ORIGIN $DEST
 
-  if [ ! -d "$DEST" ]
-  then
-    exit
-  fi
-
-  git remote add upstream $UPSTREAM
-  git config --local user.email pygmize.me@gmail.com
-  popd
-else
-  mkdir $DEST
-  pushd $DEST
-
-  git clone --bare $ORIGIN .bare
-
-  if [ ! -d ".bare" ]
-  then
-    exit
-  fi
-
-  echo "gitdir: ./.bare" > .git
-  git config remote.origin.fetch 'refs/head/*:refs/heads/*'
-  git remote add upstream $UPSTREAM
-  git config --local user.email pygmize.me@gmail.com
-  popd
+if [ ! -d "$DEST" ]
+then
+  exit
 fi
+
+pushd $DEST
+git remote add upstream $UPSTREAM
+git config --local user.email pygmize.me@gmail.com
+
+
+if $worktree; then
+  # https://stackoverflow.com/questions/54367011/git-bare-repositories-worktrees-and-tracking-branches
+  git checkout $(git commit-tree $(git hash-object -t tree /dev/null) < /dev/null)
+fi
+
+popd
