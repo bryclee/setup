@@ -15,3 +15,5 @@ Other useful things to install (via `apt`)
   - find one that works with desktop?
   - dmenu + xmonad for bare one
   - mod+shift+q to exit
+- fzf: from `linuxbrew`
+- tmux: from `apt`

@@ -3,7 +3,7 @@
 if [[ -n "$1" ]]; then
     selected=$1
 else
-    selected=$(( find ~/Projects -maxdepth 2 -type d; echo "$HOME/setup"; echo "$HOME/pypl-setup" ) | fzf)
+    selected=$(( find ~ -maxdepth 1 -type d; find ~/Projects -maxdepth 1 -mindepth 1 -type d) | fzf)
     # selected=$(cat ~/.z | tr -s ' ' | cut -f 1 -d "|" | fzf)
 fi
 
