@@ -40,5 +40,5 @@ Postman
 XCode App - The command line tools are installed as part of the script, but not sure if that includes all the tools that are desired.
 Alfred (search is better than default Spotlight)
     - Script will install, but need to manually disable the spotlight shortcut in system preferences
-Slate
+Hammerspoon
     - Need to enable accessibility
