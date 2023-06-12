@@ -25,6 +25,9 @@ elif [ -n "$(which ag)" ]; then
   alias ag='ag -f'
 fi
 
+export BAT_THEME="base16"
+export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --color=16 --bind ctrl-z:toggle-all"
+
 # FZF aliases/functions
 function fgb() {
   git branch --format='%(refname:short)' |
