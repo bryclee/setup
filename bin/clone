@@ -22,6 +22,11 @@ ORIGIN="${GITHUB_URL}/${GITHUB_USER}/$REPO"
 UPSTREAM="${GITHUB_URL}/${ORG}/$REPO"
 DEST=${2:-$REPO}
 
+if [ -z "$REPO" ]; then
+  echo "Improper argument"
+  exit
+fi
+
 git clone $ORIGIN $DEST
 
 if [ ! -d "$DEST" ]
