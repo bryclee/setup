@@ -26,7 +26,7 @@ elif [ -n "$(which ag)" ]; then
 fi
 
 export BAT_THEME="base16"
-export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --color=16 --bind ctrl-z:toggle-all"
+export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --color=16 --bind ctrl-a:toggle-all"
 
 # FZF aliases/functions
 function fgb() {
