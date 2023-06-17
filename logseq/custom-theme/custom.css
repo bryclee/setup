@@ -159,6 +159,9 @@ a.tag:hover {
 .tippy-tooltip-content > .tippy-wrapper {
   background: var(--ls-primary-background-color);
 }
+.tippy-popper {
+  pointer-events: visible; // experimental, captures events and prevents from targeting elements behind it (but not within it)
+}
 
 .embed-block {
   border: 2px solid var(--ls-border-color);
