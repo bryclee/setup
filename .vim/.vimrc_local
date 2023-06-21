@@ -1,0 +1,4 @@
+set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
+set cursorline
+autocmd ColorScheme custom highlight CursorLine cterm=none ctermbg=0
+
