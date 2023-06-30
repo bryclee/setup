@@ -28,6 +28,7 @@ hs.loadSpoon("AppWindowSwitcher")
         ["Logseq"] = {meh, "q"},
         ["Spotify"] = {meh, "m"}
     })
+hs.loadSpoon("MouseFollowsFocus"):start()
 
 hs.hotkey.bind(hyper, "n", function()
     currentWindow = hs.window.focusedWindow()
