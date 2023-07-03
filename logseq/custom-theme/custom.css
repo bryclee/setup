@@ -91,6 +91,10 @@ a.tag:hover {
   background-color: var(--bf-tag-background-hover-color);
 }
 
+blockquote {
+  padding: 4px 20px;
+}
+
 .done {
   text-decoration: none;
 }

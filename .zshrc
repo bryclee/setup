@@ -29,7 +29,8 @@ export NVM_DIR="$HOME/.nvm"
 export EDITOR="vi"
 
 # Load z
-. ~/setup/z/z.sh
+# Disabled because it sometimes make shell startup slow
+# . ~/setup/z/z.sh
 
 # Add setup bin to path
 export PATH="$HOME/setup/bin:$PATH"

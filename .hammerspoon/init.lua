@@ -13,10 +13,13 @@ hs.grid.HINTS = {
 hs.grid.setMargins("0x0")
 hs.window.animationDuration = 0
 
+hs.alert.show("Hammerspoon config loaded")
 hs.hotkey.bind(hyper, "R", function()
     hs.reload()
 end)
-hs.alert.show("Config loaded")
+hs.keycodes.inputSourceChanged(function()
+    hs.reload()
+end)
 
 hs.loadSpoon("AppWindowSwitcher")
     :bindHotkeys({
