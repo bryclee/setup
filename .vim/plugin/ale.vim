@@ -17,10 +17,11 @@ let g:ale_fixers = {
       \ 'typescript': ['prettier', 'tslint'],
       \ 'typescriptreact': ['prettier', 'tslint'],
       \ 'css': ['prettier'],
-      \ 'markdown': ['prettier'],
       \ 'graphql': ['prettier'],
       \ 'java': ['google_java_format']
       \ }
+" prettier doesn't quite work the way that I'd like for markdown
+" \ 'markdown': ['prettier'],
 " let g:ale_virtualtext_cursor = 1
 nnoremap <silent> [g :ALEPreviousWrap<CR>
 nnoremap <silent> ]g :ALENextWrap<CR>

@@ -37,19 +37,22 @@ div.white-theme {
   margin: 0 0;
   padding: 4px 8px;
   font-size: 0.8em;
-  opacity: 0.6;
+  opacity: 0.7;
   transition: 0.3s;
 }
-.block-properties:hover {
-  opacity: 1;
-}
+/* .block-properties:hover { */
+/*   opacity: 1; */
+/* } */
 
 .block-ref {
-  background-color: var(--c-block-ref-background-color);
+  /* background-color: var(--c-block-ref-background-color); */
   /* border-left: 0.25em solid; */
-  border-left-color: var(--ls-block-ref-link-text-color);
-  padding-left: 0.25em;
-  border-bottom: 2px dotted;
+  /* border-left-color: var(--ls-block-ref-link-text-color); */
+  padding: 0 0;
+  border-bottom: 1px dotted;
+}
+.block-ref::before {
+  content: '⎗ ';
 }
 
 a.external-link {

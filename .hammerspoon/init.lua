@@ -24,9 +24,9 @@ end)
 hs.loadSpoon("AppWindowSwitcher")
     :bindHotkeys({
         ["iTerm2"]  = {meh, "t"},
-        ["Outlook"] = {meh, "e"},
+        [{"Outlook", "Microsoft Outlook"}] = {meh, "e"},
         ["Slack"] = {meh, "c"},
-        ["Microsoft Edge"] = {meh, "b"},
+        [{ "Microsoft Edge", "Google Chrome", "Arc" }] = {meh, "b"},
         ["Microsoft Teams"] = {meh, "v"},
         ["Logseq"] = {meh, "q"},
         ["Spotify"] = {meh, "m"}
@@ -53,6 +53,11 @@ hs.hotkey.bind(meh, "n", function()
 --         logger.i(k, v)
 --     end
 end)
+
+hs.hotkey.bind({"alt"}, "h", hs.window.filter.focusWest)
+hs.hotkey.bind({"alt"}, "l", hs.window.filter.focusEast)
+hs.hotkey.bind({"alt"}, "j", hs.window.filter.focusSouth)
+hs.hotkey.bind({"alt"}, "k", hs.window.filter.focusNorth)
 
 hs.hotkey.bind(meh, "g", function()
     hs.grid.toggleShow()
