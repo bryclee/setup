@@ -26,6 +26,21 @@ div.white-theme {
   --ls-block-properties-background-color: rgba(150, 160, 180, 0.1);
   --ls-page-checkbox-color: #9dbbd8;
   --ls-page-checkbox-border-color: #7d9bb8;
+  --color-level-1: rgba(150, 160, 180, 0.1);
+}
+
+/* Styling that helps make the right sidebar appear with same background color, and slims down the margin */
+.color-level, .color-level .color-level, .color-level .color-level .color-level, .color-level .color-level .color-level .color-level {
+  background-color: var(--color-level-1);
+}
+.cp__right-sidebar, .cp__right-sidebar-topbar, .sidebar-item {
+  background-color: unset;
+}
+.sidebar-item.content > .flex-col > .flex-row:nth-child(1) {
+  margin-left: 5px;
+}
+.sidebar-item .initial {
+  margin-left: -20px;
 }
 
 :not(pre) > code {
