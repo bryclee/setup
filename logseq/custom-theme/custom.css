@@ -1,8 +1,7 @@
 @import url('https://cdn.jsdelivr.net/gh/adobe-fonts/source-sans@3.046R/source-sans-3VF.css');
 
 :root {
-  --ls-font-family: 'Only Emoji', 'Source Sans 3 VF', 'Source Han Sans VF',
-    sans-serif;
+  --ls-font-family: 'Source Sans 3 VF', 'Source Han Sans VF', sans-serif;
 }
 
 html,
@@ -67,7 +66,7 @@ div.white-theme {
   border-bottom: 1px dotted;
 }
 .block-ref::before {
-  content: '⎗ ';
+  content: '⎘ ';
 }
 
 a.external-link {
