@@ -2,6 +2,7 @@
 
 :root {
   --ls-font-family: 'Source Sans 3 VF', 'Source Han Sans VF', sans-serif;
+  --ls-main-content-max-width: 1000px;
 }
 
 html,
@@ -67,6 +68,9 @@ div.white-theme {
 }
 .block-ref::before {
   content: '⎘ ';
+}
+.block-ref .time-spent {
+  display: none;
 }
 
 a.external-link {

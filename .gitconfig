@@ -21,3 +21,4 @@
 	ff = only
 [push]
 	default = upstream
+	autoSetupRemote = true

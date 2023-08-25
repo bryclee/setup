@@ -13,7 +13,7 @@ hs.grid.HINTS = {
 hs.grid.setMargins("0x0")
 hs.window.animationDuration = 0
 
-hs.alert.show("Hammerspoon config loaded")
+-- hs.alert.show("Hammerspoon config loaded")
 hs.hotkey.bind(hyper, "R", function()
     hs.reload()
 end)
@@ -47,11 +47,6 @@ hs.hotkey.bind(meh, "n", function()
     nextScreen = currentScreen:next()
     windows = hs.window.filter.new():setScreens(nextScreen:id()):getWindows()
     windows[1]:focus()
--- hs.hotkey.bind(meh, "j", function()
---     windows = hs.window.filter.defaultCurrentSpace:getWindows()
---     for k,v in pairs(windows) do
---         logger.i(k, v)
---     end
 end)
 
 hs.hotkey.bind({"alt"}, "h", hs.window.filter.focusWest)
