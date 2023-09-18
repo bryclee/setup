@@ -1,13 +1,13 @@
 @import url('https://cdn.jsdelivr.net/gh/adobe-fonts/source-sans@3.046R/source-sans-3VF.css');
 
 :root {
-  --ls-font-family: 'Source Sans 3 VF', 'Source Han Sans VF', sans-serif;
-  --ls-main-content-max-width: 1000px;
+  /* --ls-font-family: 'Source Sans 3 VF', 'Source Han Sans VF', sans-serif; */
+  /* --ls-main-content-max-width: 1000px; */
 }
 
 html,
 body {
-  // font-size: 14px;
+  font-size: 14px;
 }
 
 body {
@@ -36,6 +36,13 @@ div.white-theme {
 .cp__right-sidebar, .cp__right-sidebar-topbar, .sidebar-item {
   background-color: unset;
 }
+.cp__right-sidebar .sidebar-item.item-type-block .sidebar-item-header {
+  background: linear-gradient(0deg,transparent,var(--color-level-1));
+}
+.cp__right-sidebar .sidebar-item.collapsed.item-type-block .sidebar-item-header {
+  background: var(--color-level-1);
+}
+
 .sidebar-item.content > .flex-col > .flex-row:nth-child(1) {
   margin-left: 5px;
 }
@@ -69,8 +76,14 @@ div.white-theme {
 .block-ref::before {
   content: '⎘ ';
 }
-.block-ref .time-spent {
-  display: none;
+/* .block-ref .time-spent { */
+/*   display: none; */
+/* } */
+.block-ref .block-content-inner, .block-ref .block-content-inner>*, .block-ref div {
+  display: inline;
+}
+.block-ref div {
+  display: inline;
 }
 
 a.external-link {

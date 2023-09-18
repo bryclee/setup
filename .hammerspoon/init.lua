@@ -4,12 +4,12 @@ hyper = {"alt","shift","ctrl"}
 logger = hs.logger.new('bryalee', 'debug')
 
 hs.grid.setGrid("6x2")
-hs.grid.HINTS = {
-    {'1', '2', '3', '4', '5', '6'},
-    {'1', '2', '3', '4', '5', '6'},
-    {'W', 'F', 'P', 'L', 'U', 'Y'},
-    {'R', 'S', 'T', 'N', 'E', 'I'}
-}
+-- hs.grid.HINTS = {
+--     {'1', '2', '3', '4', '5', '6'},
+--     {'1', '2', '3', '4', '5', '6'},
+--     {'W', 'F', 'P', 'L', 'U', 'Y'},
+--     {'R', 'S', 'T', 'N', 'E', 'I'}
+-- }
 hs.grid.setMargins("0x0")
 hs.window.animationDuration = 0
 
