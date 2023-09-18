@@ -46,7 +46,7 @@ div.white-theme {
 .sidebar-item.content > .flex-col > .flex-row:nth-child(1) {
   margin-left: 5px;
 }
-.sidebar-item .initial {
+.sidebar-item .page > .relative {
   margin-left: -20px;
 }
 
