@@ -79,7 +79,7 @@ if &background == "light"
   hi Underlined cterm=underline ctermfg=darkblue
   hi Title cterm=bold ctermfg=darkmagenta
   " hi Search ctermbg=lightyellow
-  hi CursorHold ctermbg=lightgray
+  hi CursorHold cterm=underline ctermbg=none
   hi CursorColumn ctermbg=lightgray
 
   hi markdownCode ctermfg=red ctermbg=none
@@ -124,7 +124,7 @@ else
   hi Underlined cterm=underline ctermfg=cyan
   hi Title cterm=bold ctermfg=magenta
   " hi Search ctermbg=yellow
-  hi CursorHold ctermbg=0
+  hi CursorHold cterm=underline ctermbg=none
   hi CursorColumn ctermbg=8
 
   hi MoreMsg ctermfg=green

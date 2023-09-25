@@ -53,6 +53,7 @@ Plug 'plasticboy/vim-markdown'
 
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-peekaboo'
 
 " Install Coc. Install yarn if not already installed
 function! InstallCoc()
@@ -135,7 +136,7 @@ endfun
 " Search
 set incsearch
 set hlsearch
-nnoremap <silent> <leader><leader> :nohl<CR><Esc>
+nnoremap <silent> <leader>h :nohl<CR><Esc>
 
 " Use ag for search
 if executable('rg')
