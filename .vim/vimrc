@@ -81,7 +81,11 @@ else
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'ThePrimeagen/harpoon'
-  Plug 'brenoprata10/nvim-highlight-colors'
+
+  " let g:loaded_netrw = 1
+  " let g:loaded_netrwPlugin = 1
+  Plug 'nvim-tree/nvim-tree.lua'
+  Plug 'nvim-tree/nvim-web-devicons'
 
   " Clojure REPL support. Not entirely sure if it works as expected though
   " Plug 'Olical/conjure'
@@ -231,7 +235,7 @@ function! UntilBufferChange(cmd)
 endfunction
 
 " Populate edit command relative to the current file
-map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+map <leader>me :e <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>md :!mkdir <C-R>=expand("%:p:h") . "/" <CR>
 
 nnoremap <silent> <C-f> :silent !tmux neww tmux-s<CR>
