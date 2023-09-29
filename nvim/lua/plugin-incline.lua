@@ -1,4 +1,12 @@
 require('incline').setup({
+  window = {
+    winhighlight = {
+      active = { Normal = 'StatusLine' },
+    },
+  },
+  hide = {
+    cursorline = 'focused_win'
+  },
   -- https://github.com/yuki-yano/coc-nav/issues/2
   render = function(props)
     local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
