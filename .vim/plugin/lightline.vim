@@ -42,9 +42,9 @@ let g:lightline#colorscheme#custom#palette = lightline#colorscheme#flatten(s:p)
 function! CodeStatus() abort
   let info = ale#statusline#Count(bufnr('%'))
   let msgs = []
-  if len(get(b:, 'coc_current_function', ''))
-    call add(msgs, get(b:, 'coc_current_function', ''))
-  endif
+  " if len(get(b:, 'coc_current_function', ''))
+  "   call add(msgs, get(b:, 'coc_current_function', ''))
+  " endif
   if get(info, 'error', 0)
     call add(msgs, '!' . info['error'])
   endif
@@ -57,6 +57,16 @@ function! CodeStatus() abort
   return join(msgs, ' >')
 endfunction
 
+function! NavFilename() abort
+  if exists('b:coc_nav') && len(b:coc_nav)
+    let nav_path = map(copy(b:coc_nav), 'v:val.name')
+    call insert(nav_path, expand('%:t'), 0)
+    return join(nav_path, ' > ')
+  else
+    return expand('%')
+  endif
+endfunction
+
 let g:lightline = {
   \   'colorscheme': 'custom',
   \   'active': {
@@ -64,13 +74,24 @@ let g:lightline = {
   \               [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
   \     'right': [ [ 'percent', 'lineinfo' ], [ 'codestatus', 'filetype' ] ]
   \   },
+  \   'inactive': {
+  \     'left': [ [ 'filename', 'modified' ] ],
+  \     'right': [ [ 'lineinfo' ], [ 'percent' ] ] },
   \   'component': {
-  \     'filename': '%<%f'
+  \     'filename': '%<%{NavFilename()}'
   \   },
   \   'component_function': {
   \     'gitbranch': 'FugitiveHead',
   \     'codestatus': 'CodeStatus'
   \   },
   \  }
+
+let g:lightline.mode_map = {
+      \ 'n': 'N',
+      \ 'i': 'I',
+      \ 'R': 'R',
+      \ 'v': 'V',
+      \ 'V': 'V'
+      \ }
 
 set noshowmode
