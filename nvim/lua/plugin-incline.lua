@@ -29,3 +29,5 @@ require('incline').setup({
     }
   end
 })
+
+vim.opt.laststatus = 3
