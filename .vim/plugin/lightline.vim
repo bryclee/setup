@@ -57,15 +57,16 @@ function! CodeStatus() abort
   return join(msgs, ' >')
 endfunction
 
-function! NavFilename() abort
-  if exists('b:coc_nav') && len(b:coc_nav)
-    let nav_path = map(copy(b:coc_nav), 'v:val.name')
-    call insert(nav_path, expand('%:t'), 0)
-    return join(nav_path, ' > ')
-  else
-    return expand('%')
-  endif
-endfunction
+" Moved to incline config
+" function! NavFilename() abort
+"   if exists('b:coc_nav') && len(b:coc_nav)
+"     let nav_path = map(copy(b:coc_nav), 'v:val.name')
+"     call insert(nav_path, expand('%:t'), 0)
+"     return join(nav_path, ' > ')
+"   else
+"     return expand('%')
+"   endif
+" endfunction
 
 let g:lightline = {
   \   'colorscheme': 'custom',
@@ -78,7 +79,7 @@ let g:lightline = {
   \     'left': [ [ 'filename', 'modified' ] ],
   \     'right': [ [ 'lineinfo' ], [ 'percent' ] ] },
   \   'component': {
-  \     'filename': '%<%{NavFilename()}'
+  \     'filename': '%<%f'
   \   },
   \   'component_function': {
   \     'gitbranch': 'FugitiveHead',

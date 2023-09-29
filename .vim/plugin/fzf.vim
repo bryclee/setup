@@ -57,9 +57,9 @@ command! -bang -nargs=? -complete=dir BLines
 " ========
 " Mappings
 
-nnoremap <silent> <C-T> :FZF<CR>
-nnoremap <silent> <C-P> :Buffers<CR>
-nnoremap <leader>t :AllFiles<CR>
+nnoremap <silent> <leader>t :FZF<CR>
+nnoremap <silent> <leader>p :Buffers<CR>
+nnoremap <silent> <leader>T :AllFiles<CR>
 nnoremap <silent> <leader>o :Jumps2<CR>
 nnoremap <silent> <leader>/ :BLines<CR>
 nnoremap <silent> <leader>p :Lines<CR>
