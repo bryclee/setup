@@ -39,6 +39,8 @@ let s:p.tabline.right = copy(s:p.normal.right)
 
 let g:lightline#colorscheme#custom#palette = lightline#colorscheme#flatten(s:p)
 
+let s:bracketSep =  ' 〉'
+
 function! CodeStatus() abort
   let info = ale#statusline#Count(bufnr('%'))
   let msgs = []
@@ -54,35 +56,35 @@ function! CodeStatus() abort
   if len(get(g:, 'coc_status', ''))
     call add(msgs, get(g:, 'coc_status', ''))
   endif
-  return join(msgs, ' >')
+  return join(msgs, s:bracketSep)
 endfunction
 
-" Moved to incline config
-" function! NavFilename() abort
-"   if exists('b:coc_nav') && len(b:coc_nav)
-"     let nav_path = map(copy(b:coc_nav), 'v:val.name')
-"     call insert(nav_path, expand('%:t'), 0)
-"     return join(nav_path, ' > ')
-"   else
-"     return expand('%')
-"   endif
-" endfunction
+function! NavFilename() abort
+  if exists('b:coc_nav') && len(b:coc_nav)
+    let nav_path = map(copy(b:coc_nav), 'v:val.name')
+    call insert(nav_path, expand('%:t'), 0)
+    return join(nav_path, s:bracketSep)
+  else
+    let fname = expand('%')
+    return len(fname) ? fname : '[No Name]'
+  endif
+endfunction
 
 let g:lightline = {
   \   'colorscheme': 'custom',
   \   'active': {
   \     'left': [ [ 'mode', 'paste' ],
-  \               [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-  \     'right': [ [ 'percent', 'lineinfo' ], [ 'codestatus', 'filetype' ] ]
+  \               [ 'readonly', 'filename', 'modified' ] ],
+  \     'right': [ [ 'percent', 'lineinfo' ], [ 'codestatus', 'filetype', 'gitbranch' ] ]
   \   },
   \   'inactive': {
   \     'left': [ [ 'filename', 'modified' ] ],
   \     'right': [ [ 'lineinfo' ], [ 'percent' ] ] },
   \   'component': {
-  \     'filename': '%<%f'
+  \     'filename': '%<%{NavFilename()}',
+  \     'gitbranch': 'ᛘ %{FugitiveHead()}',
   \   },
   \   'component_function': {
-  \     'gitbranch': 'FugitiveHead',
   \     'codestatus': 'CodeStatus'
   \   },
   \  }
@@ -94,5 +96,7 @@ let g:lightline.mode_map = {
       \ 'v': 'V',
       \ 'V': 'V'
       \ }
+
+let g:lightline.subseparator = { 'left': '│', 'right': '│' }
 
 set noshowmode
