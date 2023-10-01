@@ -84,7 +84,7 @@ let g:lightline = {
   \     'right': [ [ 'lineinfo' ], [ 'percent' ] ] },
   \   'component': {
   \     'filename': '%<%{NavFilename()}',
-  \     'gitbranch': 'ᛘ %{FugitiveHead()}',
+  \     'gitbranch': '⤠ %{FugitiveHead()}',
   \   },
   \   'component_function': {
   \     'codeinfo': 'CodeInfo'
