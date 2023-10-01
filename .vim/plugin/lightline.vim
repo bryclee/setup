@@ -41,7 +41,7 @@ let g:lightline#colorscheme#custom#palette = lightline#colorscheme#flatten(s:p)
 
 let s:bracketSep =  ' 〉'
 
-function! CodeStatus() abort
+function! CodeInfo() abort
   let info = ale#statusline#Count(bufnr('%'))
   let msgs = []
   " if len(get(b:, 'coc_current_function', ''))
@@ -55,6 +55,8 @@ function! CodeStatus() abort
   endif
   if len(get(g:, 'coc_status', ''))
     call add(msgs, get(g:, 'coc_status', ''))
+  else
+    call add(msgs, &ft)
   endif
   return join(msgs, s:bracketSep)
 endfunction
@@ -75,7 +77,7 @@ let g:lightline = {
   \   'active': {
   \     'left': [ [ 'mode', 'paste' ],
   \               [ 'readonly', 'filename', 'modified' ] ],
-  \     'right': [ [ 'percent', 'lineinfo' ], [ 'codestatus', 'filetype', 'gitbranch' ] ]
+  \     'right': [ [ 'percent', 'lineinfo' ], [ 'codeinfo', 'gitbranch' ] ]
   \   },
   \   'inactive': {
   \     'left': [ [ 'filename', 'modified' ] ],
@@ -85,7 +87,7 @@ let g:lightline = {
   \     'gitbranch': 'ᛘ %{FugitiveHead()}',
   \   },
   \   'component_function': {
-  \     'codestatus': 'CodeStatus'
+  \     'codeinfo': 'CodeInfo'
   \   },
   \  }
 
