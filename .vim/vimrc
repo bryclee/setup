@@ -34,7 +34,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-unimpaired'
-Plug 'henrik/vim-indexed-search'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'justinmk/vim-dirvish'
@@ -141,6 +140,7 @@ endfun
 " Search
 set incsearch
 set hlsearch
+" set shortmess-=S " maybe needed for vim, but not for neovim
 nnoremap <silent> <leader>h :nohl<CR><Esc>
 
 " Use ag for search
@@ -185,12 +185,12 @@ set expandtab " tab to spaces
 set backupcopy=yes
 
 " Bind j and k to move by visual line if text is there
-nnoremap j gj
-nnoremap k gk
-nnoremap gj j
-nnoremap gk k
-nnoremap <Down> gj
-nnoremap <Up> gk
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+nnoremap <silent> gj j
+nnoremap <silent> gk k
+nnoremap <silent> <Down> gj
+nnoremap <silent> <Up> gk
 
 " Center after navigating to next/previous
 " nnoremap n nzz
