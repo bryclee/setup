@@ -48,7 +48,7 @@ endfunction
 
 command! Jumps2 call Jumplist()
 
-command! -bang -nargs=? -complete=dir BLines
+command! -bang -nargs=? -complete=dir BLines2
       \ call fzf#vim#buffer_lines(<q-args>, {
       \ 'window': {'width': 1, 'height': 0.4, 'relative': v:true, 'yoffset': 1.0},
       \ 'options': ['--no-sort', '--scroll-off=3', '--bind', 'load:pos(' . line('.') . ')']
@@ -61,7 +61,7 @@ nnoremap <silent> <leader>t :FZF<CR>
 nnoremap <silent> <leader>p :Buffers<CR>
 nnoremap <silent> <leader>T :AllFiles<CR>
 nnoremap <silent> <leader>o :Jumps2<CR>
-nnoremap <silent> <leader>/ :BLines<CR>
+nnoremap <silent> <leader>/ :BLines2<CR>
 
 " An action can be a reference to a function that processes selected lines
 function! s:build_quickfix_list(lines)

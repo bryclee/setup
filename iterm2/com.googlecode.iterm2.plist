@@ -3882,13 +3882,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.42745098039215684</real>
+				<real>0.61568627450980395</real>
 				<key>Color Space</key>
 				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.14901960784313725</real>
+				<real>0.40000000000000002</real>
 				<key>Red Component</key>
-				<real>0.83137254901960789</real>
+				<real>0.94901960784313721</real>
 			</dict>
 			<key>Ansi 1 Color (Dark)</key>
 			<dict>
@@ -3917,7 +3917,7 @@
 				<key>Color Space</key>
 				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.25490196078431371</real>
+				<real>0.44313725490196076</real>
 				<key>Red Component</key>
 				<real>0.0</real>
 			</dict>
@@ -3944,13 +3944,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.094117647058823528</real>
+				<real>0.2196078431372549</real>
 				<key>Color Space</key>
 				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.1803921568627451</real>
+				<real>0.30588235294117649</real>
 				<key>Red Component</key>
-				<real>0.33333333333333331</real>
+				<real>0.45882352941176469</real>
 			</dict>
 			<key>Ansi 11 Color (Dark)</key>
 			<dict>
@@ -3979,7 +3979,7 @@
 				<key>Color Space</key>
 				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.24705882352941178</real>
+				<real>0.37254901960784315</real>
 				<key>Red Component</key>
 				<real>0.0</real>
 			</dict>
@@ -4037,13 +4037,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.42362082004547119</real>
+				<real>0.41568627450980394</real>
 				<key>Color Space</key>
 				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.41327735781669617</real>
+				<real>0.38039215686274508</real>
 				<key>Red Component</key>
-				<real>0.30905786156654358</real>
+				<real>0.18431372549019609</real>
 			</dict>
 			<key>Ansi 14 Color (Dark)</key>
 			<dict>
@@ -4103,7 +4103,7 @@
 				<key>Color Space</key>
 				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.50588235294117645</real>
+				<real>0.56862745098039214</real>
 				<key>Red Component</key>
 				<real>0.0</real>
 			</dict>
@@ -4993,7 +4993,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<false/>
 			<key>Normal Font</key>
-			<string>FiraCodeRoman-Regular 13</string>
+			<string>FiraCodeNFM-Reg 13</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Option Key Sends</key>

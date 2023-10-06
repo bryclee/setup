@@ -23,7 +23,7 @@ end)
 
 hs.loadSpoon("AppWindowSwitcher")
     :bindHotkeys({
-        ["iTerm2"]  = {meh, "t"},
+        [{"iTerm2", "Code"}]  = {meh, "t"},
         [{"Outlook", "Microsoft Outlook"}] = {meh, "e"},
         ["Slack"] = {meh, "c"},
         [{ "Microsoft Edge", "Google Chrome", "Arc" }] = {meh, "b"},
