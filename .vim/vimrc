@@ -241,6 +241,11 @@ map <leader>md :!mkdir <C-R>=expand("%:p:h") . "/" <CR>
 
 nnoremap <silent> <C-f> :silent !tmux neww tmux-s<CR>
 
+augroup EasyClose
+  autocmd!
+  au FileType qf,help,fugitive noremap <buffer> q :q<CR>
+augroup END
+
 " After we're done with all the common config, check if there's a system local
 " config to source
 if filereadable(expand('~/.vimrc_local'))
