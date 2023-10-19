@@ -3,18 +3,19 @@ hyper = {"alt","shift","ctrl"}
 
 logger = hs.logger.new('bryalee', 'debug')
 
-hs.grid.setGrid("6x2")
--- hs.grid.HINTS = {
---     {'1', '2', '3', '4', '5', '6'},
---     {'1', '2', '3', '4', '5', '6'},
---     {'W', 'F', 'P', 'L', 'U', 'Y'},
---     {'R', 'S', 'T', 'N', 'E', 'I'}
--- }
+hs.grid.setGrid("6x4")
+hs.grid.HINTS = {
+    {'1', '2', '3', '4', '5', '6'},
+    {'1', '2', '3', '4', '5', '6'},
+    {'Q', 'W', 'E', 'R', 'T', 'Y'},
+    {'A', 'S', 'D', 'F', 'G', 'H'},
+    {'Z', 'X', 'C', 'V', 'B', 'N'}
+}
 hs.grid.setMargins("0x0")
 hs.window.animationDuration = 0
 
 -- hs.alert.show("Hammerspoon config loaded")
-hs.hotkey.bind(hyper, "R", function()
+hs.hotkey.bind(hyper, "r", function()
     hs.reload()
 end)
 hs.keycodes.inputSourceChanged(function()
