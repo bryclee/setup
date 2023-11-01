@@ -85,7 +85,7 @@ else
   " let g:loaded_netrwPlugin = 1
   Plug 'nvim-tree/nvim-tree.lua'
   Plug 'nvim-tree/nvim-web-devicons'
-  Plug 'b0o/incline.nvim'
+  " Plug 'b0o/incline.nvim'
 
   " Clojure REPL support. Not entirely sure if it works as expected though
   " Plug 'Olical/conjure'

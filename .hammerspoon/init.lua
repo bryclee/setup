@@ -14,7 +14,7 @@ hs.grid.HINTS = {
 hs.grid.setMargins("0x0")
 hs.window.animationDuration = 0
 
--- hs.alert.show("Hammerspoon config loaded")
+hs.alert.show("Hammerspoon config loaded")
 hs.hotkey.bind(hyper, "r", function()
     hs.reload()
 end)
@@ -24,7 +24,8 @@ end)
 
 hs.loadSpoon("AppWindowSwitcher")
     :bindHotkeys({
-        [{"iTerm2", "Code"}]  = {meh, "t"},
+        [{"iTerm2"}]  = {meh, "t"},
+        [{"Code", "IntelliJ IDEA"}] = {meh, "i"},
         [{"Outlook", "Microsoft Outlook"}] = {meh, "e"},
         ["Slack"] = {meh, "c"},
         [{ "Microsoft Edge", "Google Chrome", "Arc" }] = {meh, "b"},
@@ -50,10 +51,10 @@ hs.hotkey.bind(meh, "n", function()
     windows[1]:focus()
 end)
 
-hs.hotkey.bind({"alt"}, "h", hs.window.filter.focusWest)
-hs.hotkey.bind({"alt"}, "l", hs.window.filter.focusEast)
-hs.hotkey.bind({"alt"}, "j", hs.window.filter.focusSouth)
-hs.hotkey.bind({"alt"}, "k", hs.window.filter.focusNorth)
+hs.hotkey.bind({"alt"}, "h", function() hs.window.filter.focusWest(nil, true) end)
+hs.hotkey.bind({"alt"}, "l", function() hs.window.filter.focusEast(nil, true) end)
+hs.hotkey.bind({"alt"}, "j", function() hs.window.filter.focusSouth(nil, true) end)
+hs.hotkey.bind({"alt"}, "k", function() hs.window.filter.focusNorth(nil, true) end)
 
 hs.hotkey.bind(meh, "g", function()
     hs.grid.toggleShow()
@@ -63,11 +64,23 @@ hs.hotkey.bind(meh, "=", function()
     hs.grid.maximizeWindow(hs.window.focusedWindow())
 end)
 
+local spaces = require('hs.spaces')
+function MoveWindowToSpace(sp)
+    local spaceId = spaces.spacesForScreen()[sp]
+    spaces.moveWindowToSpace(hs.window.focusedWindow():id(), spaceId)
+    spaces.gotoSpace(spaceId)
+    hs.eventtap.keyStroke({}, 'esc')
+end
+
+hs.hotkey.bind(hyper, '1', function() MoveWindowToSpace(1) end)
+hs.hotkey.bind(hyper, '2', function() MoveWindowToSpace(2) end)
+hs.hotkey.bind(hyper, '3', function() MoveWindowToSpace(3) end)
+hs.hotkey.bind(hyper, '4', function() MoveWindowToSpace(4) end)
+
 hs.hotkey.bind(hyper, "u", function()
     hs.eventtap.keyStrokes("thisisunsafe")
 end)
 
-hs.hotkey.showHotkeys(meh, "/")
 hs.hints.style = 'vimperator'
 hs.hints.fontSize = '10.0'
 hs.hints.showTitleThresh = 0

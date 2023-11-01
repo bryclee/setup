@@ -62,7 +62,7 @@ function! CodeInfo() abort
 endfunction
 
 function! NavFilename() abort
-  if exists('b:coc_nav') && len(b:coc_nav)
+  if has("nvim") && exists('b:coc_nav') && len(b:coc_nav)
     let nav_path = map(copy(b:coc_nav), 'v:val.name')
     call insert(nav_path, expand('%:t'), 0)
     return join(nav_path, s:bracketSep)
@@ -102,3 +102,7 @@ let g:lightline.mode_map = {
 let g:lightline.subseparator = { 'left': '│', 'right': '│' }
 
 set noshowmode
+if has("nvim")
+  set winbar=%f
+  set laststatus=3
+endif

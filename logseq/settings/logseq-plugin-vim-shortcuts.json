@@ -1,0 +1,73 @@
+{
+  "enableVisualModeIndicator": false,
+  "showRecentEmojis": false,
+  "disabled": false,
+  "keyBindings": {
+    "bottom": "shift+g",
+    "changeCase": false,
+    "changeCaseUpper": false,
+    "changeCaseLower": false,
+    "collapse": false,
+    "collapseAll": false,
+    "copyCurrentBlockContent": "y y",
+    "copyCurrentBlockRef": false,
+    "deleteCurrentBlock": "shift+d",
+    "deleteCurrentAndNextSiblingBlocks": false,
+    "deleteCurrentAndPrevSiblingBlocks": false,
+    "down": "j",
+    "extend": false,
+    "extendAll": false,
+    "highlightFocusIn": "l",
+    "highlightFocusOut": "h",
+    "indent": false,
+    "insert": [
+      "shift+a",
+      "a"
+    ],
+    "insertBefore": [
+      "shift+i",
+      "i"
+    ],
+    "nextNewBlock": "o",
+    "nextSibling": "shift+j",
+    "outdent": false,
+    "pasteNext": false,
+    "pastePrev": false,
+    "prevNewBlock": "shift+o",
+    "prevSibling": "shift+k",
+    "redo": false,
+    "search": "/",
+    "searchPrev": "shift+n",
+    "searchNext": "n",
+    "searchCleanup": "s q",
+    "searchBaidu": false,
+    "searchGithub": false,
+    "searchGoogle": false,
+    "searchStackoverflow": false,
+    "searchWikipedia": false,
+    "searchYoutube": false,
+    "top": "shift+t",
+    "undo": false,
+    "up": "k",
+    "exitEditing": [
+      "mod+j mod+j",
+      "ctrl+["
+    ],
+    "jumpInto": "mod+shift+enter",
+    "joinNextLine": "mod+alt+j",
+    "toggleVisualMode": "ctrl+v",
+    "markSave": "m",
+    "markJump": "'",
+    "markJumpSidebar": "mod+'",
+    "increase": false,
+    "decrease": false,
+    "cut": false,
+    "cutWord": false,
+    "command": [
+      "mod+alt+;",
+      "mod+shift+;"
+    ],
+    "emoji": false
+  },
+  "settingsVersion": "v4"
+}

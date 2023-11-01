@@ -17,14 +17,24 @@ function! CocMappings()
   nmap <silent> <C-W>gd :call CocActionAsync('jumpDefinition', 'tabe')<CR>
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
-  nmap <silent> <leader>R <Plug>(coc-rename)
   nmap <silent> gh :call CocAction('doHover')<CR>
   " <c-space> mapping on vim on mac has issues, this fixes it
   inoremap <silent><expr> <c-space> coc#refresh()
   nmap <silent> [d <Plug>(coc-diagnostic-prev)
   nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
+  nmap <silent> <leader>cr <Plug>(coc-rename)
   nnoremap <silent> <space>co  :call CocAction('showOutline')<CR>
+
+  xmap <leader>ca  <Plug>(coc-codeaction-selected)
+  " nmap <leader>ca  <Plug>(coc-codeaction-selected)
+  nmap <leader>cac <Plug>(coc-codeaction-cursor)
+  nmap <leader>caa <Plug>(coc-codeaction-line)
+  nmap <leader>caf <Plug>(coc-codeaction)
+  nmap <leader>cas <Plug>(coc-codeaction-source)
+  nmap <leader>car  <Plug>(coc-codeaction-refactor)
+  xmap <leader>car <Plug>(coc-codeaction-refactor-selected)
+
 
   autocmd CursorHold * silent call CocActionAsync('highlight')
 endfunction
