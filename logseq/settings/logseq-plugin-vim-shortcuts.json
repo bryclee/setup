@@ -1,5 +1,5 @@
 {
-  "enableVisualModeIndicator": false,
+  "enableVisualModeIndicator": true,
   "showRecentEmojis": false,
   "disabled": false,
   "keyBindings": {
@@ -36,10 +36,10 @@
     "prevNewBlock": "shift+o",
     "prevSibling": "shift+k",
     "redo": false,
-    "search": "/",
-    "searchPrev": "shift+n",
-    "searchNext": "n",
-    "searchCleanup": "s q",
+    "search": false,
+    "searchPrev": false,
+    "searchNext": false,
+    "searchCleanup": false,
     "searchBaidu": false,
     "searchGithub": false,
     "searchGoogle": false,
