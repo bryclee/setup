@@ -1,0 +1,59 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+let mapleader=' '   " Set the leader key
+
+" Do incremental searching.
+set incsearch
+set ignorecase
+set smartcase
+set hlsearch
+
+nnoremap <silent> <leader>h :nohl<CR><Esc>
+" Bind j and k to move by visual line if text is there
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+nnoremap <silent> gj j
+nnoremap <silent> gk k
+nnoremap <silent> <Down> gj
+nnoremap <silent> <Up> gk
+
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+set commentary
+set surround
+set argtextobj
+set textobj-indent
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+map gh <Action>(ShowHoverInfo)
+
+" For joining strings
+set ideajoin
+
+map <leader>e <Action>(SelectInProjectView)
+map <leader>p <Action>(SearchEverywhere)
+map <leader>t <Action>(RecentFiles)
