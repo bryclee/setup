@@ -7,7 +7,7 @@
 
 html,
 body {
-  font-size: 14px;
+  /* font-size: 14px; */
 }
 
 body {
@@ -52,6 +52,11 @@ div.white-theme {
 
 :not(pre) > code {
   font-size: 0.8em;
+}
+
+.bullet-container:not(.typed-list).bullet-closed {
+  border: 1px solid;
+  border-color: var(--lx-gray-08,var(--ls-block-bullet-color,#394b59));
 }
 
 .content .block-properties {
@@ -137,7 +142,7 @@ blockquote {
   filter: hue-rotate(-180deg) brightness(1.05);
 }
 .block-marker {
-  font-weight: initial;
+  /* font-weight: initial; */
 }
 
 #today-queries .custom-query {
