@@ -16,6 +16,8 @@ set incsearch
 set ignorecase
 set smartcase
 set hlsearch
+set visualbell
+set noerrorbells
 
 nnoremap <silent> <leader>h :nohl<CR><Esc>
 " Bind j and k to move by visual line if text is there
@@ -25,6 +27,8 @@ nnoremap <silent> gj j
 nnoremap <silent> gk k
 nnoremap <silent> <Down> gj
 nnoremap <silent> <Up> gk
+
+map <leader>c :bd<CR>
 
 
 " Don't use Ex mode, use Q for formatting.
@@ -50,10 +54,22 @@ set textobj-indent
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 map gh <Action>(ShowHoverInfo)
+map gr <Action>(ShowUsages)
+map <leader>R <Action>(RenameElement)
+map <leader>r <Action>(RefactoringMenu)
+map <leader>. <Action>(ShowIntentionActions)
+
+map <leader>vg <Action>(VcsGroups)
+map <leader>vr <Action>(RunMenu)
+
+map <leader>mf <Action>(NewElementSamePlace)
 
 " For joining strings
 set ideajoin
 
 map <leader>e <Action>(SelectInProjectView)
-map <leader>p <Action>(SearchEverywhere)
+map <leader>p <Action>(GotoFile)
+map <leader>P <Action>(SearchEverywhere)
 map <leader>t <Action>(RecentFiles)
+map [d <Action>(GotoPreviousError)
+map ]d <Action>(GotoNextError)
