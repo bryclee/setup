@@ -59,17 +59,30 @@ map <leader>R <Action>(RenameElement)
 map <leader>r <Action>(RefactoringMenu)
 map <leader>. <Action>(ShowIntentionActions)
 
+" View
 map <leader>vg <Action>(VcsGroups)
-map <leader>vr <Action>(RunMenu)
+" map <leader>vr <Action>(RunMenu)
+" Map to F5 because for some reason, using action doesn't show stop key
+map <leader>vr <F5>
+map <leader>vn <Action>(FileStructurePopup)
+
+" Language
+map <leader>lg <Action>(GenerateGroup)
 
 map <leader>mf <Action>(NewElementSamePlace)
+map <leader>gb <Action>(Annotate)
 
 " For joining strings
 set ideajoin
 
+" Navigation
 map <leader>e <Action>(SelectInProjectView)
 map <leader>p <Action>(GotoFile)
 map <leader>P <Action>(SearchEverywhere)
 map <leader>t <Action>(RecentFiles)
 map [d <Action>(GotoPreviousError)
 map ]d <Action>(GotoNextError)
+map [c <Action>(VcsShowPreviousChangeMarker)
+map ]c <Action>(VcsShowNextChangeMarker)
+map <leader>gn <Action>(NextDiff)
+map <leader>gp <Action>(PreviousDiff)

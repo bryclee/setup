@@ -12,6 +12,10 @@ bindkey "^R" history-incremental-pattern-search-backward
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 zstyle :compinstall filename '/Users/bryalee/.zshrc'
 
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+fi
+
 autoload -Uz compinit
 compinit
 
