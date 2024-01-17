@@ -10,3 +10,6 @@ Session.vim
 
 # Private worktrees
 .wt/
+
+# Run configuration for IntelliJ
+.run/

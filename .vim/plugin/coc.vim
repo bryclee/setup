@@ -23,18 +23,20 @@ function! CocMappings()
   nmap <silent> [d <Plug>(coc-diagnostic-prev)
   nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
-  nmap <silent> <leader>cr <Plug>(coc-rename)
+  nmap <silent> <leader>R <Plug>(coc-rename)
   nnoremap <silent> <space>co  :call CocAction('showOutline')<CR>
 
-  xmap <leader>ca  <Plug>(coc-codeaction-selected)
+  xmap <leader>.  <Plug>(coc-codeaction-selected)
   " nmap <leader>ca  <Plug>(coc-codeaction-selected)
-  nmap <leader>cac <Plug>(coc-codeaction-cursor)
-  nmap <leader>caa <Plug>(coc-codeaction-line)
-  nmap <leader>caf <Plug>(coc-codeaction)
-  nmap <leader>cas <Plug>(coc-codeaction-source)
-  nmap <leader>car  <Plug>(coc-codeaction-refactor)
-  xmap <leader>car <Plug>(coc-codeaction-refactor-selected)
+  nmap <leader>. <Plug>(coc-codeaction-cursor)
+  " " nmap <leader>caa <Plug>(coc-codeaction-line)
+  " nmap <leader>caf <Plug>(coc-codeaction)
+  nmap <leader>ls <Plug>(coc-codeaction-source)
+  nmap <leader>r  <Plug>(coc-codeaction-refactor)
+  xmap <leader>r <Plug>(coc-codeaction-refactor-selected)
 
+  nmap <leader>sn :CocList outline<CR>
+  nmap <leader>ss :CocList symbols<CR>
 
   autocmd CursorHold * silent call CocActionAsync('highlight')
 endfunction

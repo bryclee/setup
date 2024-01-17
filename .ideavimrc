@@ -55,21 +55,27 @@ set textobj-indent
 "map \b <Action>(ToggleLineBreakpoint)
 map gh <Action>(ShowHoverInfo)
 map gr <Action>(ShowUsages)
+map gt <Action>(GotoTest)
+map gD <Action>(EditorPopupMenu.GoTo)
 map <leader>R <Action>(RenameElement)
 map <leader>r <Action>(RefactoringMenu)
 map <leader>. <Action>(ShowIntentionActions)
 
 " View
-map <leader>vg <Action>(VcsGroups)
-" map <leader>vr <Action>(RunMenu)
-" Map to F5 because for some reason, using action doesn't show stop key
-map <leader>vr <F5>
-map <leader>vn <Action>(FileStructurePopup)
+map <leader>vr <Action>(Run)
 
 " Language
 map <leader>lg <Action>(GenerateGroup)
 
+" Make files
 map <leader>mf <Action>(NewElementSamePlace)
+
+" Search
+map <leader>st <Action>(TextSearchAction)
+map <leader>sn <Action>(FileStructurePopup)
+
+" Git
+map <leader>gg <Action>(VcsGroups)
 map <leader>gb <Action>(Annotate)
 
 " For joining strings
@@ -84,5 +90,3 @@ map [d <Action>(GotoPreviousError)
 map ]d <Action>(GotoNextError)
 map [c <Action>(VcsShowPreviousChangeMarker)
 map ]c <Action>(VcsShowNextChangeMarker)
-map <leader>gn <Action>(NextDiff)
-map <leader>gp <Action>(PreviousDiff)
