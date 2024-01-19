@@ -62,7 +62,7 @@ nnoremap <silent> <leader>t :Buffers<CR>
 nnoremap <silent> <leader>P :AllFiles<CR>
 nnoremap <silent> <leader>o :Jumps2<CR>
 nnoremap <silent> <leader>/ :BLines2<CR>
-nnoremap <silent> <leader>st :Rg<CR
+nnoremap <silent> <leader>st :Rg<CR>
 
 " An action can be a reference to a function that processes selected lines
 function! s:build_quickfix_list(lines)
