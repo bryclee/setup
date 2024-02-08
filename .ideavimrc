@@ -73,6 +73,8 @@ map <leader>mf <Action>(NewElementSamePlace)
 " Search
 map <leader>st <Action>(TextSearchAction)
 map <leader>sn <Action>(FileStructurePopup)
+map <leader>sc <Action>(GotoClass)
+map <leader>ss <Action>(GotoSymbol)
 
 " Git
 map <leader>gg <Action>(VcsGroups)

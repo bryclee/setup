@@ -29,6 +29,10 @@ div.white-theme {
   --color-level-1: rgba(150, 160, 180, 0.1);
 }
 
+div.dark-theme {
+  --ls-page-checkbox-border-color: var(--ls-page-checkbox-color);
+}
+
 /* Styling that helps make the right sidebar appear with same background color, and slims down the margin */
 .color-level, .color-level .color-level, .color-level .color-level .color-level, .color-level .color-level .color-level .color-level {
   background-color: var(--color-level-1);
