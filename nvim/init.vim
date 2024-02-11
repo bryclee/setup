@@ -9,6 +9,9 @@ set inccommand=split " Live preview substitute command results
 " Start terminal mode on opening a terminal window
 autocmd TermOpen * startinsert
 
+" Highlight text on yank
+au TextYankPost * silent! lua vim.highlight.on_yank()
+
 lua require('plugin-treesitter')
 " lua require('plugin-telescope')
 " lua require('plugin-lsp')
@@ -17,3 +20,4 @@ lua require('plugin-harpoon')
 " lua require('plugin-highlight-colors')
 lua require('plugin-nvim-tree')
 " lua require('plugin-incline')
+"
