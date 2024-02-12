@@ -33,7 +33,9 @@ div.dark-theme {
   --ls-page-checkbox-border-color: var(--ls-page-checkbox-color);
 }
 
-/* Styling that helps make the right sidebar appear with same background color, and slims down the margin */
+/**
+ * Styling that helps make the right sidebar appear with same background color, and slims down the margin
+ */
 .color-level, .color-level .color-level, .color-level .color-level .color-level, .color-level .color-level .color-level .color-level {
   background-color: var(--color-level-1);
 }
@@ -54,19 +56,29 @@ div.dark-theme {
   margin-left: -20px;
 }
 
-.menu-link.chosen {
+/**
+ * Selection highlights
+ */
+.menu-link.chosen, .cp__themes-installed .it.is-active {
   border-left: 3px solid var(--lx-accent-12);
 }
 
+/**
+ * Code formatting
+ */
 :not(pre) > code {
   font-size: 0.8em;
 }
 
+/**
+ * Fixing bullet threading in some cases (I don't recall which case)
+ */
 .bullet-container:not(.typed-list).bullet-closed {
   border: 1px solid;
   border-color: var(--lx-gray-08,var(--ls-block-bullet-color,#394b59));
 }
 
+/* Resize block properties to make it take less space */
 .content .block-properties {
   display: inline-block;
   margin: 0 0;
@@ -76,6 +88,7 @@ div.dark-theme {
   transition: 0.3s;
 }
 
+/* Block references */
 .block-ref {
   padding: 0 0;
   border-bottom: 1px dotted;
@@ -90,11 +103,13 @@ div.dark-theme {
   display: inline;
 }
 
+/* Links */
 a.external-link {
   border-bottom: 0;
   text-decoration: underline;
 }
 
+/* Priority tasks */
 a.priority {
   display: inline-block;
   padding: 0 7px;
@@ -114,6 +129,7 @@ a.priority[href='#/page/C' i] {
   background-color: #7daf2f;
 }
 
+/* Tag references */
 a.tag {
   padding: 0px 5px;
   border-radius: 3px;
@@ -129,6 +145,7 @@ blockquote {
   padding: 4px 20px;
 }
 
+/* Checkboxes */
 .done {
   text-decoration: none;
 }
@@ -149,10 +166,8 @@ blockquote {
 .waiting > .form-checkbox {
   filter: hue-rotate(-180deg) brightness(1.05);
 }
-.block-marker {
-  /* font-weight: initial; */
-}
 
+/* Today query section */
 #today-queries .custom-query {
 /* .scheduled-deadlines :not(.color-level) .color-level { */
   box-shadow: 0 0 0 2px var(--ls-border-color);
@@ -164,6 +179,7 @@ blockquote {
   font-style: italic;
 }
 
+/* Multi-line code renderers */
 .CodeMirror-scroll {
   padding-top: 5px;
   padding-bottom: 55px;
@@ -186,6 +202,7 @@ blockquote {
   height: 16px;
 }
 
+/* Tooltips/popups */
 .tippy-tooltip > .tippy-tooltip-content {
   box-shadow: 0 0 0 2px var(--ls-border-color);
   border-radius: 10px;
@@ -200,6 +217,7 @@ blockquote {
   pointer-events: visible; // experimental, captures events and prevents from targeting elements behind it (but not within it)
 }
 
+/* Embed blocks */
 .embed-block {
   border: 2px solid var(--ls-border-color);
   border-radius: 0.5em;
