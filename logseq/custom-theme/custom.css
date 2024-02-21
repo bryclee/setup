@@ -53,7 +53,7 @@ div.dark-theme {
   margin-left: 5px;
 }
 .sidebar-item .page > .relative {
-  margin-left: -20px;
+  margin-left: -10px;
 }
 
 /**
@@ -101,6 +101,9 @@ div.dark-theme {
 }
 .block-ref div {
   display: inline;
+}
+.block-ref:has(.done, .canceled) div.timestamp {
+  display: none;
 }
 
 /* Links */

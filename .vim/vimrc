@@ -87,6 +87,9 @@ else
   Plug 'nvim-tree/nvim-web-devicons'
   " Plug 'b0o/incline.nvim'
 
+  " autopair support
+  Plug 'windwp/nvim-autopairs'
+
   " Clojure REPL support. Not entirely sure if it works as expected though
   " Plug 'Olical/conjure'
   " Plug 'tpope/vim-dispatch'
@@ -243,7 +246,7 @@ nnoremap <silent> <C-f> :silent !tmux neww tmux-s<CR>
 
 augroup EasyClose
   autocmd!
-  au FileType qf,help,fugitive,fugitiveblame noremap <buffer> q :q<CR>
+  au FileType qf,help,fugitive,fugitiveblame nnoremap <buffer> <Esc> :q<CR>
 augroup END
 
 " After we're done with all the common config, check if there's a system local

@@ -20,4 +20,4 @@ lua require('plugin-harpoon')
 " lua require('plugin-highlight-colors')
 lua require('plugin-nvim-tree')
 " lua require('plugin-incline')
-"
+lua require('plugin-nvim-autopairs')
