@@ -44,7 +44,7 @@ function fgl() {
     fzf --ansi --no-sort --reverse --tiebreak=index \
     --preview='git show --color=always --pretty=medium $(echo {} | awk '"'"'{print $2}'"'"')' \
     --bind "ctrl-j:down,ctrl-k:up,ctrl-d:page-down,ctrl-u:page-up,J:preview-down,K:preview-up,D:preview-page-down,U:preview-page-up,ctrl-p:toggle-preview" |
-    perl -lne 'if (/\b([a-z0-9]{9})\b/) { print "$1"; exit; }'
+    perl -lne 'if (/([a-z0-9]{9})/) { print "$1"; exit; } else { die }'
   }
 # Git log browser from https://gist.github.com/junegunn/f4fca918e937e6bf5bad
 fgl-view() {

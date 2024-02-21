@@ -6,19 +6,25 @@
     fp = "!f() { git fetch \"$1\" pull/\"$2\"/head:pr-\"$2\"; }; f"
 [credential]
     helper = cache
-[include]
-    path = ~/.gitconfig_local
 [core]
     excludesfile = ~/.gitignore_global
-[merge]
-    tool = vimdiff
+; [diff]
+;     tool = nvimdiff
+; [merge]
+;     tool = nvimdiff
 [hub]
     host = github.paypal.com
     protocol = https
 [init]
     defaultBranch = main
 [pull]
-	ff = only
+    ff = only
 [push]
-	default = upstream
-	autoSetupRemote = true
+    default = upstream
+    autoSetupRemote = true
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[mergetool "vscode"]
+    cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+[include]
+    path = ~/.gitconfig_local
