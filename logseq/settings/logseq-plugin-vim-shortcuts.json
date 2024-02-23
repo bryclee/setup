@@ -3,7 +3,7 @@
   "showRecentEmojis": false,
   "disabled": false,
   "keyBindings": {
-    "bottom": "shift+g",
+    "bottom": "shift+l",
     "changeCase": false,
     "changeCaseUpper": false,
     "changeCaseLower": false,
@@ -46,7 +46,7 @@
     "searchStackoverflow": false,
     "searchWikipedia": false,
     "searchYoutube": false,
-    "top": "shift+t",
+    "top": "shift+h",
     "undo": false,
     "up": "k",
     "exitEditing": [

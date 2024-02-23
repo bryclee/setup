@@ -224,7 +224,7 @@ blockquote {
 .embed-block {
   border: 2px solid var(--ls-border-color);
   border-radius: 0.5em;
-  box-shadow: -0.3em 0.3em 0.1em 0 var(--ls-block-ref-link-text-color);
+  box-shadow: -0.3em 0.3em 0.1em 0 var(--ls-secondary-border-color);
   margin-bottom: 0.5em;
 }
 
