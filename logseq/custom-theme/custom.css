@@ -137,11 +137,17 @@ a.tag {
   padding: 0px 5px;
   border-radius: 3px;
   margin: 2px 0;
-  color: var(--ls-tag-text-color);
-  background-color: var(--bf-tag-background-color);
+  /* color: var(--ls-tag-text-color); */
+  /* background-color: var(--bf-tag-background-color); */
 }
-a.tag:hover {
-  background-color: var(--bf-tag-background-hover-color);
+/* a.tag:hover { */
+/*   background-color: var(--bf-tag-background-hover-color); */
+/* } */
+
+/** Page Refs **/
+:is(a.tag, a.page-ref)[data-ref="inbox"] {
+  color: var(--ls-primary-background-color);
+  background-color: #4477de;
 }
 
 blockquote {
@@ -232,10 +238,4 @@ blockquote {
   color: var(--ls-primary-text-color);
   opacity: 0.6 !important;
   transform: scale(0.9);
-}
-
-/** Page Refs **/
-:is(a.tag, a.page-ref)[data-ref="inbox"] {
-  color: var(--ls-primary-background-color);
-  background-color: #4477de;
 }

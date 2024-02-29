@@ -57,6 +57,7 @@ fgl-view() {
                 {}
 FZF-EOF"
 }
+
 function npmf() {
   local scripts=$(npm run --json | python -c 'import sys, json; print "\n".join(sorted(["\t".join(s) for s in json.load(sys.stdin).items()]))')
   local script=$(echo "$scripts" |
@@ -77,11 +78,3 @@ function npmf() {
 
 # More git aliases composed
 alias grb='git checkout $(fgb)'
-
-# Combine z and fzf
-function zf() {
-  local entries=($(z | sort -n -r | grep "$1" | awk '{print $2}'))
-  local target=$(printf "%s\n" "${entries[@]}" | fzf)
-
-  [[ -n "$target" ]] && _z $target
-}
