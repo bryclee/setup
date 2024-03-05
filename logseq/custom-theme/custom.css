@@ -33,19 +33,25 @@ div.dark-theme {
   --ls-page-checkbox-border-color: var(--ls-page-checkbox-color);
 }
 
-/**
- * Styling that helps make the right sidebar appear with same background color, and slims down the margin
- */
-.color-level, .color-level .color-level, .color-level .color-level .color-level, .color-level .color-level .color-level .color-level {
+/** Styling that helps make the right sidebar appear with same background color,
+ * and slims down the margin */
+.color-level,
+.color-level .color-level,
+.color-level .color-level .color-level,
+.color-level .color-level .color-level .color-level {
   background-color: var(--color-level-1);
 }
-.cp__right-sidebar, .cp__right-sidebar-topbar, .sidebar-item {
+.cp__right-sidebar,
+.cp__right-sidebar-topbar,
+.sidebar-item {
   background-color: unset;
 }
 .cp__right-sidebar .sidebar-item.item-type-block .sidebar-item-header {
-  background: linear-gradient(0deg,transparent,var(--color-level-1));
+  background: linear-gradient(0deg, transparent, var(--color-level-1));
 }
-.cp__right-sidebar .sidebar-item.collapsed.item-type-block .sidebar-item-header {
+.cp__right-sidebar
+  .sidebar-item.collapsed.item-type-block
+  .sidebar-item-header {
   background: var(--color-level-1);
 }
 
@@ -56,29 +62,24 @@ div.dark-theme {
   margin-left: -10px;
 }
 
-/**
- * Selection highlights
- */
-.menu-link.chosen, .cp__themes-installed .it.is-active {
+/** Selection highlights */
+.menu-link.chosen,
+.cp__themes-installed .it.is-active {
   border-left: 3px solid var(--lx-accent-12);
 }
 
-/**
- * Code formatting
- */
+/** Code formatting */
 :not(pre) > code {
   font-size: 0.8em;
 }
 
-/**
- * Fixing bullet threading in some cases (I don't recall which case)
- */
-.bullet-container:not(.typed-list).bullet-closed {
-  border: 1px solid;
-  border-color: var(--lx-gray-08,var(--ls-block-bullet-color,#394b59));
-}
+/** Fixing bullet threading in some cases (I don't recall which case) */
+/* .bullet-container:not(.typed-list).bullet-closed { */
+/*   border: 1px solid; */
+/*   border-color: var(--lx-gray-08, var(--ls-block-bullet-color, #394b59)); */
+/* } */
 
-/* Resize block properties to make it take less space */
+/** Resize block properties to make it take less space */
 .content .block-properties {
   display: inline-block;
   margin: 0 0;
@@ -88,7 +89,7 @@ div.dark-theme {
   transition: 0.3s;
 }
 
-/* Block references */
+/** Block references */
 .block-ref {
   padding: 0 0;
   border-bottom: 1px dotted;
@@ -96,7 +97,9 @@ div.dark-theme {
 .block-ref::before {
   content: '⎘ ';
 }
-.block-ref .block-content-inner, .block-ref .block-content-inner>*, .block-ref div {
+.block-ref .block-content-inner,
+.block-ref .block-content-inner > *,
+.block-ref div {
   display: inline;
 }
 .block-ref div {
@@ -106,13 +109,13 @@ div.dark-theme {
   display: none;
 }
 
-/* Links */
+/** Links */
 a.external-link {
   border-bottom: 0;
   text-decoration: underline;
 }
 
-/* Priority tasks */
+/** Priority tasks */
 a.priority {
   display: inline-block;
   padding: 0 7px;
@@ -132,11 +135,8 @@ a.priority[href='#/page/C' i] {
   background-color: #7daf2f;
 }
 
-/* Tag references */
+/** Tag references */
 a.tag {
-  padding: 0px 5px;
-  border-radius: 3px;
-  margin: 2px 0;
   /* color: var(--ls-tag-text-color); */
   /* background-color: var(--bf-tag-background-color); */
 }
@@ -145,7 +145,13 @@ a.tag {
 /* } */
 
 /** Page Refs **/
-:is(a.tag, a.page-ref)[data-ref="inbox"] {
+:is(a.tag, a.page-ref)[data-ref='inbox'] {
+  /* Common */
+  padding: 0px 5px;
+  border-radius: 3px;
+  margin: 2px 0;
+
+  /* Specific */
   color: var(--ls-primary-background-color);
   background-color: #4477de;
 }
@@ -154,7 +160,7 @@ blockquote {
   padding: 4px 20px;
 }
 
-/* Checkboxes */
+/** Checkboxes */
 .done {
   text-decoration: none;
 }
@@ -176,9 +182,9 @@ blockquote {
   filter: hue-rotate(-180deg) brightness(1.05);
 }
 
-/* Today query section */
+/** Today query section */
 #today-queries .custom-query {
-/* .scheduled-deadlines :not(.color-level) .color-level { */
+  /* .scheduled-deadlines :not(.color-level) .color-level { */
   box-shadow: 0 0 0 2px var(--ls-border-color);
   border-radius: 10px;
   padding: 1em;
@@ -188,7 +194,12 @@ blockquote {
   font-style: italic;
 }
 
-/* Multi-line code renderers */
+/** Separate for daily journal page **/
+hr {
+  margin: 1rem 0;
+}
+
+/** Multi-line code renderers */
 .CodeMirror-scroll {
   padding-top: 5px;
   padding-bottom: 55px;
@@ -211,7 +222,7 @@ blockquote {
   height: 16px;
 }
 
-/* Tooltips/popups */
+/** Tooltips/popups */
 .tippy-tooltip > .tippy-tooltip-content {
   box-shadow: 0 0 0 2px var(--ls-border-color);
   border-radius: 10px;
@@ -226,7 +237,7 @@ blockquote {
   pointer-events: visible; // experimental, captures events and prevents from targeting elements behind it (but not within it)
 }
 
-/* Embed blocks */
+/** Embed blocks */
 .embed-block {
   border: 2px solid var(--ls-border-color);
   border-radius: 0.5em;
