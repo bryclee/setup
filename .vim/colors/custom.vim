@@ -22,6 +22,9 @@ if exists("syntax_on")
   syntax reset
 endif
 
+" Generally, prefer to use dark colors and set terminal colors accordingly
+set background=dark
+
 " Forked off of dim
 let colors_name = "custom"
 

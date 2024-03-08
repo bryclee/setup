@@ -17,20 +17,21 @@ body {
   --c-note-background-color: rgba(150, 160, 180, 0.2);
   --bf-tag-background-color: var(--c-note-background-color);
   --bf-tag-background-hover-color: rgba(120, 160, 200, 0.2);
+  --ls-page-checkbox-border-color: var(--lx-accent-08);
 }
 
-div.light-theme,
-div.white-theme {
+html .light-theme,
+html .white-theme {
   /* --ls-page-inline-code-color: #cb5757; */
   --ls-page-inline-code-bg-color: rgba(135, 131, 120, 0.1);
   --ls-block-properties-background-color: rgba(150, 160, 180, 0.1);
   --ls-page-checkbox-color: #9dbbd8;
-  --ls-page-checkbox-border-color: #7d9bb8;
+  /* --ls-page-checkbox-border-color: #7d9bb8; */
   --color-level-1: rgba(150, 160, 180, 0.1);
 }
 
-div.dark-theme {
-  --ls-page-checkbox-border-color: var(--ls-page-checkbox-color);
+html .dark-theme {
+  /* --ls-page-checkbox-border-color: var(--ls-page-checkbox-color); */
 }
 
 /** Styling that helps make the right sidebar appear with same background color,
