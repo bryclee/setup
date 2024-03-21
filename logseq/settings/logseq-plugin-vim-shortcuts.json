@@ -3,7 +3,7 @@
   "showRecentEmojis": false,
   "disabled": false,
   "keyBindings": {
-    "bottom": "shift+l",
+    "bottom": "shift+g",
     "changeCase": false,
     "changeCaseUpper": false,
     "changeCaseLower": false,
