@@ -112,8 +112,8 @@ html .dark-theme {
 
 /** Links */
 a.external-link {
-  border-bottom: 0;
-  text-decoration: underline;
+  /* border-bottom: 0; */
+  /* text-decoration: underline; */
 }
 
 /** Priority tasks */

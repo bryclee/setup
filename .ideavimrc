@@ -63,6 +63,7 @@ map <leader>. <Action>(ShowIntentionActions)
 
 " View
 map <leader>vr <Action>(Run)
+map <leader>vn <Action>(ShowNavBar)
 
 " Language
 map <leader>lg <Action>(GenerateGroup)

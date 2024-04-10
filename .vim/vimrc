@@ -244,9 +244,12 @@ map <leader>md :!mkdir <C-R>=expand("%:p:h") . "/" <CR>
 
 nnoremap <silent> <C-f> :silent !tmux neww tmux-s<CR>
 
+nmap <leader>gb :Git blame<CR>
+nmap <leader>gg :Git<CR>
+
 augroup EasyClose
   autocmd!
-  au FileType qf,help,fugitive,fugitiveblame nnoremap <buffer> <Esc> :q<CR>
+  au FileType qf,help,fugitive,fugitiveblame nnoremap <buffer> q :q<CR>
 augroup END
 
 " After we're done with all the common config, check if there's a system local
@@ -254,9 +257,3 @@ augroup END
 if filereadable(expand('~/.vimrc_local'))
   source ~/.vimrc_local
 endif
-
-" augroup SyntaxSync
-"   autocmd!
-"   au BufEnter *.js,*.jsx,*.ts,*.tsx,*.graphql syntax sync fromstart
-"   " au BufLeave *.js,*.jsx,*.ts,*.tsx,*.graphql syntax sync clear
-" augroup END
