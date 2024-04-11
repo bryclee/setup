@@ -238,6 +238,8 @@ function! UntilBufferChange(cmd)
   endwhile
 endfunction
 
+map <leader>c :bd<CR>
+
 " Populate edit command relative to the current file
 map <leader>me :e <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>md :!mkdir <C-R>=expand("%:p:h") . "/" <CR>

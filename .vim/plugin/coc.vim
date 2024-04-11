@@ -24,7 +24,7 @@ function! CocMappings()
   nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
   nmap <silent> <leader>R <Plug>(coc-rename)
-  nnoremap <silent> <space>co  :call CocAction('showOutline')<CR>
+  nnoremap <silent> space>vo  :call CocAction('showOutline')<CR>
 
   xmap <leader>.  <Plug>(coc-codeaction-selected)
   " nmap <leader>ca  <Plug>(coc-codeaction-selected)
