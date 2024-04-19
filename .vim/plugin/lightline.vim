@@ -103,6 +103,9 @@ let g:lightline.subseparator = { 'left': '│', 'right': '│' }
 
 set noshowmode
 if has("nvim")
-  set winbar=%f
+  augroup winbar
+    au!
+    autocmd FileType *\(location\|list\|fzf\)\@<! setlocal winbar=%f
+  augroup END
   set laststatus=3
 endif

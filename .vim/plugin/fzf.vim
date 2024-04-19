@@ -78,11 +78,11 @@ let g:fzf_action = {
       \ 'ctrl-v': 'vsplit' }
 
 let g:fzf_layout = {
-      \ 'window': {'width':1, 'height':1, 'relative':v:true}
+      \   'window': { 'width': 120, 'height': 0.9, 'relative': v:true }
       \ }
-let g:fzf_preview_window = ['right,50%,<70(up,40%)', 'ctrl-/']
+let g:fzf_preview_window = ['down,40%', 'ctrl-/']
         " \   'window': 'exec winheight(0)/2."new"'
-  "       \   'window': { 'width': 0.7, 'height': 0.8 }
+      " \ 'window': {'width':1, 'height':1, 'relative':v:true}
 "   let g:fzf_preview_window = 'up:50%'
 " endif
 

@@ -92,7 +92,7 @@ html .dark-theme {
 
 /** Block references */
 .block-ref {
-  padding: 0 0;
+  /* padding: 0 0; */
   border-bottom: 1px dotted;
 }
 .block-ref::before {
