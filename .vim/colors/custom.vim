@@ -29,10 +29,10 @@ set background=dark
 let colors_name = "custom"
 
 " Diff highlighting
-hi DiffAdd        ctermfg=black ctermbg=darkgreen
+hi DiffAdd        ctermfg=none ctermbg=darkcyan
 hi DiffChange     ctermfg=none ctermbg=darkyellow
 hi DiffText       ctermfg=black ctermbg=darkyellow cterm=bold
-hi DiffDelete     ctermfg=black ctermbg=darkred
+hi DiffDelete     ctermfg=none ctermbg=darkmagenta
 
 " hi Visual         ctermfg=white ctermbg=darkcyan
 hi Visual         cterm=standout ctermbg=none
@@ -174,6 +174,11 @@ function! SetPluginHighlights()
   hi link FgCocInfoFloatBgCocFloating CocInfoFloat
   hi link FgCocWarnFloatBgCocFloating CocWarnFloat
   hi link CocListLine CursorLine
+
+  " hi DiagnosticVirtualTextError ctermfg=7
+  hi DiagnosticVirtualTextWarn ctermfg=15
+  hi DiagnosticVirtualTextInfo ctermfg=8
+  hi DiagnosticVirtuaLTextHint ctermfg=8
   hi GitGutterAdd      ctermfg=darkgreen    ctermbg=none
   hi GitGutterChange   ctermfg=darkyellow    ctermbg=none
   hi GitGutterDelete   ctermfg=darkred    ctermbg=none

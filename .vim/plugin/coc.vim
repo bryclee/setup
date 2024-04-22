@@ -9,7 +9,9 @@ function! CocMappings()
   " ===================
   " Set tab completion
   inoremap <silent><expr> <TAB>
-        \ coc#pum#visible() ? coc#_select_confirm() : "\<TAB>"
+        \ coc#pum#visible() ? coc#pum#confirm() : "\<TAB>"
+  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#insert() : "\<CR>"
+  " inoremap <silent><expr> <Esc> coc#pum#visible() ? coc#pum#cancel() : "\<Esc>"
 
   " Go to definition
   nmap <silent> gd <Plug>(coc-definition)
@@ -20,8 +22,8 @@ function! CocMappings()
   nmap <silent> gh :call CocAction('doHover')<CR>
   " <c-space> mapping on vim on mac has issues, this fixes it
   inoremap <silent><expr> <c-space> coc#refresh()
-  nmap <silent> [d <Plug>(coc-diagnostic-prev)
-  nmap <silent> ]d <Plug>(coc-diagnostic-next)
+  " nmap <silent> [d <Plug>(coc-diagnostic-prev)
+  " nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
   nmap <silent> <leader>R <Plug>(coc-rename)
   nnoremap <silent> <leader>vo  :call CocAction('showOutline')<CR>

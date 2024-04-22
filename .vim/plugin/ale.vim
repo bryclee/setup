@@ -23,5 +23,5 @@ let g:ale_fixers = {
 " prettier doesn't quite work the way that I'd like for markdown
 " \ 'markdown': ['prettier'],
 " let g:ale_virtualtext_cursor = 1
-nnoremap <silent> [g :ALEPreviousWrap<CR>
-nnoremap <silent> ]g :ALENextWrap<CR>
+nnoremap <silent> [d :ALEPreviousWrap<CR>
+nnoremap <silent> ]d :ALENextWrap<CR>

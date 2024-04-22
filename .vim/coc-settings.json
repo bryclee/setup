@@ -1,7 +1,10 @@
 {
   "diagnostic.warningSign": "W",
-  "suggest.noselect": true,
+  "diagnostic.displayByAle": true,
+  // "suggest.noselect": true,
   "suggest.autoTrigger": "always",
+  "suggest.removeCurrentWord": true,
+  // "suggest.preferCompleteThanJumpPlaceholder": true,
   // "typescript.suggest.completeFunctionCalls": false,
   //"javascript.suggest.completeFunctionCalls": false,
   "html.autoCreateQuotes": false,
@@ -15,6 +18,7 @@
     }
   },
   "outline.sortBy": "position",
+  "outline.autoWidth": true,
   "list.floatPreview": true,
   "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/17.0.3/clangd_17.0.3/bin/clangd"
 }

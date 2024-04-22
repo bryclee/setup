@@ -105,7 +105,7 @@ set noshowmode
 if has("nvim")
   augroup winbar
     au!
-    autocmd FileType *\(location\|list\|fzf\)\@<! setlocal winbar=%f
+    autocmd FileType *\(location\|list\|fzf\)\@<! setlocal winbar=%f\ %m%r
   augroup END
   set laststatus=3
 endif
