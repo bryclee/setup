@@ -19,7 +19,7 @@ let s:white = [ '#ffffff', 15 ]
 
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 let s:p.normal.left = [ [ s:black, s:blue ], [ s:silver, s:black ] ]
-let s:p.normal.middle = [ [ s:silver, s:gray ] ]
+let s:p.normal.middle = [ [ s:silver, s:black ] ]
 let s:p.normal.right = [ [ s:black, s:blue ], [ s:white, s:gray ] ]
 let s:p.normal.error = [ [ s:black, s:red ] ]
 let s:p.normal.warning = [ [ s:black, s:yellow ] ]

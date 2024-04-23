@@ -129,9 +129,9 @@ function! SetPluginHighlights()
   hi link CocListLine CursorLine
 
   " hi DiagnosticVirtualTextError ctermfg=7
-  hi DiagnosticVirtualTextWarn ctermfg=15
-  hi DiagnosticVirtualTextInfo ctermfg=8
-  hi DiagnosticVirtuaLTextHint ctermfg=8
+  hi DiagnosticVirtualTextWarn ctermfg=8
+  hi DiagnosticVirtualTextInfo ctermfg=7
+  hi DiagnosticVirtuaLTextHint ctermfg=7
   hi GitGutterAdd      ctermfg=darkgreen    ctermbg=none
   hi GitGutterChange   ctermfg=darkyellow    ctermbg=none
   hi GitGutterDelete   ctermfg=darkred    ctermbg=none
