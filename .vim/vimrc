@@ -109,7 +109,7 @@ endif
 call plug#end()
 
 set t_Co=16
-colorscheme custom
+colorscheme custom-nightowl
 
 set updatetime=200 " Write swap file to disk quicker, gives faster diff updates for git-gutter
 set laststatus=2 " Setting statusline configurations
