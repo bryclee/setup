@@ -63,19 +63,19 @@ hi TabLine cterm=underline ctermfg=7 ctermbg=8
 hi TabLineFill cterm=underline ctermbg=0
 hi Directory cterm=bold ctermfg=blue
 
-hi Special ctermfg=blue
+hi Special ctermfg=darkblue
 hi Constant cterm=bold ctermfg=darkcyan
 hi Statement ctermfg=darkred
 hi Operator ctermfg=darkmagenta
 hi Label ctermfg=darkcyan
 hi KeyWord ctermfg=darkmagenta
 hi Conditional  cterm=bold ctermfg=red
-hi StorageClass cterm=bold ctermfg=cyan
-hi Type cterm=bold ctermfg=darkmagenta
+hi StorageClass cterm=bold ctermfg=darkmagenta
+hi Type cterm=none ctermfg=darkmagenta
 hi Identifier   cterm=none ctermfg=none
 hi Boolean cterm=bold ctermfg=red
-hi Function     cterm=none ctermfg=blue
-hi Include cterm=bold ctermfg=blue
+hi Function     cterm=none ctermfg=darkblue
+hi Include cterm=bold ctermfg=darkblue
 hi PreProc ctermfg=red
 hi String ctermfg=red
 hi Underlined cterm=underline ctermfg=cyan
@@ -129,9 +129,9 @@ function! SetPluginHighlights()
   hi link CocListLine CursorLine
 
   " hi DiagnosticVirtualTextError ctermfg=7
-  hi DiagnosticVirtualTextWarn ctermfg=8
-  hi DiagnosticVirtualTextInfo ctermfg=7
-  hi DiagnosticVirtuaLTextHint ctermfg=7
+  hi DiagnosticVirtualTextWarn ctermfg=7 ctermbg=0
+  hi DiagnosticVirtualTextInfo ctermfg=8
+  hi DiagnosticVirtuaLTextHint ctermfg=8
   hi GitGutterAdd      ctermfg=darkgreen    ctermbg=none
   hi GitGutterChange   ctermfg=darkyellow    ctermbg=none
   hi GitGutterDelete   ctermfg=darkred    ctermbg=none
