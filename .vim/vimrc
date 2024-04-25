@@ -154,11 +154,11 @@ elseif executable('ag')
 endif
 
 " Populate current word in search
-nnoremap <leader>w :grep '\b<C-R>=substitute(expand("<cword>"), '#', '\\#', 'g')<CR>\b'<space>
+nnoremap <leader>sw :grep '\b<C-R>=substitute(expand("<cword>"), '#', '\\#', 'g')<CR>\b'<space>
 
 " Autocomplete
 set complete=.,b,u,] " Autocomplete sources
-set wildmode=list:longest " Set autocomplete default replacement behavior
+set wildmode=longest:full " Set autocomplete default replacement behavior
 " set completeopt=menu " How menu shows
 
 " Using splits

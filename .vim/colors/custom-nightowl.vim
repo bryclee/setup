@@ -22,7 +22,8 @@ if exists("syntax_on")
   syntax reset
 endif
 
-" Generally, prefer to use dark colors and set terminal colors accordingly
+" Generally, prefer to use dark colors and set terminal colors accordingly for
+" light mode
 set background=dark
 
 " Forked off of dim, modified based off of https://github.com/sdras/night-owl-vscode-theme
@@ -55,7 +56,8 @@ hi Conceal      ctermfg=8 ctermbg=0
 hi clear SignColumn
 
 hi Comment cterm=italic ctermfg=8
-hi Error ctermfg=0 ctermbg=darkred
+hi Error ctermfg=0 ctermbg=red
+hi ErrorMsg ctermbg=none ctermfg=darkred cterm=standout
 hi CursorLineNr cterm=bold ctermfg=yellow
 hi StatusLine   cterm=bold,reverse ctermfg=blue ctermbg=none
 hi StatusLineNC cterm=underline ctermfg=7 ctermbg=0
@@ -71,7 +73,7 @@ hi Label ctermfg=darkcyan
 hi KeyWord ctermfg=darkmagenta
 hi Conditional  cterm=bold ctermfg=red
 hi StorageClass cterm=bold ctermfg=darkmagenta
-hi Type cterm=none ctermfg=darkmagenta
+hi Type cterm=none ctermfg=darkblue
 hi Identifier   cterm=none ctermfg=none
 hi Boolean cterm=bold ctermfg=red
 hi Function     cterm=none ctermfg=darkblue
@@ -90,21 +92,6 @@ hi Question ctermfg=green
 hi WarningMsg ctermfg=magenta
 
 hi markdownCode ctermfg=yellow ctermbg=none
-
-" Only hi cursorline for current window
-" augroup CursorLineActiveWindow
-"   autocmd!
-"   autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-"   autocmd WinLeave * setlocal nocursorline
-" augroup END
-
-" if &t_Co >= 256
-"   if &background == "light"
-"     hi CursorLine cterm=none ctermbg=254
-"   else
-"     hi CursorLine cterm=none ctermbg=237
-"   endif
-" endif
 
 hi SpellBad term=standout cterm=underline ctermbg=none
 
@@ -128,7 +115,7 @@ function! SetPluginHighlights()
   hi link FgCocWarnFloatBgCocFloating CocWarnFloat
   hi link CocListLine CursorLine
 
-  " hi DiagnosticVirtualTextError ctermfg=7
+  hi DiagnosticVirtualTextError ctermfg=1 ctermbg=0
   hi DiagnosticVirtualTextWarn ctermfg=7 ctermbg=0
   hi DiagnosticVirtualTextInfo ctermfg=8
   hi DiagnosticVirtuaLTextHint ctermfg=8
@@ -146,3 +133,4 @@ augroup END
 
 " Language specific options
 hi link graphqlConstant Constant
+hi link @string.documentation.graphql Comment
