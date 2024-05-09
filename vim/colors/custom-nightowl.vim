@@ -65,7 +65,7 @@ hi TabLine cterm=underline ctermfg=7 ctermbg=8
 hi TabLineFill cterm=underline ctermbg=0
 hi Directory cterm=bold ctermfg=blue
 
-hi Special ctermfg=darkblue
+hi Special ctermfg=blue
 hi Constant cterm=bold ctermfg=darkcyan
 hi Statement ctermfg=darkred
 hi Operator ctermfg=darkmagenta
@@ -73,11 +73,11 @@ hi Label ctermfg=darkcyan
 hi KeyWord ctermfg=darkmagenta
 hi Conditional  cterm=bold ctermfg=red
 hi StorageClass cterm=bold ctermfg=darkmagenta
-hi Type cterm=none ctermfg=darkblue
+hi Type cterm=none ctermfg=blue
 hi Identifier   cterm=none ctermfg=none
 hi Boolean cterm=bold ctermfg=red
-hi Function     cterm=none ctermfg=darkblue
-hi Include cterm=bold ctermfg=darkblue
+hi Function     cterm=none ctermfg=blue
+hi Include cterm=bold ctermfg=blue
 hi PreProc ctermfg=red
 hi String ctermfg=red
 hi Underlined cterm=underline ctermfg=cyan

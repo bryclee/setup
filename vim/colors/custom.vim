@@ -118,7 +118,7 @@ else
   hi Conditional  cterm=bold ctermfg=red
   hi StorageClass cterm=bold ctermfg=cyan
   hi Type cterm=bold ctermfg=magenta
-  hi Identifier   cterm=none ctermfg=cyan
+  hi Identifier   cterm=none ctermfg=none
   hi Boolean cterm=bold ctermfg=green
   hi Function     cterm=none
   hi Include cterm=bold ctermfg=red
@@ -193,3 +193,4 @@ augroup END
 
 " Language specific options
 hi link graphqlConstant Constant
+hi link @string.documentation.graphql Comment
