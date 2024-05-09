@@ -1,7 +1,7 @@
-.vim/bundle
-.vim/plugged
-.vim/disabled
-.vim/.netrwhist
-.vim/autoload/plug.vim
-.vim/sessions
+vim/bundle
+vim/plugged
+vim/disabled
+vim/.netrwhist
+vim/autoload/plug.vim
+vim/sessions
 sources

@@ -1,4 +1,5 @@
 .vscode/
+.vim/
 .git
 *.lock
 *.swp
