@@ -14,6 +14,9 @@ require("nvim-tree").setup({
   on_attach = tree_on_attach,
   disable_netrw = false,
   hijack_netrw = false,
+  update_focused_file = {
+    enable = true,
+  },
 })
 
 -- local function toggle_replace()
@@ -26,4 +29,3 @@ require("nvim-tree").setup({
 -- end
 
 vim.keymap.set('n', '<leader>e', function () api.tree.open({ find_file = true }) end)
-

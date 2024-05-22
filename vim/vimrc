@@ -249,7 +249,7 @@ nmap <leader>gg :Git<CR>
 
 augroup EasyClose
   autocmd!
-  au FileType qf,help,fugitive,fugitiveblame nnoremap <buffer> q :q<CR>
+  au FileType qf,help,fugitive,fugitiveblame,git nnoremap <buffer> q :q<CR>
 augroup END
 
 " After we're done with all the common config, check if there's a system local

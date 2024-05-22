@@ -30,10 +30,10 @@ set background=dark
 let colors_name = "custom-nightowl"
 
 " Diff highlighting
-hi DiffAdd        ctermfg=none ctermbg=darkcyan
-hi DiffChange     ctermfg=none ctermbg=darkyellow
-hi DiffText       ctermfg=black ctermbg=darkyellow cterm=bold
-hi DiffDelete     ctermfg=none ctermbg=magenta
+hi DiffAdd        ctermfg=none ctermbg=black
+hi DiffChange     ctermfg=none ctermbg=black
+hi DiffText       ctermfg=white ctermbg=gray cterm=none
+hi DiffDelete     ctermfg=lightgray ctermbg=gray
 
 " hi Visual         ctermfg=white ctermbg=darkcyan
 hi Visual         cterm=standout ctermbg=none
@@ -73,7 +73,7 @@ hi Label ctermfg=darkcyan
 hi KeyWord ctermfg=darkmagenta
 hi Conditional  cterm=bold ctermfg=red
 hi StorageClass cterm=bold ctermfg=darkmagenta
-hi Type cterm=none ctermfg=blue
+hi Type cterm=bold ctermfg=blue
 hi Identifier   cterm=none ctermfg=none
 hi Boolean cterm=bold ctermfg=red
 hi Function     cterm=none ctermfg=blue
