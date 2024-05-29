@@ -28,7 +28,7 @@ hs.loadSpoon("AppWindowSwitcher")
         [{"Code", "IntelliJ IDEA"}] = {meh, "i"},
         [{"Outlook", "Microsoft Outlook"}] = {meh, "e"},
         ["Slack"] = {meh, "c"},
-        [{ "Microsoft Edge", "Google Chrome", "Arc" }] = {meh, "b"},
+        [{ "Microsoft Edge", "Google Chrome", "Arc", "Vivaldi" }] = {meh, "b"},
         ["Microsoft Teams"] = {meh, "v"},
         ["Logseq"] = {meh, "q"},
         ["Spotify"] = {meh, "m"}
