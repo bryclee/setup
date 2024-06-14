@@ -17,6 +17,19 @@ require("nvim-tree").setup({
   update_focused_file = {
     enable = true,
   },
+  renderer = {
+    icons = {
+      show = {
+        file = false,
+        folder = false,
+        folder_arrow = false,
+      },
+    },
+    indent_markers = {
+      enable = true,
+      inline_arrows = true,
+    },
+  },
 })
 
 -- local function toggle_replace()

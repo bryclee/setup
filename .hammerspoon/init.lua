@@ -55,6 +55,30 @@ hs.hotkey.bind({"alt"}, "h", function() hs.window.filter.focusWest(nil, true) en
 hs.hotkey.bind({"alt"}, "l", function() hs.window.filter.focusEast(nil, true) end)
 hs.hotkey.bind({"alt"}, "j", function() hs.window.filter.focusSouth(nil, true) end)
 hs.hotkey.bind({"alt"}, "k", function() hs.window.filter.focusNorth(nil, true) end)
+hs.hotkey.bind(meh, "h", function()
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
+
+    f.x = max.x
+    f.y = max.y
+    f.w = max.w / 2
+    f.h = max.h
+    win:setFrame(f)
+end)
+hs.hotkey.bind(meh, "l", function()
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
+
+    f.x = max.x + max.w / 2
+    f.y = max.y
+    f.w = max.w / 2
+    f.h = max.h
+    win:setFrame(f)
+end)
 
 hs.hotkey.bind(meh, "g", function()
     hs.grid.toggleShow()

@@ -78,7 +78,7 @@ let g:fzf_action = {
       \ 'ctrl-v': 'vsplit' }
 
 let g:fzf_layout = {
-      \   'window': { 'width': 120, 'height': 0.9, 'relative': v:true }
+      \   'window': { 'width': 120, 'height': 50, 'relative': v:true }
       \ }
 let g:fzf_preview_window = ['down,40%', 'ctrl-/']
         " \   'window': 'exec winheight(0)/2."new"'

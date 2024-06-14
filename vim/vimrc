@@ -245,7 +245,7 @@ map <leader>md :!mkdir <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <silent> <C-f> :silent !tmux neww tmux-s<CR>
 
 nmap <leader>gb :Git blame<CR>
-nmap <leader>gg :Git<CR>
+nmap <leader>gs :Git<CR>
 
 augroup EasyClose
   autocmd!

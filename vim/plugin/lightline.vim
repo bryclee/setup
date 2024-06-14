@@ -109,3 +109,6 @@ if has("nvim")
   augroup END
   set laststatus=3
 endif
+
+" Refresh statusline on change
+autocmd User CocStatusChange redrawstatus
