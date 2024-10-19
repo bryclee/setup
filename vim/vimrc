@@ -246,6 +246,7 @@ nnoremap <silent> <C-f> :silent !tmux neww tmux-s<CR>
 
 nmap <leader>gb :Git blame<CR>
 nmap <leader>gs :Git<CR>
+nmap <leader>gl :0GcLog<CR>
 
 augroup EasyClose
   autocmd!

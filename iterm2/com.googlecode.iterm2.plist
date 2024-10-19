@@ -7208,7 +7208,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<false/>
 			<key>Normal Font</key>
-			<string>CascadiaCode-Regular 12</string>
+			<string>MonaspaceNeon-Regular 12</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Option Key Sends</key>
@@ -11037,7 +11037,7 @@
 		</dict>
 	</dict>
 	<key>PreferSpeedToFullLigatureSupport</key>
-	<true/>
+	<false/>
 	<key>Print In Black And White</key>
 	<true/>
 	<key>PromptOnQuit</key>
