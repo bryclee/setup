@@ -133,4 +133,6 @@ augroup END
 
 " Language specific options
 hi link graphqlConstant Constant
-hi link @string.documentation.graphql Comment
+if has("nvim")
+  hi link @string.documentation.graphql Comment
+endif

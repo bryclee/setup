@@ -15,10 +15,10 @@ alias gpul="git pull"
 alias gpush="git push"
 
 # FZF setting -- allow symlinks
-if [ -n "$(which rg)" ]; then
+if hash rg 2>/dev/null; then
   # Set FZF default to use rg
   export FZF_DEFAULT_COMMAND='rg --files --hidden --follow .'
-elif [ -n "$(which ag)" ]; then
+elif hash ag 2>/dev/null; then
   # Set FZF default to use ag
   export FZF_DEFAULT_COMMAND='ag -l --nocolor --hidden -g ""'
   # Default ag to follow symlinks
