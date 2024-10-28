@@ -10,7 +10,7 @@ function safelyLink {
 # Link files from here to home dir
 safelyLink .inputrc .gitconfig .bash_profile .bash_aliases .profile .bashrc .zshrc \
     .tmux.conf .agignore .gitignore_global .slate.js .hyper.js .prettierrc.js .eslintrc.js \
-    .hammerspoon
+    .hammerspoon .ideavimrc
 
 mkdir -p ~/.config
 mkdir -p ~/.nvm

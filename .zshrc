@@ -51,3 +51,4 @@ bindkey -s ^f "tmux-s\n"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/setup/fzf-git.sh/fzf-git.sh ] && source ~/setup/fzf-git.sh/fzf-git.sh
+
