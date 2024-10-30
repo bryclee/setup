@@ -22,6 +22,8 @@ if exists("syntax_on")
   syntax reset
 endif
 
+set notgc
+
 " Generally, prefer to use dark colors and set terminal colors accordingly for
 " light mode
 set background=dark
@@ -36,7 +38,7 @@ hi DiffText       ctermfg=white ctermbg=gray cterm=none
 hi DiffDelete     ctermfg=lightgray ctermbg=gray
 
 " hi Visual         ctermfg=white ctermbg=darkcyan
-hi Visual         cterm=standout ctermbg=none
+hi Visual         cterm=reverse ctermfg=none ctermbg=none
 " hi Search         ctermfg=black    ctermbg=yellow
 " hi MatchParen     ctermfg=white ctermbg=darkcyan
 
@@ -57,7 +59,7 @@ hi clear SignColumn
 
 hi Comment cterm=italic ctermfg=8
 hi Error ctermfg=0 ctermbg=red
-hi ErrorMsg ctermbg=none ctermfg=darkred cterm=standout
+hi ErrorMsg ctermbg=none ctermfg=darkred cterm=reverse
 hi CursorLineNr cterm=bold ctermfg=yellow
 hi StatusLine   cterm=bold,reverse ctermfg=blue ctermbg=none
 hi StatusLineNC cterm=underline ctermfg=7 ctermbg=0
@@ -93,7 +95,7 @@ hi WarningMsg ctermfg=magenta
 
 hi markdownCode ctermfg=yellow ctermbg=none
 
-hi SpellBad term=standout cterm=underline ctermbg=none
+hi SpellBad term=reverse cterm=underline ctermbg=none
 
 " To allow italics in default vim
 let &t_ZH="\e[3m"

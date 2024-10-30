@@ -14,12 +14,18 @@ defaults write -g KeyRepeat -int 1
 defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write -g ApplePressAndHoldEnabled -bool false
 
-brew install moreutils the_silver_searcher bash-completion ripgrep
+# I don't really use ag (silver searcher) anymore
+# I am not sure if I need moreutils or bash-completion, can add those back if needed
+# brew install moreutils the_silver_searcher bash-completion ripgrep
+brew install ripgrep
 
 # More installs
 # . ./install/iterm2.osx.sh
 . ./install/fzf.osx.sh
 . ./install/alfred.osx.sh
 . ./install/kitty.osx.sh
-. ./install/slate.osx.sh
+# Use hammerspoon instead of slate
+# . ./install/slate.osx.sh
 . ./install/nvim.osx.sh
+
+brew install --cask scroll-reverser
