@@ -15,8 +15,7 @@
 --   },
 -- }
 
--- Tmux-s to launch new session
-vim.keymap.set('n', '<C-f>', function()
-  vim.fn.system { 'tmux', 'neww', 'tmux-s'}
-end)
+vim.opt.wildmode = "longest:full"
 
+-- Tmux-s to launch new session
+vim.keymap.set("n", "<C-f>", function() vim.fn.system { "tmux", "neww", "tmux-s" } end)

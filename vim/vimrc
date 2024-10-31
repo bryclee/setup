@@ -158,6 +158,7 @@ nnoremap <leader>sw :grep '\b<C-R>=substitute(expand("<cword>"), '#', '\\#', 'g'
 
 " Autocomplete
 set complete=.,b,u,] " Autocomplete sources
+set wildmenu
 set wildmode=longest:full " Set autocomplete default replacement behavior
 set wildoptions=pum,tagfile " neovim default, set for vim compatibility
 " set completeopt=menu " How menu shows
