@@ -16,6 +16,7 @@
     - <leader>gb for blame
     - <leader>gB can be for branch
     - <leader>go for browse (needs to work in visual mode as well)
+      - Similar to how neogit adds mappings to git menu when loaded
 - [x] Set `wildoptions`
 - Hide bufferline, only want to show tabs
   - Mixed, this might be useful to keep. Buffers are tagged to the tabs they were spawned in, which is interesting for keeping track
