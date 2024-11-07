@@ -16,6 +16,11 @@
 -- }
 
 vim.opt.wildmode = "longest:full"
+vim.opt.relativenumber = false
+vim.opt.cmdheight = 1
+if vim.fn.executable "rg" == 1 then vim.o.grepprg = "rg --vimgrep --smart-case" end
 
 -- Tmux-s to launch new session
 vim.keymap.set("n", "<C-f>", function() vim.fn.system { "tmux", "neww", "tmux-s" } end)
+
+if vim.fn.filereadable "~/.vimrc_local" then vim.cmd.source "~/.vimrc_local" end

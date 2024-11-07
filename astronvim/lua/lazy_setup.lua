@@ -13,6 +13,8 @@ require("lazy").setup({
   },
   { import = "community" },
   { import = "plugins" },
+  { "tpope/vim-fugitive" }, -- To enable Git Browse and Git blame, mostly. Lazygit otherwise works well
+  { "tpope/vim-rhubarb" },
 } --[[@as LazySpec]], {
   -- Configure any other `lazy.nvim` configuration options here
   install = { colorscheme = { "astrotheme", "habamax" } },

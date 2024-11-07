@@ -7,5 +7,6 @@ return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
   -- import/override with your plugins folder
-  { import = "astrocommunity.git.octo-nvim" }
+  { import = "astrocommunity.git.octo-nvim" }, -- for reviewing pull requests
+  { import = "astrocommunity.motion.nvim-surround" }, -- for surround motions
 }
