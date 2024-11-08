@@ -12,11 +12,14 @@
   - Used to the FZF seach syntax, seems to be more flexible
 - git
   - Added git-fugitive for blame and browse commands
-  - [ ] Update mappings
+  - [x] Update mappings
     - <leader>gb for blame
     - <leader>gB can be for branch
     - <leader>go for browse (needs to work in visual mode as well)
       - Similar to how neogit adds mappings to git menu when loaded
+  - pull request review
+    - [ ] `gf` should ideally open in new tab which cursor on same location, so that we can go and do our lookup, then close the tab to return back to the pull request review
+    - [ ] I don't know why, when going into a comment thread, the scroll position of the window is changed
 - [x] Set `wildoptions`
 - Hide bufferline, only want to show tabs
   - Mixed, this might be useful to keep. Buffers are tagged to the tabs they were spawned in, which is interesting for keeping track

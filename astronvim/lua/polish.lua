@@ -17,7 +17,9 @@
 
 vim.opt.wildmode = "longest:full"
 vim.opt.relativenumber = false
-vim.opt.cmdheight = 1
+-- vim.opt.cmdheight = 1
+vim.opt.cc = "121"
+vim.opt.so = 3
 if vim.fn.executable "rg" == 1 then vim.o.grepprg = "rg --vimgrep --smart-case" end
 
 -- Tmux-s to launch new session
