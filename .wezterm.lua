@@ -20,7 +20,7 @@ local function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
 		return "Material Darker (base16)"
 	else
-		return "Material"
+		return "Atelier Sulphurpool Light (base16)"
 	end
 end
 
