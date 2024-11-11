@@ -204,19 +204,17 @@ nnoremap <silent> <Up> gk
 nnoremap <c-o> <c-o>zz
 nnoremap <c-i> <c-i>zz
 
+" Conveniece mappings that match astronvim
+nnoremap <leader>q :confirm q<cr>
+nnoremap <leader>w :confirm w<cr>
+nnoremap <leader>Q :confirm qa<cr>
+
 " Buffers/Windows navigation
 nnoremap <leader>c :call BackBuffer() \| bd #<CR> " In case you want to leave the window open
 set hidden
 " Below replaced with fzf.vim jumps list
 " nnoremap <silent> <leader>o :call BackBuffer()<CR>
 " nnoremap <silent> <leader>i :call ForwardBuffer()<CR>
-
-" Mapping <C-W>n to go to window n
-let i = 1
-while i <= 9
-  execute 'nnoremap ' i . '<C-W>' . ' :' . i . 'wincmd w<CR>'
-  let i = i + 1
-endwhile
 
 " Navigate via command provided until buffer changes or there are no more
 " navigation changes. Mostly for the buffer changes though
