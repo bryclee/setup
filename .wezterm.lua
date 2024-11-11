@@ -29,6 +29,16 @@ config.font = wezterm.font("Monaspace Neon")
 config.hide_tab_bar_if_only_one_tab = true
 config.window_close_confirmation = "AlwaysPrompt"
 config.window_decorations = "RESIZE" -- disable the title bar but enable the resizable border
+config.window_frame = {
+	border_left_width = "0.4cell",
+	border_right_width = "0.4cell",
+	border_bottom_height = "0.25cell",
+	border_top_height = "0.25cell",
+	border_left_color = "indigo",
+	border_right_color = "indigo",
+	border_bottom_color = "indigo",
+	border_top_color = "indigo",
+}
 config.audible_bell = "Disabled"
 
 -- and finally, return the configuration to wezterm
