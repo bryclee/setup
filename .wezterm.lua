@@ -26,8 +26,9 @@ end
 
 config.color_scheme = scheme_for_appearance(get_appearance())
 config.font = wezterm.font("Monaspace Neon")
+config.font_size = 12.0
 config.hide_tab_bar_if_only_one_tab = true
-config.window_close_confirmation = "AlwaysPrompt"
+config.window_close_confirmation = "NeverPrompt"
 config.window_decorations = "RESIZE" -- disable the title bar but enable the resizable border
 config.window_frame = {
 	border_left_width = "0.4cell",
