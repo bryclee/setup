@@ -1,0 +1,11 @@
+{
+  "extras": [
+    "lazyvim.plugins.extras.editor.fzf",
+    "lazyvim.plugins.extras.lang.typescript",
+    "lazyvim.plugins.extras.util.octo"
+  ],
+  "news": {
+    "NEWS.md": "7107"
+  },
+  "version": 7
+}

@@ -1,3 +1,5 @@
+-- if true then return {} end
+
 local event = "User AstroGitFile" -- Make sure that this runs before gitsigns sets up, as it has conflicting :Git command
 
 -- Plugins to enable Git Browse and Git blame, mostly. Lazygit otherwise works well
