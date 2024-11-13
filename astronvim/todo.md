@@ -1,12 +1,11 @@
-- [x] Add <c-f> mapping
 - neo-tree
   - See if there are different options for neotree filter behavior
   - [x] Would prefer not to filter into folders by default when using `/`
   - [ ] Enable fuzzy finder on `f` instead
   - [ ] Would prefer fuzzy finder to accept filter on Enter instead of selecting the file
-  - [ ] Do not chdir on neotree, enable binding for `-`
+  - [x] Do not chdir on neotree, enable binding for `-`
   - [ ] Align the neotree split mappings to the telescope/fzf ones
-- [x] Set norelativenumber
+  - It is a bit funny, it tends to reset back to the current dir very often depending on what keybinds are pressed (eg. `H` to show hidden files)
 - [ ] Can I use FZF syntax/search instead of telescope?
   - Search by file as well as name
   - Used to the FZF seach syntax, seems to be more flexible
@@ -20,16 +19,18 @@
   - pull request review
     - [ ] `gf` should ideally open in new tab which cursor on same location, so that we can go and do our lookup, then close the tab to return back to the pull request review
     - [ ] I don't know why, when going into a comment thread, the scroll position of the window is changed
-- [x] Set `wildoptions`
+  - [ ] Once `gitsigns` is updated, no longer need fugitive for blame. Still need it for browse, but at that point I can maybe install a different plugin instead 
 - Hide bufferline, only want to show tabs
   - Mixed, this might be useful to keep. Buffers are tagged to the tabs they were spawned in, which is interesting for keeping track
+  - This is also very complicated to update, don't want to waste too much time on this ultimately cosmetic issue
   - If you close the tab, the buffers do stay open, but they don't show up in the bufferline of the other tabs
   - If I do keep this, I would prefer to have tabs on the left, and buffers on the right
-- [x] Surround plugin?
 - [ ] GraphQL language server doesn't seem to be working
-- [x] How to optionally disable formatter
-  - `<leader>uf` when the buffer has formatting enabled
 - [c] Add neorg
   - Doesn't install easily on Mac, don't want to spend the effort to figure it out
-
-
+- [x] Set norelativenumber
+- [x] Add <c-f> mapping
+- [x] Set `wildoptions`
+- [x] Surround plugin?
+- [x] How to optionally disable formatter
+  - `<leader>uf` when the buffer has formatting enabled
