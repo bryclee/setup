@@ -9,22 +9,34 @@ local config = wezterm.config_builder()
 -- For example, changing the color scheme:
 -- config.color_scheme = "AdventureTime"
 
-local function get_appearance()
+local function get_dark_mode()
 	if wezterm.gui then
-		return wezterm.gui.get_appearance()
+		return wezterm.gui.get_appearance():find("Dark")
 	end
 	return "Dark"
 end
 
-local function scheme_for_appearance(appearance)
-	if appearance:find("Dark") then
-		return "Material Darker (base16)"
+local function scheme_for_appearance(darkTheme)
+	if darkTheme then
+		return "Rosé Pine Moon (Gogh)"
 	else
-		return "Atelier Sulphurpool Light (base16)"
+		return "Rosé Pine Dawn (Gogh)"
 	end
 end
 
-config.color_scheme = scheme_for_appearance(get_appearance())
+local function border_for_appearance(darkTheme)
+	if darkTheme then
+		return "indigo"
+	else
+		return "lightcoral"
+	end
+end
+
+local darkMode = get_dark_mode()
+local colorScheme = scheme_for_appearance(get_dark_mode())
+local borderColor = border_for_appearance(darkMode)
+
+config.color_scheme = colorScheme
 config.font = wezterm.font("Monaspace Neon")
 config.font_size = 12.0
 config.hide_tab_bar_if_only_one_tab = true
@@ -35,10 +47,10 @@ config.window_frame = {
 	border_right_width = "0.4cell",
 	border_bottom_height = "0.25cell",
 	border_top_height = "0.25cell",
-	border_left_color = "indigo",
-	border_right_color = "indigo",
-	border_bottom_color = "indigo",
-	border_top_color = "indigo",
+	border_left_color = borderColor,
+	border_right_color = borderColor,
+	border_bottom_color = borderColor,
+	border_top_color = borderColor,
 }
 config.audible_bell = "Disabled"
 

@@ -1,3 +1,5 @@
+# Improvements
+
 - [ ] Tmux split navigator (`<c-j>` should check for tmux split)
 - [x] Leader mapping for writing buffer (`<leader>;w`)
 - [x] Surround plugin

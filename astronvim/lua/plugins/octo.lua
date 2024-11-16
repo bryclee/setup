@@ -2,7 +2,6 @@
 return {
   {
     "pwntester/octo.nvim",
-    required = false,
     opts = {
       use_local_fs = true,
       picker = "fzf-lua",

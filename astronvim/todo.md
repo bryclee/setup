@@ -1,3 +1,9 @@
+# Customizations
+
+Running list of items to configure for `astronvim` to make it work the way I'd like
+
+- fzf-lua
+  - [ ] `grr` (go to references) should also use FZF lua
 - neo-tree
   - See if there are different options for neotree filter behavior
   - [x] Would prefer not to filter into folders by default when using `/`
@@ -19,13 +25,14 @@
   - pull request review
     - [ ] `gf` should ideally open in new tab which cursor on same location, so that we can go and do our lookup, then close the tab to return back to the pull request review
     - [ ] I don't know why, when going into a comment thread, the scroll position of the window is changed
-  - [ ] Once `gitsigns` is updated, no longer need fugitive for blame. Still need it for browse, but at that point I can maybe install a different plugin instead 
+  - [ ] Once `gitsigns` is updated, no longer need fugitive for blame. Still need it for browse, but at that point I can maybe install a different plugin instead
 - Hide bufferline, only want to show tabs
   - Mixed, this might be useful to keep. Buffers are tagged to the tabs they were spawned in, which is interesting for keeping track
   - This is also very complicated to update, don't want to waste too much time on this ultimately cosmetic issue
   - If you close the tab, the buffers do stay open, but they don't show up in the bufferline of the other tabs
   - If I do keep this, I would prefer to have tabs on the left, and buffers on the right
-- [ ] GraphQL language server doesn't seem to be working
+- [c] GraphQL language server doesn't seem to be working
+  - Seems like this is working now
 - [c] Add neorg
   - Doesn't install easily on Mac, don't want to spend the effort to figure it out
 - [x] Set norelativenumber
