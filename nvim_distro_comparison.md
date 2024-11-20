@@ -3,8 +3,9 @@
 ### Pros
 
 - Has GBrowse mapping through snacks.nvim
-- Has better integration with extra plugins through LazyExtras 
+- Has better integration with extra plugins through LazyExtras
 - The mappings are more intuitive to me
+- The configuration seems similar to Doom Emacs, not too sure about the history of that
 
 ### Cons
 

@@ -2,6 +2,9 @@
 
 Running list of items to configure for `astronvim` to make it work the way I'd like
 
+- [ ] Something funny going on with caching views, in particular with JSON files
+  - foldmethod is cached as diff
+  - fold level does not update when using `zm`, `zr`, so cannot unfold one level at a time
 - fzf-lua
   - [ ] `grr` (go to references) should also use FZF lua
 - neo-tree
