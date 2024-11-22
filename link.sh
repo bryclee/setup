@@ -19,4 +19,6 @@ mkdir -p ~/.nvm
 ./safelyLink.sh nvim ~/.config
 ./safelyLink.sh kitty ~/.config
 ./safelyLink.sh lazygit ~/.config
+./safelyLink.sh astronvim ~/.config
+./safelyLink.sh kickstart ~/.config
 ./safelyLink.sh .nvm/default-packages ~/.nvm

@@ -158,6 +158,9 @@ a.tag {
   color: var(--ls-primary-background-color);
   background-color: var(--lx-accent-11, #4477de);
 }
+:is(a.tag, a.page-ref)[data-ref='prreview'] {
+  filter: hue-rotate(-30deg);
+}
 
 blockquote {
   padding: 4px 20px;

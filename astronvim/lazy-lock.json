@@ -56,6 +56,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "19d257cf889f79f4022163c3fbb5e08639077bd8" },
   "nvim-window-picker": { "branch": "main", "commit": "41cfaa428577c53552200a404ae9b3a0b5719706" },
   "octo.nvim": { "branch": "master", "commit": "616fabd2beea95c15d6001a319d73925cd1ee40b" },
+  "orgmode": { "branch": "master", "commit": "1d8c9b9417f8c8e9fb146d4f54fb1e90a4f7e534" },
   "package-info.nvim": { "branch": "master", "commit": "3de4f3569ce60e248707df042b72769b3ec343b8" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
   "promise-async": { "branch": "main", "commit": "38a4575da9497326badd3995e768b4ccf0bb153e" },
@@ -70,6 +71,5 @@
   "vim-fugitive": { "branch": "master", "commit": "d4877e54cef67f5af4f950935b1ade19ed6b7370" },
   "vim-illuminate": { "branch": "master", "commit": "5eeb7951fc630682c322e88a9bbdae5c224ff0aa" },
   "vim-rhubarb": { "branch": "master", "commit": "ee69335de176d9325267b0fd2597a22901d927b1" },
-  "which-key.nvim": { "branch": "main", "commit": "fb070344402cfc662299d9914f5546d840a22126" },
-  "zk-nvim": { "branch": "main", "commit": "aa9b346f2b0ab0c822bef917ee7f607d5c99f7bc" }
+  "which-key.nvim": { "branch": "main", "commit": "fb070344402cfc662299d9914f5546d840a22126" }
 }
