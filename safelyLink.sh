@@ -26,6 +26,11 @@ function _f() {
     fi
   fi
 
+  if [ -L "$target_dir" ]; then
+    echo "$target_dir directory already linked, skipping linking $file"
+    exit
+  fi
+
   ln -sv $(pwd)/$file $target_dir
 }
 

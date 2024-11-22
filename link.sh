@@ -22,3 +22,4 @@ mkdir -p ~/.nvm
 ./safelyLink.sh astronvim ~/.config
 ./safelyLink.sh kickstart ~/.config
 ./safelyLink.sh .nvm/default-packages ~/.nvm
+
