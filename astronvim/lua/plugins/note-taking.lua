@@ -22,6 +22,17 @@ return {
         pattern = { "*" },
         callback = function() vim.cmd [[hi link @org.agenda.scheduled Comment]] end,
       })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "org",
+        callback = function()
+          vim.keymap.set("i", "<C-H>", '<cmd>lua require("orgmode").action("org_mappings.meta_return")<CR>', {
+            silent = true,
+            buffer = true,
+            desc = "Org meta return",
+          })
+        end,
+      })
     end,
     specs = {
       {
@@ -35,9 +46,19 @@ return {
       },
     },
   },
-  -- ufo: conflict with orgmode, and I'm not sure how useful it is to keep
+  -- ufo: conflict with orgmode folds, and I'm not sure how useful it is to keep
   {
     "kevinhwang91/nvim-ufo",
     enabled = false,
+  },
+  {
+    "AstroNvim/astrocore",
+    opts = {
+      mappings = {
+        n = {
+          ["<Leader>oe"] = { "<Cmd>bot sp ~/orgfiles<CR>", desc = "Explore orgfiles" },
+        },
+      },
+    },
   },
 }
