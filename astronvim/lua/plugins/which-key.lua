@@ -2,7 +2,7 @@
 return {
   "folke/which-key.nvim",
   opts = {
-    delay = 300,
+    delay = 500,
     win = {
       no_overlap = false,
     },

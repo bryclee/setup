@@ -26,7 +26,7 @@ return {
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "org",
         callback = function()
-          vim.keymap.set("i", "<C-H>", '<cmd>lua require("orgmode").action("org_mappings.meta_return")<CR>', {
+          vim.keymap.set("i", "<M-CR>", '<cmd>lua require("orgmode").action("org_mappings.meta_return")<CR>', {
             silent = true,
             buffer = true,
             desc = "Org meta return",
