@@ -31,6 +31,26 @@ return {
             buffer = true,
             desc = "Org meta return",
           })
+          vim.keymap.set("i", "<S-Left>", '<cmd>lua require("orgmode").action("org_mappings.do_promote")<CR>', {
+            silent = true,
+            buffer = true,
+            desc = "Org promote",
+          })
+          vim.keymap.set("n", "<S-Left>", '<cmd>lua require("orgmode").action("org_mappings.do_promote")<CR>', {
+            silent = true,
+            buffer = true,
+            desc = "Org promote",
+          })
+          vim.keymap.set("i", "<S-Right>", '<cmd>lua require("orgmode").action("org_mappings.do_demote")<CR>', {
+            silent = true,
+            buffer = true,
+            desc = "Org demote",
+          })
+          vim.keymap.set("n", "<S-Right>", '<cmd>lua require("orgmode").action("org_mappings.do_demote")<CR>', {
+            silent = true,
+            buffer = true,
+            desc = "Org demote",
+          })
         end,
       })
     end,
@@ -45,6 +65,10 @@ return {
         end,
       },
     },
+  },
+  {
+    "akinsho/org-bullets.nvim",
+    opts = {},
   },
   -- ufo: conflict with orgmode folds, and I'm not sure how useful it is to keep
   {

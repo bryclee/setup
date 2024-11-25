@@ -3,6 +3,9 @@ return {
   opts = {
     winopts = {
       backdrop = 100,
+      preview = {
+        flip_columns = 140,
+      },
     },
     keymap = {
       fzf = {

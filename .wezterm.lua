@@ -18,7 +18,7 @@ end
 
 local function scheme_for_appearance(darkTheme)
 	if darkTheme then
-		return "Rosé Pine Moon (Gogh)"
+		return "Rosé Pine (Gogh)"
 	else
 		return "Rosé Pine Dawn (Gogh)"
 	end
