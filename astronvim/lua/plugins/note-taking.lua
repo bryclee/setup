@@ -31,26 +31,46 @@ return {
             buffer = true,
             desc = "Org meta return",
           })
-          vim.keymap.set("i", "<S-Left>", '<cmd>lua require("orgmode").action("org_mappings.do_promote")<CR>', {
-            silent = true,
-            buffer = true,
-            desc = "Org promote",
-          })
-          vim.keymap.set("n", "<S-Left>", '<cmd>lua require("orgmode").action("org_mappings.do_promote")<CR>', {
-            silent = true,
-            buffer = true,
-            desc = "Org promote",
-          })
-          vim.keymap.set("i", "<S-Right>", '<cmd>lua require("orgmode").action("org_mappings.do_demote")<CR>', {
-            silent = true,
-            buffer = true,
-            desc = "Org demote",
-          })
-          vim.keymap.set("n", "<S-Right>", '<cmd>lua require("orgmode").action("org_mappings.do_demote")<CR>', {
-            silent = true,
-            buffer = true,
-            desc = "Org demote",
-          })
+          vim.keymap.set(
+            { "n", "i" },
+            "<M-Left>",
+            '<cmd>lua require("orgmode").action("org_mappings.do_promote")<CR>',
+            {
+              silent = true,
+              buffer = true,
+              desc = "Org promote",
+            }
+          )
+          vim.keymap.set(
+            { "n", "i" },
+            "<M-Right>",
+            '<cmd>lua require("orgmode").action("org_mappings.do_demote")<CR>',
+            {
+              silent = true,
+              buffer = true,
+              desc = "Org demote",
+            }
+          )
+          vim.keymap.set(
+            { "n", "i" },
+            "<S-Right>",
+            '<cmd>lua require("orgmode").action("org_mappings.todo_next_state")<CR>',
+            {
+              silent = true,
+              buffer = true,
+              desc = "Org cycle todo",
+            }
+          )
+          vim.keymap.set(
+            { "n", "i" },
+            "<S-Left>",
+            '<cmd>lua require("orgmode").action("org_mappings.todo_prev_state")<CR>',
+            {
+              silent = true,
+              buffer = true,
+              desc = "Org cycle todo previous",
+            }
+          )
         end,
       })
     end,
