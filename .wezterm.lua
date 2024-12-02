@@ -13,7 +13,8 @@ local function get_dark_mode()
 	if wezterm.gui then
 		return wezterm.gui.get_appearance():find("Dark")
 	end
-	return "Dark"
+
+	return true
 end
 
 local function scheme_for_appearance(darkTheme)
