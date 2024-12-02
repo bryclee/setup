@@ -8,6 +8,7 @@ return {
       require("orgmode").setup {
         org_agenda_files = "~/orgfiles/**/*",
         org_default_notes_file = "~/orgfiles/refile.org",
+        org_hide_emphasis_markers = true,
       }
 
       -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option
@@ -23,10 +24,12 @@ return {
         callback = function() vim.cmd [[hi link @org.agenda.scheduled Comment]] end,
       })
 
+      vim.opt.conceallevel = 2
+
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "org",
         callback = function()
-          vim.keymap.set("i", "<M-CR>", '<cmd>lua require("orgmode").action("org_mappings.meta_return")<CR>', {
+          vim.keymap.set({ "n", "i" }, "<M-CR>", '<cmd>lua require("orgmode").action("org_mappings.meta_return")<CR>', {
             silent = true,
             buffer = true,
             desc = "Org meta return",
