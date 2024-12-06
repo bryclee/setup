@@ -19,6 +19,9 @@ return {
           scrolloff = 3,
           smartcase = false,
           -- cmdheight = 1
+
+          conceallevel = 2,
+          concealcursor = "n",
         },
       },
       -- Mappings can be configured through AstroCore as well.

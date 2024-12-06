@@ -27,6 +27,10 @@ return {
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "org",
         callback = function()
+          -- Disable nvim-ufo, which conflicts with ufo folds
+          -- if require("astrocore").is_available "ufo" then require("ufo").detach() end
+          require("ufo").detach()
+
           vim.keymap.set({ "n", "i" }, "<M-CR>", '<cmd>lua require("orgmode").action("org_mappings.meta_return")<CR>', {
             silent = true,
             buffer = true,
@@ -94,7 +98,7 @@ return {
   -- ufo: conflict with orgmode folds, and I'm not sure how useful it is to keep
   {
     "kevinhwang91/nvim-ufo",
-    enabled = false,
+    enabled = true,
   },
   {
     "AstroNvim/astrocore",
