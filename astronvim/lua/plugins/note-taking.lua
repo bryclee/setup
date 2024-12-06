@@ -24,8 +24,6 @@ return {
         callback = function() vim.cmd [[hi link @org.agenda.scheduled Comment]] end,
       })
 
-      vim.opt.conceallevel = 2
-
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "org",
         callback = function()

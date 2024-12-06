@@ -6,7 +6,9 @@ Running list of items to configure for `astronvim` to make it work the way I'd l
   - foldmethod is cached as diff
   - fold level does not update when using `zm`, `zr`, so cannot unfold one level at a time
 - fzf-lua
-  - [ ] `grr` (go to references) should also use FZF lua
+  - [x] `grr` (go to references) should also use FZF lua
+  - [x] `<leader>f/` should use fuzzy search instead of grep
+  - [x] `<leader>lG` (search workspace symbols) should use livegrep instead of fuzzy search by default, as fuzzy search runs into some issues
 - neo-tree
   - See if there are different options for neotree filter behavior
   - [x] Would prefer not to filter into folders by default when using `/`
@@ -15,7 +17,7 @@ Running list of items to configure for `astronvim` to make it work the way I'd l
   - [x] Do not chdir on neotree, enable binding for `-`
   - [ ] Align the neotree split mappings to the telescope/fzf ones
   - It is a bit funny, it tends to reset back to the current dir very often depending on what keybinds are pressed (eg. `H` to show hidden files)
-- [ ] Can I use FZF syntax/search instead of telescope?
+- [x] Can I use FZF syntax/search instead of telescope?
   - Search by file as well as name
   - Used to the FZF seach syntax, seems to be more flexible
 - git
@@ -26,7 +28,7 @@ Running list of items to configure for `astronvim` to make it work the way I'd l
     - <leader>go for browse (needs to work in visual mode as well)
       - Similar to how neogit adds mappings to git menu when loaded
   - pull request review
-    - [ ] `gf` should ideally open in new tab which cursor on same location, so that we can go and do our lookup, then close the tab to return back to the pull request review
+    - [x] `gf` should ideally open in new tab which cursor on same location, so that we can go and do our lookup, then close the tab to return back to the pull request review
     - [ ] I don't know why, when going into a comment thread, the scroll position of the window is changed
   - [ ] Once `gitsigns` is updated, no longer need fugitive for blame. Still need it for browse, but at that point I can maybe install a different plugin instead
 - Hide bufferline, only want to show tabs
