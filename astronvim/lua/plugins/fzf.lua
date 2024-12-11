@@ -41,7 +41,7 @@ return {
       opts = function(_, opts)
         local maps = opts.mappings
         maps.n["<Leader>f/"][1] = function() require("fzf-lua").grep_curbuf() end
-        maps.n["<Leader>fw"][1] = function() require("fzf-lua").grep_cWORD() end
+        maps.n["<Leader>fw"][1] = function() require("fzf-lua").grep_project() end
         maps.v["<Leader>f"] =
           { function() require("fzf-lua").grep_visual() end, desc = "Grep visual selection in project" }
       end,

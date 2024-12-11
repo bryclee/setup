@@ -21,7 +21,7 @@ return {
           -- cmdheight = 1
 
           conceallevel = 2,
-          concealcursor = "n",
+          -- concealcursor = "n",
         },
       },
       -- Mappings can be configured through AstroCore as well.
@@ -42,6 +42,15 @@ return {
 
       on_keys = {
         auto_hlsearch = false,
+      },
+    },
+  },
+  {
+    "AstroNvim/astrolsp",
+    ---@type AstroLSPOpts
+    opts = {
+      formatting = {
+        format_on_save = false,
       },
     },
   },

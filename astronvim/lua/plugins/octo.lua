@@ -2,6 +2,7 @@
 return {
   {
     "pwntester/octo.nvim",
+    commit = "616fabd2beea95c15d6001a319d73925cd1ee40b",
     opts = {
       use_local_fs = true,
       picker = "fzf-lua",

@@ -93,7 +93,9 @@ return {
   },
   {
     "akinsho/org-bullets.nvim",
-    opts = {},
+    opts = {
+      -- concealcursor = true,
+    },
   },
   -- ufo: conflict with orgmode folds, and I'm not sure how useful it is to keep
   {
