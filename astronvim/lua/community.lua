@@ -16,9 +16,4 @@ return {
   { import = "astrocommunity.motion.nvim-surround" }, -- for surround motions
   { import = "astrocommunity.fuzzy-finder.fzf-lua" },
   { import = "astrocommunity.markdown-and-latex/markdown-preview-nvim" },
-
-  -- colorscheme
-  { import = "astrocommunity.colorscheme.rose-pine" },
-  { "rose-pine/neovim", opts = { dim_inactive_windows = true } },
-  { "AstroNvim/astroui", opts = { colorscheme = "rose-pine" } },
 }

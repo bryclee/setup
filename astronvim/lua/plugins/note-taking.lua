@@ -3,21 +3,11 @@ return {
     "nvim-orgmode/orgmode",
     event = "VeryLazy",
     ft = { "org" },
-    config = function()
-      -- Setup orgmode
-      require("orgmode").setup {
-        org_agenda_files = "~/orgfiles/**/*",
-        org_default_notes_file = "~/orgfiles/refile.org",
-        org_hide_emphasis_markers = true,
-      }
-
-      -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option
-      -- add ~org~ to ignore_install
-      -- require('nvim-treesitter.configs').setup({
-      --   ensure_installed = 'all',
-      --   ignore_install = { 'org' },
-      -- })
-    end,
+    opts = {
+      org_agenda_files = "~/orgfiles/**/*",
+      org_default_notes_file = "~/orgfiles/refile.org",
+      org_hide_emphasis_markers = true,
+    },
     init = function()
       vim.api.nvim_create_autocmd("ColorScheme", {
         pattern = { "*" },
@@ -28,7 +18,6 @@ return {
         pattern = "org",
         callback = function()
           -- Disable nvim-ufo, which conflicts with ufo folds
-          -- if require("astrocore").is_available "ufo" then require("ufo").detach() end
           require("ufo").detach()
 
           vim.keymap.set({ "n", "i" }, "<M-CR>", '<cmd>lua require("orgmode").action("org_mappings.meta_return")<CR>', {
@@ -96,11 +85,6 @@ return {
     opts = {
       -- concealcursor = true,
     },
-  },
-  -- ufo: conflict with orgmode folds, and I'm not sure how useful it is to keep
-  {
-    "kevinhwang91/nvim-ufo",
-    enabled = true,
   },
   {
     "AstroNvim/astrocore",
