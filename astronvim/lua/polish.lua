@@ -22,3 +22,9 @@ vim.keymap.set("n", "<C-f>", function() vim.fn.system { "tmux", "neww", "tmux-s"
 
 -- Load local vimrc if present
 if vim.fn.filereadable "~/.vimrc_local" then vim.cmd.source "~/.vimrc_local" end
+
+vim.filetype.add({
+  extension = {
+    json = "jsonc"
+  }
+})

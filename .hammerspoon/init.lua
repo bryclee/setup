@@ -80,7 +80,7 @@ hs.hotkey.bind(meh, "h", function()
 	local screen = win:screen()
 	local max = screen:frame()
 
-	local width = getNextWidth(f.w, max.w, { 1 / 2, 2 / 3, 1 / 3 })
+	local width = getNextWidth(f.w, max.w, { 2 / 3, 1 / 2, 1 / 3 })
 
 	f.x = max.x
 	f.y = max.y
@@ -94,7 +94,7 @@ hs.hotkey.bind(meh, "l", function()
 	local screen = win:screen()
 	local max = screen:frame()
 
-	local width = getNextWidth(f.w, max.w, { 1 / 2, 1 / 3, 2 / 3 })
+	local width = getNextWidth(f.w, max.w, { 1 / 3, 1 / 2, 2 / 3 })
 
 	f.x = max.x + (max.w - width)
 	f.y = max.y

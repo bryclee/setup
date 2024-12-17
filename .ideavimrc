@@ -20,6 +20,7 @@ set visualbell
 set noerrorbells
 
 nnoremap <silent> <leader>h :nohl<CR><Esc>
+nnoremap <silent> <Esc> :nohl<CR><Esc><Esc>
 " Bind j and k to move by visual line if text is there
 nnoremap <silent> j gj
 nnoremap <silent> k gk
@@ -28,7 +29,14 @@ nnoremap <silent> gk k
 nnoremap <silent> <Down> gj
 nnoremap <silent> <Up> gk
 
+nnoremap <silent> <C-j> <C-W>j
+nnoremap <silent> <C-k> <C-W>k
+nnoremap <silent> <C-h> <C-W>h
+nnoremap <silent> <C-l> <C-W>l
+
 map <leader>c :bd<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q <C-w>c<CR>
 
 
 " Don't use Ex mode, use Q for formatting.
@@ -53,12 +61,12 @@ set textobj-indent
 
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
-map gh <Action>(ShowHoverInfo)
+map <leader>ld <Action>(ShowHoverInfo)
 map gr <Action>(ShowUsages)
 map gt <Action>(GotoTest)
 map gD <Action>(EditorPopupMenu.GoTo)
-map <leader>R <Action>(RenameElement)
-map <leader>r <Action>(RefactoringMenu)
+map <leader>lr <Action>(RenameElement)
+map <leader>la <Action>(RefactoringMenu)
 map <leader>. <Action>(ShowIntentionActions)
 
 " View
@@ -86,9 +94,9 @@ set ideajoin
 
 " Navigation
 map <leader>e <Action>(SelectInProjectView)
-map <leader>p <Action>(GotoFile)
-map <leader>P <Action>(SearchEverywhere)
-map <leader>t <Action>(RecentFiles)
+map <leader>sf <Action>(GotoFile)
+map <leader>sa <Action>(SearchEverywhere)
+map <leader><leader> <Action>(RecentFiles)
 map [d <Action>(GotoPreviousError)
 map ]d <Action>(GotoNextError)
 map [c <Action>(VcsShowPreviousChangeMarker)

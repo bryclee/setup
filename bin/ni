@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ -f pnpm-workspace.yaml ] || [ -f pnpm-lock.yaml ]; then
+  echo "> pnpm install"
+  pnpm install
+elif [ -f yarn.lock ]; then
+  echo "> yarn install"
+  yarn install
+else
+  echo "> npm install"
+  npm install
+fi

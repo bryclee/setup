@@ -26,8 +26,6 @@ return {
         if require("astrocore").is_available "fzf-lua" then
           local maps = opts.mappings
           maps.n["<Leader>lG"][1] = function() require("fzf-lua").lsp_live_workspace_symbols() end
-          -- Remove other `gr` mappings, only use as reference
-          maps.n["gr"] = maps.n["<Leader>lR"]
           -- Move Hover Diagnostics from `gl` to `gh`
           maps.n["gh"] = maps.n["gh"]
           maps.n["gl"] = nil
@@ -42,8 +40,6 @@ return {
         local maps = opts.mappings
         maps.n["<Leader>f/"][1] = function() require("fzf-lua").grep_curbuf() end
         maps.n["<Leader>fw"][1] = function() require("fzf-lua").grep_project() end
-        maps.v["<Leader>f"] =
-          { function() require("fzf-lua").grep_visual() end, desc = "Grep visual selection in project" }
       end,
     },
   },

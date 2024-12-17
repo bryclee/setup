@@ -33,10 +33,32 @@ return {
           ["<C-f>"] = { function() vim.fn.system { "tmux", "neww", "tmux-s" } end },
           ["<Esc>"] = { "<cmd>nohlsearch<CR>" },
           ["<Leader>o"] = false,
+          ["<Leader>q"] = { "<Cmd>close<CR>", desc = "Close window" },
+
+          -- Personal mappings for Search
+          ["<Leader>s"] = { desc = "Search" },
+          ["<Leader>sf"] = { "<Cmd>FzfLua files<CR>", desc = "Files" },
+          ["<Leader>ss"] = { "<Cmd>FzfLua lsp_live_workspace_symbols<CR>", desc = "Workspace Symbols" },
+          ["<Leader>sn"] = { "<Cmd>FzfLua lsp_document_symbols<CR>", desc = "Document Symbols" },
+          ["<Leader>st"] = { "<Cmd>FzfLua grep_project<CR>", desc = "Text (grep)" },
+          ["<Leader>s/"] = { "<Cmd>FzfLua blines<CR>", desc = "Buffer" },
+          ["<Leader><Leader>"] = { "<Cmd>FzfLua buffers<CR>", desc = "Open buffers" },
+
+          -- References
+          ["grr"] = false,
+          ["gra"] = false,
+          ["grn"] = false,
+          ["gr"] = { "<Cmd>FzfLua lsp_references<CR>", desc = "Go to references" },
         },
         t = {
           ["<C-_>"] = { "<Cmd>ToggleTerm<CR>", desc = "ToggleTerm" },
           ["<C-\\><C-\\>"] = { [[<C-\><C-n>]], desc = "Return to Normal Mode" },
+        },
+        v = {
+          ["<Leader>st"] = {
+            function() require("fzf-lua").grep_visual() end,
+            desc = "Grep visual selection in project",
+          },
         },
       },
 
