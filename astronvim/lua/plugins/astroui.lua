@@ -36,5 +36,5 @@ return {
   -- colorscheme
   { import = "astrocommunity.colorscheme.rose-pine" },
   { "rose-pine/neovim", opts = { dim_inactive_windows = true } },
-  { "AstroNvim/astroui", opts = { colorscheme = "rose-pine" } },
+  -- { "AstroNvim/astroui", opts = { colorscheme = "rose-pine" } },
 }

@@ -84,8 +84,6 @@ return {
         end,
         hl = { bg = "tabline_bg" },
       },
-      -- status.heirline.make_buflist(status.component.tabline_file_info()), -- component for each buffer tab
-      status.component.fill({ hl = { bg = "tabline_bg" } }), -- fill the rest of the tabline with background color
       { -- tab list
         condition = function()
           return #vim.api.nvim_list_tabpages() >= 2
@@ -99,20 +97,22 @@ return {
             )
           end,
         }),
-        { -- close button for current tab
-          provider = status.provider.close_button({
-            kind = "TabClose",
-            padding = { left = 1, right = 1 },
-          }),
-          hl = status.hl.get_attributes("tab_close", true),
-          on_click = {
-            callback = function()
-              require("astrocore.buffer").close_tab()
-            end,
-            name = "heirline_tabline_close_tab_callback",
-          },
-        },
       },
+      status.component.fill({ hl = { bg = "tabline_bg" } }), -- fill the rest of the tabline with background color
+      status.heirline.make_buflist(status.component.tabline_file_info()), -- component for each buffer tab
+        -- { -- close button for current tab
+        --   provider = status.provider.close_button({
+        --     kind = "TabClose",
+        --     padding = { left = 1, right = 1 },
+        --   }),
+        --   hl = status.hl.get_attributes("tab_close", true),
+        --   on_click = {
+        --     callback = function()
+        --       require("astrocore.buffer").close_tab()
+        --     end,
+        --     name = "heirline_tabline_close_tab_callback",
+        --   },
+        -- },
     }
   end,
 }

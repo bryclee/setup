@@ -22,8 +22,8 @@ local function scheme_for_appearance(darkTheme)
 		-- return "Material Darker (base16)"
 		return "Rosé Pine (Gogh)"
 	else
-		return "Rosé Pine Dawn (Gogh)"
-		-- return "Bluloco Zsh Light (Gogh)"
+		-- return "Rosé Pine Dawn (Gogh)"
+		return "Bluloco Zsh Light (Gogh)"
 	end
 end
 
