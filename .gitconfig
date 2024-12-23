@@ -28,3 +28,5 @@
     cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [include]
     path = ~/.gitconfig_local
+[fetch]
+	prune = true
