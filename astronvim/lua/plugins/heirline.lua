@@ -7,6 +7,11 @@ return {
     local status = require "astroui.status"
     local path_func = status.provider.filename { modify = ":.:h", fallback = "" }
 
+    local bufpath = function()
+      local path = vim.fn.expand "%:.:h"
+      return (#path > 0) and path .. "/" or ""
+    end
+
     opts.winbar = { -- create custom winbar
       -- store the current buffer number
       init = function(self) self.bufnr = vim.api.nvim_get_current_buf() end,
@@ -15,7 +20,12 @@ return {
       {
         condition = function() return not status.condition.is_active() end,
         -- show the path to the file relative to the working directory
-        status.component.separated_path { path_func = path_func },
+        status.component.separated_path {
+          path_func = path_func,
+          separator = "/",
+          suffix = "  ",
+        },
+        -- { provider = bufpath },
         -- add the file name and icon
         status.component.file_info {
           file_icon = { hl = status.hl.file_icon "winbar", padding = { left = 0 } },
@@ -31,7 +41,12 @@ return {
       -- active winbar
       {
         -- show the path to the file relative to the working directory
-        status.component.separated_path { path_func = path_func },
+        -- status.component.separated_path { path_func = path_func },
+        status.component.separated_path {
+          path_func = path_func,
+          separator = "/",
+          suffix = "  ",
+        },
         -- add the file name and icon
         status.component.file_info { -- add file_info to breadcrumbs
           file_icon = { hl = status.hl.filetype_color, padding = { left = 0 } },

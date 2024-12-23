@@ -25,6 +25,10 @@ elif hash ag 2>/dev/null; then
   alias ag='ag -f'
 fi
 
+if hash lazygit 2>/dev/null; then
+  alias lgit='lazygit'
+fi
+
 export BAT_THEME="base16"
 export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --color=16 --hscroll-off=25 --reverse --bind ctrl-a:toggle-all,ctrl-s:toggle-sort"
 
