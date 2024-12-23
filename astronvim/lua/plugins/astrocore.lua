@@ -42,6 +42,8 @@ return {
           ["<Leader>sn"] = { "<Cmd>FzfLua lsp_document_symbols<CR>", desc = "Document Symbols" },
           ["<Leader>st"] = { "<Cmd>FzfLua grep_project<CR>", desc = "Text (grep)" },
           ["<Leader>s/"] = { "<Cmd>FzfLua blines<CR>", desc = "Buffer" },
+          ["<Leader>se"] = { "<Cmd>Neotree position=left<CR>", desc = "Open neotree"},
+          ["<Leader>s<CR>"] = { "<Cmd>FzfLua resume<CR>", desc = "Resume fzf picker"},
           ["<Leader><Leader>"] = { "<Cmd>FzfLua buffers<CR>", desc = "Open buffers" },
 
           -- References
