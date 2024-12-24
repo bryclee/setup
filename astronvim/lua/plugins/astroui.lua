@@ -34,7 +34,18 @@ return {
   },
 
   -- colorscheme
-  { import = "astrocommunity.colorscheme.rose-pine" },
-  { "rose-pine/neovim", opts = { dim_inactive_windows = true } },
-  -- { "AstroNvim/astroui", opts = { colorscheme = "rose-pine" } },
+  -- { import = "astrocommunity.colorscheme.rose-pine" },
+  -- { "rose-pine/neovim", opts = { dim_inactive_windows = true } },
+  -- { import = "astrocommunity.colorscheme.catppuccin" },
+  -- {
+  --   "catppuccin/nvim",
+  --   opts = {
+  --     dim_inactive = {
+  --       enabled = true, -- dims the background color of inactive window
+  --       -- shade = "dark",
+  --       -- percentage = 0.15, -- percentage of the shade to apply to the inactive window
+  --     },
+  --   },
+  -- },
+  -- { "AstroNvim/astroui", opts = { colorscheme = "catppuccin" } },
 }

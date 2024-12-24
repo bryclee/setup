@@ -70,20 +70,20 @@ return {
 
     vim.opt.showtabline = 1 -- Only show tabline for multiple tabs
     opts.tabline = { -- tabline, do not show buffers
-      { -- file tree padding
-        condition = function(self)
-          self.winid = vim.api.nvim_tabpage_list_wins(0)[1]
-          self.winwidth = vim.api.nvim_win_get_width(self.winid)
-          return self.winwidth ~= vim.o.columns -- only apply to sidebars
-            and not require("astrocore.buffer").is_valid(
-              vim.api.nvim_win_get_buf(self.winid)
-            ) -- if buffer is not in tabline
-        end,
-        provider = function(self)
-          return (" "):rep(self.winwidth + 1)
-        end,
-        hl = { bg = "tabline_bg" },
-      },
+      -- { -- file tree padding
+      --   condition = function(self)
+      --     self.winid = vim.api.nvim_tabpage_list_wins(0)[1]
+      --     self.winwidth = vim.api.nvim_win_get_width(self.winid)
+      --     return self.winwidth ~= vim.o.columns -- only apply to sidebars
+      --       and not require("astrocore.buffer").is_valid(
+      --         vim.api.nvim_win_get_buf(self.winid)
+      --       ) -- if buffer is not in tabline
+      --   end,
+      --   provider = function(self)
+      --     return (" "):rep(self.winwidth + 1)
+      --   end,
+      --   hl = { bg = "tabline_bg" },
+      -- },
       { -- tab list
         condition = function()
           return #vim.api.nvim_list_tabpages() >= 2
