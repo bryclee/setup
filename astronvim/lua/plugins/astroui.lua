@@ -15,6 +15,8 @@ return {
       },
       astrodark = { -- a table of overrides/changes when applying the astrotheme theme
         -- Normal = { bg = "#000000" },
+        DiffAdd = { bg = '#2a2544' },
+        DiffDelete = { fg = '#654365', bg = '#231724'}
       },
     },
     -- Icons can be configured throughout the interface
