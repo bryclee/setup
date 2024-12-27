@@ -21,7 +21,7 @@ return {
       opts = {
         mappings = {
           n = {
-            ["<Leader>-"] = { "<Cmd>e %:p:h<CR>", desc = "Explorer in current buffer" },
+            ["<Leader>-"] = { "<Cmd>Neotree position=current %<CR>", desc = "Explorer in current buffer" },
             ["<Leader>be"] = { "<Cmd>Neotree source=buffers<CR>", desc = "Buffer explorer" },
             ["<Leader>ge"] = { "<Cmd>Neotree source=git_status<CR>", desc = "Git explorer" },
             ["<Leader>e"] = {

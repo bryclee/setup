@@ -36,8 +36,8 @@ return {
   },
 
   -- colorscheme
-  -- { import = "astrocommunity.colorscheme.rose-pine" },
-  -- { "rose-pine/neovim", opts = { dim_inactive_windows = true } },
+  { import = "astrocommunity.colorscheme.rose-pine" },
+  { "rose-pine/neovim", opts = { dim_inactive_windows = true } },
   -- { import = "astrocommunity.colorscheme.catppuccin" },
   -- {
   --   "catppuccin/nvim",
@@ -49,5 +49,5 @@ return {
   --     },
   --   },
   -- },
-  -- { "AstroNvim/astroui", opts = { colorscheme = "catppuccin" } },
+  -- { "AstroNvim/astroui", opts = { colorscheme = "rose-pine" } },
 }

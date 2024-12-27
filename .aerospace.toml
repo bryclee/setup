@@ -10,8 +10,7 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-  'exec-and-forget borders active_color="gradient(top_left=0xfff743b6,bottom_right=0xfffcc043)" inactive_color=0xff696d84 width=5.0'
-  # 'exec-and-forget borders active_color=0xfff1d3d4 inactive_color=0xff695d74 width=5.0'
+  'borders active_color="0xffff99c8" inactive_color=0xff694d54 width=5.0'
 ]
 
 # Start AeroSpace at login
@@ -102,16 +101,20 @@ alt-comma = 'layout accordion horizontal vertical'
 #alt-j = 'focus down'
 #alt-k = 'focus up'
 #alt-l = 'focus right'
-alt-h =         'focus --boundaries workspace --boundaries-action wrap-around-the-workspace left'
-alt-j =         'focus --boundaries workspace --boundaries-action wrap-around-the-workspace down'
-alt-k =         'focus --boundaries workspace --boundaries-action wrap-around-the-workspace up'
-alt-l =         'focus --boundaries workspace --boundaries-action wrap-around-the-workspace right'
+alt-h = 'focus --boundaries workspace --boundaries-action wrap-around-the-workspace left'
+alt-j = 'focus --boundaries workspace --boundaries-action wrap-around-the-workspace down'
+alt-k = 'focus --boundaries workspace --boundaries-action wrap-around-the-workspace up'
+alt-l = 'focus --boundaries workspace --boundaries-action wrap-around-the-workspace right'
+alt-n = 'focus-monitor --wrap-around next'
+alt-p = 'focus-monitor --wrap-around prev'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 alt-shift-h = 'move left'
 alt-shift-j = 'move down'
 alt-shift-k = 'move up'
 alt-shift-l = 'move right'
+alt-shift-n = 'move-node-to-monitor next'
+alt-shift-p = 'move-node-to-monitor prev'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 alt-shift-minus = 'resize smart -50'
@@ -127,6 +130,7 @@ alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
+alt-0 = 'workspace 10'
 # alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
 # alt-b = 'workspace B'
 alt-c = 'workspace C' # (C)hat
@@ -160,6 +164,7 @@ alt-shift-6 = 'move-node-to-workspace 6'
 alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
+alt-shift-0 = 'move-node-to-workspace 10'
 # alt-shift-a = 'move-node-to-workspace A'
 # alt-shift-b = 'move-node-to-workspace B'
 alt-shift-c = 'move-node-to-workspace C'
@@ -193,6 +198,9 @@ alt-shift-semicolon = 'mode service'
 
 # from i3 config
 alt-f = 'fullscreen'
+
+# close
+alt-shift-q = 'close --quit-if-last-window'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -230,3 +238,12 @@ run = 'move-node-to-workspace C'
 [[on-window-detected]]
 if.app-id = 'com.electron.logseq'
 run = 'move-node-to-workspace 2'
+
+[workspace-to-monitor-force-assignment]
+# 1 = 'main'
+# 2 = 'main'
+# 3 = 'main'
+# C = 'main'
+M = 'secondary'
+10 = 'secondary'
+V = 'secondary'
