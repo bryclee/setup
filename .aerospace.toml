@@ -10,7 +10,7 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-  'borders active_color="0xffff99c8" inactive_color=0xff694d54 width=5.0'
+  'exec-and-forget borders active_color=0xffff99c8 inactive_color=0xff694d54 width=5.0'
 ]
 
 # Start AeroSpace at login
@@ -23,7 +23,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 30
+accordion-padding = 20
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -59,8 +59,8 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 8
-inner.vertical =   8
+inner.horizontal = 9 
+inner.vertical =   9
 outer.left =       6
 outer.bottom =     4
 outer.top =        4
@@ -221,6 +221,9 @@ l = ['join-with right', 'mode main']
 # App-specific settings
 [[on-window-detected]]
 if.app-id = 'com.f5networks.EdgeClient'
+run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
 run = 'layout floating'
 
 [[on-window-detected]]

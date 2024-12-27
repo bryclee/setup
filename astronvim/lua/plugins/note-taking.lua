@@ -86,6 +86,11 @@ return {
       -- concealcursor = true,
     },
   },
+  -- Still seems to be needed, or at least some other configuration would be needed, as folding does not work without this
+  -- {
+  --   "kevinhwang91/nvim-ufo",
+  --   enabled = false,
+  -- },
   {
     "AstroNvim/astrocore",
     opts = {
