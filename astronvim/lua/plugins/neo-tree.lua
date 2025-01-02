@@ -29,7 +29,7 @@ return {
                 if vim.bo.filetype == "neo-tree" then
                   vim.cmd.wincmd "p"
                 else
-                  vim.cmd.Neotree "focus"
+                  vim.cmd "Neotree focus reveal_force_cwd"
                 end
               end,
               desc = "Show/Focus explorer",
