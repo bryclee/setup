@@ -10,7 +10,8 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-  'exec-and-forget borders active_color=0xffff99c8 inactive_color=0xff694d54 width=5.0'
+  # 'exec-and-forget borders active_color=0xffffa9d8 inactive_color=0xff694d54 width=6.0'
+  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff694d54 width=6.0'
 ]
 
 # Start AeroSpace at login
@@ -115,6 +116,12 @@ alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 alt-shift-n = 'move-node-to-monitor next'
 alt-shift-p = 'move-node-to-monitor prev'
+
+# Join commands
+ctrl-alt-shift-h = 'join-with left'
+ctrl-alt-shift-j = 'join-with down'
+ctrl-alt-shift-k = 'join-with up'
+ctrl-alt-shift-l = 'join-with right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
 alt-shift-minus = 'resize smart -50'

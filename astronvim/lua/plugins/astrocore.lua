@@ -44,6 +44,7 @@ return {
           ["<Leader>s/"] = { "<Cmd>FzfLua blines<CR>", desc = "Buffer" },
           ["<Leader>se"] = { "<Cmd>Neotree position=left<CR>", desc = "Open neotree"},
           ["<Leader>s<CR>"] = { "<Cmd>FzfLua resume<CR>", desc = "Resume fzf picker"},
+          ["<Leader>s:"] = { "<Cmd>FzfLua command_history<CR>", desc = "Search command history" },
           ["<Leader><Leader>"] = { "<Cmd>FzfLua buffers<CR>", desc = "Open buffers" },
 
           -- References

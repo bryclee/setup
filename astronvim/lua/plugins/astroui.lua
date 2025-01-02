@@ -12,8 +12,11 @@ return {
           DiffChange = { bg = "#3f3820" },
         },
         astrolight = {
-          DiffAdd = { bg = "#d6f2f8" },
-          DiffDelete = { fg = "#aaaacc", bg = "#e0daea" },
+          DiffAdd = { bg = "#e6f2f8" },
+          DiffDelete = {
+            fg = "#7a7aac",
+            bg = "#d6e2e8",
+          },
           DiffChange = { bg = "#f6daf8" },
         },
       },
