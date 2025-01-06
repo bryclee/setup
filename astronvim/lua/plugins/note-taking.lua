@@ -7,6 +7,7 @@ return {
       org_agenda_files = "~/orgfiles/**/*",
       org_default_notes_file = "~/orgfiles/refile.org",
       org_hide_emphasis_markers = true,
+      org_blank_before_new_entry = { heading = false, plain_list_item = false },
     },
     init = function()
       vim.api.nvim_create_autocmd("ColorScheme", {
@@ -19,6 +20,8 @@ return {
         callback = function()
           -- Disable nvim-ufo, which conflicts with ufo folds
           require("ufo").detach()
+
+          vim.opt.wrap = true
 
           vim.keymap.set({ "n", "i" }, "<M-CR>", '<cmd>lua require("orgmode").action("org_mappings.meta_return")<CR>', {
             silent = true,

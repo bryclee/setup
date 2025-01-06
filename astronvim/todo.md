@@ -5,6 +5,7 @@ Running list of items to configure for `astronvim` to make it work the way I'd l
 - [ ] Something funny going on with caching views, in particular with JSON files
   - foldmethod is cached as diff
   - fold level does not update when using `zm`, `zr`, so cannot unfold one level at a time
+  - This maybe has to do with the `resession` plugin?
 - fzf-lua
   - [x] `grr` (go to references) should also use FZF lua
   - [x] `<leader>f/` should use fuzzy search instead of grep
@@ -46,3 +47,14 @@ Running list of items to configure for `astronvim` to make it work the way I'd l
 - [x] Surround plugin?
 - [x] How to optionally disable formatter
   - `<leader>uf` when the buffer has formatting enabled
+
+## Orgmode
+
+- [ ] Mapping to next/previous paragraph (`{`) overridden by mapping for navigating to next header
+- [ ] promote/demote headline does not shift cursor proper
+- [ ] Insert headline (`<Leader>oih`) would be more helpful if it respected whitespace. It adds a newline before the headline by default, but personally I always already have this added for formatting.
+- [ ] Add wrap by default for orgmode files, for readability
+
+### Extra
+
+- [ ] FZF + orgmode, similar to the telescope plugin
