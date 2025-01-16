@@ -48,6 +48,7 @@ alias ls='ls -G'
 
 # tmux-sessionizer https://github.com/ThePrimeagen/.dotfiles/blob/9990fea97c007d4c1f51481dd54cc74fcfc5e21d/zsh/.zsh_profile#L26
 bindkey -s ^f "tmux-s\n"
+bindkey -s ^o ". cdproject\n"
 
 # Add fzf keybinds if fzf is installed
 hash fzf 2</dev/null && source <(fzf --zsh)

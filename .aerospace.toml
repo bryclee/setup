@@ -11,7 +11,7 @@ after-login-command = []
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
   # 'exec-and-forget borders active_color=0xffffa9d8 inactive_color=0xff694d54 width=6.0'
-  'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff694d54 width=6.0'
+  'exec-and-forget borders active_color=0xffe1c3f4 inactive_color=0xff694d54 width=6.0'
 ]
 
 # Start AeroSpace at login
@@ -114,8 +114,8 @@ alt-shift-h = 'move left'
 alt-shift-j = 'move down'
 alt-shift-k = 'move up'
 alt-shift-l = 'move right'
-alt-shift-n = 'move-node-to-monitor next'
-alt-shift-p = 'move-node-to-monitor prev'
+alt-shift-n = 'move-node-to-monitor --wrap-around next'
+alt-shift-p = 'move-node-to-monitor --wrap-around prev'
 
 # Join commands
 ctrl-alt-shift-h = 'join-with left'
@@ -199,6 +199,14 @@ alt-shift-v = 'move-node-to-workspace V'
 alt-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+# Swap the workspaces on the 2 monitors (maybe has a better way to do it?)
+alt-shift-ctrl-tab = [
+  'focus-monitor --wrap-around next',
+  'move-workspace-to-monitor --wrap-around next',
+  'workspace-back-and-forth',
+  'move-workspace-to-monitor --wrap-around next',
+  'workspace-back-and-forth'
+]
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-semicolon = 'mode service'
@@ -254,6 +262,6 @@ run = 'move-node-to-workspace 2'
 # 2 = 'main'
 # 3 = 'main'
 # C = 'main'
+# V = 'secondary'
 M = 'secondary'
 10 = 'secondary'
-V = 'secondary'

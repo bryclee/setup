@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+if [[ -n "$1" ]]; then
+    selected=$1
+else
+    selected=$(( find ~ -maxdepth 1 -type d,l; find ~/Projects -mindepth 1 -maxdepth ${TMUXS_PROJECT_DEPTH:-1} -type d) | fzf --prompt='cd project > ')
+fi
+
+if [[ -z "$selected" ]]; then
+    exit 0
+fi
+
+cd $selected
