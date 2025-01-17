@@ -3,6 +3,33 @@
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
 --       as this provides autocomplete and documentation while editing
 
+function currentWindowOpts()
+  local win = vim.fn.win_screenpos(0)
+  local row = win[1]
+  local col = win[2]
+  local width = vim.fn.winwidth(0)
+  local height = vim.fn.winheight(0)
+
+  if row == 1 then
+    row = 0
+    height = height - 1
+  end
+
+  if col == 1 then
+    col = 0
+    width = width - 1
+  else
+    width = width - 2
+  end
+
+  return {
+    row = row,
+    col = col,
+    width = width,
+    height = height,
+  }
+end
+
 ---@type LazySpec
 return {
   {
@@ -41,9 +68,16 @@ return {
           ["<Leader>ss"] = { "<Cmd>FzfLua lsp_live_workspace_symbols<CR>", desc = "Workspace Symbols" },
           ["<Leader>sn"] = { "<Cmd>FzfLua lsp_document_symbols<CR>", desc = "Document Symbols" },
           ["<Leader>st"] = { "<Cmd>FzfLua grep_project<CR>", desc = "Text (grep)" },
-          ["<Leader>s/"] = { "<Cmd>FzfLua blines<CR>", desc = "Buffer" },
-          ["<Leader>se"] = { "<Cmd>Neotree position=left<CR>", desc = "Open neotree"},
-          ["<Leader>s<CR>"] = { "<Cmd>FzfLua resume<CR>", desc = "Resume fzf picker"},
+          ["<Leader>s/"] = {
+            function()
+              require("fzf-lua").blines {
+                winopts = currentWindowOpts(),
+              }
+            end,
+            desc = "Buffer",
+          },
+          ["<Leader>se"] = { "<Cmd>Neotree position=left<CR>", desc = "Open neotree" },
+          ["<Leader>s<CR>"] = { "<Cmd>FzfLua resume<CR>", desc = "Resume fzf picker" },
           ["<Leader>s:"] = { "<Cmd>FzfLua command_history<CR>", desc = "Search command history" },
           ["<Leader><Leader>"] = { "<Cmd>FzfLua buffers<CR>", desc = "Open buffers" },
 
