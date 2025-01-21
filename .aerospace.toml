@@ -212,7 +212,7 @@ alt-shift-ctrl-tab = [
 alt-shift-semicolon = 'mode service'
 
 # from i3 config
-alt-f = 'fullscreen'
+alt-f = ['fullscreen --no-outer-gaps', 'mode fullscreen']
 
 # close
 alt-shift-q = 'close --quit-if-last-window'
@@ -224,6 +224,10 @@ esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
+
+# Added to show 'f' indicator in status bar
+[mode.fullscreen.binding]
+alt-f = ['fullscreen', 'mode main']
 
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ['layout sticky tiling', 'mode main']
