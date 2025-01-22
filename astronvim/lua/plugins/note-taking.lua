@@ -8,6 +8,12 @@ return {
       org_default_notes_file = "~/orgfiles/refile.org",
       org_hide_emphasis_markers = true,
       org_blank_before_new_entry = { heading = false, plain_list_item = false },
+      org_capture_templates = {
+        n = {
+          description = "Note",
+          template = "* %?\n  %u",
+        },
+      },
     },
     init = function()
       vim.api.nvim_create_autocmd("ColorScheme", {
