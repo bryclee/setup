@@ -34,7 +34,7 @@ nnoremap <silent> <C-k> <C-W>k
 nnoremap <silent> <C-h> <C-W>h
 nnoremap <silent> <C-l> <C-W>l
 
-map <leader>c :bd<CR>
+nnoremap <leader>c :bd<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q <C-w>c<CR>
 
@@ -84,6 +84,8 @@ map <leader>st <Action>(TextSearchAction)
 map <leader>sn <Action>(FileStructurePopup)
 map <leader>sc <Action>(GotoClass)
 map <leader>ss <Action>(GotoSymbol)
+map <leader>sf <Action>(GotoFile)
+map <leader>sa <Action>(GotoAction)
 
 " Git
 map <leader>gg <Action>(VcsGroups)
@@ -94,8 +96,6 @@ set ideajoin
 
 " Navigation
 map <leader>e <Action>(SelectInProjectView)
-map <leader>sf <Action>(GotoFile)
-map <leader>sa <Action>(SearchEverywhere)
 map <leader><leader> <Action>(RecentFiles)
 map [d <Action>(GotoPreviousError)
 map ]d <Action>(GotoNextError)

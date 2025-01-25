@@ -3,7 +3,7 @@ return {
   { import = "astrocommunity.git.octo-nvim" }, -- for reviewing pull requests
   {
     "pwntester/octo.nvim",
-    commit = "f09ff9413652e3c06a6817ba6284591c00121fe0",
+    -- commit = "f09ff9413652e3c06a6817ba6284591c00121fe0",
     opts = {
       use_local_fs = false,
       picker = "fzf-lua",
