@@ -46,6 +46,7 @@ map Q gq
 
 " Highlight copied text
 Plug 'machakann/vim-highlightedyank'
+Plug 'justinmk/vim-sneak'
 " Commentary plugin
 set commentary
 set surround
@@ -63,7 +64,7 @@ set textobj-indent
 "map \b <Action>(ToggleLineBreakpoint)
 map <leader>ld <Action>(ShowHoverInfo)
 map gr <Action>(ShowUsages)
-map gt <Action>(GotoTest)
+map gT <Action>(GotoTest)
 map gD <Action>(EditorPopupMenu.GoTo)
 map <leader>lr <Action>(RenameElement)
 map <leader>la <Action>(RefactoringMenu)

@@ -11,7 +11,7 @@ after-login-command = []
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
   # 'exec-and-forget borders active_color=0xffffa9d8 inactive_color=0xff694d54 width=6.0'
-  'exec-and-forget borders active_color=0xffe1c3f4 inactive_color=0xff694d54 width=6.0'
+  'exec-and-forget borders active_color=0xffff55aa inactive_color=0xff694d54 width=4.0'
 ]
 
 # Start AeroSpace at login
@@ -255,7 +255,7 @@ run = 'move-node-to-workspace C'
 
 [[on-window-detected]]
 if.app-id = 'com.electron.logseq'
-run = 'move-node-to-workspace 2'
+run = 'move-node-to-workspace 0'
 
 [workspace-to-monitor-force-assignment]
 # 1 = 'main'
