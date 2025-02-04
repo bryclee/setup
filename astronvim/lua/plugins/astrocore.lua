@@ -78,7 +78,7 @@ return {
           },
           ["<Leader>se"] = { "<Cmd>Neotree position=left<CR>", desc = "Open neotree" },
           ["<Leader>s<CR>"] = { "<Cmd>FzfLua resume<CR>", desc = "Resume fzf picker" },
-          ["<Leader>s:"] = { "<Cmd>FzfLua command_history<CR>", desc = "Search command history" },
+          ["<Leader>s<C-n>"] = { "<Cmd>FzfLua command_history<CR>", desc = "Search command history" },
           ["<Leader><Leader>"] = { "<Cmd>FzfLua buffers<CR>", desc = "Open buffers" },
 
           -- References
@@ -86,6 +86,10 @@ return {
           ["gra"] = false,
           ["grn"] = false,
           ["gr"] = { "<Cmd>FzfLua lsp_references<CR>", desc = "Go to references" },
+
+          -- Disable splits
+          ["\\"] = { "," }, -- ',' is localleader, so use '\' instead to traverse back
+          ["|"] = false,
         },
         t = {
           ["<C-_>"] = { "<Cmd>ToggleTerm<CR>", desc = "ToggleTerm" },
