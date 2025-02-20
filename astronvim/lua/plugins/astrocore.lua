@@ -56,7 +56,8 @@ return {
       mappings = {
         -- first key is the mode
         n = {
-          ["<C-_>"] = { "<Cmd>ToggleTerm<CR>", desc = "ToggleTerm" },
+          ["<C-_>"] = { "<C-/>" , remap = true },
+          ["<C-/>"] = { "<Cmd>ToggleTerm<CR>", desc = "ToggleTerm" },
           ["<C-f>"] = { function() vim.fn.system { "tmux", "neww", "tmux-s" } end },
           ["<Esc>"] = { "<cmd>nohlsearch<CR>" },
           ["<Leader>o"] = false,
@@ -92,7 +93,8 @@ return {
           ["|"] = false,
         },
         t = {
-          ["<C-_>"] = { "<Cmd>ToggleTerm<CR>", desc = "ToggleTerm" },
+          ["<C-_>"] = { "<C-/>" , remap = true },
+          ["<C-/>"] = { "<Cmd>ToggleTerm<CR>", desc = "ToggleTerm" },
           ["<C-\\><C-\\>"] = { [[<C-\><C-n>]], desc = "Return to Normal Mode" },
         },
         v = {

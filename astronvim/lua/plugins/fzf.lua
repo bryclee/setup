@@ -4,14 +4,18 @@ return {
     winopts = {
       backdrop = 100,
       preview = {
-        flip_columns = 140,
+        -- flip_columns = 140,
+        layout = "vertical",
       },
     },
     keymap = {
+      builtin = {
+        true,
+        ["<S-Left>"] = "backward-word",
+        ["<S-Right>"] = "forward-word",
+      },
       fzf = {
         true,
-        ["ctrl-d"] = "half-page-down",
-        ["ctrl-u"] = "half-page-up",
       },
     },
     oldfiles = {

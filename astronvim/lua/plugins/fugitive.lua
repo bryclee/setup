@@ -25,8 +25,19 @@ return {
     },
     config = function()
       -- q to close on fugitive files as well
-      vim.api.nvim_create_autocmd({ "FileType" }, {
-        pattern = "fugitive,fugitiveblame,git",
+      vim.api.nvim_create_autocmd({ "User" }, {
+        pattern = "FugitiveObject",
+        callback = function(args)
+          vim.keymap.set("n", "q", function() require("astrocore.buffer").close() end, {
+            desc = "Close window",
+            buffer = args.buf,
+            silent = true,
+            nowait = true,
+          })
+        end,
+      })
+      vim.api.nvim_create_autocmd({ "User" }, {
+        pattern = "FugitiveIndex,FugitivePager",
         callback = function(args)
           vim.keymap.set("n", "q", "<Cmd>close<CR>", {
             desc = "Close window",
@@ -34,6 +45,8 @@ return {
             silent = true,
             nowait = true,
           })
+
+          if vim.api.nvim_get_option_value("filetype", { scope = "local" }) then vim.opt.winbar = " " end
         end,
       })
     end,
