@@ -13,6 +13,12 @@ return {
           description = "Note",
           template = "* %?\n  %u",
         },
+        j = {
+          description = "Journal",
+          template = '**** %<%H:%M>%?',
+          target = '~/orgfiles/journal.org',
+          datetree = true,
+        }
       },
     },
     init = function()
@@ -105,7 +111,7 @@ return {
     opts = {
       mappings = {
         n = {
-          ["<Leader>oe"] = { "<Cmd>bot sp ~/orgfiles<CR>", desc = "Explore orgfiles" },
+          ["<Leader>oe"] = { "<Cmd>Neotree position=float dir=~/orgfiles<CR>", desc = "Explore orgfiles" },
         },
       },
     },
