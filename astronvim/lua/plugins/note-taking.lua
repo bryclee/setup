@@ -15,10 +15,27 @@ return {
         },
         j = {
           description = "Journal",
-          template = '**** %<%H:%M>%?',
-          target = '~/orgfiles/journal.org',
+          template = "**** %<%H:%M>%?",
+          target = "~/orgfiles/journal.org",
           datetree = true,
-        }
+        },
+        s = {
+          description = "Standup",
+          template = {
+            '- Previous day',
+            '  - %?',
+            '- Today',
+            '  - ',
+            '- Unexpected',
+            '  - ',
+            '- Blockers',
+            '  - ',
+            '- Spillover',
+            '  - ',
+          },
+          target = "~/orgfiles/standups/standup.org",
+          datetree = true,
+        },
       },
     },
     init = function()

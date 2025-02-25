@@ -30,6 +30,13 @@ function currentWindowOpts()
   }
 end
 
+-- OSX only, write format to clipboard as RTF
+local function exportFormatToRtf(format)
+  return [[pandoc -f ]] .. format .. [[ -t html | hexdump -ve '1/1 "\%.2x"' | xargs printf "set the clipboard to {text:\" \", «class HTML»:«data HTML\%s»}" | osascript -]]
+end
+local exportOrg = exportFormatToRtf("org")
+local exportMarkdown = exportFormatToRtf("markdown")
+
 ---@type LazySpec
 return {
   {
@@ -82,6 +89,9 @@ return {
           ["<Leader>s<C-n>"] = { "<Cmd>FzfLua command_history<CR>", desc = "Search command history" },
           ["<Leader><Leader>"] = { "<Cmd>FzfLua buffers<CR>", desc = "Open buffers" },
 
+          ["<Leader>yo"] = { "<Cmd>w !" .. exportOrg .. "<CR>", desc = "Yank org buffer" },
+          ["<Leader>ym"] = { "<Cmd>w !" .. exportMarkdown .. "<CR>", desc = "Yank markdown buffer" },
+
           -- References
           ["grr"] = false,
           ["gra"] = false,
@@ -102,6 +112,8 @@ return {
             function() require("fzf-lua").grep_visual() end,
             desc = "Grep visual selection in project",
           },
+          ["<Leader>yo"] = { ":w !" .. exportOrg .. "<CR>", desc = "Yank org selection" },
+          ["<Leader>ym"] = { ":w !" .. exportMarkdown .. "<CR>", desc = "Yank markdown selection" },
         },
       },
 
