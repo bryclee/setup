@@ -55,7 +55,7 @@
   "nvim-window-picker": { "branch": "main", "commit": "0dfef64eaf063e1cd27983ab11a30e7bc5b74fac" },
   "octo.nvim": { "branch": "master", "commit": "b86ad855a2501f6df2a74322c41ccef576a77819" },
   "org-bullets.nvim": { "branch": "main", "commit": "21437cfa99c70f2c18977bffd423f912a7b832ea" },
-  "orgmode": { "branch": "master", "commit": "54aeadb205ff43e692c07f748fef870a0967af67" },
+  "orgmode": { "branch": "master", "commit": "c6d3dc8c37a641b64b74b8941263c0293935efe9" },
   "plenary.nvim": { "branch": "master", "commit": "3707cdb1e43f5cea73afb6037e6494e7ce847a66" },
   "promise-async": { "branch": "main", "commit": "38a4575da9497326badd3995e768b4ccf0bb153e" },
   "resession.nvim": { "branch": "master", "commit": "cc819b0489938d03e4f3532a583354f0287c015b" },

@@ -32,10 +32,12 @@ end
 
 -- OSX only, write format to clipboard as RTF
 local function exportFormatToRtf(format)
-  return [[pandoc -f ]] .. format .. [[ -t html | hexdump -ve '1/1 "\%.2x"' | xargs printf "set the clipboard to {text:\" \", «class HTML»:«data HTML\%s»}" | osascript -]]
+  return [[pandoc -f ]]
+    .. format
+    .. [[ -t html | hexdump -ve '1/1 "\%.2x"' | xargs printf "set the clipboard to {text:\" \", «class HTML»:«data HTML\%s»}" | osascript -]]
 end
-local exportOrg = exportFormatToRtf("org")
-local exportMarkdown = exportFormatToRtf("markdown")
+local exportOrg = exportFormatToRtf "org"
+local exportMarkdown = exportFormatToRtf "markdown"
 
 ---@type LazySpec
 return {
@@ -63,7 +65,7 @@ return {
       mappings = {
         -- first key is the mode
         n = {
-          ["<C-_>"] = { "<C-/>" , remap = true },
+          ["<C-_>"] = { "<C-/>", remap = true },
           ["<C-/>"] = { "<Cmd>ToggleTerm<CR>", desc = "ToggleTerm" },
           ["<C-f>"] = { function() vim.fn.system { "tmux", "neww", "tmux-s" } end },
           ["<Esc>"] = { "<cmd>nohlsearch<CR>" },
@@ -103,7 +105,7 @@ return {
           ["|"] = false,
         },
         t = {
-          ["<C-_>"] = { "<C-/>" , remap = true },
+          ["<C-_>"] = { "<C-/>", remap = true },
           ["<C-/>"] = { "<Cmd>ToggleTerm<CR>", desc = "ToggleTerm" },
           ["<C-\\><C-\\>"] = { [[<C-\><C-n>]], desc = "Return to Normal Mode" },
         },
@@ -119,6 +121,9 @@ return {
 
       on_keys = {
         auto_hlsearch = false,
+      },
+      autocmds = {
+        autoview = false,
       },
     },
   },

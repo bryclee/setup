@@ -6,12 +6,14 @@ return {
     opts = {
       org_agenda_files = "~/orgfiles/**/*",
       org_default_notes_file = "~/orgfiles/refile.org",
+      org_todo_keywords = { "TODO(t)", "NEXT(n)", "WAITING(w)", "|", "DONE(d)", "CANCELED(c)" },
       org_hide_emphasis_markers = true,
       org_blank_before_new_entry = { heading = false, plain_list_item = false },
+      org_agenda_span = "day",
       org_capture_templates = {
         n = {
           description = "Note",
-          template = "* %?\n  %u",
+          template = "* %<%H:%M>%?\n  %u",
         },
         j = {
           description = "Journal",
@@ -22,18 +24,18 @@ return {
         s = {
           description = "Standup",
           template = {
-            '- Previous day',
-            '  - %?',
-            '- Today',
-            '  - ',
-            '- Unexpected',
-            '  - ',
-            '- Blockers',
-            '  - ',
-            '- Spillover',
-            '  - ',
+            "    - Previous day",
+            "      - %?",
+            "    - Today",
+            "      - ",
+            "    - Unexpected",
+            "      - ",
+            "    - Blockers",
+            "      - ",
+            "    - Spillover",
+            "      - ",
           },
-          target = "~/orgfiles/standups/standup.org",
+          target = "~/orgfiles/journal.org",
           datetree = true,
         },
       },
@@ -128,7 +130,7 @@ return {
     opts = {
       mappings = {
         n = {
-          ["<Leader>oe"] = { "<Cmd>Neotree position=float dir=~/orgfiles<CR>", desc = "Explore orgfiles" },
+          ["<Leader>of"] = { "<Cmd>FzfLua files cwd=~/orgfiles<CR>", desc = "Find orgfiles" },
         },
       },
     },

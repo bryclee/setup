@@ -5,6 +5,11 @@ return {
   {
     "AstroNvim/astrotheme",
     opts = {
+      palette = "astromars",
+      background = {
+        light = "astrojupiter",
+        dark = "astromars",
+      },
       highlights = {
         astrodark = {
           DiffAdd = { bg = "#2a2544" },
@@ -56,5 +61,5 @@ return {
   -- },
 
   -- colorscheme
-  -- { "AstroNvim/astroui", opts = { colorscheme = "rose-pine" } },
+  -- { "AstroNvim/astroui", opts = { colorscheme = "astromars" } },
 }

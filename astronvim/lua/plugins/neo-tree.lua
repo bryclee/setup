@@ -8,6 +8,7 @@ return {
     window = {
       mappings = {
         ["/"] = "noop",
+        ["f"] = "fuzzy_finder"
       },
     },
     filesystem = {
@@ -32,7 +33,7 @@ return {
                 if vim.bo.filetype == "neo-tree" then
                   vim.cmd.wincmd "p"
                 else
-                  vim.cmd "Neotree focus reveal_force_cwd"
+                  vim.cmd "Neotree focus reveal_force_cwd=true position=left"
                 end
               end,
               desc = "Show/Focus explorer",
