@@ -130,7 +130,9 @@ return {
     opts = {
       mappings = {
         n = {
-          ["<Leader>of"] = { "<Cmd>FzfLua files cwd=~/orgfiles<CR>", desc = "Find orgfiles" },
+          ["<Leader>o"] = { desc = "Orgmode" },
+          ["<Leader>of"] = { "<Cmd>FzfLua files cwd=~/orgfiles<CR>", desc = "Find org files" },
+          ["<Leader>oh"] = { ":FzfLua live_grep cwd=~/orgfiles<CR>^\\*<C-g>", desc = "Search org headings" },
         },
       },
     },

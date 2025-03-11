@@ -10,6 +10,19 @@ return {
         light = "astrojupiter",
         dark = "astromars",
       },
+      palettes = {
+        astrolight = {
+          ui = {
+            inactive_base = "#ECEDED",
+          },
+        },
+        astrojupiter = {
+          ui = {
+            -- #FEEEEE
+            inactive_base = "#F8E2E2",
+          },
+        },
+      },
       highlights = {
         astrodark = {
           DiffAdd = { bg = "#2a2544" },
