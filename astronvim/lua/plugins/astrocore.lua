@@ -54,7 +54,7 @@ return {
           colorcolumn = "121",
           scrolloff = 3,
           smartcase = false,
-          -- cmdheight = 1
+          cmdheight = 1,
 
           conceallevel = 2,
           -- concealcursor = "n",

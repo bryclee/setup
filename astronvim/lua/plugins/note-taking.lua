@@ -17,7 +17,10 @@ return {
         },
         j = {
           description = "Journal",
-          template = "**** %<%H:%M>%?",
+          template = {
+            "**** Journal: %^U",
+            "     %?",
+          },
           target = "~/orgfiles/journal.org",
           datetree = true,
         },
