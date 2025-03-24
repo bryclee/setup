@@ -18,11 +18,11 @@ return {
         j = {
           description = "Journal",
           template = {
-            "**** Journal: %^U",
-            "     %?",
+            "**** %?",
+            "     %U",
           },
           target = "~/orgfiles/journal.org",
-          datetree = true,
+          datetree = { time_prompt = true },
         },
         s = {
           description = "Standup",
@@ -138,6 +138,14 @@ return {
           ["<Leader>oh"] = { ":FzfLua live_grep cwd=~/orgfiles<CR>^\\*<C-g>", desc = "Search org headings" },
         },
       },
+    },
+  },
+  {
+    dir = "~/Projects/fzf-lua-orgmode.nvim",
+    opts = {},
+    event = "VeryLazy",
+    dependencies = {
+      { "nvim-orgmode/orgmode" },
     },
   },
 }
