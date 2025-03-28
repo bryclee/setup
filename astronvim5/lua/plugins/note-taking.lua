@@ -52,8 +52,6 @@ return {
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "org",
         callback = function()
-          -- Disable nvim-ufo, which conflicts with ufo folds
-          require("ufo").detach()
 
           vim.opt.wrap = true
 
@@ -123,11 +121,6 @@ return {
       -- concealcursor = true,
     },
   },
-  -- Still seems to be needed, or at least some other configuration would be needed, as folding does not work without this
-  -- {
-  --   "kevinhwang91/nvim-ufo",
-  --   enabled = false,
-  -- },
   {
     "AstroNvim/astrocore",
     opts = {
