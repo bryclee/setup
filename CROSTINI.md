@@ -1,12 +1,12 @@
 - Install C compiler tools for `TsInstall` and other tools
 
-```
+```sh
 sudo apt install build-essential gcc
 ```
 
 - Install [brew](https://brew.sh)
 
-```
+```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 # if above doesn't work due to sudo password missing
 CI=true /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -14,14 +14,14 @@ CI=true /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/in
 
 - Install tmux and neovim with brew
 
-```
+```sh
 brew install tmux
 brew install neovim
 ```
 
 - Setup git cache for PAT
 
-```
+```sh
 echo 'machine github.com login <login> password <PAT> protocol https' > ~/.netrc
 
 gpg --gen-key
@@ -35,6 +35,6 @@ rm ~/.netrc
 
 - Install rg
 
-```
+```sh
 brew install rg
 ```

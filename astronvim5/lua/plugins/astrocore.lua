@@ -98,7 +98,7 @@ return {
           -- ["grr"] = false,
           -- ["gra"] = false,
           -- ["grn"] = false,
-          -- ["gr"] = { "<Cmd>FzfLua lsp_references<CR>", desc = "Go to references" },
+          ["grr"] = { "<Cmd>FzfLua lsp_references<CR>", desc = "Go to references" },
 
           -- Disable splits
           ["\\"] = { "," }, -- ',' is localleader, so use '\' instead to traverse back
