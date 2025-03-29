@@ -19,17 +19,7 @@ brew install tmux
 brew install neovim
 ```
 
-- Setup git cache for PAT
-
-```sh
-echo 'machine github.com login <login> password <PAT> protocol https' > ~/.netrc
-
-gpg --gen-key
-gpg -e -r <email-used-for-gpg> ~/.netrc # Should be re-run if regenerating password
-git config credential.helper "netrc -f ~/.netrc.gpg -v"
-# Remove clear text netrc file
-rm ~/.netrc
-```
+- Github auth: Use `gh` CLI for login (`gh auth login`, and `gh auth setup-git`)
 
 - [Install node](./install/node.linux.sh)
 
