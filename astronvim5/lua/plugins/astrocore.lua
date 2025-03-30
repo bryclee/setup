@@ -3,7 +3,7 @@
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
 --       as this provides autocomplete and documentation while editing
 
-function currentWindowOpts()
+local function currentWindowOpts()
   local win = vim.fn.win_screenpos(0)
   local row = win[1]
   local col = win[2]
@@ -55,6 +55,7 @@ return {
           scrolloff = 3,
           smartcase = false,
           cmdheight = 1,
+          showtabline = 1,
 
           conceallevel = 2,
           -- concealcursor = "n",
@@ -123,7 +124,8 @@ return {
         auto_hlsearch = false,
       },
       autocmds = {
-        autoview = false,
+        -- Stores the view of each file. This did not work very well with nvim-ufo, but this may work better with v5
+        -- autoview = false,
       },
     },
   },

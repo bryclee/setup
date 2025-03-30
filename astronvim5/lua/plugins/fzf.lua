@@ -31,7 +31,7 @@ return {
           local maps = opts.mappings
           maps.n["<Leader>lG"][1] = function() require("fzf-lua").lsp_live_workspace_symbols() end
           -- Move Hover Diagnostics from `gl` to `gh`
-          maps.n["gh"] = maps.n["gl"]
+          maps.n["gh"] = maps.n["gh"]
           maps.n["gl"] = nil
         end
       end,
