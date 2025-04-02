@@ -13,7 +13,7 @@ return {
       org_capture_templates = {
         n = {
           description = "Note",
-          template = "* %<%H:%M>%?\n  %u",
+          template = "* %<%H:%M> %?\n  %u",
         },
         j = {
           description = "Journal",

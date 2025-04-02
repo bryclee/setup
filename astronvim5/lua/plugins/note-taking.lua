@@ -13,20 +13,20 @@ return {
       org_capture_templates = {
         n = {
           description = "Note",
-          template = "* %<%H:%M>%?\n  %u",
+          template = "* %<%H:%M> %?\n  %u",
         },
         j = {
           description = "Journal",
           template = {
-            "**** %?",
-            "     %U",
+            "**** %U %?",
           },
           target = "~/orgfiles/journal.org",
-          datetree = { time_prompt = true },
+          datetree = { tree_type = 'month' },
         },
         s = {
           description = "Standup",
           template = {
+            "**** %u Standup",
             "    - Previous day",
             "      - %?",
             "    - Today",
@@ -39,7 +39,7 @@ return {
             "      - ",
           },
           target = "~/orgfiles/journal.org",
-          datetree = true,
+          datetree = { tree_type = 'month' },
         },
       },
     },
@@ -52,54 +52,35 @@ return {
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "org",
         callback = function()
-
           vim.opt.wrap = true
 
-          vim.keymap.set({ "n", "i" }, "<M-CR>", '<cmd>lua require("orgmode").action("org_mappings.meta_return")<CR>', {
-            silent = true,
-            buffer = true,
-            desc = "Org meta return",
-          })
-          vim.keymap.set(
-            { "n", "i" },
-            "<M-Left>",
-            '<cmd>lua require("orgmode").action("org_mappings.do_promote")<CR>',
-            {
-              silent = true,
-              buffer = true,
+          local orgMappings = {
+            ["<M-CR>"] = {
+              '<cmd>lua require("orgmode").action("org_mappings.meta_return")<CR>',
+              desc = "Org meta return",
+            },
+            ["<M-Left>"] = {
+              '<cmd>lua require("orgmode").action("org_mappings.do_promote")<CR>',
               desc = "Org promote",
-            }
-          )
-          vim.keymap.set(
-            { "n", "i" },
-            "<M-Right>",
-            '<cmd>lua require("orgmode").action("org_mappings.do_demote")<CR>',
-            {
-              silent = true,
-              buffer = true,
+            },
+            ["<M-Right>"] = {
+              '<cmd>lua require("orgmode").action("org_mappings.do_demote")<CR>',
               desc = "Org demote",
-            }
-          )
-          vim.keymap.set(
-            { "n", "i" },
-            "<S-Right>",
-            '<cmd>lua require("orgmode").action("org_mappings.todo_next_state")<CR>',
-            {
-              silent = true,
-              buffer = true,
+            },
+            ["<S-Right>"] = {
+              '<cmd>lua require("orgmode").action("org_mappings.todo_next_state")<CR>',
               desc = "Org cycle todo",
-            }
-          )
-          vim.keymap.set(
-            { "n", "i" },
-            "<S-Left>",
-            '<cmd>lua require("orgmode").action("org_mappings.todo_prev_state")<CR>',
-            {
-              silent = true,
-              buffer = true,
+            },
+            ["<S-Left>"] = {
+              '<cmd>lua require("orgmode").action("org_mappings.todo_prev_state")<CR>',
               desc = "Org cycle todo previous",
-            }
-          )
+            },
+          }
+
+          require("astrocore").set_mappings({
+            n = orgMappings,
+            i = orgMappings,
+          }, { silent = true, buffer = true })
         end,
       })
     end,

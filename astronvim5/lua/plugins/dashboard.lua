@@ -13,7 +13,7 @@ return {
       },
       {
         key = "g",
-        action = "<leader>gg",
+        action = function() require("snacks").lazygit() end,
         desc = "Lazy git",
         icon = " ",
       },
@@ -23,7 +23,13 @@ return {
         desc = "Org Agenda",
         icon = " ",
       },
-      { title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
     })
+
+    vim.list_extend(opts.dashboard.sections, {
+      { title = "Recent Files", section = "recent_files", indent = 2, padding = { 1, 1 }, pane = 2 },
+      { title = "Recent Projects", section = "projects", indent = 2, padding = { 1, 1 }, pane = 2 },
+    })
+
+    opts.dashboard.preset.header = 'AstroNvim'
   end,
 }
