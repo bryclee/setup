@@ -18,15 +18,15 @@ return {
         j = {
           description = "Journal",
           template = {
-            "**** %?",
-            "     %U",
+            "**** %U %?",
           },
           target = "~/orgfiles/journal.org",
-          datetree = { time_prompt = true },
+          datetree = { tree_type = 'month' },
         },
         s = {
           description = "Standup",
           template = {
+            "**** %u Standup",
             "    - Previous day",
             "      - %?",
             "    - Today",
@@ -39,7 +39,7 @@ return {
             "      - ",
           },
           target = "~/orgfiles/journal.org",
-          datetree = true,
+          datetree = { tree_type = 'month' },
         },
       },
     },
@@ -52,56 +52,35 @@ return {
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "org",
         callback = function()
-          -- Disable nvim-ufo, which conflicts with ufo folds
-          require("ufo").detach()
-
           vim.opt.wrap = true
 
-          vim.keymap.set({ "n", "i" }, "<M-CR>", '<cmd>lua require("orgmode").action("org_mappings.meta_return")<CR>', {
-            silent = true,
-            buffer = true,
-            desc = "Org meta return",
-          })
-          vim.keymap.set(
-            { "n", "i" },
-            "<M-Left>",
-            '<cmd>lua require("orgmode").action("org_mappings.do_promote")<CR>',
-            {
-              silent = true,
-              buffer = true,
+          local orgMappings = {
+            ["<M-CR>"] = {
+              '<cmd>lua require("orgmode").action("org_mappings.meta_return")<CR>',
+              desc = "Org meta return",
+            },
+            ["<M-Left>"] = {
+              '<cmd>lua require("orgmode").action("org_mappings.do_promote")<CR>',
               desc = "Org promote",
-            }
-          )
-          vim.keymap.set(
-            { "n", "i" },
-            "<M-Right>",
-            '<cmd>lua require("orgmode").action("org_mappings.do_demote")<CR>',
-            {
-              silent = true,
-              buffer = true,
+            },
+            ["<M-Right>"] = {
+              '<cmd>lua require("orgmode").action("org_mappings.do_demote")<CR>',
               desc = "Org demote",
-            }
-          )
-          vim.keymap.set(
-            { "n", "i" },
-            "<S-Right>",
-            '<cmd>lua require("orgmode").action("org_mappings.todo_next_state")<CR>',
-            {
-              silent = true,
-              buffer = true,
+            },
+            ["<S-Right>"] = {
+              '<cmd>lua require("orgmode").action("org_mappings.todo_next_state")<CR>',
               desc = "Org cycle todo",
-            }
-          )
-          vim.keymap.set(
-            { "n", "i" },
-            "<S-Left>",
-            '<cmd>lua require("orgmode").action("org_mappings.todo_prev_state")<CR>',
-            {
-              silent = true,
-              buffer = true,
+            },
+            ["<S-Left>"] = {
+              '<cmd>lua require("orgmode").action("org_mappings.todo_prev_state")<CR>',
               desc = "Org cycle todo previous",
-            }
-          )
+            },
+          }
+
+          require("astrocore").set_mappings({
+            n = orgMappings,
+            i = orgMappings,
+          }, { silent = true, buffer = true })
         end,
       })
     end,
@@ -123,11 +102,6 @@ return {
       -- concealcursor = true,
     },
   },
-  -- Still seems to be needed, or at least some other configuration would be needed, as folding does not work without this
-  -- {
-  --   "kevinhwang91/nvim-ufo",
-  --   enabled = false,
-  -- },
   {
     "AstroNvim/astrocore",
     opts = {

@@ -5,10 +5,10 @@ return {
   {
     "AstroNvim/astrotheme",
     opts = {
-      -- palette = "astromars",
+      palette = "astromars",
       background = {
         light = "astrojupiter",
-        dark = "astrodark",
+        dark = "astromars",
       },
       palettes = {
         astrolight = {

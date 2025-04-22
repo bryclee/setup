@@ -26,6 +26,7 @@ return {
     config = function()
       -- q to close on fugitive files as well
       vim.api.nvim_create_autocmd({ "User" }, {
+        -- FugitiveObject is for diffs which should be closed in place
         pattern = "FugitiveObject",
         callback = function(args)
           vim.keymap.set("n", "q", function() require("astrocore.buffer").close() end, {
@@ -36,7 +37,9 @@ return {
           })
         end,
       })
+
       vim.api.nvim_create_autocmd({ "User" }, {
+        -- These are splits so we close the window
         pattern = "FugitiveIndex,FugitivePager",
         callback = function(args)
           vim.keymap.set("n", "q", "<Cmd>close<CR>", {

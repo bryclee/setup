@@ -3,7 +3,7 @@
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
 --       as this provides autocomplete and documentation while editing
 
-function currentWindowOpts()
+local function currentWindowOpts()
   local win = vim.fn.win_screenpos(0)
   local row = win[1]
   local col = win[2]
@@ -55,6 +55,7 @@ return {
           scrolloff = 3,
           smartcase = false,
           cmdheight = 1,
+          showtabline = 1,
 
           conceallevel = 2,
           -- concealcursor = "n",
@@ -95,10 +96,10 @@ return {
           ["<Leader>ym"] = { "<Cmd>w !" .. exportMarkdown .. "<CR>", desc = "Yank markdown buffer" },
 
           -- References
-          ["grr"] = false,
-          ["gra"] = false,
-          ["grn"] = false,
-          ["gr"] = { "<Cmd>FzfLua lsp_references<CR>", desc = "Go to references" },
+          -- ["grr"] = false,
+          -- ["gra"] = false,
+          -- ["grn"] = false,
+          ["grr"] = { "<Cmd>FzfLua lsp_references<CR>", desc = "Go to references" },
 
           -- Disable splits
           ["\\"] = { "," }, -- ',' is localleader, so use '\' instead to traverse back
@@ -123,7 +124,8 @@ return {
         auto_hlsearch = false,
       },
       autocmds = {
-        autoview = false,
+        -- Stores the view of each file. This did not work very well with nvim-ufo, but this may work better with v5
+        -- autoview = false,
       },
     },
   },
