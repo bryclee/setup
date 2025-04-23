@@ -26,10 +26,10 @@ return {
     })
 
     vim.list_extend(opts.dashboard.sections, {
-      { title = "Recent Files", section = "recent_files", indent = 2, padding = { 1, 1 }, pane = 2 },
+      { title = "Recent Files", section = "recent_files", cwd = true, indent = 2, padding = { 1, 1 }, pane = 2 },
       { title = "Recent Projects", section = "projects", indent = 2, padding = { 1, 1 }, pane = 2 },
     })
 
-    opts.dashboard.preset.header = 'AstroNvim'
+    opts.dashboard.preset.header = "AstroNvim"
   end,
 }

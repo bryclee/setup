@@ -58,11 +58,8 @@ Running list of items to configure for `astronvim` to make it work the way I'd l
 - [x] Insert headline (`<Leader>oih`) would be more helpful if it respected whitespace. It adds a newline before the headline by default, but personally I always already have this added for formatting.
   - Switched to option to not use whitespace instead
 - [x] Add wrap by default for orgmode files, for readability
+- [ ] Fix blink command line completion integration
 
 ## Extra
 
 - [ ] FZF + orgmode, similar to the telescope plugin
-
-## Astronvim v5
-
-- [ ] `which-key` icons not disabled properly

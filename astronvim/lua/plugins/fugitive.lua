@@ -18,8 +18,8 @@ return {
           maps.n[prefix .. "B"] = maps.n[prefix .. "b"]
           -- Git blame
           maps.n[prefix .. "b"] = { "<Cmd>Git blame<CR>", desc = "Git blame" }
-          maps.n[prefix .. "o"] = { "<Cmd>GBrowse<CR>", desc = "Open in Github" }
-          maps.v[prefix .. "o"] = { ":GBrowse<CR>", desc = "Open in Github" }
+          maps.n[prefix .. "o"] = { "<Cmd>GBrowse<CR>", desc = "Open in Github (fugitive)" }
+          maps.v[prefix .. "o"] = { ":GBrowse<CR>", desc = "Open in Github (fugitive)" }
         end,
       },
     },

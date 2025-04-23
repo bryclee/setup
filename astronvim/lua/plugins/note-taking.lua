@@ -1,5 +1,5 @@
-local journalTreeType = "month"
-local refileTreeType = "week"
+local journalTreeType = "day"
+local refileTreeType = "day"
 
 return {
   {
@@ -22,7 +22,7 @@ return {
         j = {
           description = "Journal",
           template = {
-            "**** %U %?",
+            "**** %U %?"
           },
           target = "~/orgfiles/journal.org",
           datetree = { tree_type = journalTreeType },
@@ -30,7 +30,7 @@ return {
         s = {
           description = "Standup",
           template = {
-            "**** %u Standup",
+            "**** %t Standup",
             "    - Previous day",
             "      - %?",
             "    - Today",
