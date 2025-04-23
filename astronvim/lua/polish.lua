@@ -21,7 +21,8 @@ if vim.fn.executable "rg" == 1 then vim.o.grepprg = "rg --vimgrep --smart-case" 
 vim.keymap.set("n", "<C-f>", function() vim.fn.system { "tmux", "neww", "tmux-s" } end)
 
 -- Load local vimrc if present
-if vim.fn.filereadable "~/.vimrc_local" == 1 then vim.cmd.source "~/.vimrc_local" end
+local localVimrc = vim.fn.expand "~/.vimrc_local"
+if vim.fn.filereadable(localVimrc) == 1 then vim.cmd.source "~/.vimrc_local" end
 
 vim.filetype.add {
   extension = {

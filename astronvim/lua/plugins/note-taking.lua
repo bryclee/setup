@@ -1,3 +1,6 @@
+local journalTreeType = "month"
+local refileTreeType = "week"
+
 return {
   {
     "nvim-orgmode/orgmode",
@@ -11,9 +14,10 @@ return {
       org_blank_before_new_entry = { heading = false, plain_list_item = false },
       org_agenda_span = "day",
       org_capture_templates = {
-        n = {
-          description = "Note",
-          template = "* %<%H:%M> %?\n  %u",
+        t = {
+          description = "Task",
+          template = "* TODO %?\n  %u",
+          datetree = { tree_type = refileTreeType },
         },
         j = {
           description = "Journal",
@@ -21,7 +25,7 @@ return {
             "**** %U %?",
           },
           target = "~/orgfiles/journal.org",
-          datetree = { tree_type = 'month' },
+          datetree = { tree_type = journalTreeType },
         },
         s = {
           description = "Standup",
@@ -39,7 +43,7 @@ return {
             "      - ",
           },
           target = "~/orgfiles/journal.org",
-          datetree = { tree_type = 'month' },
+          datetree = { tree_type = journalTreeType },
         },
       },
     },

@@ -14,5 +14,8 @@ return { -- override blink.cmp plugin
         },
       },
     },
+    cmdline = {
+      enabled = false, -- orgmode completion on command line is not working with this enabled
+    },
   },
 }
