@@ -46,6 +46,14 @@ return {
           datetree = { tree_type = journalTreeType },
         },
       },
+      mappings = {
+        agenda = {
+          org_agenda_filter = '<localleader>f'
+        },
+        org = {
+          org_cycle = '<Right>'
+        }
+      }
     },
     init = function()
       vim.api.nvim_create_autocmd("ColorScheme", {

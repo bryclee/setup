@@ -2,7 +2,45 @@
 
 -- This is the recipe to update the winbar, additionally would like to update the tabbar to show the tabs on the left side.
 return {
-  { import = "astrocommunity.recipes.heirline-vscode-winbar" }
+  --- @type LazySpec
+  { import = "astrocommunity.recipes.heirline-vscode-winbar" },
+  --- @type LazySpec
+  {
+    "rebelot/heirline.nvim",
+    opts = function(_, opts)
+      local status = require "astroui.status"
+
+      opts.statusline = {
+        hl = { fg = "fg", bg = "bg" },
+        status.component.mode(),
+        status.component.git_branch(),
+        status.component.file_info(),
+        status.component.git_diff(),
+        status.component.diagnostics(),
+        status.component.fill(),
+        status.component.cmd_info(),
+        -- Orgmode statusline: https://github.com/nvim-orgmode/orgmode/blob/27ab1cf9e7ae142f9e9ffb218be50dd920f04cb3/lua/orgmode/init.lua#L231
+        status.component.builder {
+          {
+            ---@diagnostic disable-next-line: undefined-field
+            provider = function() return _G.orgmode.statusline() end,
+          },
+          -- This is slow without specifying update, so adding some events.
+          -- Orgmode debounces the statusline function, so BufWritePost does not really catch the change immediately
+          update = {
+            "BufWritePost",
+            "BufEnter",
+          },
+        },
+        status.component.fill(),
+        status.component.lsp(),
+        status.component.virtual_env(),
+        status.component.treesitter(),
+        status.component.nav(),
+        status.component.mode { surround = { separator = "right" } },
+      }
+    end,
+  },
 }
 
 -- from https://github.com/AstroNvim/astrocommunity/blob/2e2784a1a1c817680e9dc8e802a4ba813a2bba97/lua/astrocommunity/recipes/heirline-vscode-winbar/init.lua
