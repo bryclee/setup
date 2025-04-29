@@ -23,7 +23,11 @@ return {
         status.component.builder {
           {
             ---@diagnostic disable-next-line: undefined-field
-            provider = function() return _G.orgmode.statusline() end,
+            provider = function()
+              if not _G.orgmode then return "" end
+
+              return _G.orgmode.statusline()
+            end,
           },
           -- This is slow without specifying update, so adding some events.
           -- Orgmode debounces the statusline function, so BufWritePost does not really catch the change immediately
