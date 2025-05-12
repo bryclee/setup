@@ -1,3 +1,5 @@
+if true then return {} end
+
 ---@type LazySpec
 return {
   "nvim-neo-tree/neo-tree.nvim",
@@ -7,8 +9,8 @@ return {
     },
     window = {
       mappings = {
-        ["/"] = "noop",
-        ["f"] = "fuzzy_finder"
+        -- ["/"] = "noop",
+        -- ["f"] = "fuzzy_finder"
       },
     },
     filesystem = {
@@ -28,6 +30,7 @@ return {
             ["<Leader>-"] = { "<Cmd>Neotree position=current reveal_force_cwd=true<CR>", desc = "Explorer in current buffer" },
             ["<Leader>be"] = { "<Cmd>Neotree source=buffers<CR>", desc = "Buffer explorer" },
             ["<Leader>ge"] = { "<Cmd>Neotree source=git_status<CR>", desc = "Git explorer" },
+            ["<Leader>of"] = { "<Cmd>FzfLua files cwd=~/orgfiles<CR>", desc = "Find org files" },
             ["<Leader>e"] = {
               function()
                 if vim.bo.filetype == "neo-tree" then

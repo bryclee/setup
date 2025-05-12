@@ -16,6 +16,7 @@ return {
   { import = "astrocommunity.fuzzy-finder.fzf-lua" },
   { import = "astrocommunity.markdown-and-latex/markdown-preview-nvim" },
   { import = "astrocommunity.motion.mini-move" },
+  { import = "astrocommunity.file-explorer.mini-files" }, -- neo-tree isn't working well with large directories, so using this as replacement
   {
     "echasnovski/mini.move",
     opts = {
