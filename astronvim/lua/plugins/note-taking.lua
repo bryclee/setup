@@ -10,7 +10,7 @@ return {
       org_agenda_files = "~/orgfiles/**/*",
       org_default_notes_file = "~/orgfiles/refile.org",
       org_todo_keywords = { "TODO(t)", "NEXT(n)", "WAITING(w)", "|", "DONE(d)", "CANCELED(c)" },
-      org_hide_emphasis_markers = true,
+      -- org_hide_emphasis_markers = true,
       org_blank_before_new_entry = { heading = false, plain_list_item = false },
       org_agenda_span = "day",
       org_capture_templates = {
@@ -65,6 +65,7 @@ return {
         pattern = "org",
         callback = function()
           vim.opt.wrap = true
+          vim.opt_local.conceallevel = 0 -- not pleased with the link conceals
 
           local orgMappings = {
             ["<M-CR>"] = {

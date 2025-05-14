@@ -7,7 +7,9 @@ return {
     vim.list_extend(opts.dashboard.preset.keys, {
       {
         key = "-",
-        action = "<leader>-",
+        action = function ()
+          require('mini.files').open()
+        end,
         desc = "Explorer",
         icon = " ",
       },
