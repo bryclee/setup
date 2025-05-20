@@ -21,7 +21,7 @@ return {
       },
       {
         key = "a",
-        action = "q<leader>oaa", -- close dashboard in background, then open org agenda in split window
+        action = "q:Org agenda a<CR>", -- close dashboard in background, then open org agenda in split window
         desc = "Org Agenda",
         icon = " ",
       },

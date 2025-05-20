@@ -94,6 +94,9 @@ return {
             n = orgMappings,
             i = orgMappings,
           }, { silent = true, buffer = true })
+
+          -- Disable indent guide
+          vim.b.snacks_indent = false
         end,
       })
     end,
