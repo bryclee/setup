@@ -7,9 +7,7 @@ return {
     vim.list_extend(opts.dashboard.preset.keys, {
       {
         key = "-",
-        action = function ()
-          require('mini.files').open()
-        end,
+        action = function() require("mini.files").open() end,
         desc = "Explorer",
         icon = " ",
       },
@@ -21,7 +19,7 @@ return {
       },
       {
         key = "a",
-        action = "q:Org agenda a<CR>", -- close dashboard in background, then open org agenda in split window
+        action = "q | :Org agenda a<CR>", -- close dashboard in background, then open org agenda in split window
         desc = "Org Agenda",
         icon = " ",
       },

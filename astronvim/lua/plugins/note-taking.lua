@@ -13,6 +13,7 @@ return {
       -- org_hide_emphasis_markers = true,
       org_blank_before_new_entry = { heading = false, plain_list_item = false },
       org_agenda_span = "day",
+      org_agenda_start_on_weekday = false,
       org_capture_templates = {
         t = {
           description = "Task",
@@ -22,7 +23,7 @@ return {
         j = {
           description = "Journal",
           template = {
-            "**** %U %?"
+            "**** %T %?"
           },
           target = "~/orgfiles/journal.org",
           datetree = { tree_type = journalTreeType },
@@ -30,7 +31,7 @@ return {
         s = {
           description = "Standup",
           template = {
-            "**** %t Standup",
+            "**** %T Standup",
             "    - Previous day",
             "      - %?",
             "    - Today",
