@@ -21,7 +21,7 @@ return {
       mappings = {
         go_in_plus = "<CR>",
         -- go_in = "",
-        -- go_out_plus = "-",
+        go_out_plus = "-",
         -- go_out = "",
       },
     },
