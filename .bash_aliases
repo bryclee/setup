@@ -26,7 +26,7 @@ elif hash ag 2>/dev/null; then
 fi
 
 if hash lazygit 2>/dev/null; then
-  alias lgit='lazygit'
+  alias lg='lazygit'
 fi
 
 export BAT_THEME="base16"
