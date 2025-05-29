@@ -1,0 +1,2820 @@
+
+
+
+Executing: lua require("orgmode").action("agenda.goto_item")
+sourcing "nvim_exec2()"
+line 1: 1wincmd w
+Executing BufLeave Autocommands for "*"
+autocommand call s:Remove_Matches()
+
+Executing: call s:Remove_Matches()
+calling <SNR>14_Remove_Matches()
+
+line 1:   if exists('w:paren_hl_on') && w:paren_hl_on
+line 2:     while !empty(w:matchparen_ids)
+line 3:       silent! call remove(w:matchparen_ids, 0)->matchdelete()
+line 4:     endwhile
+line 5:     let w:paren_hl_on = 0
+line 6:   endif
+<SNR>14_Remove_Matches returning #0
+
+continuing in BufLeave Autocommands for "*"
+
+Executing BufLeave Autocommands for "*"
+autocommand <Lua 169: ~/.local/share/astronvim/lazy/blink.cmp/lua/blink/cmp/lib/buffer_events.lua:86>
+
+Executing: 
+Executing WinLeave Autocommands for "*"
+autocommand <Lua 432: ~/.local/share/astronvim/lazy/octo.nvim/lua/octo/autocmds.lua:86>
+
+Executing: 
+Executing WinLeave Autocommands for "*"
+autocommand call s:Remove_Matches()
+
+Executing: call s:Remove_Matches()
+calling <SNR>14_Remove_Matches()
+
+line 1:   if exists('w:paren_hl_on') && w:paren_hl_on
+line 2:     while !empty(w:matchparen_ids)
+line 3:       silent! call remove(w:matchparen_ids, 0)->matchdelete()
+line 4:     endwhile
+line 5:     let w:paren_hl_on = 0
+line 6:   endif
+<SNR>14_Remove_Matches returning #0
+
+continuing in WinLeave Autocommands for "*"
+
+Executing WinLeave Autocommands for "*"
+autocommand <Lua 658: ~/.local/share/astronvim/lazy/smart-splits.nvim/lua/smart-splits/mux/utils.lua:53>
+
+Executing: 
+Executing WinEnter Autocommands for "*"
+autocommand <Lua 400: ~/.local/share/astronvim/lazy/astrocore/lua/astrocore/init.lua:633>
+
+Executing: 
+Executing WinEnter Autocommands for "*"
+autocommand call s:Highlight_Matching_Pair()
+
+Executing: call s:Highlight_Matching_Pair()
+calling <SNR>14_Highlight_Matching_Pair()
+
+line 1:   if !exists("w:matchparen_ids")
+line 2:     let w:matchparen_ids = []
+line 3:   endif
+line 4:   " Remove any previous match.
+line 5:   call s:Remove_Matches()
+calling <SNR>14_Remove_Matches()
+
+line 1:   if exists('w:paren_hl_on') && w:paren_hl_on
+line 2:     while !empty(w:matchparen_ids)
+line 3:       silent! call remove(w:matchparen_ids, 0)->matchdelete()
+line 4:     endwhile
+line 5:     let w:paren_hl_on = 0
+line 6:   endif
+<SNR>14_Remove_Matches returning #0
+
+continuing in <SNR>14_Highlight_Matching_Pair
+
+line 6: 
+line 7:   " Avoid that we remove the popup menu.
+line 8:   " Return when there are no colors (looks like the cursor jumps).
+line 9:   if pumvisible() || (&t_Co < 8 && !has("gui_running"))
+line 10:     return
+line 11:   endif
+line 12: 
+line 13:   " Get the character under the cursor and check if it's in 'matchpairs'.
+line 14:   let c_lnum = line('.')
+line 15:   let c_col = col('.')
+line 16:   let before = 0
+line 17: 
+line 18:   let text = getline(c_lnum)
+line 19:   let c_before = text->strpart(0, c_col - 1)->slice(-1)
+line 20:   let c = text->strpart(c_col - 1)->slice(0, 1)
+line 21:   let plist = split(&matchpairs, '.\zs[:,]')
+line 22:   let i = index(plist, c)
+line 23:   if i < 0
+line 24:     " not found, in Insert mode try character before the cursor
+line 25:     if c_col > 1 && (mode() == 'i' || mode() == 'R')
+line 26:       let before = strlen(c_before)
+line 27:       let c = c_before
+line 28:       let i = index(plist, c)
+line 29:     endif
+line 30:     if i < 0
+line 31:       " not found, nothing to do
+line 32:       return
+<SNR>14_Highlight_Matching_Pair returning #0
+
+continuing in WinEnter Autocommands for "*"
+
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 370: ~/.local/share/astronvim/lazy/AstroNvim/lua/astronvim/plugins/_astrocore_autocmds.lua:60>
+
+Executing: 
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 382: ~/.local/share/astronvim/lazy/AstroNvim/lua/astronvim/plugins/_astrocore_autocmds.lua:29>
+
+Executing: 
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 399: ~/.local/share/astronvim/lazy/astrocore/lua/astrocore/init.lua:633>
+
+Executing: 
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 404: ~/.local/share/astronvim/lazy/astrocore/lua/astrocore/init.lua:665>
+
+Executing: 
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 437: ~/.local/share/astronvim/lazy/mini.files/lua/mini/files.lua:1376>
+
+Executing: 
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 202: ~/.local/share/astronvim/lazy/octo.nvim/lua/octo/autocmds.lua:24>
+
+Executing: 
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 530: ~/.local/share/astronvim/lazy/which-key.nvim/lua/which-key/state.lua:145>
+
+Executing: 
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 712: ~/.local/share/astronvim/lazy/heirline.nvim/lua/heirline/statusline.lua:291>
+
+Executing: 
+autocommand <Lua 710: ~/.local/share/astronvim/lazy/heirline.nvim/lua/heirline/statusline.lua:291>
+
+Executing: 
+autocommand <Lua 513: ~/.local/share/astronvim/lazy/heirline.nvim/lua/heirline/statusline.lua:291>
+
+Executing: 
+autocommand <Lua 532: ~/.local/share/astronvim/lazy/heirline.nvim/lua/heirline/statusline.lua:291>
+
+Executing: 
+autocommand <Lua 500: ~/.local/share/astronvim/lazy/heirline.nvim/lua/heirline/statusline.lua:291>
+
+Executing: 
+autocommand <Lua 431: ~/.local/share/astronvim/lazy/heirline.nvim/lua/heirline/statusline.lua:291>
+
+Executing: 
+finished sourcing nvim_exec2()
+sourcing "nvim_exec2()"
+line 1: edit /Users/bryalee/orgfiles/refile.org
+Executing BufDelete Autocommands for "*"
+autocommand <Lua 366: ~/.local/share/astronvim/lazy/AstroNvim/lua/astronvim/plugins/_astrocore_autocmds.lua:227>
+
+Executing: 
+Executing BufDelete Autocommands for "*"
+autocommand <Lua 372: ~/.local/share/astronvim/lazy/AstroNvim/lua/astronvim/plugins/_astrocore_autocmds.lua:80>
+
+Executing: 
+Executing BufWipeout Autocommands for "<buffer=3>"
+autocommand <Lua 707: /opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/lua/vim/diagnostic.lua:391>
+
+Executing: 
+auto-removing autocommand: BufWipeout <buffer=3>
+Executing BufNew Autocommands for "*"
+autocommand <Lua 529: ~/.local/share/astronvim/lazy/which-key.nvim/lua/which-key/state.lua:135>
+
+Executing: 
+Executing BufAdd Autocommands for "*"
+autocommand <Lua 369: ~/.local/share/astronvim/lazy/AstroNvim/lua/astronvim/plugins/_astrocore_autocmds.lua:60>
+
+Executing: 
+Executing BufReadPre Autocommands for "*"
+autocommand <Lua 208: ~/.local/share/astronvim/lazy/snacks.nvim/lua/snacks/init.lua:187>
+
+Executing: 
+Reading ShaDa file "/Users/bryalee/.local/state/astronvim/shada/main.shada" marks
+Reading undo file: /Users/bryalee/.local/state/astronvim/undo/%Users%bryalee%orgfiles%refile.org
+Executing BufReadPost Autocommands for "*"
+autocommand <Lua 193: /opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/filetype.lua:10>
+
+Executing FileType Autocommands for "*"
+autocommand call s:LoadFTPlugin()
+
+Executing: call s:LoadFTPlugin()
+calling <SNR>1_LoadFTPlugin()
+
+line 1:     if exists("b:undo_ftplugin")
+line 2:       exe b:undo_ftplugin
+line 3:       unlet! b:undo_ftplugin b:did_ftplugin
+line 4:     endif
+line 5: 
+line 6:     let s = expand("<amatch>")
+line 7:     if s != ""
+line 8:       if &cpo =~# "S" && exists("b:did_ftplugin")
+line 9: ^I" In compatible mode options are reset to the global values, need to
+line 10: ^I" set the local values also when a plugin was already used.
+line 11: ^Iunlet b:did_ftplugin
+line 12:       endif
+line 13: 
+line 14:       " When there is a dot it is used to separate filetype names.  Thus for
+line 15:       " "aaa.bbb" load "aaa" and then "bbb".
+line 16:       for name in split(s, '\.')
+line 17:         " Load Lua ftplugins after Vim ftplugins _per directory_
+line 18:         " TODO(clason): use nvim__get_runtime when supports globs and modeline
+line 19:         " XXX: "[.]" in the first pattern makes it a wildcard on Windows
+line 20:         exe $'runtime! ftplugin/{name}[.]{{vim,lua}} ftplugin/{name}_*.{{vim,lua}} ftplugin/{name}/*.{{vim,lua}}'
+line 20: runtime! ftplugin/org[.]{vim,lua} ftplugin/org_*.{vim,lua} ftplugin/org/*.{vim,lua}
+Searching for "ftplugin/org[.]{vim,lua} ftplugin/org_*.{vim,lua} ftplugin/org/*.{vim,lua}" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.config/astronvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.config/astronvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/ftplugin/org[.]{vim,lua}"
+line 20: sourcing "/Users/bryalee/.local/share/astronvim/lazy/orgmode/ftplugin/org.lua"
+Searching for "queries/org/injections.scm" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/queries/org/injections.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/org/injections.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/org/injections.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/queries/org/injections.scm"
+Searching for "queries/org/highlights.scm" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/queries/org/highlights.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/org/highlights.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/org/highlights.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/queries/org/highlights.scm"
+Executing Syntax Autocommands for "*"
+autocommand call s:SynSet()
+
+Executing: call s:SynSet()
+calling <SNR>22_SynSet()
+
+line 1:   " clear syntax for :set syntax=OFF  and any syntax name that doesn't exist
+line 2:   syn clear
+line 3:   if exists("b:current_syntax")
+line 4:     unlet b:current_syntax
+line 5:   endif
+line 6: 
+line 7:   0verbose let s = expand("<amatch>")
+line 8:   if s == "ON"
+line 9:     " :set syntax=ON
+line 10:     if &filetype == ""
+line 11:       echohl ErrorMsg
+line 12:       echo "filetype unknown"
+line 13:       echohl None
+line 14:     endif
+line 15:     let s = &filetype
+line 16:   elseif s == "OFF"
+line 17:     let s = ""
+line 18:   endif
+line 19: 
+line 20:   if s != ""
+line 21:     " Load the syntax file(s).  When there are several, separated by dots,
+line 22:     " load each in sequence.  Skip empty entries.
+line 23:     for name in split(s, '\.')
+line 24:       if !empty(name)
+line 25:         " XXX: "[.]" in the first pattern makes it a wildcard on Windows
+line 26:         exe $'runtime! syntax/{name}[.]{{vim,lua}} syntax/{name}/*.{{vim,lua}}'
+line 27:       endif
+line 28:     endfor
+line 29:   endif
+<SNR>22_SynSet returning #0
+
+continuing in Syntax Autocommands for "*"
+
+bl: setup_foldlevel
+finished sourcing /Users/bryalee/.local/share/astronvim/lazy/orgmode/ftplugin/org.lua
+continuing in <SNR>1_LoadFTPlugin
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/ftplugin/org/*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/ftplugin/org[.]{vim,lua}"
+line 20: sourcing "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/ftplugin/org.vim"
+line 1: " Vim filetype plugin file
+line 2: " Language:^IOrg
+line 3: " Maintainer:^ILuca Saccarola <github.e41mv@aleeas.com>
+line 4: " Last Change:^I2024 Nov 14
+line 5: 
+line 6: if exists("b:did_ftplugin")
+line 7:     finish
+finished sourcing /opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/ftplugin/org.vim
+continuing in <SNR>1_LoadFTPlugin
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/ftplugin/org_*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/ftplugin/org/*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/ftplugin/org[.]{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/ftplugin/org_*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/ftplugin/org/*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/ftplugin/org/*.{vim,lua}"
+line 21:       endfor
+line 16:       for name in split(s, '\.')
+line 17:         " Load Lua ftplugins after Vim ftplugins _per directory_
+line 18:         " TODO(clason): use nvim__get_runtime when supports globs and modeline
+line 19:         " XXX: "[.]" in the first pattern makes it a wildcard on Windows
+line 20:         exe $'runtime! ftplugin/{name}[.]{{vim,lua}} ftplugin/{name}_*.{{vim,lua}} ftplugin/{name}/*.{{vim,lua}}'
+line 21:       endfor
+line 22:     endif
+<SNR>1_LoadFTPlugin returning #0
+
+continuing in FileType Autocommands for "*"
+
+Executing FileType Autocommands for "*"
+autocommand call s:LoadIndent()
+
+Executing: call s:LoadIndent()
+calling <SNR>2_LoadIndent()
+
+line 1:     if exists("b:undo_indent")
+line 2:       exe b:undo_indent
+line 3:       unlet! b:undo_indent b:did_indent
+line 4:     endif
+line 5:     let s = expand("<amatch>")
+line 6:     if s != ""
+line 7:       if exists("b:did_indent")
+line 8: ^Iunlet b:did_indent
+line 9:       endif
+line 10: 
+line 11:       " When there is a dot it is used to separate filetype names.  Thus for
+line 12:       " "aaa.bbb" load "indent/aaa.vim" and then "indent/bbb.vim".
+line 13:       for name in split(s, '\.')
+line 14:         " XXX: "[.]" in the pattern makes it a wildcard on Windows
+line 15:         exe $'runtime! indent/{name}[.]{{vim,lua}}'
+line 15: runtime! indent/org[.]{vim,lua}
+Searching for "indent/org[.]{vim,lua}" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/indent/org[.]{vim,lua}"
+line 15: sourcing "/Users/bryalee/.local/share/astronvim/lazy/orgmode/indent/org.lua"
+finished sourcing /Users/bryalee/.local/share/astronvim/lazy/orgmode/indent/org.lua
+continuing in <SNR>2_LoadIndent
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/indent/org[.]{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/indent/org[.]{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/indent/org[.]{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/indent/org[.]{vim,lua}"
+line 16:       endfor
+line 13:       for name in split(s, '\.')
+line 14:         " XXX: "[.]" in the pattern makes it a wildcard on Windows
+line 15:         exe $'runtime! indent/{name}[.]{{vim,lua}}'
+line 16:       endfor
+line 17:     endif
+<SNR>2_LoadIndent returning #0
+
+continuing in FileType Autocommands for "*"
+
+Executing FileType Autocommands for "org"
+autocommand <Lua 146: ~/.local/share/astronvim/lazy/lazy.nvim/lua/lazy/core/handler/event.lua:72>
+
+Executing: 
+Executing FileType Autocommands for "org"
+autocommand <Lua 199: ~/.config/astronvim/lua/plugins/note-taking.lua:68>
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 364: ~/.local/share/astronvim/lazy/AstroNvim/lua/astronvim/plugins/_astrocore_autocmds.lua:123>
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 386: ~/.local/share/astronvim/lazy/AstroNvim/lua/astronvim/plugins/_astroui.lua:13>
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 398: ~/.local/share/astronvim/lazy/astrocore/lua/astrocore/init.lua:633>
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand if !exists('b:ts_highlight') | 0verbose exe "set syntax=" . expand("<amatch>") | endif
+
+Executing: if !exists('b:ts_highlight') | 0verbose exe "set syntax=" . expand("<amatch>") | endif
+Executing:  0verbose exe "set syntax=" . expand("<amatch>") | endif
+Executing:  endif
+Executing FileType Autocommands for "*"
+autocommand <Lua 223: ~/.local/share/astronvim/lazy/heirline.nvim/lua/heirline/init.lua:28>
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 504: ~/.local/share/astronvim/lazy/nvim-treesitter/lua/nvim-treesitter/install.lua:558>
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 505: ~/.local/share/astronvim/lazy/nvim-treesitter/lua/nvim-treesitter/configs.lua:132>
+
+Searching for "queries/org/textobjects.scm" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/queries/org/textobjects.scm"
+not found in runtime path: "queries/org/textobjects.scm"
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 506: ~/.local/share/astronvim/lazy/nvim-treesitter/lua/nvim-treesitter/configs.lua:132>
+
+Searching for "queries/org/textobjects.scm" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/queries/org/textobjects.scm"
+not found in runtime path: "queries/org/textobjects.scm"
+Searching for "queries/org/textobjects.scm" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/queries/org/textobjects.scm"
+not found in runtime path: "queries/org/textobjects.scm"
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 507: ~/.local/share/astronvim/lazy/nvim-treesitter/lua/nvim-treesitter/configs.lua:132>
+
+Searching for "queries/org/textobjects.scm" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/queries/org/textobjects.scm"
+not found in runtime path: "queries/org/textobjects.scm"
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 508: ~/.local/share/astronvim/lazy/nvim-treesitter/lua/nvim-treesitter/configs.lua:132>
+
+Searching for "queries/org/indents.scm" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/queries/org/indents.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/org/indents.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/org/indents.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/queries/org/indents.scm"
+not found in runtime path: "queries/org/indents.scm"
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 509: ~/.local/share/astronvim/lazy/nvim-treesitter/lua/nvim-treesitter/configs.lua:132>
+
+Searching for "queries/org/highlights.scm" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/queries/org/highlights.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/org/highlights.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/org/highlights.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/queries/org/highlights.scm"
+Executing Syntax Autocommands for "*"
+autocommand call s:SynSet()
+
+Executing: call s:SynSet()
+calling <SNR>22_SynSet()
+
+line 1:   " clear syntax for :set syntax=OFF  and any syntax name that doesn't exist
+line 2:   syn clear
+line 3:   if exists("b:current_syntax")
+line 4:     unlet b:current_syntax
+line 5:   endif
+line 6: 
+line 7:   0verbose let s = expand("<amatch>")
+line 8:   if s == "ON"
+line 9:     " :set syntax=ON
+line 10:     if &filetype == ""
+line 11:       echohl ErrorMsg
+line 12:       echo "filetype unknown"
+line 13:       echohl None
+line 14:     endif
+line 15:     let s = &filetype
+line 16:   elseif s == "OFF"
+line 17:     let s = ""
+line 18:   endif
+line 19: 
+line 20:   if s != ""
+line 21:     " Load the syntax file(s).  When there are several, separated by dots,
+line 22:     " load each in sequence.  Skip empty entries.
+line 23:     for name in split(s, '\.')
+line 24:       if !empty(name)
+line 25:         " XXX: "[.]" in the first pattern makes it a wildcard on Windows
+line 26:         exe $'runtime! syntax/{name}[.]{{vim,lua}} syntax/{name}/*.{{vim,lua}}'
+line 27:       endif
+line 28:     endfor
+line 29:   endif
+<SNR>22_SynSet returning #0
+
+continuing in Syntax Autocommands for "*"
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 510: ~/.local/share/astronvim/lazy/nvim-treesitter/lua/nvim-treesitter/configs.lua:132>
+
+Executing: 
+Executing FileType Autocommands for "org"
+autocommand <Lua 699: ~/.local/share/astronvim/lazy/orgmode/lua/orgmode/init.lua:102>
+
+Executing: 
+Executing: 
+autocommand if !did_filetype() && expand('<amatch>') !~ g:ft_ignore_pat | runtime! scripts.vim | endif
+
+Executing: if !did_filetype() && expand('<amatch>') !~ g:ft_ignore_pat | runtime! scripts.vim | endif
+Executing:  runtime! scripts.vim | endif
+Executing:  endif
+Executing BufReadPost Autocommands for "*"
+autocommand <Lua 380: ~/.local/share/astronvim/lazy/AstroNvim/lua/astronvim/plugins/guess-indent.lua:13>
+
+line 0: sourcing "nvim_exec2() called at BufReadPost Autocommands for "*":0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at BufReadPost Autocommands for "*":0
+continuing in BufReadPost Autocommands for "*"
+line 0: sourcing "nvim_exec2() called at BufReadPost Autocommands for "*":0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at BufReadPost Autocommands for "*":0
+continuing in BufReadPost Autocommands for "*"
+File type: org
+Buffer type: 
+Guess Indent
+Lines using tabs: 0
+Lines using spaces: 128
+Relative Indentation
+  2 spaces: 140
+Absolute Indentation
+  2 spaces: 78
+  4 spaces: 29
+  6 spaces: 10
+  8 spaces: 9
+  10 spaces: 2
+Lines loaded: 448
+Lines iterated: 418
+Spaces Scoring
+  2 score: 1.6303244248241
+Executing: 
+Executing BufReadPost Autocommands for "*"
+autocommand <Lua 387: ~/.local/share/astronvim/lazy/AstroNvim/lua/astronvim/plugins/_astrocore_autocmds.lua:135>
+
+Executing: 
+Executing BufReadPost Autocommands for "*"
+autocommand <Lua 390: ~/.local/share/astronvim/lazy/AstroNvim/lua/astronvim/plugins/_astrocore_autocmds.lua:236>
+
+Executing: 
+Executing BufReadPost Autocommands for "*"
+autocommand <Lua 395: ~/.local/share/astronvim/lazy/astrocore/lua/astrocore/init.lua:607>
+
+Executing: 
+Executing BufReadPost Autocommands for "*"
+autocommand <Lua 360: ~/.local/share/astronvim/lazy/snacks.nvim/lua/snacks/init.lua:187>
+
+Searching for "parser/graphql.*" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/guess-indent.nvim/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/parser/graphql.*"
+Searching for "parser/json.*" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/guess-indent.nvim/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/parser/json.*"
+Searching for "parser/json.*" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/guess-indent.nvim/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/parser/json.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/parser/json.*"
+Searching for "queries/json/injections.scm" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/guess-indent.nvim/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/queries/json/injections.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/json/injections.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/json/injections.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/queries/json/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/queries/json/injections.scm"
+not found in runtime path: "queries/json/injections.scm"
+Searching for "parser/graphql.*" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/guess-indent.nvim/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/parser/graphql.*"
+Searching for "queries/graphql/injections.scm" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/guess-indent.nvim/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/queries/graphql/injections.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/graphql/injections.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/graphql/injections.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/queries/graphql/injections.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/queries/graphql/injections.scm"
+Executing: 
+Executing BufReadPost Autocommands for "*"
+autocommand <Lua 461: /opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/plugin/editorconfig.lua:4>
+
+Executing: 
+Executing BufReadPost Autocommands for "*"
+autocommand <Lua 528: ~/.local/share/astronvim/lazy/which-key.nvim/lua/which-key/state.lua:135>
+
+Executing: 
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 370: ~/.local/share/astronvim/lazy/AstroNvim/lua/astronvim/plugins/_astrocore_autocmds.lua:60>
+
+Executing: 
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 382: ~/.local/share/astronvim/lazy/AstroNvim/lua/astronvim/plugins/_astrocore_autocmds.lua:29>
+
+Executing: 
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 399: ~/.local/share/astronvim/lazy/astrocore/lua/astrocore/init.lua:633>
+
+Executing: 
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 404: ~/.local/share/astronvim/lazy/astrocore/lua/astrocore/init.lua:665>
+
+Executing: 
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 437: ~/.local/share/astronvim/lazy/mini.files/lua/mini/files.lua:1376>
+
+Executing: 
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 202: ~/.local/share/astronvim/lazy/octo.nvim/lua/octo/autocmds.lua:24>
+
+Executing: 
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 530: ~/.local/share/astronvim/lazy/which-key.nvim/lua/which-key/state.lua:145>
+
+Executing: 
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 712: ~/.local/share/astronvim/lazy/heirline.nvim/lua/heirline/statusline.lua:291>
+
+Executing: 
+autocommand <Lua 710: ~/.local/share/astronvim/lazy/heirline.nvim/lua/heirline/statusline.lua:291>
+
+Executing: 
+autocommand <Lua 513: ~/.local/share/astronvim/lazy/heirline.nvim/lua/heirline/statusline.lua:291>
+
+Executing: 
+autocommand <Lua 532: ~/.local/share/astronvim/lazy/heirline.nvim/lua/heirline/statusline.lua:291>
+
+Executing: 
+autocommand <Lua 500: ~/.local/share/astronvim/lazy/heirline.nvim/lua/heirline/statusline.lua:291>
+
+Executing: 
+autocommand <Lua 431: ~/.local/share/astronvim/lazy/heirline.nvim/lua/heirline/statusline.lua:291>
+
+Executing: 
+Executing BufWinEnter Autocommands for "*"
+autocommand <Lua 365: ~/.local/share/astronvim/lazy/AstroNvim/lua/astronvim/plugins/_astrocore_autocmds.lua:202>
+
+Executing: 
+Executing BufWinEnter Autocommands for "*"
+autocommand autocmd SafeState * ++once call s:Highlight_Matching_Pair()
+
+Executing: autocmd SafeState * ++once call s:Highlight_Matching_Pair()
+Executing BufWinEnter Autocommands for "*"
+autocommand <Lua 471: ~/.local/share/astronvim/lazy/heirline.nvim/lua/heirline/init.lua:28>
+
+Executing: 
+line 1: unlet! b:keymap_name
+finished sourcing nvim_exec2()
+sourcing "nvim_exec2()"
+line 1: normal! zv
+finished sourcing nvim_exec2()
+bl: gotoheadline
+
+sourcing "nvim_exec2()"
+line 1: silent! call repeat#set("\<cmd>lua require('orgmode').action('agenda.goto_item')\<CR>")
+Searching for "autoload/repeat.vim" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/guess-indent.nvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/autoload/repeat.vim"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/autoload/repeat.vim"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/autoload/repeat.vim"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/autoload/repeat.vim"
+not found in runtime path: "autoload/repeat.vim"
+Error detected while processing nvim_exec2():
+line    1:
+E117: Unknown function: repeat#set
+finished sourcing nvim_exec2()
+Executing CursorMoved Autocommands for "*"
+autocommand call s:Highlight_Matching_Pair()
+
+Executing: call s:Highlight_Matching_Pair()
+calling <SNR>14_Highlight_Matching_Pair()
+
+line 1:   if !exists("w:matchparen_ids")
+line 2:     let w:matchparen_ids = []
+line 3:   endif
+line 4:   " Remove any previous match.
+line 5:   call s:Remove_Matches()
+calling <SNR>14_Remove_Matches()
+
+line 1:   if exists('w:paren_hl_on') && w:paren_hl_on
+line 2:     while !empty(w:matchparen_ids)
+line 3:       silent! call remove(w:matchparen_ids, 0)->matchdelete()
+line 4:     endwhile
+line 5:     let w:paren_hl_on = 0
+line 6:   endif
+<SNR>14_Remove_Matches returning #0
+
+continuing in <SNR>14_Highlight_Matching_Pair
+
+line 6: 
+line 7:   " Avoid that we remove the popup menu.
+line 8:   " Return when there are no colors (looks like the cursor jumps).
+line 9:   if pumvisible() || (&t_Co < 8 && !has("gui_running"))
+line 10:     return
+line 11:   endif
+line 12: 
+line 13:   " Get the character under the cursor and check if it's in 'matchpairs'.
+line 14:   let c_lnum = line('.')
+line 15:   let c_col = col('.')
+line 16:   let before = 0
+line 17: 
+line 18:   let text = getline(c_lnum)
+line 19:   let c_before = text->strpart(0, c_col - 1)->slice(-1)
+line 20:   let c = text->strpart(c_col - 1)->slice(0, 1)
+line 21:   let plist = split(&matchpairs, '.\zs[:,]')
+line 22:   let i = index(plist, c)
+line 23:   if i < 0
+line 24:     " not found, in Insert mode try character before the cursor
+line 25:     if c_col > 1 && (mode() == 'i' || mode() == 'R')
+line 26:       let before = strlen(c_before)
+line 27:       let c = c_before
+line 28:       let i = index(plist, c)
+line 29:     endif
+line 30:     if i < 0
+line 31:       " not found, nothing to do
+line 32:       return
+<SNR>14_Highlight_Matching_Pair returning #0
+
+continuing in CursorMoved Autocommands for "*"
+
+Executing CursorMoved Autocommands for "*"
+autocommand <Lua 361: ~/.local/share/astronvim/lazy/heirline.nvim/lua/heirline/statusline.lua:291>
+
+Executing: 
+Executing CursorMoved Autocommands for "*"
+autocommand <Lua 131: ~/.local/share/astronvim/lazy/blink.cmp/lua/blink/cmp/lib/buffer_events.lua:60>
+
+Executing: 
+Executing CursorMoved Autocommands for "*"
+autocommand <Lua 141: ~/.local/share/astronvim/lazy/snacks.nvim/lua/snacks/scope.lua:675>
+
+Executing: 
+Executing WinScrolled Autocommands for "*"
+autocommand call s:Highlight_Matching_Pair()
+
+Executing: call s:Highlight_Matching_Pair()
+calling <SNR>14_Highlight_Matching_Pair()
+
+line 1:   if !exists("w:matchparen_ids")
+line 2:     let w:matchparen_ids = []
+line 3:   endif
+line 4:   " Remove any previous match.
+line 5:   call s:Remove_Matches()
+calling <SNR>14_Remove_Matches()
+
+line 1:   if exists('w:paren_hl_on') && w:paren_hl_on
+line 2:     while !empty(w:matchparen_ids)
+line 3:       silent! call remove(w:matchparen_ids, 0)->matchdelete()
+line 4:     endwhile
+line 5:     let w:paren_hl_on = 0
+line 6:   endif
+<SNR>14_Remove_Matches returning #0
+
+continuing in <SNR>14_Highlight_Matching_Pair
+
+line 6: 
+line 7:   " Avoid that we remove the popup menu.
+line 8:   " Return when there are no colors (looks like the cursor jumps).
+line 9:   if pumvisible() || (&t_Co < 8 && !has("gui_running"))
+line 10:     return
+line 11:   endif
+line 12: 
+line 13:   " Get the character under the cursor and check if it's in 'matchpairs'.
+line 14:   let c_lnum = line('.')
+line 15:   let c_col = col('.')
+line 16:   let before = 0
+line 17: 
+line 18:   let text = getline(c_lnum)
+line 19:   let c_before = text->strpart(0, c_col - 1)->slice(-1)
+line 20:   let c = text->strpart(c_col - 1)->slice(0, 1)
+line 21:   let plist = split(&matchpairs, '.\zs[:,]')
+line 22:   let i = index(plist, c)
+line 23:   if i < 0
+line 24:     " not found, in Insert mode try character before the cursor
+line 25:     if c_col > 1 && (mode() == 'i' || mode() == 'R')
+line 26:       let before = strlen(c_before)
+line 27:       let c = c_before
+line 28:       let i = index(plist, c)
+line 29:     endif
+line 30:     if i < 0
+line 31:       " not found, nothing to do
+line 32:       return
+<SNR>14_Highlight_Matching_Pair returning #0
+
+continuing in WinScrolled Autocommands for "*"
+
+Executing SafeState Autocommands for "*"
+autocommand call s:Highlight_Matching_Pair()
+
+Executing: call s:Highlight_Matching_Pair()
+calling <SNR>14_Highlight_Matching_Pair()
+
+line 1:   if !exists("w:matchparen_ids")
+line 2:     let w:matchparen_ids = []
+line 3:   endif
+line 4:   " Remove any previous match.
+line 5:   call s:Remove_Matches()
+calling <SNR>14_Remove_Matches()
+
+line 1:   if exists('w:paren_hl_on') && w:paren_hl_on
+line 2:     while !empty(w:matchparen_ids)
+line 3:       silent! call remove(w:matchparen_ids, 0)->matchdelete()
+line 4:     endwhile
+line 5:     let w:paren_hl_on = 0
+line 6:   endif
+<SNR>14_Remove_Matches returning #0
+
+continuing in <SNR>14_Highlight_Matching_Pair
+
+line 6: 
+line 7:   " Avoid that we remove the popup menu.
+line 8:   " Return when there are no colors (looks like the cursor jumps).
+line 9:   if pumvisible() || (&t_Co < 8 && !has("gui_running"))
+line 10:     return
+line 11:   endif
+line 12: 
+line 13:   " Get the character under the cursor and check if it's in 'matchpairs'.
+line 14:   let c_lnum = line('.')
+line 15:   let c_col = col('.')
+line 16:   let before = 0
+line 17: 
+line 18:   let text = getline(c_lnum)
+line 19:   let c_before = text->strpart(0, c_col - 1)->slice(-1)
+line 20:   let c = text->strpart(c_col - 1)->slice(0, 1)
+line 21:   let plist = split(&matchpairs, '.\zs[:,]')
+line 22:   let i = index(plist, c)
+line 23:   if i < 0
+line 24:     " not found, in Insert mode try character before the cursor
+line 25:     if c_col > 1 && (mode() == 'i' || mode() == 'R')
+line 26:       let before = strlen(c_before)
+line 27:       let c = c_before
+line 28:       let i = index(plist, c)
+line 29:     endif
+line 30:     if i < 0
+line 31:       " not found, nothing to do
+line 32:       return
+<SNR>14_Highlight_Matching_Pair returning #0
+
+continuing in SafeState Autocommands for "*"
+
+Executing command: "'/usr/bin/git' '-C' '/Users/bryalee/orgfiles' 'rev-parse'"
+
+
+Executing User Autocommands for "AstroFile"
+autocommand <Lua 95: ~/.local/share/astronvim/lazy/lazy.nvim/lua/lazy/core/handler/event.lua:72>
+
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: source /Users/bryalee/.local/share/astronvim/lazy/nvim-ts-autotag/plugin/nvim-ts-autotag.lua
+line 1: sourcing "/Users/bryalee/.local/share/astronvim/lazy/nvim-ts-autotag/plugin/nvim-ts-autotag.lua"
+finished sourcing /Users/bryalee/.local/share/astronvim/lazy/nvim-ts-autotag/plugin/nvim-ts-autotag.lua
+continuing in nvim_exec2() called at User Autocommands for "AstroFile":0
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: source /Users/bryalee/.local/share/astronvim/lazy/nvim-lspconfig/plugin/lspconfig.lua
+line 1: sourcing "/Users/bryalee/.local/share/astronvim/lazy/nvim-lspconfig/plugin/lspconfig.lua"
+finished sourcing /Users/bryalee/.local/share/astronvim/lazy/nvim-lspconfig/plugin/lspconfig.lua
+continuing in nvim_exec2() called at User Autocommands for "AstroFile":0
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: source /Users/bryalee/.local/share/astronvim/lazy/vim-illuminate/plugin/illuminate.vim
+line 1: sourcing "/Users/bryalee/.local/share/astronvim/lazy/vim-illuminate/plugin/illuminate.vim"
+line 1: " illuminate.vim - Vim plugin for selectively illuminating other uses of current word
+line 2: " Maintainer:^IAdam P. Regasz-Rethy (RRethy) <rethy.spud@gmail.com>
+line 3: " Version: 2.0
+line 4: 
+line 5: if exists('g:loaded_illuminate')
+line 6:   finish
+line 7: endif
+line 8: 
+line 9: let g:loaded_illuminate = 1
+line 10: 
+line 11: if has('nvim-0.7.2') && get(g:, 'Illuminate_useDeprecated', 0) != 1
+line 12: lua << EOF
+line 51: 
+line 52: lua require('illuminate').set_highlight_defaults()
+line 52: sourcing "nvim_exec2() called at /Users/bryalee/.local/share/astronvim/lazy/vim-illuminate/plugin/illuminate.vim:52"
+line 1:     hi def IlluminatedWordText guifg=none guibg=none gui=underline
+line 2:     hi def IlluminatedWordRead guifg=none guibg=none gui=underline
+line 3:     hi def IlluminatedWordWrite guifg=none guibg=none gui=underline
+line 4:     
+finished sourcing nvim_exec2() called at /Users/bryalee/.local/share/astronvim/lazy/vim-illuminate/plugin/illuminate.vim:52
+continuing in /Users/bryalee/.local/share/astronvim/lazy/vim-illuminate/plugin/illuminate.vim
+line 53: augroup vim_illuminate_autocmds
+line 54:     autocmd!
+line 55:     autocmd ColorScheme * lua require('illuminate').set_highlight_defaults()
+line 56: augroup END
+line 57: 
+line 58: finish
+finished sourcing /Users/bryalee/.local/share/astronvim/lazy/vim-illuminate/plugin/illuminate.vim
+continuing in nvim_exec2() called at User Autocommands for "AstroFile":0
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: source /Users/bryalee/.local/share/astronvim/lazy/todo-comments.nvim/plugin/todo.vim
+line 1: sourcing "/Users/bryalee/.local/share/astronvim/lazy/todo-comments.nvim/plugin/todo.vim"
+line 1: command! -nargs=* TodoQuickFix lua require("todo-comments.search").setqflist(<q-args>)
+line 2: command! -nargs=* TodoLocList lua require("todo-comments.search").setloclist(<q-args>)
+line 3: command! -nargs=* TodoTelescope Telescope todo-comments todo <args>
+line 4: command! -nargs=* TodoFzfLua lua require("todo-comments.fzf").todo() <args>
+line 5: command! -nargs=* TodoTrouble Trouble todo <args>
+finished sourcing /Users/bryalee/.local/share/astronvim/lazy/todo-comments.nvim/plugin/todo.vim
+continuing in nvim_exec2() called at User Autocommands for "AstroFile":0
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoBgPERF guibg=#815654 guifg=#feeeee gui=BOLD
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoFgPERF guibg=NONE guifg=#815654 gui=NONE
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoSignPERF guibg=NONE guifg=#815654 gui=NONE
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoBgTEST guibg=#815654 guifg=#feeeee gui=BOLD
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoFgTEST guibg=NONE guifg=#815654 gui=NONE
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoSignTEST guibg=NONE guifg=#815654 gui=NONE
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoBgWARN guibg=#ac7300 guifg=#feeeee gui=BOLD
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoFgWARN guibg=NONE guifg=#ac7300 gui=NONE
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoSignWARN guibg=NONE guifg=#ac7300 gui=NONE
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoBgFIX guibg=#d04f4e guifg=#feeeee gui=BOLD
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoFgFIX guibg=NONE guifg=#d04f4e gui=NONE
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoSignFIX guibg=NONE guifg=#d04f4e gui=NONE
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoBgNOTE guibg=#00976c guifg=#feeeee gui=BOLD
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoFgNOTE guibg=NONE guifg=#00976c gui=NONE
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoSignNOTE guibg=NONE guifg=#00976c gui=NONE
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoBgHACK guibg=#ac7300 guifg=#feeeee gui=BOLD
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoFgHACK guibg=NONE guifg=#ac7300 gui=NONE
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoSignHACK guibg=NONE guifg=#ac7300 gui=NONE
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoBgTODO guibg=#0090a2 guifg=#feeeee gui=BOLD
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoFgTODO guibg=NONE guifg=#0090a2 gui=NONE
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: hi def TodoSignTODO guibg=NONE guifg=#0090a2 gui=NONE
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup Todo
+line 2:         autocmd!
+line 3:         autocmd BufWinEnter,WinNew * lua require("todo-comments.highlight").attach()
+line 4:         autocmd WinScrolled * lua require("todo-comments.highlight").highlight_win()
+line 5:         autocmd ColorScheme * lua vim.defer_fn(require("todo-comments.config").colors, 10)
+line 6:       augroup end
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroFile":0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at User Autocommands for "AstroFile":0
+continuing in User Autocommands for "AstroFile"
+Executing: 
+Executing User Autocommands for "AstroGitFile"
+autocommand <Lua 111: ~/.local/share/astronvim/lazy/lazy.nvim/lua/lazy/core/handler/event.lua:72>
+
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroGitFile":0"
+line 1: source /Users/bryalee/.local/share/astronvim/lazy/vim-fugitive/plugin/fugitive.vim
+line 1: sourcing "/Users/bryalee/.local/share/astronvim/lazy/vim-fugitive/plugin/fugitive.vim"
+line 1: " fugitive.vim - A Git wrapper so awesome, it should be illegal
+line 2: " Maintainer:   Tim Pope <http://tpo.pe/>
+line 3: " Version:      3.7
+line 4: " GetLatestVimScripts: 2975 1 :AutoInstall: fugitive.vim
+line 5: 
+line 6: if exists('g:loaded_fugitive')
+line 7:   finish
+line 8: endif
+line 9: let g:loaded_fugitive = 1
+line 10: 
+line 11: let s:bad_git_dir = '/$\|^fugitive:'
+line 12: 
+line 13: " FugitiveGitDir() returns the detected Git dir for the given buffer number,
+line 14: " or the current buffer if no argument is passed.  This will be an empty
+line 15: " string if no Git dir was found.  Use !empty(FugitiveGitDir()) to check if
+line 16: " Fugitive is active in the current buffer.  Do not rely on this for direct
+line 17: " filesystem access; use FugitiveFind('.git/whatever') instead.
+line 18: function! FugitiveGitDir(...) abort
+line 47: 
+line 48: " FugitiveReal() takes a fugitive:// URL and returns the corresponding path in
+line 49: " the work tree.  This may be useful to get a cleaner path for inclusion in
+line 50: " the statusline, for example.  Note that the file and its parent directories
+line 51: " are not guaranteed to exist.
+line 52: "
+line 53: " This is intended as an abstract API to be used on any "virtual" path.  For a
+line 54: " buffer named foo://bar, check for a function named FooReal(), and if it
+line 55: " exists, call FooReal("foo://bar").
+line 56: function! FugitiveReal(...) abort
+line 70: 
+line 71: " FugitiveFind() takes a Fugitive object and returns the appropriate Vim
+line 72: " buffer name.  You can use this to generate Fugitive URLs ("HEAD:README") or
+line 73: " to get the absolute path to a file in the Git dir (".git/HEAD"), the common
+line 74: " dir (".git/config"), or the work tree (":(top)Makefile").
+line 75: "
+line 76: " An optional second argument provides the Git dir, or the buffer number of a
+line 77: " buffer with a Git dir.  The default is the current buffer.
+line 78: function! FugitiveFind(...) abort
+line 85: 
+line 86: " FugitiveParse() takes a fugitive:// URL and returns a 2 element list
+line 87: " containing an object name ("commit:file") and the Git dir.  It's effectively
+line 88: " the inverse of FugitiveFind().
+line 89: function! FugitiveParse(...) abort
+line 100: 
+line 101: " FugitiveGitVersion() queries the version of Git in use.  Pass up to 3
+line 102: " arguments to return a Boolean of whether a certain minimum version is
+line 103: " available (FugitiveGitVersion(2,3,4) checks for 2.3.4 or higher) or no
+line 104: " arguments to get a raw string.
+line 105: function! FugitiveGitVersion(...) abort
+line 108: 
+line 109: " FugitiveResult() returns an object encapsulating the result of the most
+line 110: " recent :Git command.  Will be empty if no result is available.  During a
+line 111: " User FugitiveChanged event, this is guaranteed to correspond to the :Git
+line 112: " command that triggered the event, or be empty if :Git was not the trigger.
+line 113: " Pass in the name of a temp buffer to get the result object for that command
+line 114: " instead.  Contains the following keys:
+line 115: "
+line 116: " * "args": List of command arguments, starting with the subcommand.  Will be
+line 117: "   empty for usages like :Git --help.
+line 118: " * "git_dir": Git dir of the relevant repository.
+line 119: " * "exit_status": The integer exit code of the process.
+line 120: " * "flags": Flags passed directly to Git, like -c and --help.
+line 121: " * "file": Path to file containing command output.  Not guaranteed to exist,
+line 122: "   so verify with filereadable() before trying to access it.
+line 123: function! FugitiveResult(...) abort
+line 126: 
+line 127: " FugitiveExecute() runs Git with a list of arguments and returns a dictionary
+line 128: " with the following keys:
+line 129: "
+line 130: " * "exit_status": The integer exit code of the process.
+line 131: " * "stdout": The stdout produced by the process, as a list of lines.
+line 132: " * "stderr": The stdout produced by the process, as a list of lines.
+line 133: "
+line 134: " An optional second argument provides the Git dir, or the buffer number of a
+line 135: " buffer with a Git dir.  The default is the current buffer.
+line 136: "
+line 137: " An optional final argument is a callback Funcref, for asynchronous
+line 138: " execution.
+line 139: function! FugitiveExecute(args, ...) abort
+line 142: 
+line 143: " FugitiveShellCommand() turns an array of arguments into a Git command string
+line 144: " which can be executed with functions like system() and commands like :!.
+line 145: " Integer arguments will be treated as buffer numbers, and the appropriate
+line 146: " relative path inserted in their place.
+line 147: "
+line 148: " An optional second argument provides the Git dir, or the buffer number of a
+line 149: " buffer with a Git dir.  The default is the current buffer.
+line 150: function! FugitiveShellCommand(...) abort
+line 153: 
+line 154: " FugitiveConfig() get returns an opaque structure that can be passed to other
+line 155: " FugitiveConfig functions in lieu of a Git directory.  This can be faster
+line 156: " when performing multiple config queries.  Do not rely on the internal
+line 157: " structure of the return value as it is not guaranteed.  If you want a full
+line 158: " dictionary of every config value, use FugitiveConfigGetRegexp('.*').
+line 159: "
+line 160: " An optional argument provides the Git dir, or the buffer number of a
+line 161: " buffer with a Git dir.  The default is the current buffer.  Pass a blank
+line 162: " string to limit to the global config.
+line 163: function! FugitiveConfig(...) abort
+line 166: 
+line 167: " FugitiveConfigGet() retrieves a Git configuration value.  An optional second
+line 168: " argument can be either the object returned by FugitiveConfig(), or a Git
+line 169: " dir or buffer number to be passed along to FugitiveConfig().
+line 170: function! FugitiveConfigGet(name, ...) abort
+line 173: 
+line 174: " FugitiveConfigGetAll() is like FugitiveConfigGet() but returns a list of
+line 175: " all values.
+line 176: function! FugitiveConfigGetAll(name, ...) abort
+line 179: 
+line 180: " FugitiveConfigGetRegexp() retrieves a dictionary of all configuration values
+line 181: " with a key matching the given pattern.  Like git config --get-regexp, but
+line 182: " using a Vim regexp.  Second argument has same semantics as
+line 183: " FugitiveConfigGet().
+line 184: function! FugitiveConfigGetRegexp(pattern, ...) abort
+line 187: 
+line 188: " FugitiveRemoteUrl() retrieves the remote URL for the given remote name,
+line 189: " defaulting to the current branch's remote or "origin" if no argument is
+line 190: " given.  Similar to `git remote get-url`, but also attempts to resolve HTTP
+line 191: " redirects and SSH host aliases.
+line 192: "
+line 193: " An optional second argument provides the Git dir, or the buffer number of a
+line 194: " buffer with a Git dir.  The default is the current buffer.
+line 195: function! FugitiveRemoteUrl(...) abort
+line 198: 
+line 199: " FugitiveRemote() returns a data structure parsed from the remote URL.
+line 200: " For example, for remote URL "https://me@example.com:1234/repo.git", the
+line 201: " returned dictionary will contain the following:
+line 202: "
+line 203: " * "scheme": "https"
+line 204: " * "authority": "user@example.com:1234"
+line 205: " * "path": "/repo.git" (for SSH URLs this may be a relative path)
+line 206: " * "pathname": "/repo.git" (always coerced to absolute path)
+line 207: " * "host": "example.com:1234"
+line 208: " * "hostname": "example.com"
+line 209: " * "port": "1234"
+line 210: " * "user": "me"
+line 211: " * "path": "/repo.git"
+line 212: " * "url": "https://me@example.com:1234/repo.git"
+line 213: function! FugitiveRemote(...) abort
+line 216: 
+line 217: " FugitiveDidChange() triggers a FugitiveChanged event and reloads the summary
+line 218: " buffer for the current or given buffer number's repository.  You can also
+line 219: " give the result of a FugitiveExecute() and that context will be made
+line 220: " available inside the FugitiveChanged() event.
+line 221: "
+line 222: " Passing the special argument 0 (the number zero) softly expires summary
+line 223: " buffers for all repositories.  This can be used after a call to system()
+line 224: " with unclear implications.
+line 225: function! FugitiveDidChange(...) abort
+line 228: 
+line 229: " FugitiveHead() retrieves the name of the current branch. If the current HEAD
+line 230: " is detached, FugitiveHead() will return the empty string, unless the
+line 231: " optional argument is given, in which case the hash of the current commit
+line 232: " will be truncated to the given number of characters.
+line 233: "
+line 234: " An optional second argument provides the Git dir, or the buffer number of a
+line 235: " buffer with a Git dir.  The default is the current buffer.
+line 236: function! FugitiveHead(...) abort
+line 252: 
+line 253: function! FugitivePath(...) abort
+line 264: 
+line 265: function! FugitiveStatusline(...) abort
+line 271: 
+line 272: let s:resolved_git_dirs = {}
+line 273: function! FugitiveActualDir(...) abort
+line 283: 
+line 284: let s:commondirs = {}
+line 285: function! FugitiveCommonDir(...) abort
+line 307: 
+line 308: function! FugitiveWorkTree(...) abort
+line 316: 
+line 317: function! FugitiveIsGitDir(...) abort
+line 326: 
+line 327: function! s:ReadFile(path, line_count) abort
+line 337: 
+line 338: let s:worktree_for_dir = {}
+line 339: let s:dir_for_worktree = {}
+line 340: function! s:Tree(path) abort
+line 387: 
+line 388: function! s:CeilingDirectories() abort
+line 404: 
+line 405: function! s:ResolveGitDir(git_dir) abort
+line 422: 
+line 423: function! FugitiveExtractGitDir(path) abort
+line 471: 
+line 472: function! FugitiveDetect(...) abort
+line 484: 
+line 485: function! FugitiveGitPath(path) abort
+line 488: 
+line 489: if exists('+shellslash')
+line 490: 
+line 491:   function! s:Slash(path) abort
+line 494: 
+line 495:   function! s:VimSlash(path) abort
+line 498: 
+line 499:   function FugitiveVimPath(path) abort
+line 502: 
+line 503: else
+line 504: 
+line 505:   function! s:Slash(path) abort
+line 508: 
+line 509:   function! s:VimSlash(path) abort
+line 512: 
+line 513:   if has('win32unix') && filereadable('/git-bash.exe')
+line 514:     function! FugitiveVimPath(path) abort
+line 517:   else
+line 518:     function! FugitiveVimPath(path) abort
+line 521:   endif
+line 522: 
+line 523: endif
+line 524: 
+line 525: function! s:ProjectionistDetect() abort
+line 542: 
+line 543: let s:addr_other = has('patch-8.1.560') || has('nvim-0.5.0') ? '-addr=other' : ''
+line 544: let s:addr_tabs  = has('patch-7.4.542') ? '-addr=tabs' : ''
+line 545: let s:addr_wins  = has('patch-7.4.542') ? '-addr=windows' : ''
+line 546: 
+line 547: if exists(':G') != 2
+line 548:   command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#Complete G   exe fugitive#Command(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)
+line 549: endif
+line 550: command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#Complete Git exe fugitive#Command(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)
+line 551: 
+line 552: if exists(':Gstatus') != 2 && get(g:, 'fugitive_legacy_commands', 0)
+line 553:   exe 'command! -bang -bar     -range=-1' s:addr_other 'Gstatus exe fugitive#Command(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)' '|echohl WarningMSG|echomsg ":Gstatus is deprecated in favor of :Git (with no arguments)"|echohl NONE'
+line 555: endif
+line 556: 
+line 557: for s:cmd in ['Commit', 'Revert', 'Merge', 'Rebase', 'Pull', 'Push', 'Fetch', 'Blame']
+line 558:   if exists(':G' . tolower(s:cmd)) != 2 && get(g:, 'fugitive_legacy_commands', 0)
+line 559:     exe 'command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#' . s:cmd . 'Complete G' . tolower(s:cmd) 'echohl WarningMSG|echomsg ":G' . tolower(s:cmd) . ' is deprecated in favor of :Git ' . tolower(s:cmd) . '"|echohl NONE|' 'exe fugitive#Command(<line1>, <count>, +"<range>", <bang>0, "<mods>", "' . tolower(s:cmd) . ' " . <q-args>)'
+line 562:   endif
+line 563: endfor
+line 557: for s:cmd in ['Commit', 'Revert', 'Merge', 'Rebase', 'Pull', 'Push', 'Fetch', 'Blame']
+line 558:   if exists(':G' . tolower(s:cmd)) != 2 && get(g:, 'fugitive_legacy_commands', 0)
+line 559:     exe 'command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#' . s:cmd . 'Complete G' . tolower(s:cmd) 'echohl WarningMSG|echomsg ":G' . tolower(s:cmd) . ' is deprecated in favor of :Git ' . tolower(s:cmd) . '"|echohl NONE|' 'exe fugitive#Command(<line1>, <count>, +"<range>", <bang>0, "<mods>", "' . tolower(s:cmd) . ' " . <q-args>)'
+line 562:   endif
+line 563: endfor
+line 557: for s:cmd in ['Commit', 'Revert', 'Merge', 'Rebase', 'Pull', 'Push', 'Fetch', 'Blame']
+line 558:   if exists(':G' . tolower(s:cmd)) != 2 && get(g:, 'fugitive_legacy_commands', 0)
+line 559:     exe 'command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#' . s:cmd . 'Complete G' . tolower(s:cmd) 'echohl WarningMSG|echomsg ":G' . tolower(s:cmd) . ' is deprecated in favor of :Git ' . tolower(s:cmd) . '"|echohl NONE|' 'exe fugitive#Command(<line1>, <count>, +"<range>", <bang>0, "<mods>", "' . tolower(s:cmd) . ' " . <q-args>)'
+line 562:   endif
+line 563: endfor
+line 557: for s:cmd in ['Commit', 'Revert', 'Merge', 'Rebase', 'Pull', 'Push', 'Fetch', 'Blame']
+line 558:   if exists(':G' . tolower(s:cmd)) != 2 && get(g:, 'fugitive_legacy_commands', 0)
+line 559:     exe 'command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#' . s:cmd . 'Complete G' . tolower(s:cmd) 'echohl WarningMSG|echomsg ":G' . tolower(s:cmd) . ' is deprecated in favor of :Git ' . tolower(s:cmd) . '"|echohl NONE|' 'exe fugitive#Command(<line1>, <count>, +"<range>", <bang>0, "<mods>", "' . tolower(s:cmd) . ' " . <q-args>)'
+line 562:   endif
+line 563: endfor
+line 557: for s:cmd in ['Commit', 'Revert', 'Merge', 'Rebase', 'Pull', 'Push', 'Fetch', 'Blame']
+line 558:   if exists(':G' . tolower(s:cmd)) != 2 && get(g:, 'fugitive_legacy_commands', 0)
+line 559:     exe 'command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#' . s:cmd . 'Complete G' . tolower(s:cmd) 'echohl WarningMSG|echomsg ":G' . tolower(s:cmd) . ' is deprecated in favor of :Git ' . tolower(s:cmd) . '"|echohl NONE|' 'exe fugitive#Command(<line1>, <count>, +"<range>", <bang>0, "<mods>", "' . tolower(s:cmd) . ' " . <q-args>)'
+line 562:   endif
+line 563: endfor
+line 557: for s:cmd in ['Commit', 'Revert', 'Merge', 'Rebase', 'Pull', 'Push', 'Fetch', 'Blame']
+line 558:   if exists(':G' . tolower(s:cmd)) != 2 && get(g:, 'fugitive_legacy_commands', 0)
+line 559:     exe 'command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#' . s:cmd . 'Complete G' . tolower(s:cmd) 'echohl WarningMSG|echomsg ":G' . tolower(s:cmd) . ' is deprecated in favor of :Git ' . tolower(s:cmd) . '"|echohl NONE|' 'exe fugitive#Command(<line1>, <count>, +"<range>", <bang>0, "<mods>", "' . tolower(s:cmd) . ' " . <q-args>)'
+line 562:   endif
+line 563: endfor
+line 557: for s:cmd in ['Commit', 'Revert', 'Merge', 'Rebase', 'Pull', 'Push', 'Fetch', 'Blame']
+line 558:   if exists(':G' . tolower(s:cmd)) != 2 && get(g:, 'fugitive_legacy_commands', 0)
+line 559:     exe 'command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#' . s:cmd . 'Complete G' . tolower(s:cmd) 'echohl WarningMSG|echomsg ":G' . tolower(s:cmd) . ' is deprecated in favor of :Git ' . tolower(s:cmd) . '"|echohl NONE|' 'exe fugitive#Command(<line1>, <count>, +"<range>", <bang>0, "<mods>", "' . tolower(s:cmd) . ' " . <q-args>)'
+line 562:   endif
+line 563: endfor
+line 557: for s:cmd in ['Commit', 'Revert', 'Merge', 'Rebase', 'Pull', 'Push', 'Fetch', 'Blame']
+line 558:   if exists(':G' . tolower(s:cmd)) != 2 && get(g:, 'fugitive_legacy_commands', 0)
+line 559:     exe 'command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#' . s:cmd . 'Complete G' . tolower(s:cmd) 'echohl WarningMSG|echomsg ":G' . tolower(s:cmd) . ' is deprecated in favor of :Git ' . tolower(s:cmd) . '"|echohl NONE|' 'exe fugitive#Command(<line1>, <count>, +"<range>", <bang>0, "<mods>", "' . tolower(s:cmd) . ' " . <q-args>)'
+line 562:   endif
+line 563: endfor
+line 557: for s:cmd in ['Commit', 'Revert', 'Merge', 'Rebase', 'Pull', 'Push', 'Fetch', 'Blame']
+line 558:   if exists(':G' . tolower(s:cmd)) != 2 && get(g:, 'fugitive_legacy_commands', 0)
+line 559:     exe 'command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#' . s:cmd . 'Complete G' . tolower(s:cmd) 'echohl WarningMSG|echomsg ":G' . tolower(s:cmd) . ' is deprecated in favor of :Git ' . tolower(s:cmd) . '"|echohl NONE|' 'exe fugitive#Command(<line1>, <count>, +"<range>", <bang>0, "<mods>", "' . tolower(s:cmd) . ' " . <q-args>)'
+line 562:   endif
+line 563: endfor
+line 564: unlet s:cmd
+line 565: 
+line 566: exe "command! -bar -bang -nargs=? -complete=customlist,fugitive#CdComplete Gcd  exe fugitive#Cd(<q-args>, 0)"
+line 566: command! -bar -bang -nargs=? -complete=customlist,fugitive#CdComplete Gcd  exe fugitive#Cd(<q-args>, 0)
+line 567: exe "command! -bar -bang -nargs=? -complete=customlist,fugitive#CdComplete Glcd exe fugitive#Cd(<q-args>, 1)"
+line 567: command! -bar -bang -nargs=? -complete=customlist,fugitive#CdComplete Glcd exe fugitive#Cd(<q-args>, 1)
+line 568: 
+line 569: exe 'command! -bang -nargs=? -range=-1' s:addr_wins '-complete=customlist,fugitive#GrepComplete Ggrep  exe fugitive#GrepCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)'
+line 569: command! -bang -nargs=? -range=-1 -addr=windows -complete=customlist,fugitive#GrepComplete Ggrep  exe fugitive#GrepCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)
+line 570: exe 'command! -bang -nargs=? -range=-1' s:addr_wins '-complete=customlist,fugitive#GrepComplete Glgrep exe fugitive#GrepCommand(0, <count> > 0 ? <count> : 0, +"<range>", <bang>0, "<mods>", <q-args>)'
+line 570: command! -bang -nargs=? -range=-1 -addr=windows -complete=customlist,fugitive#GrepComplete Glgrep exe fugitive#GrepCommand(0, <count> > 0 ? <count> : 0, +"<range>", <bang>0, "<mods>", <q-args>)
+line 571: 
+line 572: exe 'command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#LogComplete Gclog :exe fugitive#LogCommand(<line1>,<count>,+"<range>",<bang>0,"<mods>",<q-args>, "c")'
+line 572: command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#LogComplete Gclog :exe fugitive#LogCommand(<line1>,<count>,+"<range>",<bang>0,"<mods>",<q-args>, "c")
+line 573: exe 'command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#LogComplete GcLog :exe fugitive#LogCommand(<line1>,<count>,+"<range>",<bang>0,"<mods>",<q-args>, "c")'
+line 573: command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#LogComplete GcLog :exe fugitive#LogCommand(<line1>,<count>,+"<range>",<bang>0,"<mods>",<q-args>, "c")
+line 574: exe 'command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#LogComplete Gllog :exe fugitive#LogCommand(<line1>,<count>,+"<range>",<bang>0,"<mods>",<q-args>, "l")'
+line 574: command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#LogComplete Gllog :exe fugitive#LogCommand(<line1>,<count>,+"<range>",<bang>0,"<mods>",<q-args>, "l")
+line 575: exe 'command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#LogComplete GlLog :exe fugitive#LogCommand(<line1>,<count>,+"<range>",<bang>0,"<mods>",<q-args>, "l")'
+line 575: command! -bang -nargs=? -range=-1 -complete=customlist,fugitive#LogComplete GlLog :exe fugitive#LogCommand(<line1>,<count>,+"<range>",<bang>0,"<mods>",<q-args>, "l")
+line 576: 
+line 577: exe 'command! -bar -bang -nargs=*                          -complete=customlist,fugitive#EditComplete   Ge       exe fugitive#Open("edit<bang>", 0, "<mods>", <q-args>)'
+line 577: command! -bar -bang -nargs=*                          -complete=customlist,fugitive#EditComplete   Ge       exe fugitive#Open("edit<bang>", 0, "<mods>", <q-args>)
+line 578: exe 'command! -bar -bang -nargs=*                          -complete=customlist,fugitive#EditComplete   Gedit    exe fugitive#Open("edit<bang>", 0, "<mods>", <q-args>)'
+line 578: command! -bar -bang -nargs=*                          -complete=customlist,fugitive#EditComplete   Gedit    exe fugitive#Open("edit<bang>", 0, "<mods>", <q-args>)
+line 579: exe 'command! -bar -bang -nargs=*                          -complete=customlist,fugitive#EditComplete   Gpedit   exe fugitive#Open("pedit", <bang>0, "<mods>", <q-args>)'
+line 579: command! -bar -bang -nargs=*                          -complete=customlist,fugitive#EditComplete   Gpedit   exe fugitive#Open("pedit", <bang>0, "<mods>", <q-args>)
+line 580: exe 'command! -bar -bang -nargs=* -range=-1' s:addr_other '-complete=customlist,fugitive#EditComplete   Gsplit   exe fugitive#Open((<count> > 0 ? <count> : "").(<count> ? "split" : "edit"), <bang>0, "<mods>", <q-args>)'
+line 580: command! -bar -bang -nargs=* -range=-1 -addr=other -complete=customlist,fugitive#EditComplete   Gsplit   exe fugitive#Open((<count> > 0 ? <count> : "").(<count> ? "split" : "edit"), <bang>0, "<mods>", <q-args>)
+line 581: exe 'command! -bar -bang -nargs=* -range=-1' s:addr_other '-complete=customlist,fugitive#EditComplete   Gvsplit  exe fugitive#Open((<count> > 0 ? <count> : "").(<count> ? "vsplit" : "edit!"), <bang>0, "<mods>", <q-args>)'
+line 581: command! -bar -bang -nargs=* -range=-1 -addr=other -complete=customlist,fugitive#EditComplete   Gvsplit  exe fugitive#Open((<count> > 0 ? <count> : "").(<count> ? "vsplit" : "edit!"), <bang>0, "<mods>", <q-args>)
+line 582: exe 'command! -bar -bang -nargs=* -range=-1' s:addr_tabs  '-complete=customlist,fugitive#EditComplete   Gtabedit exe fugitive#Open((<count> >= 0 ? <count> : "")."tabedit", <bang>0, "<mods>", <q-args>)'
+line 582: command! -bar -bang -nargs=* -range=-1 -addr=tabs -complete=customlist,fugitive#EditComplete   Gtabedit exe fugitive#Open((<count> >= 0 ? <count> : "")."tabedit", <bang>0, "<mods>", <q-args>)
+line 583: exe 'command! -bar -bang -nargs=*                          -complete=customlist,fugitive#EditComplete   Gdrop    exe fugitive#DropCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)'
+line 583: command! -bar -bang -nargs=*                          -complete=customlist,fugitive#EditComplete   Gdrop    exe fugitive#DropCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)
+line 584: 
+line 585: if exists(':Gr') != 2
+line 586:   exe 'command! -bar -bang -nargs=* -range=-1                -complete=customlist,fugitive#ReadComplete   Gr     exe fugitive#ReadCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)'
+line 586: command! -bar -bang -nargs=* -range=-1                -complete=customlist,fugitive#ReadComplete   Gr     exe fugitive#ReadCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)
+line 587: endif
+line 588: exe 'command! -bar -bang -nargs=* -range=-1                -complete=customlist,fugitive#ReadComplete   Gread    exe fugitive#ReadCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)'
+line 588: command! -bar -bang -nargs=* -range=-1                -complete=customlist,fugitive#ReadComplete   Gread    exe fugitive#ReadCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)
+line 589: 
+line 590: exe 'command! -bar -bang -nargs=* -complete=customlist,fugitive#EditComplete Gdiffsplit  exe fugitive#Diffsplit(1, <bang>0, "<mods>", <q-args>)'
+line 590: command! -bar -bang -nargs=* -complete=customlist,fugitive#EditComplete Gdiffsplit  exe fugitive#Diffsplit(1, <bang>0, "<mods>", <q-args>)
+line 591: exe 'command! -bar -bang -nargs=* -complete=customlist,fugitive#EditComplete Ghdiffsplit exe fugitive#Diffsplit(0, <bang>0, "<mods>", <q-args>)'
+line 591: command! -bar -bang -nargs=* -complete=customlist,fugitive#EditComplete Ghdiffsplit exe fugitive#Diffsplit(0, <bang>0, "<mods>", <q-args>)
+line 592: exe 'command! -bar -bang -nargs=* -complete=customlist,fugitive#EditComplete Gvdiffsplit exe fugitive#Diffsplit(0, <bang>0, "vertical <mods>", <q-args>)'
+line 592: command! -bar -bang -nargs=* -complete=customlist,fugitive#EditComplete Gvdiffsplit exe fugitive#Diffsplit(0, <bang>0, "vertical <mods>", <q-args>)
+line 593: 
+line 594: exe 'command! -bar -bang -nargs=* -complete=customlist,fugitive#EditComplete Gw     exe fugitive#WriteCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)'
+line 594: command! -bar -bang -nargs=* -complete=customlist,fugitive#EditComplete Gw     exe fugitive#WriteCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)
+line 595: exe 'command! -bar -bang -nargs=* -complete=customlist,fugitive#EditComplete Gwrite exe fugitive#WriteCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)'
+line 595: command! -bar -bang -nargs=* -complete=customlist,fugitive#EditComplete Gwrite exe fugitive#WriteCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)
+line 596: exe 'command! -bar -bang -nargs=* -complete=customlist,fugitive#EditComplete Gwq    exe fugitive#WqCommand(   <line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)'
+line 596: command! -bar -bang -nargs=* -complete=customlist,fugitive#EditComplete Gwq    exe fugitive#WqCommand(   <line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)
+line 597: 
+line 598: exe 'command! -bar -bang -nargs=0 GRemove exe fugitive#RemoveCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)'
+line 598: command! -bar -bang -nargs=0 GRemove exe fugitive#RemoveCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)
+line 599: exe 'command! -bar -bang -nargs=0 GUnlink exe fugitive#UnlinkCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)'
+line 599: command! -bar -bang -nargs=0 GUnlink exe fugitive#UnlinkCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)
+line 600: exe 'command! -bar -bang -nargs=0 GDelete exe fugitive#DeleteCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)'
+line 600: command! -bar -bang -nargs=0 GDelete exe fugitive#DeleteCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)
+line 601: exe 'command! -bar -bang -nargs=1 -complete=customlist,fugitive#CompleteObject GMove   exe fugitive#MoveCommand(  <line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)'
+line 601: command! -bar -bang -nargs=1 -complete=customlist,fugitive#CompleteObject GMove   exe fugitive#MoveCommand(  <line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)
+line 602: exe 'command! -bar -bang -nargs=1 -complete=customlist,fugitive#RenameComplete GRename exe fugitive#RenameCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)'
+line 602: command! -bar -bang -nargs=1 -complete=customlist,fugitive#RenameComplete GRename exe fugitive#RenameCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)
+line 603: if exists(':Gremove') != 2 && get(g:, 'fugitive_legacy_commands', 0)
+line 604:   exe 'command! -bar -bang -nargs=0 Gremove exe fugitive#RemoveCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)' '|echohl WarningMSG|echomsg ":Gremove is deprecated in favor of :GRemove"|echohl NONE'
+line 606: elseif exists(':Gremove') != 2 && !exists('g:fugitive_legacy_commands')
+line 607:   exe 'command! -bar -bang -nargs=0 Gremove echoerr ":Gremove has been removed in favor of :GRemove"'
+line 607: command! -bar -bang -nargs=0 Gremove echoerr ":Gremove has been removed in favor of :GRemove"
+line 608: endif
+line 609: if exists(':Gdelete') != 2 && get(g:, 'fugitive_legacy_commands', 0)
+line 610:   exe 'command! -bar -bang -nargs=0 Gdelete exe fugitive#DeleteCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)' '|echohl WarningMSG|echomsg ":Gdelete is deprecated in favor of :GDelete"|echohl NONE'
+line 612: elseif exists(':Gdelete') != 2 && !exists('g:fugitive_legacy_commands')
+line 613:   exe 'command! -bar -bang -nargs=0 Gdelete echoerr ":Gdelete has been removed in favor of :GDelete"'
+line 613: command! -bar -bang -nargs=0 Gdelete echoerr ":Gdelete has been removed in favor of :GDelete"
+line 614: endif
+line 615: if exists(':Gmove') != 2 && get(g:, 'fugitive_legacy_commands', 0)
+line 616:   exe 'command! -bar -bang -nargs=1 -complete=customlist,fugitive#CompleteObject Gmove   exe fugitive#MoveCommand(  <line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)' '|echohl WarningMSG|echomsg ":Gmove is deprecated in favor of :GMove"|echohl NONE'
+line 618: elseif exists(':Gmove') != 2 && !exists('g:fugitive_legacy_commands')
+line 619:   exe 'command! -bar -bang -nargs=? -complete=customlist,fugitive#CompleteObject Gmove' 'echoerr ":Gmove has been removed in favor of :GMove"'
+line 619: command! -bar -bang -nargs=? -complete=customlist,fugitive#CompleteObject Gmove echoerr ":Gmove has been removed in favor of :GMove"
+line 621: endif
+line 622: if exists(':Grename') != 2 && get(g:, 'fugitive_legacy_commands', 0)
+line 623:   exe 'command! -bar -bang -nargs=1 -complete=customlist,fugitive#RenameComplete Grename exe fugitive#RenameCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)' '|echohl WarningMSG|echomsg ":Grename is deprecated in favor of :GRename"|echohl NONE'
+line 625: elseif exists(':Grename') != 2 && !exists('g:fugitive_legacy_commands')
+line 626:   exe 'command! -bar -bang -nargs=? -complete=customlist,fugitive#RenameComplete Grename' 'echoerr ":Grename has been removed in favor of :GRename"'
+line 626: command! -bar -bang -nargs=? -complete=customlist,fugitive#RenameComplete Grename echoerr ":Grename has been removed in favor of :GRename"
+line 628: endif
+line 629: 
+line 630: exe 'command! -bar -bang -range=-1 -nargs=* -complete=customlist,fugitive#CompleteObject GBrowse exe fugitive#BrowseCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)'
+line 630: command! -bar -bang -range=-1 -nargs=* -complete=customlist,fugitive#CompleteObject GBrowse exe fugitive#BrowseCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)
+line 631: if exists(':Gbrowse') != 2 && get(g:, 'fugitive_legacy_commands', 0)
+line 632:   exe 'command! -bar -bang -range=-1 -nargs=* -complete=customlist,fugitive#CompleteObject Gbrowse exe fugitive#BrowseCommand(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)' '|if <bang>1|redraw!|endif|echohl WarningMSG|echomsg ":Gbrowse is deprecated in favor of :GBrowse"|echohl NONE'
+line 634: elseif exists(':Gbrowse') != 2 && !exists('g:fugitive_legacy_commands')
+line 635:   exe 'command! -bar -bang -range=-1 -nargs=* -complete=customlist,fugitive#CompleteObject Gbrowse' 'echoerr ":Gbrowse has been removed in favor of :GBrowse"'
+line 635: command! -bar -bang -range=-1 -nargs=* -complete=customlist,fugitive#CompleteObject Gbrowse echoerr ":Gbrowse has been removed in favor of :GBrowse"
+line 637: endif
+line 638: 
+line 639: if v:version < 704
+line 640:   finish
+line 641: endif
+line 642: 
+line 643: let g:io_fugitive = { 'simplify': function('fugitive#simplify'), 'resolve': function('fugitive#resolve'), 'getftime': function('fugitive#getftime'), 'getfsize': function('fugitive#getfsize'), 'getftype': function('fugitive#getftype'), 'filereadable': function('fugitive#filereadable'), 'filewritable': function('fugitive#filewritable'), 'isdirectory': function('fugitive#isdirectory'), 'getfperm': function('fugitive#getfperm'), 'setfperm': function('fugitive#setfperm'), 'readfile': function('fugitive#readfile'), 'writefile': function('fugitive#writefile'), 'glob': function('fugitive#glob'), 'delete': function('fugitive#delete'), 'Real': function('FugitiveReal')}
+line 659: 
+line 660: augroup fugitive
+line 661:   autocmd!
+line 662: 
+line 663:   autocmd BufNewFile,BufReadPost * if exists('b:git_dir') && b:git_dir =~# '^$\|' . s:bad_git_dir |   unlet b:git_dir | endif
+line 667:   autocmd FileType           netrw if exists('b:git_dir') && b:git_dir =~# '^$\|' . s:bad_git_dir |   unlet b:git_dir | endif
+line 671:   autocmd BufFilePost            *  unlet! b:git_dir
+line 672: 
+line 673:   autocmd FileType git call fugitive#MapCfile()
+line 675:   autocmd FileType gitcommit call fugitive#MapCfile('fugitive#MessageCfile()')
+line 677:   autocmd FileType git,gitcommit if &foldtext ==# 'foldtext()' |    setlocal foldtext=fugitive#Foldtext() | endif
+line 681:   autocmd FileType fugitive call fugitive#MapCfile('fugitive#PorcelainCfile()')
+line 683:   autocmd FileType gitrebase let &l:include = '^\%(pick\|squash\|edit\|reword\|fixup\|drop\|[pserfd]\)\>' | if &l:includeexpr !~# 'Fugitive' |   let &l:includeexpr = 'v:fname =~# ''^\x\{4,\}$'' && len(FugitiveGitDir()) ? FugitiveFind(v:fname) : ' .     (len(&l:includeexpr) ? &l:includeexpr : 'v:fname') | endif | let b:undo_ftplugin = get(b:, 'undo_ftplugin', 'exe') . '|setl inex= inc='
+line 690: 
+line 691:   autocmd BufReadCmd index{,.lock} nested if FugitiveIsGitDir(expand('<amatch>:p:h')) |   let b:git_dir = s:Slash(expand('<amatch>:p:h')) |   exe fugitive#BufReadStatus(v:cmdbang) |   echohl WarningMSG |   echo "fugitive: Direct editing of .git/" . expand('%:t') . " is deprecated" |   echohl NONE | elseif filereadable(expand('<amatch>')) |   silent doautocmd BufReadPre |   keepalt noautocmd read <amatch> |   silent 1delete_ |   silent doautocmd BufReadPost | else |   silent doautocmd BufNewFile | endif
+line 706: 
+line 707:   autocmd BufReadCmd   fugitive://*          nested exe fugitive#BufReadCmd() | if &path =~# '^\.\%(,\|$\)' |   let &l:path = substitute(&path, '^\.,\=', '', '') | endif
+line 711:   autocmd BufWriteCmd  fugitive://*          nested exe fugitive#BufWriteCmd()
+line 712:   autocmd FileReadCmd  fugitive://*          nested exe fugitive#FileReadCmd()
+line 713:   autocmd FileWriteCmd fugitive://*          nested exe fugitive#FileWriteCmd()
+line 714:   if exists('##SourceCmd')
+line 715:     autocmd SourceCmd     fugitive://*       nested exe fugitive#SourceCmd()
+line 716:   endif
+line 717: 
+line 718:   autocmd User Flags call Hoist('buffer', function('FugitiveStatusline'))
+line 719: 
+line 720:   autocmd User ProjectionistDetect call s:ProjectionistDetect()
+line 721: augroup END
+line 722: 
+line 723: nmap <script><silent> <Plug>fugitive:y<C-G> :<C-U>call setreg(v:register, fugitive#Object(@%))<CR>
+line 724: nmap <script> <Plug>fugitive: <Nop>
+line 725: 
+line 726: if get(g:, 'fugitive_no_maps')
+line 727:   finish
+line 728: endif
+line 729: 
+line 730: function! s:Map(mode, lhs, rhs, flags) abort
+line 752: 
+line 753: call s:Map('c', '<C-R><C-G>', 'fnameescape(fugitive#Object(@%))', '<expr>')
+calling <SNR>75_Map('c', '<C-R><C-G>', 'fnameescape(fugitive#Object(@%))', '<expr>')
+
+line 1:   let flags = a:flags . (a:rhs =~# '<Plug>' ? '' : '<script>') . '<nowait>'
+line 2:   let head = a:lhs
+line 3:   let tail = ''
+line 4:   let keys = get(g:, a:mode.'remap', {})
+line 5:   if len(keys) && type(keys) == type({})
+line 6:     while !empty(head)
+line 7:       if has_key(keys, head)
+line 8:         let head = keys[head]
+line 9:         if empty(head)
+line 10:           return
+line 11:         endif
+line 12:         break
+line 13:       endif
+line 14:       let tail = matchstr(head, '<[^<>]*>$\|.$') . tail
+line 15:       let head = substitute(head, '<[^<>]*>$\|.$', '', '')
+line 16:     endwhile
+line 17:   endif
+line 18:   if empty(mapcheck(head.tail, a:mode))
+line 19:     exe a:mode.'map' flags head.tail a:rhs
+line 19: cmap <expr><script><nowait> <C-R><C-G> fnameescape(fugitive#Object(@%))
+line 20:   endif
+<SNR>75_Map returning #0
+
+continuing in /Users/bryalee/.local/share/astronvim/lazy/vim-fugitive/plugin/fugitive.vim
+
+line 754: call s:Map('n', 'y<C-G>', ':<C-U>call setreg(v:register, fugitive#Object(@%))<CR>', '<silent>')
+calling <SNR>75_Map('n', 'y<C-G>', ':<C-U>call setreg(v:register, fugitive#Object(@%))<CR>', '<silent>')
+
+line 1:   let flags = a:flags . (a:rhs =~# '<Plug>' ? '' : '<script>') . '<nowait>'
+line 2:   let head = a:lhs
+line 3:   let tail = ''
+line 4:   let keys = get(g:, a:mode.'remap', {})
+line 5:   if len(keys) && type(keys) == type({})
+line 6:     while !empty(head)
+line 7:       if has_key(keys, head)
+line 8:         let head = keys[head]
+line 9:         if empty(head)
+line 10:           return
+line 11:         endif
+line 12:         break
+line 13:       endif
+line 14:       let tail = matchstr(head, '<[^<>]*>$\|.$') . tail
+line 15:       let head = substitute(head, '<[^<>]*>$\|.$', '', '')
+line 16:     endwhile
+line 17:   endif
+line 18:   if empty(mapcheck(head.tail, a:mode))
+line 19:     exe a:mode.'map' flags head.tail a:rhs
+line 19: nmap <silent><script><nowait> y<C-G> :<C-U>call setreg(v:register, fugitive#Object(@%))<CR>
+line 20:   endif
+<SNR>75_Map returning #0
+
+continuing in /Users/bryalee/.local/share/astronvim/lazy/vim-fugitive/plugin/fugitive.vim
+
+finished sourcing /Users/bryalee/.local/share/astronvim/lazy/vim-fugitive/plugin/fugitive.vim
+continuing in nvim_exec2() called at User Autocommands for "AstroGitFile":0
+finished sourcing nvim_exec2() called at User Autocommands for "AstroGitFile":0
+continuing in User Autocommands for "AstroGitFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroGitFile":0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at User Autocommands for "AstroGitFile":0
+continuing in User Autocommands for "AstroGitFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroGitFile":0"
+line 1: source /Users/bryalee/.local/share/astronvim/lazy/vim-fugitive/ftdetect/fugitive.vim
+line 1: sourcing "/Users/bryalee/.local/share/astronvim/lazy/vim-fugitive/ftdetect/fugitive.vim"
+line 1: autocmd BufReadPost *.fugitiveblame setfiletype fugitiveblame
+finished sourcing /Users/bryalee/.local/share/astronvim/lazy/vim-fugitive/ftdetect/fugitive.vim
+continuing in nvim_exec2() called at User Autocommands for "AstroGitFile":0
+finished sourcing nvim_exec2() called at User Autocommands for "AstroGitFile":0
+continuing in User Autocommands for "AstroGitFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroGitFile":0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at User Autocommands for "AstroGitFile":0
+continuing in User Autocommands for "AstroGitFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroGitFile":0"
+line 1: source /Users/bryalee/.local/share/astronvim/lazy/vim-rhubarb/plugin/rhubarb.vim
+line 1: sourcing "/Users/bryalee/.local/share/astronvim/lazy/vim-rhubarb/plugin/rhubarb.vim"
+line 1: " rhubarb.vim - fugitive.vim extension for GitHub
+line 2: " Maintainer:   Tim Pope <http://tpo.pe/>
+line 3: 
+line 4: if exists("g:loaded_rhubarb") || v:version < 700 || &cp
+line 5:   finish
+line 6: endif
+line 7: let g:loaded_rhubarb = 1
+line 8: 
+line 9: if !exists('g:dispatch_compilers')
+line 10:   let g:dispatch_compilers = {}
+line 11: endif
+line 12: let g:dispatch_compilers['hub'] = 'git'
+line 13: 
+line 14: function! s:SetUpMessage(filename) abort
+line 31: 
+line 32: augroup rhubarb
+line 33:   autocmd!
+line 34:   if exists('+omnifunc')
+line 35:     autocmd FileType gitcommit call s:SetUpMessage(expand('<afile>:p'))
+line 36:   endif
+line 37:   autocmd BufEnter * if expand('%') ==# '' && &previewwindow && pumvisible() && getbufvar('#', '&omnifunc') ==# 'rhubarb#omnifunc' |    setlocal nolist linebreak filetype=markdown | endif
+line 41:   autocmd BufNewFile,BufRead *.git/{PULLREQ_EDIT,ISSUE_EDIT,RELEASE_EDIT}MSG if &ft ==# '' || &ft ==# 'conf' |   set ft=gitcommit | endif
+line 45: augroup END
+line 46: 
+line 47: if !exists('g:fugitive_browse_handlers')
+line 48:   let g:fugitive_browse_handlers = []
+line 49: endif
+line 50: 
+line 51: if index(g:fugitive_browse_handlers, function('rhubarb#FugitiveUrl')) < 0
+line 52:   call insert(g:fugitive_browse_handlers, function('rhubarb#FugitiveUrl'))
+line 53: endif
+finished sourcing /Users/bryalee/.local/share/astronvim/lazy/vim-rhubarb/plugin/rhubarb.vim
+continuing in nvim_exec2() called at User Autocommands for "AstroGitFile":0
+finished sourcing nvim_exec2() called at User Autocommands for "AstroGitFile":0
+continuing in User Autocommands for "AstroGitFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroGitFile":0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at User Autocommands for "AstroGitFile":0
+continuing in User Autocommands for "AstroGitFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroGitFile":0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at User Autocommands for "AstroGitFile":0
+continuing in User Autocommands for "AstroGitFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroGitFile":0"
+line 1: augroup filetypedetect
+finished sourcing nvim_exec2() called at User Autocommands for "AstroGitFile":0
+continuing in User Autocommands for "AstroGitFile"
+line 0: sourcing "nvim_exec2() called at User Autocommands for "AstroGitFile":0"
+line 1: augroup END
+finished sourcing nvim_exec2() called at User Autocommands for "AstroGitFile":0
+continuing in User Autocommands for "AstroGitFile"
+Executing: 
+Executing BufReadPost Autocommands for "*"
+autocommand <Lua 193: /opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/filetype.lua:10>
+
+Executing FileType Autocommands for "*"
+autocommand call s:LoadFTPlugin()
+
+Executing: call s:LoadFTPlugin()
+calling <SNR>1_LoadFTPlugin()
+
+line 1:     if exists("b:undo_ftplugin")
+line 2:       exe b:undo_ftplugin
+line 2: setlocal commentstring< foldmethod< modeline< foldtext< foldlevel< foldexpr< formatexpr< omnifunc< indentkeys< | unlet! b:org_tmp_edit_window
+line 2:  unlet! b:org_tmp_edit_window
+line 3:       unlet! b:undo_ftplugin b:did_ftplugin
+line 4:     endif
+line 5: 
+line 6:     let s = expand("<amatch>")
+line 7:     if s != ""
+line 8:       if &cpo =~# "S" && exists("b:did_ftplugin")
+line 9: ^I" In compatible mode options are reset to the global values, need to
+line 10: ^I" set the local values also when a plugin was already used.
+line 11: ^Iunlet b:did_ftplugin
+line 12:       endif
+line 13: 
+line 14:       " When there is a dot it is used to separate filetype names.  Thus for
+line 15:       " "aaa.bbb" load "aaa" and then "bbb".
+line 16:       for name in split(s, '\.')
+line 17:         " Load Lua ftplugins after Vim ftplugins _per directory_
+line 18:         " TODO(clason): use nvim__get_runtime when supports globs and modeline
+line 19:         " XXX: "[.]" in the first pattern makes it a wildcard on Windows
+line 20:         exe $'runtime! ftplugin/{name}[.]{{vim,lua}} ftplugin/{name}_*.{{vim,lua}} ftplugin/{name}/*.{{vim,lua}}'
+line 20: runtime! ftplugin/org[.]{vim,lua} ftplugin/org_*.{vim,lua} ftplugin/org/*.{vim,lua}
+Searching for "ftplugin/org[.]{vim,lua} ftplugin/org_*.{vim,lua} ftplugin/org/*.{vim,lua}" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.config/astronvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.config/astronvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/gitsigns.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/gitsigns.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/gitsigns.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-fugitive/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-fugitive/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-fugitive/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-rhubarb/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-rhubarb/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-rhubarb/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/aerial.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/aerial.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/aerial.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-null-ls.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-null-ls.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-null-ls.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/none-ls.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/none-ls.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/none-ls.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/todo-comments.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/todo-comments.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/todo-comments.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-illuminate/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-illuminate/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-illuminate/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-highlight-colors/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-highlight-colors/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-highlight-colors/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrolsp/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrolsp/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrolsp/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-lspconfig.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-lspconfig.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-lspconfig.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/neoconf.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/neoconf.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/neoconf.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-lspconfig/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-lspconfig/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-lspconfig/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-autopairs/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-autopairs/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-autopairs/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-ts-autotag/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-ts-autotag/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-ts-autotag/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/guess-indent.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/guess-indent.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/guess-indent.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/ftplugin/org[.]{vim,lua}"
+line 20: sourcing "/Users/bryalee/.local/share/astronvim/lazy/orgmode/ftplugin/org.lua"
+Executing Syntax Autocommands for "*"
+autocommand call s:SynSet()
+
+Executing: call s:SynSet()
+calling <SNR>22_SynSet()
+
+line 1:   " clear syntax for :set syntax=OFF  and any syntax name that doesn't exist
+line 2:   syn clear
+line 3:   if exists("b:current_syntax")
+line 4:     unlet b:current_syntax
+line 5:   endif
+line 6: 
+line 7:   0verbose let s = expand("<amatch>")
+line 8:   if s == "ON"
+line 9:     " :set syntax=ON
+line 10:     if &filetype == ""
+line 11:       echohl ErrorMsg
+line 12:       echo "filetype unknown"
+line 13:       echohl None
+line 14:     endif
+line 15:     let s = &filetype
+line 16:   elseif s == "OFF"
+line 17:     let s = ""
+line 18:   endif
+line 19: 
+line 20:   if s != ""
+line 21:     " Load the syntax file(s).  When there are several, separated by dots,
+line 22:     " load each in sequence.  Skip empty entries.
+line 23:     for name in split(s, '\.')
+line 24:       if !empty(name)
+line 25:         " XXX: "[.]" in the first pattern makes it a wildcard on Windows
+line 26:         exe $'runtime! syntax/{name}[.]{{vim,lua}} syntax/{name}/*.{{vim,lua}}'
+line 27:       endif
+line 28:     endfor
+line 29:   endif
+<SNR>22_SynSet returning #0
+
+continuing in Syntax Autocommands for "*"
+
+bl: setup_foldlevel
+finished sourcing /Users/bryalee/.local/share/astronvim/lazy/orgmode/ftplugin/org.lua
+continuing in <SNR>1_LoadFTPlugin
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/ftplugin/org/*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/ftplugin/org[.]{vim,lua}"
+line 20: sourcing "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/ftplugin/org.vim"
+line 1: " Vim filetype plugin file
+line 2: " Language:^IOrg
+line 3: " Maintainer:^ILuca Saccarola <github.e41mv@aleeas.com>
+line 4: " Last Change:^I2024 Nov 14
+line 5: 
+line 6: if exists("b:did_ftplugin")
+line 7:     finish
+finished sourcing /opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/ftplugin/org.vim
+continuing in <SNR>1_LoadFTPlugin
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/ftplugin/org_*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/ftplugin/org/*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/ftplugin/org[.]{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/ftplugin/org_*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/ftplugin/org/*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/ftplugin/org/*.{vim,lua}"
+line 21:       endfor
+line 16:       for name in split(s, '\.')
+line 17:         " Load Lua ftplugins after Vim ftplugins _per directory_
+line 18:         " TODO(clason): use nvim__get_runtime when supports globs and modeline
+line 19:         " XXX: "[.]" in the first pattern makes it a wildcard on Windows
+line 20:         exe $'runtime! ftplugin/{name}[.]{{vim,lua}} ftplugin/{name}_*.{{vim,lua}} ftplugin/{name}/*.{{vim,lua}}'
+line 21:       endfor
+line 22:     endif
+<SNR>1_LoadFTPlugin returning #0
+
+continuing in FileType Autocommands for "*"
+
+Executing FileType Autocommands for "*"
+autocommand call s:LoadIndent()
+
+Executing: call s:LoadIndent()
+calling <SNR>2_LoadIndent()
+
+line 1:     if exists("b:undo_indent")
+line 2:       exe b:undo_indent
+line 2: setlocal indentexpr< lisp< smartindent< autoindent<
+line 3:       unlet! b:undo_indent b:did_indent
+line 4:     endif
+line 5:     let s = expand("<amatch>")
+line 6:     if s != ""
+line 7:       if exists("b:did_indent")
+line 8: ^Iunlet b:did_indent
+line 9:       endif
+line 10: 
+line 11:       " When there is a dot it is used to separate filetype names.  Thus for
+line 12:       " "aaa.bbb" load "indent/aaa.vim" and then "indent/bbb.vim".
+line 13:       for name in split(s, '\.')
+line 14:         " XXX: "[.]" in the pattern makes it a wildcard on Windows
+line 15:         exe $'runtime! indent/{name}[.]{{vim,lua}}'
+line 15: runtime! indent/org[.]{vim,lua}
+Searching for "indent/org[.]{vim,lua}" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/gitsigns.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-fugitive/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-rhubarb/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/aerial.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-null-ls.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/none-ls.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/todo-comments.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-illuminate/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-highlight-colors/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrolsp/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-lspconfig.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/neoconf.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-lspconfig/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-autopairs/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-ts-autotag/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/guess-indent.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/indent/org[.]{vim,lua}"
+line 15: sourcing "/Users/bryalee/.local/share/astronvim/lazy/orgmode/indent/org.lua"
+finished sourcing /Users/bryalee/.local/share/astronvim/lazy/orgmode/indent/org.lua
+continuing in <SNR>2_LoadIndent
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/indent/org[.]{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/indent/org[.]{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/indent/org[.]{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/indent/org[.]{vim,lua}"
+line 16:       endfor
+line 13:       for name in split(s, '\.')
+line 14:         " XXX: "[.]" in the pattern makes it a wildcard on Windows
+line 15:         exe $'runtime! indent/{name}[.]{{vim,lua}}'
+line 16:       endfor
+line 17:     endif
+<SNR>2_LoadIndent returning #0
+
+continuing in FileType Autocommands for "*"
+
+Executing FileType Autocommands for "org"
+autocommand <Lua 199: ~/.config/astronvim/lua/plugins/note-taking.lua:68>
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 364: ~/.local/share/astronvim/lazy/AstroNvim/lua/astronvim/plugins/_astrocore_autocmds.lua:123>
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 386: ~/.local/share/astronvim/lazy/AstroNvim/lua/astronvim/plugins/_astroui.lua:13>
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 398: ~/.local/share/astronvim/lazy/astrocore/lua/astrocore/init.lua:633>
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand if !exists('b:ts_highlight') | 0verbose exe "set syntax=" . expand("<amatch>") | endif
+
+Executing: if !exists('b:ts_highlight') | 0verbose exe "set syntax=" . expand("<amatch>") | endif
+Executing:  0verbose exe "set syntax=" . expand("<amatch>") | endif
+Executing:  endif
+Executing FileType Autocommands for "*"
+autocommand <Lua 223: ~/.local/share/astronvim/lazy/heirline.nvim/lua/heirline/init.lua:28>
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 504: ~/.local/share/astronvim/lazy/nvim-treesitter/lua/nvim-treesitter/install.lua:558>
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 505: ~/.local/share/astronvim/lazy/nvim-treesitter/lua/nvim-treesitter/configs.lua:132>
+
+Searching for "queries/org/textobjects.scm" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/gitsigns.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-fugitive/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-rhubarb/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/aerial.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-null-ls.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/none-ls.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/todo-comments.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-illuminate/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-highlight-colors/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrolsp/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-lspconfig.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/neoconf.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-lspconfig/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-autopairs/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-ts-autotag/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/guess-indent.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/queries/org/textobjects.scm"
+not found in runtime path: "queries/org/textobjects.scm"
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 506: ~/.local/share/astronvim/lazy/nvim-treesitter/lua/nvim-treesitter/configs.lua:132>
+
+Searching for "queries/org/textobjects.scm" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/gitsigns.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-fugitive/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-rhubarb/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/aerial.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-null-ls.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/none-ls.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/todo-comments.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-illuminate/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-highlight-colors/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrolsp/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-lspconfig.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/neoconf.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-lspconfig/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-autopairs/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-ts-autotag/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/guess-indent.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/queries/org/textobjects.scm"
+not found in runtime path: "queries/org/textobjects.scm"
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 507: ~/.local/share/astronvim/lazy/nvim-treesitter/lua/nvim-treesitter/configs.lua:132>
+
+Searching for "queries/org/textobjects.scm" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/gitsigns.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-fugitive/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-rhubarb/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/aerial.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-null-ls.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/none-ls.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/todo-comments.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-illuminate/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-highlight-colors/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrolsp/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-lspconfig.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/neoconf.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-lspconfig/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-autopairs/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-ts-autotag/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/guess-indent.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/org/textobjects.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/queries/org/textobjects.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/queries/org/textobjects.scm"
+not found in runtime path: "queries/org/textobjects.scm"
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 508: ~/.local/share/astronvim/lazy/nvim-treesitter/lua/nvim-treesitter/configs.lua:132>
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 509: ~/.local/share/astronvim/lazy/nvim-treesitter/lua/nvim-treesitter/configs.lua:132>
+
+Executing FileType Autocommands for "*"
+autocommand if !exists('b:ts_highlight') | 0verbose exe "set syntax=" . expand("<amatch>") | endif
+
+Executing: if !exists('b:ts_highlight') | 0verbose exe "set syntax=" . expand("<amatch>") | endif
+Executing:  0verbose exe "set syntax=" . expand("<amatch>") | endif
+Executing:  endif
+Executing Syntax Autocommands for "*"
+autocommand call s:SynSet()
+
+Executing: call s:SynSet()
+calling <SNR>22_SynSet()
+
+line 1:   " clear syntax for :set syntax=OFF  and any syntax name that doesn't exist
+line 2:   syn clear
+line 3:   if exists("b:current_syntax")
+line 4:     unlet b:current_syntax
+line 5:   endif
+line 6: 
+line 7:   0verbose let s = expand("<amatch>")
+line 8:   if s == "ON"
+line 9:     " :set syntax=ON
+line 10:     if &filetype == ""
+line 11:       echohl ErrorMsg
+line 12:       echo "filetype unknown"
+line 13:       echohl None
+line 14:     endif
+line 15:     let s = &filetype
+line 16:   elseif s == "OFF"
+line 17:     let s = ""
+line 18:   endif
+line 19: 
+line 20:   if s != ""
+line 21:     " Load the syntax file(s).  When there are several, separated by dots,
+line 22:     " load each in sequence.  Skip empty entries.
+line 23:     for name in split(s, '\.')
+line 24:       if !empty(name)
+line 25:         " XXX: "[.]" in the first pattern makes it a wildcard on Windows
+line 26:         exe $'runtime! syntax/{name}[.]{{vim,lua}} syntax/{name}/*.{{vim,lua}}'
+line 27:       endif
+line 28:     endfor
+line 29:   endif
+<SNR>22_SynSet returning #0
+
+continuing in Syntax Autocommands for "*"
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 510: ~/.local/share/astronvim/lazy/nvim-treesitter/lua/nvim-treesitter/configs.lua:132>
+
+Executing: 
+Executing FileType Autocommands for "org"
+autocommand <Lua 699: ~/.local/share/astronvim/lazy/orgmode/lua/orgmode/init.lua:102>
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 571: ~/.local/share/astronvim/lazy/nvim-ts-autotag/lua/nvim-ts-autotag/config/plugin.lua:210>
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 463: ~/.local/share/astronvim/lazy/nvim-autopairs/lua/nvim-autopairs.lua:78>
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 929: ~/.local/share/astronvim/lazy/vim-illuminate/lua/illuminate/engine.lua:58>
+
+Searching for "queries/org/locals.scm" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/gitsigns.nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-fugitive/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-rhubarb/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/aerial.nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-null-ls.nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/none-ls.nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/todo-comments.nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-illuminate/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-highlight-colors/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrolsp/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-lspconfig.nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/neoconf.nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-lspconfig/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-autopairs/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-ts-autotag/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/guess-indent.nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/queries/org/locals.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/org/locals.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/org/locals.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/queries/org/locals.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/queries/org/locals.scm"
+not found in runtime path: "queries/org/locals.scm"
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 904: ~/.local/share/astronvim/lazy/none-ls.nvim/lua/null-ls/init.lua:42>
+
+Executing: 
+Executing: 
+autocommand if !did_filetype() && expand('<amatch>') !~ g:ft_ignore_pat | runtime! scripts.vim | endif
+
+Executing: if !did_filetype() && expand('<amatch>') !~ g:ft_ignore_pat | runtime! scripts.vim | endif
+Executing:  runtime! scripts.vim | endif
+Executing:  endif
+Executing BufReadPost Autocommands for "*"
+autocommand if exists('b:git_dir') && b:git_dir =~# '^$\|' . s:bad_git_dir |   unlet b:git_dir | endif
+
+Executing: if exists('b:git_dir') && b:git_dir =~# '^$\|' . s:bad_git_dir |   unlet b:git_dir | endif
+Executing:    unlet b:git_dir | endif
+Executing:  endif
+Executing BufReadPost Autocommands for "*"
+autocommand <Lua 863: ~/.local/share/astronvim/lazy/gitsigns.nvim/lua/gitsigns.lua:143>
+
+Executing: 
+Searching for "queries/org/aerial.scm" in runtime path
+Searching for "/Users/bryalee/.config/astronvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/lazy.nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/gitsigns.nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-fugitive/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-rhubarb/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/aerial.nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-null-ls.nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/none-ls.nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/todo-comments.nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/vim-illuminate/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-highlight-colors/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrolsp/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-lspconfig.nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/neoconf.nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-lspconfig/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-autopairs/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-ts-autotag/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/guess-indent.nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.cmp/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/blink.compat/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/smart-splits.nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-surround/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason-tool-installer.nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/orgmode/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mason.nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter-textobjects/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-treesitter/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/better-escape.nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/which-key.nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.icons/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/heirline.nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/fzf-lua/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/plenary.nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/org-bullets.nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/mini.files/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocommunity/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/nvim-notify/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/snacks.nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/AstroNvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrotheme/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astroui/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/astrocore/queries/org/aerial.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/org/aerial.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/org/aerial.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/state/astronvim/lazy/readme/queries/org/aerial.scm"
+Searching for "/Users/bryalee/.local/share/astronvim/lazy/octo.nvim/after/queries/org/aerial.scm"
+Executing ModeChanged Autocommands for "*"
+autocommand <Lua 525: ~/.local/share/astronvim/lazy/which-key.nvim/lua/which-key/state.lua:93>
+
+Executing: 
+Executing ModeChanged Autocommands for "*:*"
+autocommand <Lua 709: ~/.local/share/astronvim/lazy/heirline.nvim/lua/heirline/statusline.lua:291>
+
+Executing: 
+Executing ModeChanged Autocommands for "*:*"
+autocommand <Lua 708: ~/.local/share/astronvim/lazy/astroui/lua/astroui/status/init.lua:144>
+
+Executing: 
+Executing ModeChanged Autocommands for "*:*"
+autocommand <Lua 533: ~/.local/share/astronvim/lazy/heirline.nvim/lua/heirline/statusline.lua:291>
+
+Executing: 
+Executing ModeChanged Autocommands for "*"
+autocommand <Lua 129: ~/.local/share/astronvim/lazy/blink.cmp/lua/blink/cmp/lib/buffer_events.lua:86>
+
+Executing: 
+Executing ModeChanged Autocommands for "*"
+autocommand <Lua 167: ~/.local/share/astronvim/lazy/vim-illuminate/lua/illuminate/engine.lua:49>
+
+Executing: 
+
+Executing: set verbose=0

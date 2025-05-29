@@ -1,0 +1,16 @@
+* Statement
+Folding has some issues in conjunction with AstroNvim. When opening the file, the cursor is set to the right position, but fold level is reset afterwards.
+There is no issue with base orgmode plugin.
+* Debugging
+- =foldlevel= and the orgmode ftplugin is being sourced twice. It seems the =filetype= option may be getting reset, which is retriggering the =ftplugin=.
+- One fix suggested is to make sure that the ftplugin guards against being called multiple times.
+** DONE The ftplugin orgvim file already guards against being loaded twice, so why is it still being triggered?
+CLOSED: [2025-05-28 Wed 23:56]
+Something in the astrocore autocmds is triggering the filetype again, which seems to clear the buffer variables
+** CANCELED Does anything from astronvim/astrocore reset the filetype?
+CLOSED: [2025-05-28 Wed 23:57]
+** DONE How can I check what is setting or triggering the filetype autocmd?
+CLOSED: [2025-05-28 Wed 23:58]
+- Added =debug.traceback()= to =ftplugin=, which shows the file that caused it to be triggered
+- Can also add =autocmd= on =FileType= event, and add the traceback message, which does the same thing
+** TODO Dig into why the astrocore autocmds are re-triggering the filetype autocmd

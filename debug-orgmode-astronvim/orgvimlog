@@ -1,0 +1,758 @@
+
+
+
+Executing: lua require("orgmode").action("agenda.goto_item")
+sourcing "nvim_exec2()"
+line 1: 1wincmd w
+Executing BufLeave Autocommands for "*"
+autocommand call s:Remove_Matches()
+
+Executing: call s:Remove_Matches()
+calling <SNR>15_Remove_Matches()
+
+line 1:   if exists('w:paren_hl_on') && w:paren_hl_on
+line 2:     while !empty(w:matchparen_ids)
+line 3:       silent! call remove(w:matchparen_ids, 0)->matchdelete()
+line 4:     endwhile
+line 5:     let w:paren_hl_on = 0
+line 6:   endif
+<SNR>15_Remove_Matches returning #0
+
+continuing in BufLeave Autocommands for "*"
+
+Executing WinLeave Autocommands for "*"
+autocommand call s:Remove_Matches()
+
+Executing: call s:Remove_Matches()
+calling <SNR>15_Remove_Matches()
+
+line 1:   if exists('w:paren_hl_on') && w:paren_hl_on
+line 2:     while !empty(w:matchparen_ids)
+line 3:       silent! call remove(w:matchparen_ids, 0)->matchdelete()
+line 4:     endwhile
+line 5:     let w:paren_hl_on = 0
+line 6:   endif
+<SNR>15_Remove_Matches returning #0
+
+continuing in WinLeave Autocommands for "*"
+
+Executing WinEnter Autocommands for "*"
+autocommand call s:Highlight_Matching_Pair()
+
+Executing: call s:Highlight_Matching_Pair()
+calling <SNR>15_Highlight_Matching_Pair()
+
+line 1:   if !exists("w:matchparen_ids")
+line 2:     let w:matchparen_ids = []
+line 3:   endif
+line 4:   " Remove any previous match.
+line 5:   call s:Remove_Matches()
+calling <SNR>15_Remove_Matches()
+
+line 1:   if exists('w:paren_hl_on') && w:paren_hl_on
+line 2:     while !empty(w:matchparen_ids)
+line 3:       silent! call remove(w:matchparen_ids, 0)->matchdelete()
+line 4:     endwhile
+line 5:     let w:paren_hl_on = 0
+line 6:   endif
+<SNR>15_Remove_Matches returning #0
+
+continuing in <SNR>15_Highlight_Matching_Pair
+
+line 6: 
+line 7:   " Avoid that we remove the popup menu.
+line 8:   " Return when there are no colors (looks like the cursor jumps).
+line 9:   if pumvisible() || (&t_Co < 8 && !has("gui_running"))
+line 10:     return
+line 11:   endif
+line 12: 
+line 13:   " Get the character under the cursor and check if it's in 'matchpairs'.
+line 14:   let c_lnum = line('.')
+line 15:   let c_col = col('.')
+line 16:   let before = 0
+line 17: 
+line 18:   let text = getline(c_lnum)
+line 19:   let c_before = text->strpart(0, c_col - 1)->slice(-1)
+line 20:   let c = text->strpart(c_col - 1)->slice(0, 1)
+line 21:   let plist = split(&matchpairs, '.\zs[:,]')
+line 22:   let i = index(plist, c)
+line 23:   if i < 0
+line 24:     " not found, in Insert mode try character before the cursor
+line 25:     if c_col > 1 && (mode() == 'i' || mode() == 'R')
+line 26:       let before = strlen(c_before)
+line 27:       let c = c_before
+line 28:       let i = index(plist, c)
+line 29:     endif
+line 30:     if i < 0
+line 31:       " not found, nothing to do
+line 32:       return
+<SNR>15_Highlight_Matching_Pair returning #0
+
+continuing in WinEnter Autocommands for "*"
+
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 177: ~/.local/share/orgvim/lazy/mini.nvim/lua/mini/files.lua:1376>
+
+Executing: 
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 207: ~/.local/share/orgvim/lazy/which-key.nvim/lua/which-key/state.lua:145>
+
+Executing: 
+finished sourcing nvim_exec2()
+sourcing "nvim_exec2()"
+line 1: edit /Users/bryalee/orgfiles/refile.org
+Executing BufDelete Autocommands for "*"
+autocommand <Lua 237: ~/.local/share/orgvim/lazy/LuaSnip/lua/luasnip/config.lua:116>
+
+Executing: 
+Executing BufWipeout Autocommands for "*"
+autocommand <Lua 255: ~/.local/share/orgvim/lazy/LuaSnip/lua/luasnip/config.lua:116>
+
+Executing: 
+Executing BufNew Autocommands for "*"
+autocommand <Lua 206: ~/.local/share/orgvim/lazy/which-key.nvim/lua/which-key/state.lua:135>
+
+Executing: 
+Reading ShaDa file "/Users/bryalee/.local/state/orgvim/shada/main.shada" marks
+Executing BufReadPost Autocommands for "*"
+autocommand <Lua 85: /opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/filetype.lua:10>
+
+Executing FileType Autocommands for "*"
+autocommand call s:LoadFTPlugin()
+
+Executing: call s:LoadFTPlugin()
+calling <SNR>1_LoadFTPlugin()
+
+line 1:     if exists("b:undo_ftplugin")
+line 2:       exe b:undo_ftplugin
+line 3:       unlet! b:undo_ftplugin b:did_ftplugin
+line 4:     endif
+line 5: 
+line 6:     let s = expand("<amatch>")
+line 7:     if s != ""
+line 8:       if &cpo =~# "S" && exists("b:did_ftplugin")
+line 9: ^I" In compatible mode options are reset to the global values, need to
+line 10: ^I" set the local values also when a plugin was already used.
+line 11: ^Iunlet b:did_ftplugin
+line 12:       endif
+line 13: 
+line 14:       " When there is a dot it is used to separate filetype names.  Thus for
+line 15:       " "aaa.bbb" load "aaa" and then "bbb".
+line 16:       for name in split(s, '\.')
+line 17:         " Load Lua ftplugins after Vim ftplugins _per directory_
+line 18:         " TODO(clason): use nvim__get_runtime when supports globs and modeline
+line 19:         " XXX: "[.]" in the first pattern makes it a wildcard on Windows
+line 20:         exe $'runtime! ftplugin/{name}[.]{{vim,lua}} ftplugin/{name}_*.{{vim,lua}} ftplugin/{name}/*.{{vim,lua}}'
+line 20: runtime! ftplugin/org[.]{vim,lua} ftplugin/org_*.{vim,lua} ftplugin/org/*.{vim,lua}
+Searching for "ftplugin/org[.]{vim,lua} ftplugin/org_*.{vim,lua} ftplugin/org/*.{vim,lua}" in runtime path
+Searching for "/Users/bryalee/.config/orgvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.config/orgvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.config/orgvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/lazy.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/lazy.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/lazy.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/LuaSnip/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/LuaSnip/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/LuaSnip/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-cmp/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-cmp/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-cmp/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/orgmode/ftplugin/org[.]{vim,lua}"
+line 20: sourcing "/Users/bryalee/.local/share/orgvim/lazy/orgmode/ftplugin/org.lua"
+Searching for "queries/org/injections.scm" in runtime path
+Searching for "/Users/bryalee/.config/orgvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/lazy.nvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/LuaSnip/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-cmp/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/orgmode/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/mini.nvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/gitsigns.nvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/org-bullets.nvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-treesitter/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/fzf-lua/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/which-key.nvim/queries/org/injections.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/org/injections.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/netrw/queries/org/injections.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/org/injections.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/state/orgvim/lazy/readme/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/after/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/after/queries/org/injections.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/after/queries/org/injections.scm"
+Searching for "queries/org/highlights.scm" in runtime path
+Searching for "/Users/bryalee/.config/orgvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/lazy.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/LuaSnip/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-cmp/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/orgmode/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/mini.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/gitsigns.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/org-bullets.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-treesitter/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/fzf-lua/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/which-key.nvim/queries/org/highlights.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/org/highlights.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/netrw/queries/org/highlights.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/org/highlights.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/state/orgvim/lazy/readme/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/after/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/after/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/after/queries/org/highlights.scm"
+Executing Syntax Autocommands for "*"
+autocommand call s:SynSet()
+
+Executing: call s:SynSet()
+calling <SNR>27_SynSet()
+
+line 1:   " clear syntax for :set syntax=OFF  and any syntax name that doesn't exist
+line 2:   syn clear
+line 3:   if exists("b:current_syntax")
+line 4:     unlet b:current_syntax
+line 5:   endif
+line 6: 
+line 7:   0verbose let s = expand("<amatch>")
+line 8:   if s == "ON"
+line 9:     " :set syntax=ON
+line 10:     if &filetype == ""
+line 11:       echohl ErrorMsg
+line 12:       echo "filetype unknown"
+line 13:       echohl None
+line 14:     endif
+line 15:     let s = &filetype
+line 16:   elseif s == "OFF"
+line 17:     let s = ""
+line 18:   endif
+line 19: 
+line 20:   if s != ""
+line 21:     " Load the syntax file(s).  When there are several, separated by dots,
+line 22:     " load each in sequence.  Skip empty entries.
+line 23:     for name in split(s, '\.')
+line 24:       if !empty(name)
+line 25:         " XXX: "[.]" in the first pattern makes it a wildcard on Windows
+line 26:         exe $'runtime! syntax/{name}[.]{{vim,lua}} syntax/{name}/*.{{vim,lua}}'
+line 27:       endif
+line 28:     endfor
+line 29:   endif
+<SNR>27_SynSet returning #0
+
+continuing in Syntax Autocommands for "*"
+
+bl: setup_foldlevel
+finished sourcing /Users/bryalee/.local/share/orgvim/lazy/orgmode/ftplugin/org.lua
+continuing in <SNR>1_LoadFTPlugin
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/orgmode/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/orgmode/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/mini.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/mini.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/mini.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/gitsigns.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/gitsigns.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/gitsigns.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/org-bullets.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/org-bullets.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/org-bullets.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-treesitter/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-treesitter/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-treesitter/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/fzf-lua/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/fzf-lua/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/fzf-lua/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/which-key.nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/which-key.nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/which-key.nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/ftplugin/org[.]{vim,lua}"
+line 20: sourcing "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/ftplugin/org.vim"
+line 1: " Vim filetype plugin file
+line 2: " Language:^IOrg
+line 3: " Maintainer:^ILuca Saccarola <github.e41mv@aleeas.com>
+line 4: " Last Change:^I2024 Nov 14
+line 5: 
+line 6: if exists("b:did_ftplugin")
+line 7:     finish
+finished sourcing /opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/ftplugin/org.vim
+continuing in <SNR>1_LoadFTPlugin
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/ftplugin/org_*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/ftplugin/org/*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/netrw/ftplugin/org[.]{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/netrw/ftplugin/org_*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/netrw/ftplugin/org/*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/ftplugin/org[.]{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/ftplugin/org_*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/ftplugin/org/*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/ftplugin/org[.]{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/ftplugin/org_*.{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/state/orgvim/lazy/readme/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/state/orgvim/lazy/readme/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/state/orgvim/lazy/readme/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/after/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/after/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/after/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/after/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/after/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/after/ftplugin/org/*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/after/ftplugin/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/after/ftplugin/org_*.{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/after/ftplugin/org/*.{vim,lua}"
+line 21:       endfor
+line 16:       for name in split(s, '\.')
+line 17:         " Load Lua ftplugins after Vim ftplugins _per directory_
+line 18:         " TODO(clason): use nvim__get_runtime when supports globs and modeline
+line 19:         " XXX: "[.]" in the first pattern makes it a wildcard on Windows
+line 20:         exe $'runtime! ftplugin/{name}[.]{{vim,lua}} ftplugin/{name}_*.{{vim,lua}} ftplugin/{name}/*.{{vim,lua}}'
+line 21:       endfor
+line 22:     endif
+<SNR>1_LoadFTPlugin returning #0
+
+continuing in FileType Autocommands for "*"
+
+Executing FileType Autocommands for "*"
+autocommand call s:LoadIndent()
+
+Executing: call s:LoadIndent()
+calling <SNR>2_LoadIndent()
+
+line 1:     if exists("b:undo_indent")
+line 2:       exe b:undo_indent
+line 3:       unlet! b:undo_indent b:did_indent
+line 4:     endif
+line 5:     let s = expand("<amatch>")
+line 6:     if s != ""
+line 7:       if exists("b:did_indent")
+line 8: ^Iunlet b:did_indent
+line 9:       endif
+line 10: 
+line 11:       " When there is a dot it is used to separate filetype names.  Thus for
+line 12:       " "aaa.bbb" load "indent/aaa.vim" and then "indent/bbb.vim".
+line 13:       for name in split(s, '\.')
+line 14:         " XXX: "[.]" in the pattern makes it a wildcard on Windows
+line 15:         exe $'runtime! indent/{name}[.]{{vim,lua}}'
+line 15: runtime! indent/org[.]{vim,lua}
+Searching for "indent/org[.]{vim,lua}" in runtime path
+Searching for "/Users/bryalee/.config/orgvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/lazy.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/LuaSnip/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-cmp/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/orgmode/indent/org[.]{vim,lua}"
+line 15: sourcing "/Users/bryalee/.local/share/orgvim/lazy/orgmode/indent/org.lua"
+finished sourcing /Users/bryalee/.local/share/orgvim/lazy/orgmode/indent/org.lua
+continuing in <SNR>2_LoadIndent
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/mini.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/gitsigns.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/org-bullets.nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-treesitter/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/fzf-lua/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/which-key.nvim/indent/org[.]{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/indent/org[.]{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/netrw/indent/org[.]{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/indent/org[.]{vim,lua}"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/state/orgvim/lazy/readme/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/after/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/after/indent/org[.]{vim,lua}"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/after/indent/org[.]{vim,lua}"
+line 16:       endfor
+line 13:       for name in split(s, '\.')
+line 14:         " XXX: "[.]" in the pattern makes it a wildcard on Windows
+line 15:         exe $'runtime! indent/{name}[.]{{vim,lua}}'
+line 16:       endfor
+line 17:     endif
+<SNR>2_LoadIndent returning #0
+
+continuing in FileType Autocommands for "*"
+
+Executing FileType Autocommands for "org"
+autocommand <Lua 81: ~/.local/share/orgvim/lazy/lazy.nvim/lua/lazy/core/handler/event.lua:72>
+
+Executing: 
+Executing FileType Autocommands for "org"
+autocommand <Lua 101: ~/.config/orgvim/lua/custom/plugins/orgmode.lua:80>
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 110: ~/.local/share/orgvim/lazy/nvim-treesitter/lua/nvim-treesitter/install.lua:558>
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 111: ~/.local/share/orgvim/lazy/nvim-treesitter/lua/nvim-treesitter/configs.lua:132>
+
+Searching for "queries/org/highlights.scm" in runtime path
+Searching for "/Users/bryalee/.config/orgvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/lazy.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/LuaSnip/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-cmp/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/orgmode/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/mini.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/gitsigns.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/org-bullets.nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-treesitter/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/fzf-lua/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/which-key.nvim/queries/org/highlights.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/org/highlights.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/netrw/queries/org/highlights.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/org/highlights.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/state/orgvim/lazy/readme/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/after/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/after/queries/org/highlights.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/after/queries/org/highlights.scm"
+Executing Syntax Autocommands for "*"
+autocommand call s:SynSet()
+
+Executing: call s:SynSet()
+calling <SNR>27_SynSet()
+
+line 1:   " clear syntax for :set syntax=OFF  and any syntax name that doesn't exist
+line 2:   syn clear
+line 3:   if exists("b:current_syntax")
+line 4:     unlet b:current_syntax
+line 5:   endif
+line 6: 
+line 7:   0verbose let s = expand("<amatch>")
+line 8:   if s == "ON"
+line 9:     " :set syntax=ON
+line 10:     if &filetype == ""
+line 11:       echohl ErrorMsg
+line 12:       echo "filetype unknown"
+line 13:       echohl None
+line 14:     endif
+line 15:     let s = &filetype
+line 16:   elseif s == "OFF"
+line 17:     let s = ""
+line 18:   endif
+line 19: 
+line 20:   if s != ""
+line 21:     " Load the syntax file(s).  When there are several, separated by dots,
+line 22:     " load each in sequence.  Skip empty entries.
+line 23:     for name in split(s, '\.')
+line 24:       if !empty(name)
+line 25:         " XXX: "[.]" in the first pattern makes it a wildcard on Windows
+line 26:         exe $'runtime! syntax/{name}[.]{{vim,lua}} syntax/{name}/*.{{vim,lua}}'
+line 27:       endif
+line 28:     endfor
+line 29:   endif
+<SNR>27_SynSet returning #0
+
+continuing in Syntax Autocommands for "*"
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 112: ~/.local/share/orgvim/lazy/nvim-treesitter/lua/nvim-treesitter/configs.lua:132>
+
+Searching for "queries/org/indents.scm" in runtime path
+Searching for "/Users/bryalee/.config/orgvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/lazy.nvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/LuaSnip/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-cmp/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/orgmode/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/mini.nvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/gitsigns.nvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/org-bullets.nvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-treesitter/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/fzf-lua/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/which-key.nvim/queries/org/indents.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/org/indents.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/netrw/queries/org/indents.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/org/indents.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/state/orgvim/lazy/readme/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/after/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/after/queries/org/indents.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/after/queries/org/indents.scm"
+not found in runtime path: "queries/org/indents.scm"
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand if !exists('b:ts_highlight') | 0verbose exe "set syntax=" . expand("<amatch>") | endif
+
+Executing: if !exists('b:ts_highlight') | 0verbose exe "set syntax=" . expand("<amatch>") | endif
+Executing:  0verbose exe "set syntax=" . expand("<amatch>") | endif
+Executing:  endif
+Executing FileType Autocommands for "org"
+autocommand <Lua 266: ~/.local/share/orgvim/lazy/orgmode/lua/orgmode/init.lua:102>
+
+Executing: 
+Executing FileType Autocommands for "*"
+autocommand <Lua 232: ~/.local/share/orgvim/lazy/LuaSnip/plugin/luasnip.lua:77>
+
+Executing: 
+Executing: 
+autocommand if !did_filetype() && expand('<amatch>') !~ g:ft_ignore_pat | runtime! scripts.vim | endif
+
+Executing: if !did_filetype() && expand('<amatch>') !~ g:ft_ignore_pat | runtime! scripts.vim | endif
+Executing:  runtime! scripts.vim | endif
+Executing:  endif
+Executing BufReadPost Autocommands for "*"
+autocommand <Lua 127: ~/.local/share/orgvim/lazy/gitsigns.nvim/lua/gitsigns.lua:169>
+
+Executing: 
+Executing BufReadPost Autocommands for "*"
+autocommand <Lua 191: /opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/plugin/editorconfig.lua:4>
+
+Executing: 
+Executing BufReadPost Autocommands for "*"
+autocommand <Lua 205: ~/.local/share/orgvim/lazy/which-key.nvim/lua/which-key/state.lua:135>
+
+Executing: 
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 177: ~/.local/share/orgvim/lazy/mini.nvim/lua/mini/files.lua:1376>
+
+Executing: 
+Executing BufEnter Autocommands for "*"
+autocommand <Lua 207: ~/.local/share/orgvim/lazy/which-key.nvim/lua/which-key/state.lua:145>
+
+Executing: 
+Executing BufWinEnter Autocommands for "*"
+autocommand autocmd SafeState * ++once call s:Highlight_Matching_Pair()
+
+Executing: autocmd SafeState * ++once call s:Highlight_Matching_Pair()
+Executing BufWinEnter Autocommands for "*"
+autocommand <Lua 233: ~/.local/share/orgvim/lazy/LuaSnip/plugin/luasnip.lua:77>
+
+Executing: 
+line 1: unlet! b:keymap_name
+Searching for "queries/org/folds.scm" in runtime path
+Searching for "/Users/bryalee/.config/orgvim/queries/org/folds.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/lazy.nvim/queries/org/folds.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/queries/org/folds.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/queries/org/folds.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/queries/org/folds.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/LuaSnip/queries/org/folds.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-cmp/queries/org/folds.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/orgmode/queries/org/folds.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/mini.nvim/queries/org/folds.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/gitsigns.nvim/queries/org/folds.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/org-bullets.nvim/queries/org/folds.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-treesitter/queries/org/folds.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/fzf-lua/queries/org/folds.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/which-key.nvim/queries/org/folds.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/queries/org/folds.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/netrw/queries/org/folds.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/queries/org/folds.scm"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/queries/org/folds.scm"
+Searching for "/Users/bryalee/.local/state/orgvim/lazy/readme/queries/org/folds.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/after/queries/org/folds.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/after/queries/org/folds.scm"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/after/queries/org/folds.scm"
+finished sourcing nvim_exec2()
+sourcing "nvim_exec2()"
+line 1: normal! zv
+finished sourcing nvim_exec2()
+bl: gotoheadline
+
+sourcing "nvim_exec2()"
+line 1: silent! call repeat#set("\<cmd>lua require('orgmode').action('agenda.goto_item')\<CR>")
+Searching for "autoload/repeat.vim" in runtime path
+Searching for "/Users/bryalee/.config/orgvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/lazy.nvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/LuaSnip/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-cmp/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/orgmode/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/mini.nvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/gitsigns.nvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/org-bullets.nvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-treesitter/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/fzf-lua/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/which-key.nvim/autoload/repeat.vim"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/autoload/repeat.vim"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/netrw/autoload/repeat.vim"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/autoload/repeat.vim"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/state/orgvim/lazy/readme/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/after/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/after/autoload/repeat.vim"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/after/autoload/repeat.vim"
+not found in runtime path: "autoload/repeat.vim"
+Error detected while processing nvim_exec2():
+line    1:
+E117: Unknown function: repeat#set
+finished sourcing nvim_exec2()
+Executing CursorMoved Autocommands for "*"
+autocommand call s:Highlight_Matching_Pair()
+
+Executing: call s:Highlight_Matching_Pair()
+calling <SNR>15_Highlight_Matching_Pair()
+
+line 1:   if !exists("w:matchparen_ids")
+line 2:     let w:matchparen_ids = []
+line 3:   endif
+line 4:   " Remove any previous match.
+line 5:   call s:Remove_Matches()
+calling <SNR>15_Remove_Matches()
+
+line 1:   if exists('w:paren_hl_on') && w:paren_hl_on
+line 2:     while !empty(w:matchparen_ids)
+line 3:       silent! call remove(w:matchparen_ids, 0)->matchdelete()
+line 4:     endwhile
+line 5:     let w:paren_hl_on = 0
+line 6:   endif
+<SNR>15_Remove_Matches returning #0
+
+continuing in <SNR>15_Highlight_Matching_Pair
+
+line 6: 
+line 7:   " Avoid that we remove the popup menu.
+line 8:   " Return when there are no colors (looks like the cursor jumps).
+line 9:   if pumvisible() || (&t_Co < 8 && !has("gui_running"))
+line 10:     return
+line 11:   endif
+line 12: 
+line 13:   " Get the character under the cursor and check if it's in 'matchpairs'.
+line 14:   let c_lnum = line('.')
+line 15:   let c_col = col('.')
+line 16:   let before = 0
+line 17: 
+line 18:   let text = getline(c_lnum)
+line 19:   let c_before = text->strpart(0, c_col - 1)->slice(-1)
+line 20:   let c = text->strpart(c_col - 1)->slice(0, 1)
+line 21:   let plist = split(&matchpairs, '.\zs[:,]')
+line 22:   let i = index(plist, c)
+line 23:   if i < 0
+line 24:     " not found, in Insert mode try character before the cursor
+line 25:     if c_col > 1 && (mode() == 'i' || mode() == 'R')
+line 26:       let before = strlen(c_before)
+line 27:       let c = c_before
+line 28:       let i = index(plist, c)
+line 29:     endif
+line 30:     if i < 0
+line 31:       " not found, nothing to do
+line 32:       return
+<SNR>15_Highlight_Matching_Pair returning #0
+
+continuing in CursorMoved Autocommands for "*"
+
+Executing SafeState Autocommands for "*"
+autocommand call s:Highlight_Matching_Pair()
+
+Executing: call s:Highlight_Matching_Pair()
+calling <SNR>15_Highlight_Matching_Pair()
+
+line 1:   if !exists("w:matchparen_ids")
+line 2:     let w:matchparen_ids = []
+line 3:   endif
+line 4:   " Remove any previous match.
+line 5:   call s:Remove_Matches()
+calling <SNR>15_Remove_Matches()
+
+line 1:   if exists('w:paren_hl_on') && w:paren_hl_on
+line 2:     while !empty(w:matchparen_ids)
+line 3:       silent! call remove(w:matchparen_ids, 0)->matchdelete()
+line 4:     endwhile
+line 5:     let w:paren_hl_on = 0
+line 6:   endif
+<SNR>15_Remove_Matches returning #0
+
+continuing in <SNR>15_Highlight_Matching_Pair
+
+line 6: 
+line 7:   " Avoid that we remove the popup menu.
+line 8:   " Return when there are no colors (looks like the cursor jumps).
+line 9:   if pumvisible() || (&t_Co < 8 && !has("gui_running"))
+line 10:     return
+line 11:   endif
+line 12: 
+line 13:   " Get the character under the cursor and check if it's in 'matchpairs'.
+line 14:   let c_lnum = line('.')
+line 15:   let c_col = col('.')
+line 16:   let before = 0
+line 17: 
+line 18:   let text = getline(c_lnum)
+line 19:   let c_before = text->strpart(0, c_col - 1)->slice(-1)
+line 20:   let c = text->strpart(c_col - 1)->slice(0, 1)
+line 21:   let plist = split(&matchpairs, '.\zs[:,]')
+line 22:   let i = index(plist, c)
+line 23:   if i < 0
+line 24:     " not found, in Insert mode try character before the cursor
+line 25:     if c_col > 1 && (mode() == 'i' || mode() == 'R')
+line 26:       let before = strlen(c_before)
+line 27:       let c = c_before
+line 28:       let i = index(plist, c)
+line 29:     endif
+line 30:     if i < 0
+line 31:       " not found, nothing to do
+line 32:       return
+<SNR>15_Highlight_Matching_Pair returning #0
+
+continuing in SafeState Autocommands for "*"
+
+Searching for "parser/graphql.*" in runtime path
+Searching for "/Users/bryalee/.config/orgvim/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/lazy.nvim/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/LuaSnip/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-cmp/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/orgmode/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/mini.nvim/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/gitsigns.nvim/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/org-bullets.nvim/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-treesitter/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/fzf-lua/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/which-key.nvim/parser/graphql.*"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/parser/graphql.*"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/netrw/parser/graphql.*"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/parser/graphql.*"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/parser/graphql.*"
+Searching for "/Users/bryalee/.local/state/orgvim/lazy/readme/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/after/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/after/parser/graphql.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/after/parser/graphql.*"
+not found in runtime path: "parser/graphql.*"
+Searching for "parser/json.*" in runtime path
+Searching for "/Users/bryalee/.config/orgvim/parser/json.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/lazy.nvim/parser/json.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/parser/json.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/parser/json.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/parser/json.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/LuaSnip/parser/json.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-cmp/parser/json.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/orgmode/parser/json.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/mini.nvim/parser/json.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/gitsigns.nvim/parser/json.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/org-bullets.nvim/parser/json.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/nvim-treesitter/parser/json.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/fzf-lua/parser/json.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/which-key.nvim/parser/json.*"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/parser/json.*"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/netrw/parser/json.*"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/share/nvim/runtime/pack/dist/opt/matchit/parser/json.*"
+Searching for "/opt/homebrew/Cellar/neovim/0.11.0/lib/nvim/parser/json.*"
+Searching for "/Users/bryalee/.local/state/orgvim/lazy/readme/parser/json.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-path/after/parser/json.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp-nvim-lsp/after/parser/json.*"
+Searching for "/Users/bryalee/.local/share/orgvim/lazy/cmp_luasnip/after/parser/json.*"
+not found in runtime path: "parser/json.*"
+Executing ModeChanged Autocommands for "*"
+autocommand <Lua 202: ~/.local/share/orgvim/lazy/which-key.nvim/lua/which-key/state.lua:93>
+
+Executing: 
+
+Executing: set verbose=0

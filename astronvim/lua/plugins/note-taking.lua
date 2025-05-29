@@ -24,7 +24,7 @@ return {
         j = {
           description = "Journal",
           template = {
-            "**** %T %?"
+            "**** %T %?",
           },
           target = "~/orgfiles/journal.org",
           datetree = { tree_type = journalTreeType },
@@ -50,18 +50,25 @@ return {
       },
       mappings = {
         agenda = {
-          org_agenda_filter = '<localleader>f'
+          org_agenda_filter = "<localleader>f",
         },
         org = {
-          org_cycle = '<Right>'
-        }
-      }
+          org_cycle = "<Right>",
+        },
+      },
     },
     init = function()
       vim.api.nvim_create_autocmd("ColorScheme", {
         pattern = { "*" },
         callback = function() vim.cmd [[hi link @org.agenda.scheduled Comment]] end,
       })
+
+      -- vim.api.nvim_create_autocmd("FileType", {
+      --   callback = function(args)
+      --     print("FileType autocommand triggered for buffer " .. args.buf .. " with filetype: " .. vim.bo[args.buf].filetype)
+      --     print(debug.traceback("FileType set here"))
+      --   end,
+      -- })
 
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "org",
@@ -97,6 +104,10 @@ return {
             i = orgMappings,
           }, { silent = true, buffer = true })
 
+          vim.keymap.set("n", "]p", "}", { remap = false })
+          vim.keymap.set("n", "[p", "{", { remap = false })
+          vim.keymap.set("n", "<Leader>oI", "<cmd>Org indent_mode", { desc = "Toggle org indent_mode" })
+
           -- Disable indent guide
           vim.b.snacks_indent = false
         end,
@@ -116,8 +127,12 @@ return {
   },
   {
     "akinsho/org-bullets.nvim",
+    enabled = false,
     opts = {
       -- concealcursor = true,
+      symbols = {
+        headlines = false,
+      },
     },
   },
   {

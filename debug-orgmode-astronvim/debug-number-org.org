@@ -1,0 +1,12 @@
+* Statement
+Sometimes, number does not show up when opening an org buffer.
+This seems to happen when:
+- Having already opened the file. Do not need to change the clock state.
+- Clocking out of task from agenda view.
+- Then opening that items in the same window.
+* Investigation
+- Tracing shows this:
+  #+begin_example
+  Last set from ~/.local/share/astronvim/lazy/astrocore/lua/astrocore/init.lua line 533
+  #+end_example
+
