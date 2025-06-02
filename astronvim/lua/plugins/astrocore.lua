@@ -109,7 +109,7 @@ return {
           ["|"] = false,
 
           -- Fold helper, only show current fold, and also expand all folds under current
-          ["zV"] = { "zMzvzczO", desc = "Focus current fold under cursor" },
+          ["zV"] = { "zMzvzczOzz", desc = "Focus current fold under cursor" },
         },
         t = {
           ["<C-_>"] = { "<C-/>", remap = true },
@@ -133,6 +133,7 @@ return {
         -- Stores the view of each file. This did not work very well with nvim-ufo, but this may work better with v5
         -- autoview = false,
         -- persistent_astroui_foldexpr = false,
+        -- file_user_events = false
       },
     },
   },

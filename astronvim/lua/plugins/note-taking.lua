@@ -14,6 +14,9 @@ return {
       org_blank_before_new_entry = { heading = false, plain_list_item = false },
       org_agenda_span = "day",
       org_agenda_start_on_weekday = false,
+      org_agenda_sorting_strategy = {
+        agenda = { "time-up", "priority-down", "todo-state-down", "category-keep" },
+      },
       org_startup_indented = true,
       org_capture_templates = {
         t = {
@@ -62,7 +65,7 @@ return {
         pattern = { "*" },
         callback = function() vim.cmd [[hi link @org.agenda.scheduled Comment]] end,
       })
-
+      --
       -- vim.api.nvim_create_autocmd("FileType", {
       --   callback = function(args)
       --     print("FileType autocommand triggered for buffer " .. args.buf .. " with filetype: " .. vim.bo[args.buf].filetype)
@@ -106,7 +109,7 @@ return {
 
           vim.keymap.set("n", "]p", "}", { remap = false })
           vim.keymap.set("n", "[p", "{", { remap = false })
-          vim.keymap.set("n", "<Leader>oI", "<cmd>Org indent_mode", { desc = "Toggle org indent_mode" })
+          vim.keymap.set("n", "<Leader>oI", "<cmd>Org indent_mode<CR>", { desc = "Toggle org indent_mode" })
 
           -- Disable indent guide
           vim.b.snacks_indent = false

@@ -14,3 +14,13 @@ CLOSED: [2025-05-28 Wed 23:58]
 - Added =debug.traceback()= to =ftplugin=, which shows the file that caused it to be triggered
 - Can also add =autocmd= on =FileType= event, and add the traceback message, which does the same thing
 ** TODO Dig into why the astrocore autocmds are re-triggering the filetype autocmd
+** TODO Is it treesitter folding that is conflicting with the astroui folding?
+[2025-05-30 Fri]
+With verbose logging enabled, it seems like the difference between the cases where the fold appears or not is the treesitter queries for =folds.scm= files, which seems to me that it is loading the treesitter queries.
+
+Astroui sets its own fold expression, and I believe orgmode also sets a different one. Maybe there is some conflict with the two?
+** TODO Difference in fold behaviors
+- First Tab: wrong folds
+- Second+ Tab: right folds, but all closed
+- First+ Enter: right folds, but all closed
+
