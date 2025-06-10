@@ -21,13 +21,17 @@ return {
       org_capture_templates = {
         t = {
           description = "Task",
-          template = "* TODO %?\n%u",
+          template = {
+            "* TODO %?",
+            "%u",
+          },
           datetree = { tree_type = refileTreeType },
         },
         j = {
           description = "Journal",
           template = {
-            "**** %T %?",
+            "**** %?",
+            "SCHEDULED: %T",
           },
           target = "~/orgfiles/journal.org",
           datetree = { tree_type = journalTreeType },
@@ -35,7 +39,8 @@ return {
         s = {
           description = "Standup",
           template = {
-            "**** %T Standup",
+            "**** Standup",
+            "SCHEDULED: %T",
             "- Previous day",
             "  - %?",
             "- Today",
