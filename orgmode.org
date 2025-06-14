@@ -1,6 +1,7 @@
 #+title: Orgmode
 
 * Emacs
+
 Orgmode is interesting because of the power of the agenda views. It gives a lot of flexibility in tracking what I need to work on with the agenda views and different queries.
 
 I come to Emacs after having used Logseq, then =orgmode-nvim=. Both were great, but both had things that were lacking to me.
@@ -10,10 +11,18 @@ Logseq was missing polish, and heavily relied on different plugins to get the fu
 =Orgmode nvim= was better in that it gave me a comfortable intro to all the workings of Orgmode. It got me into a basic workflow using org files, working with the agenda views, and capturing tasks. However, this too lacked some polish, and it also was missing powerful functionality that I saw references to with regards to what Orgmode could do. There were also a lot of awkward editing features due to the mappings for Orgmode not fully transfering into Vim keymappings.
 
 Now coming to Orgmode in Emacs, these are some of the commands and tools that are helpful, which I did not have before.
-** Summary
-- Next item
+
+** Summary of benefits for org mode
+
 - Differentiate between insert item, heading, TODO, above, below, etc.
 - Folds work better
 - Narrowing
-- More clocking capabilities
+- More clocking capabilities: clock history, integrations with capture templates
 - Agenda log view, better customize dates/views
+- Improved formatting, indentation (lines up properly)
+
+** Follow ups
+
+*** Tangle mode
+*** Vertico/file browser
+*** Updated capture templates

@@ -13,7 +13,6 @@ safelyLink .inputrc .gitconfig .bash_profile .bash_aliases .profile .bashrc .zsh
     .hammerspoon .ideavimrc .wezterm.lua
 
 mkdir -p ~/.config
-mkdir -p ~/.nvm
 
 ./safelyLink.sh vim ~/.vim
 ./safelyLink.sh nvim ~/.config
@@ -21,5 +20,6 @@ mkdir -p ~/.nvm
 ./safelyLink.sh lazygit ~/.config
 ./safelyLink.sh astronvim ~/.config
 ./safelyLink.sh kickstart ~/.config
-./safelyLink.sh .nvm/default-packages ~/.nvm
+./safelyLink.sh doom ~/.config
+./safelyLink.sh default-npm-packages ~/.default-npm-packages
 

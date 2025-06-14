@@ -3,3 +3,4 @@ graphql
 graphql-language-service-cli
 typescript
 typescript-language-server
+@anthropic-ai/claude-code
