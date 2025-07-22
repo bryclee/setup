@@ -23,11 +23,9 @@ compinit
 autoload bashcompinit && bashcompinit
 export PROMPT='%(?..%F{red}!%? )%B%F{blue}%~%b%f %# '
 
-source ~/.bash_aliases
+[[ -e ~/.zshrc_local ]] && source ~/.zshrc_local
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source ~/.bash_aliases
 
 # Set vim as default editor
 export EDITOR="vi"
@@ -43,8 +41,6 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # colorized ls
 alias ls='ls -G'
 # export FZF_DEFAULT_OPTS="--bind alt-a:select-all,alt-d:deselect-all,ctrl-s:toggle-sort"
-
-[[ -e ~/.zshrc_local ]] && source ~/.zshrc_local
 
 # tmux-sessionizer https://github.com/ThePrimeagen/.dotfiles/blob/9990fea97c007d4c1f51481dd54cc74fcfc5e21d/zsh/.zsh_profile#L26
 bindkey -s ^f "tmux-s\n"

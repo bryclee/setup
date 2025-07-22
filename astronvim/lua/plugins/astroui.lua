@@ -5,11 +5,11 @@ return {
   {
     "AstroNvim/astrotheme",
     opts = {
-      palette = "astromars",
-      background = {
-        light = "astrojupiter",
-        dark = "astromars",
-      },
+      -- palette = "astromars",
+      -- background = {
+      --   light = "astrojupiter",
+      --   dark = "astromars",
+      -- },
       palettes = {
         astrolight = {
           ui = {
@@ -36,6 +36,7 @@ return {
             bg = "#d6e2e8",
           },
           DiffChange = { bg = "#f6daf8" },
+          Visual = { bg = "#e7e2fb" }
         },
       },
     },

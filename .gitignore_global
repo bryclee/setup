@@ -14,3 +14,6 @@ Session.vim
 
 # Run configuration for IntelliJ
 .run/
+
+# Claude local files
+.claude/settings.local.json

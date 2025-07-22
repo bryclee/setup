@@ -47,11 +47,15 @@
 (after! org
   (setq org-log-into-drawer 't)
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "NEXT(n)" "WAITING(w@/!)" "PROJ(p)" "|" "DONE(d!)" "CANCELED(c@)")))
+        '((sequence "TODO(t)" "NEXT(n)" "WAITING(w@/!)" "PROJ(p)" "|" "DONE(d!)" "CANCELED(c@)" "DELEGATED(e)")))
   (setq org-agenda-sorting-strategy
         '(habit-down time-up todo-state-down urgency-down category-keep))
   (setq org-agenda-clockreport-parameter-plist '(:link t :maxlevel 4))
   (setq org-agenda-start-with-log-mode t)
+  (setq org-modern-fold-stars
+        ; Swap 2bc8 to 23f5, both are black right triangle. Not sure why 2bc8 is being used.
+        '(("▶" . "▼") ("▷" . "▽") ("⏵" . "⏷") ("▹" . "▿") ("▸" . "▾")))
+  (setq org-complete-tags-always-offer-all-agenda-tags t)
   ;; (setq org-hide-emphasis-markers t)
   ;; (setq org-blank-before-new-entry
   ;;       '((heading . nil)
@@ -62,16 +66,30 @@
   (setq org-capture-templates
         '(("t" "Task" entry
            (file+olp+datetree "~/orgfiles/refile.org")
-           "* TODO %?\n%U")
+           "* TODO %?\n%U"
+           :tree-type month)
+          ("f" "Follow-up Task" entry
+           (file+olp+datetree "~/orgfiles/refile.org")
+           "* TODO %?\n%U\nFollow up from: %a"
+           :tree-type month)
+          ("i" "Interrupting Task" entry
+           (file+olp+datetree "~/orgfiles/refile.org")
+           "* TODO %?\n%U\n"
+           :clock-in t
+           :clock-resume t
+           :tree-type month)
+          ("r" "Review" entry
+           (file+olp+datetree "~/orgfiles/reviews.org")
+           "* TODO Review %? :prreview:\n%U"
+           :tree-type month)
           ("j" "Journal" entry
            (file+olp+datetree "~/orgfiles/journal.org")
-           "**** %?\nSCHEDULED: %T"
+           "**** TODO %T %?"
            :clock-in t
            :clock-resume t)
           ("s" "Standup" entry
            (file+olp+datetree "~/orgfiles/journal.org")
-           "**** Standup
-SCHEDULED: %T
+           "**** Standup %T
 - Previous day
   - %?
 - Today
@@ -85,7 +103,7 @@ SCHEDULED: %T
            :clock-in t
            :clock-resume t
            )))
-
+  (setq org-id-link-to-org-use-id t)
   (setq org-clock-idle-time 15)
   )
 

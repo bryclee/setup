@@ -239,6 +239,7 @@ l = ['join-with right', 'mode main']
 [[on-window-detected]]
 if.app-id = 'com.f5networks.EdgeClient'
 run = 'layout floating'
+
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
 run = 'layout floating'
@@ -254,6 +255,11 @@ run = 'move-node-to-workspace V'
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
 run = 'move-node-to-workspace C'
+
+[[on-window-detected]]
+[[on-window-detected]]
+if.app-name-regex-substring = 'Cursor'
+run = 'move-node-to-workspace 9'
 
 [[on-window-detected]]
 if.app-id = 'com.electron.logseq'
