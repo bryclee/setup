@@ -38,10 +38,14 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
+(setq doom-font
+      (cl-find-if #'doom-font-exists-p
+                  '("Monaspace Neon-13")))
+
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/orgfiles/")
-(setq org-agenda-files (directory-files-recursively "~/orgfiles/" "\\.org$"))
+(setq org-agenda-files '("~/orgfiles/"))
 (setq org-default-notes-file "~/orgfiles/refile.org")
 
 (after! org
@@ -60,7 +64,9 @@
   ;; (setq org-blank-before-new-entry
   ;;       '((heading . nil)
   ;;         (plain-list-item . nil)))
-  ;; (setq org-agenda-span 'day)
+  (setq org-agenda-span 'day)
+  (setq org-agenda-start-day nil)
+  (setq org-export-with-toc nil)
   ;; (setq org-agenda-start-on-weekday nil)
   ;; (setq org-startup-indented t)
   (setq org-capture-templates
@@ -84,7 +90,7 @@
            :tree-type month)
           ("j" "Journal" entry
            (file+olp+datetree "~/orgfiles/journal.org")
-           "**** TODO %T %?"
+           "**** TODO %? %T :meeting:"
            :clock-in t
            :clock-resume t)
           ("s" "Standup" entry

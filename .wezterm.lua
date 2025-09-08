@@ -18,12 +18,15 @@ local function get_dark_mode()
 end
 
 local function scheme_for_appearance(darkTheme)
+	-- return "duskfox"
 	if darkTheme then
-		return "Catppuccin Mocha (Gogh)"
+	-- 	-- return "Catppuccin Mocha (Gogh)"
+		return "SeaShells"
 		-- return "Rosé Pine (Gogh)"
 	else
-		return "Catppuccin Latte (Gogh)"
+		return "Tokyo Night Day"
 		-- return "Bluloco Zsh Light (Gogh)"
+		-- return "seoulbones_light"
 	end
 end
 
