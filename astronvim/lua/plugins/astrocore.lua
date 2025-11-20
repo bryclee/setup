@@ -97,6 +97,16 @@ return {
 
           ["<Leader>yo"] = { "<Cmd>w !" .. exportOrg .. "<CR>", desc = "Yank org buffer" },
           ["<Leader>ym"] = { "<Cmd>w !" .. exportMarkdown .. "<CR>", desc = "Yank markdown buffer" },
+          ["<Leader>yy"] = {
+            function()
+              local file = vim.fn.expand("%:.")
+              local line = vim.fn.line(".")
+              local path = file .. "#L" .. line
+              vim.fn.setreg("+", path)
+              vim.notify("Yanked: " .. path)
+            end,
+            desc = "Yank file path with line number"
+          },
 
           -- References
           -- ["grr"] = false,
@@ -123,6 +133,17 @@ return {
           },
           ["<Leader>yo"] = { ":w !" .. exportOrg .. "<CR>", desc = "Yank org selection" },
           ["<Leader>ym"] = { ":w !" .. exportMarkdown .. "<CR>", desc = "Yank markdown selection" },
+          ["<Leader>yy"] = {
+            function()
+              local file = vim.fn.expand("%:.")
+              local start_line = vim.fn.line("'<")
+              local end_line = vim.fn.line("'>")
+              local path = file .. "#L" .. start_line .. "-L" .. end_line
+              vim.fn.setreg("+", path)
+              vim.notify("Yanked: " .. path)
+            end,
+            desc = "Yank file path with line range"
+          },
         },
       },
 

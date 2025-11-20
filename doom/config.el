@@ -32,20 +32,22 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-tomorrow-night)
+(setq my/light-theme 'doom-oksolar-light)
+(setq my/dark-theme 'doom-oksolar-dark)
+(setq doom-theme my/dark-theme)
 
 ;; Set function to create new keybinding
 (defun my/toggle-theme ()
   (interactive)
-  (if (eq doom-theme 'doom-tomorrow-night)
+  (if (eq doom-theme my/dark-theme)
      (progn
-       (setq doom-theme 'doom-tomorrow-day)
-       (disable-theme 'doom-tomorrow-night)
-       (load-theme 'doom-tomorrow-day))
+       (setq doom-theme my/light-theme)
+       (disable-theme my/dark-theme)
+       (load-theme my/light-theme))
      (progn
-       (setq doom-theme 'doom-tomorrow-night)
-       (disable-theme 'doom-tomorrow-day)
-       (load-theme 'doom-tomorrow-night))))
+       (setq doom-theme my/dark-theme)
+       (disable-theme my/light-theme)
+       (load-theme my/dark-theme))))
 
 (map! :leader
       (:prefix ("t" . "toggle")
@@ -57,7 +59,14 @@
 
 (setq doom-font
       (cl-find-if #'doom-font-exists-p
-                  '("Monaspace Neon-13")))
+                  '("Iosevka-14")))
+                  ;; '("Monaspace Xenon-13")))
+(setq doom-variable-pitch-font
+      (cl-find-if #'doom-font-exists-p
+                  '("Iosevka Aile-14")))
+
+;; Auto save org buffers
+(add-hook 'auto-save-hook 'org-save-all-org-buffers)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -66,11 +75,12 @@
 (setq org-default-notes-file "~/orgfiles/refile.org")
 
 (after! org
-  (setq org-log-into-drawer 't)
+  (setq org-log-into-drawer "NOTES")
+  (setq org-clock-into-drawer "LOGBOOK")
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "NEXT(n)" "WAITING(w@/!)" "PROJ(p)" "|" "DONE(d!)" "CANCELED(c@)" "DELEGATED(e)")))
+        '((sequence "TODO(t)" "NEXT(n)" "WAIT(w@/!)" "PROJ(p)" "|" "DONE(d!)" "CANC(c@)" "DELE(e)")))
   (setq org-agenda-sorting-strategy
-        '(habit-down time-up todo-state-down urgency-down category-keep))
+        '(habit-down time-up urgency-down todo-state-down category-keep))
   (setq org-agenda-clockreport-parameter-plist '(:link t :maxlevel 4))
   (setq org-agenda-start-with-log-mode t)
   (setq org-modern-fold-stars
@@ -84,6 +94,7 @@
   (setq org-agenda-span 'day)
   (setq org-agenda-start-day nil)
   (setq org-export-with-toc nil)
+  (setq org-duration-format (quote h:mm))
   ;; (setq org-agenda-start-on-weekday nil)
   ;; (setq org-startup-indented t)
   (setq org-capture-templates
@@ -128,6 +139,37 @@
            )))
   (setq org-id-link-to-org-use-id t)
   (setq org-clock-idle-time 15)
+
+  ;; Global column properties and format
+  (setq org-global-properties
+        '(("Effort_ALL" . "0:05 0:15 0:30 1:00 2:00 3:00 4:00 5:00 6:00 8:00")))
+  (setq org-columns-default-format-for-agenda "%40ITEM(Task) %4TODO(Todo) %1PRIORITY(Priority) %8EFFORT(Effort){:} %DEADLINE(Deadline) %10TAGS(Tags)")
+
+  ;; Remove background color from column view
+  (custom-set-faces
+   '(org-column ((t (:background nil)))))
+
+  ;; Unbind 'g' from org-columns-map (keep 'r' for refresh)
+  (with-eval-after-load 'org-colview
+    (define-key org-columns-map "g" nil))
+
+  ;; Custom agenda view with column mode and weekly span
+  (setq org-agenda-custom-commands
+        '(("p" "Planning Agenda"
+           ((agenda ""
+                    ((org-agenda-span 7)                    ; 1 week span
+                     (org-agenda-skip-deadline-prewarning-if-scheduled t)
+                     (org-deadline-warning-days 0)          ; Only show deadlines on due date
+                     )))
+           ((org-agenda-compact-blocks t)
+            (org-agenda-start-with-log-mode nil)   ; Don't show log mode
+            (org-agenda-view-columns-initially t)))
+          ("r" "Review Agenda"
+           ((agenda ""
+                    ((org-agenda-span 7)                    ; 1 week span
+                     (org-agenda-start-day "-3d")           ; Start 3 days ago
+                     )))
+           ((org-agenda-compact-blocks t)))))
   )
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an

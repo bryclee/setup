@@ -17,16 +17,18 @@ local function get_dark_mode()
 	return true
 end
 
+local forceDark = false
+
 local function scheme_for_appearance(darkTheme)
 	-- return "duskfox"
-	if darkTheme then
+	if darkTheme or forceDark then
 	-- 	-- return "Catppuccin Mocha (Gogh)"
-		return "SeaShells"
 		-- return "Rosé Pine (Gogh)"
+		return "Solarized Dark (Gogh)"
 	else
-		return "Tokyo Night Day"
-		-- return "Bluloco Zsh Light (Gogh)"
-		-- return "seoulbones_light"
+		-- return "Rosé Pine Dawn (Gogh)"
+		return "Selenized Light (Gogh)"
+		-- return "Tokyo Night Day"
 	end
 end
 
@@ -43,8 +45,10 @@ local colorScheme = scheme_for_appearance(darkMode)
 -- local borderColor = border_for_appearance(darkMode)
 
 config.color_scheme = colorScheme
-config.font = wezterm.font("Monaspace Neon")
-config.font_size = 12.0
+-- config.font = wezterm.font("Monaspace Neon")
+-- config.font_size = 12.0
+config.font = wezterm.font("Iosevka")
+config.font_size = 14.0
 config.hide_tab_bar_if_only_one_tab = true
 config.window_close_confirmation = "NeverPrompt"
 config.window_decorations = "RESIZE" -- disable the title bar but enable the resizable border
