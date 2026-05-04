@@ -91,7 +91,8 @@ outer.right =      6
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
 # You can uncomment the following lines to open up terminal with alt + enter shortcut (like in i3)
-alt-t = 'exec-and-forget open -n ~/Applications/WezTerm.app'
+# alt-t = 'exec-and-forget open -n ~/Applications/WezTerm.app'
+alt-t = 'exec-and-forget bash -c "pgrep -x iTerm2 > /dev/null && osascript -e \"tell application \\\"iTerm\\\" to create window with default profile\" || open /Applications/iTerm.app"'
 alt-b = 'exec-and-forget open -n /Applications/Google\ Chrome.app'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
