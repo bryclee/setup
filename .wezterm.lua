@@ -45,10 +45,10 @@ local colorScheme = scheme_for_appearance(darkMode)
 -- local borderColor = border_for_appearance(darkMode)
 
 config.color_scheme = colorScheme
--- config.font = wezterm.font("Monaspace Neon")
--- config.font_size = 12.0
-config.font = wezterm.font("Iosevka")
+config.font = wezterm.font("M PLUS 1 Code")
 config.font_size = 14.0
+-- config.font = wezterm.font("Iosevka")
+-- config.font_size = 14.0
 config.hide_tab_bar_if_only_one_tab = true
 config.window_close_confirmation = "NeverPrompt"
 config.window_decorations = "RESIZE" -- disable the title bar but enable the resizable border

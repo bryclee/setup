@@ -51,7 +51,10 @@
 
 (map! :leader
       (:prefix ("t" . "toggle")
-               :desc "Toggle theme" "T" #'my/toggle-theme))
+               :desc "Toggle theme" "T" #'my/toggle-theme)
+      (:prefix ("o" . "open")
+               (:prefix ("s" . "send to application")
+                        :desc "Open in Wezterm" "w" #'+macos/open-in-wezterm)))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -59,11 +62,12 @@
 
 (setq doom-font
       (cl-find-if #'doom-font-exists-p
-                  '("Iosevka-14")))
+                  '("M PLUS 1 Code-14" "Iosevka-14")))
+                  ;; '("JetBrains Mono-13")))
                   ;; '("Monaspace Xenon-13")))
 (setq doom-variable-pitch-font
       (cl-find-if #'doom-font-exists-p
-                  '("Iosevka Aile-14")))
+                  '("M PLUS 1-14" "Iosevka Aile-14")))
 
 ;; Auto save org buffers
 (add-hook 'auto-save-hook 'org-save-all-org-buffers)
@@ -73,12 +77,13 @@
 (setq org-directory "~/orgfiles/")
 (setq org-agenda-files '("~/orgfiles/"))
 (setq org-default-notes-file "~/orgfiles/refile.org")
+(setq-default doom-scratch-initial-major-mode 'org-mode)
 
 (after! org
   (setq org-log-into-drawer "NOTES")
   (setq org-clock-into-drawer "LOGBOOK")
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "NEXT(n)" "WAIT(w@/!)" "PROJ(p)" "|" "DONE(d!)" "CANC(c@)" "DELE(e)")))
+        '((sequence "TODO(t)" "NEXT(n)" "WAIT(w@/!)" "REVW(r@/!)" "PROJ(p)" "|" "DONE(d!)" "CANC(c@)" "DELE(e@)")))
   (setq org-agenda-sorting-strategy
         '(habit-down time-up urgency-down todo-state-down category-keep))
   (setq org-agenda-clockreport-parameter-plist '(:link t :maxlevel 4))
@@ -124,16 +129,16 @@
           ("s" "Standup" entry
            (file+olp+datetree "~/orgfiles/journal.org")
            "**** Standup %T
-- Previous day
-  - %?
-- Today
-  -
-- Unexpected
-  -
-- Blockers
-  -
-- Spillover
-  - "
+*Previous day*
+- %?
+*Today*
+-
+*Unexpected*
+-
+*Blockers*
+-
+*Spillover*
+- "
            :clock-in t
            :clock-resume t
            )))
@@ -170,6 +175,79 @@
                      (org-agenda-start-day "-3d")           ; Start 3 days ago
                      )))
            ((org-agenda-compact-blocks t)))))
+
+  ;; Functions to navigate between org-super-agenda groups
+  (defun my/org-agenda-next-super-agenda-group ()
+    "Jump to the next org-super-agenda group header."
+    (interactive)
+    (let ((start (point)))
+      (forward-line 1)
+      (while (and (not (eobp))
+                  (not (get-text-property (point) 'org-super-agenda-header)))
+        (forward-line 1))
+      (if (eobp)
+          (progn
+            (goto-char start)
+            (message "No next group"))
+        (beginning-of-line))))
+
+  (defun my/org-agenda-prev-super-agenda-group ()
+    "Jump to the previous org-super-agenda group header."
+    (interactive)
+    (let ((start (point)))
+      (forward-line -1)
+      (while (and (not (bobp))
+                  (not (get-text-property (point) 'org-super-agenda-header)))
+        (forward-line -1))
+      (if (bobp)
+          (progn
+            (goto-char start)
+            (message "No previous group"))
+        (beginning-of-line))))
+
+  ;; org-super-agenda configuration
+  (use-package! org-super-agenda
+    :after org-agenda
+    :config
+    (org-super-agenda-mode)
+    (setq org-super-agenda-header-map nil)  ; Use default agenda keybindings on headers
+
+    ;; Add keybindings for group navigation
+    (map! :map org-agenda-mode-map
+          "C-M-j" #'my/org-agenda-next-super-agenda-group
+          "C-M-k" #'my/org-agenda-prev-super-agenda-group)
+
+    (setq org-super-agenda-groups
+          '(
+            (:name "Today"
+             :time-grid t
+             :order 1)
+            (:name "Next Actions"
+             :todo "NEXT"
+             :order 2)
+            (:name "In Review"
+             :todo "REVW"
+             :order 3)
+            (:name "Waiting"
+             :todo "WAIT"
+             :order 7)
+            (:name "Scheduled"
+             :scheduled today
+             :order 4)
+            (:name "Due Soon"
+             :deadline future
+             :order 5)
+            (:name "Overdue"
+             :deadline past
+             :scheduled past
+             :order 6)
+            (:name "Scheduled"
+             :scheduled future
+             :order 8)
+            (:name "Projects"
+             :todo "PROJ"
+             :order 9)
+            )))
   )
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -203,3 +281,17 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; Open directory in Wezterm
+(defun +macos/open-in-wezterm ()
+  "Open current directory in a new Wezterm window."
+  (interactive)
+  (let* ((current-file (if (derived-mode-p 'dired-mode)
+                           (dired-get-file-for-visit)
+                         (buffer-file-name)))
+         (path (expand-file-name
+                (if current-file
+                    (file-name-directory current-file)
+                  default-directory))))
+    (message "Opening in Wezterm: %s" path)
+    (start-process "wezterm" nil "wezterm" "start" "--cwd" path)))
