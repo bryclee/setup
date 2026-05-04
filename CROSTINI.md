@@ -39,3 +39,11 @@ sudo apt install emacs
 # vterm dependencies: https://github.com/akermu/emacs-libvterm
 sudo apt install cmake libtool-bin
 ```
+
+- Install Gemini CLI
+  - [Gemini CLI](https://github.com/google/gemini-cli)
+  - Install `bubblewrap` (`bwrap`) to support tool sandboxing:
+    ```sh
+    sudo apt install bubblewrap
+    ```
+    *Note: `bwrap` is required if tool sandboxing is enabled in Gemini CLI.*

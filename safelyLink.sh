@@ -9,20 +9,20 @@ function _f() {
     return
   fi
 
-  target_file_name=$(basename $file)
-  target_file=$target_dir/$target_file_name
+  target_file_name=$(basename "$file")
+  target_file="$target_dir/$target_file_name"
 
   if [ -e "$target_file" ]; then
     # If it has no size (invalid or empty)
     if [ ! -s "$target_file" ]; then
-      rm $target_file
+      rm "$target_file"
       # If it's a symlink
     elif [ -L "$target_file" ]; then
       echo "$target_file already linked, skipping"
       exit
     else
       echo "$target_file exists, creating backup $target_file.bak"
-      mv $target_file $target_file.bak
+      mv "$target_file" "$target_file.bak"
     fi
   fi
 
@@ -31,7 +31,7 @@ function _f() {
     exit
   fi
 
-  ln -sv $(pwd)/$file $target_dir
+  ln -sv "$(pwd)/$file" "$target_dir"
 }
 
 _f "$@"
