@@ -14,6 +14,7 @@ brew install tmux
 brew install neovim
 ```
   - Install `wl-clipboard` to make clipboard work: `sudo apt install wl-clipboard`
+  - Install `tree-sitter-cli` for `astronvim`: `brew install tree-sitter-cli`
 - Github auth: Use `gh` CLI for login (`gh auth login`, and `gh auth setup-git`)
 - Install `mise`
   - [Mise](https://mise.jdx.dev/getting-started.html)
@@ -47,3 +48,5 @@ sudo apt install cmake libtool-bin
     sudo apt install bubblewrap
     ```
     *Note: `bwrap` is required if tool sandboxing is enabled in Gemini CLI.*
+- Install `antigravity` CLI: https://antigravity.google/download
+  - Install `nsjail` for sandboxing, if desired

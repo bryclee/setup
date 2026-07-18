@@ -6,6 +6,7 @@ local event = "User AstroGitFile" -- Make sure that this runs before gitsigns se
 return {
   {
     "tpope/vim-fugitive",
+    pin = true,
     event = event,
     dependencies = {
       {
@@ -57,6 +58,7 @@ return {
   {
     "tpope/vim-rhubarb",
     event = event,
+    pin = true,
     dependencies = {
       { "tpope/vim-fugitive" },
     },

@@ -1,6 +1,6 @@
 --- @type LazySpec
 return { -- override blink.cmp plugin
-  "Saghen/blink.cmp",
+  "saghen/blink.cmp",
   opts = {
     sources = {
       per_filetype = {
