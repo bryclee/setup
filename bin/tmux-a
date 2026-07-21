@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Use FZF picker to show all running sessions, then attach to it
+selected=$(tmux ls -F "#{session_name}" | fzf --prompt='tmux session > ')
+
+if [[ -z "$selected" ]]; then
+    exit 0
+fi
+
+if [[ -z $TMUX ]]; then
+    tmux attach-session -t $selected
+else
+    tmux switch-client -t $selected
+fi

@@ -1,24 +1,19 @@
-## Overdue
+---
+tags:
+  - admin
+---
+## For today
 ```tasks
 not done
-(due before today) OR (scheduled before today)
+happens on or before today
+group by happens
+sort by priority
+show tree
 ```
 
-## Scheduled Today
+## Future
 ```tasks
 not done
-(due today) OR (scheduled today)
-```
-
-## Scheduled Next 3 Days
-```tasks
-not done
-((due after today) AND (due before in 4 days)) OR ((scheduled after today) AND (scheduled before in 4 days))
-```
-
-## No Date
-```tasks
-not done
-no due date
-no scheduled date
+(happens after today) OR (no happens date)
+group by happens
 ```

@@ -1,0 +1,9 @@
+.task-cancelled, .task-created, .task-done, .task-due, .task-scheduled, .task-start, .task-extras {
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+.task-description::after {
+    content: "\A";
+    white-space: pre;
+}

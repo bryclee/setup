@@ -144,7 +144,7 @@ alt-0 = 'workspace 10'
 # alt-b = 'workspace B'
 alt-c = 'workspace C' # (C)hat
 # alt-d = 'workspace D'
-# alt-e = 'workspace E'
+alt-e = 'workspace E'
 # alt-f = 'workspace F'
 # alt-g = 'workspace G'
 # alt-i = 'workspace I'
@@ -178,7 +178,7 @@ alt-shift-0 = 'move-node-to-workspace 10'
 # alt-shift-b = 'move-node-to-workspace B'
 alt-shift-c = 'move-node-to-workspace C'
 # alt-shift-d = 'move-node-to-workspace D'
-# alt-shift-e = 'move-node-to-workspace E'
+alt-shift-e = 'move-node-to-workspace E'
 # alt-shift-f = 'move-node-to-workspace F'
 # alt-shift-g = 'move-node-to-workspace G'
 # alt-shift-i = 'move-node-to-workspace I'
@@ -259,13 +259,16 @@ if.app-id = 'com.tinyspeck.slackmacgap'
 run = 'move-node-to-workspace C'
 
 [[on-window-detected]]
-[[on-window-detected]]
 if.app-name-regex-substring = 'Cursor'
 run = 'move-node-to-workspace 9'
 
 [[on-window-detected]]
 if.app-id = 'com.electron.logseq'
 run = 'move-node-to-workspace 10'
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.Outlook'
+run = 'move-node-to-workspace E'
 
 [workspace-to-monitor-force-assignment]
 # 1 = 'main'

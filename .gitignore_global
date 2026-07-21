@@ -17,3 +17,5 @@ Session.vim
 
 # Claude local files
 .claude/settings.local.json
+
+**/.claude/settings.local.json

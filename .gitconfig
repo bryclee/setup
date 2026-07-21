@@ -20,7 +20,7 @@
 [pull]
     ff = only
 [push]
-    default = upstream
+	default = simple
     autoSetupRemote = true
 [difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE

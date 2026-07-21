@@ -1,0 +1,3 @@
+#!/bin/bash
+
+obsidian daily:append content="- $(date +%H:%M) $*"
