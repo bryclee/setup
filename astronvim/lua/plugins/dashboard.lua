@@ -16,13 +16,7 @@ return {
         action = function() require("snacks").lazygit() end,
         desc = "Lazy git",
         icon = " ",
-      },
-      {
-        key = "a",
-        action = "q | :Org agenda a<CR>", -- close dashboard in background, then open org agenda in split window
-        desc = "Org Agenda",
-        icon = " ",
-      },
+      }
     })
 
     vim.list_extend(opts.dashboard.sections, {

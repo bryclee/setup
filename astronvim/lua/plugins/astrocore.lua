@@ -136,13 +136,14 @@ return {
           ["<Leader>yy"] = {
             function()
               local file = vim.fn.expand("%:.")
-              local start_line = vim.fn.line("'<")
-              local end_line = vim.fn.line("'>")
+              local region = vim.fn.getregionpos(vim.fn.getpos("v"), vim.fn.getpos("."))
+              local start_line = region[1][1][2]
+              local end_line = region[#region][1][2]
               local path = file .. "#L" .. start_line .. "-L" .. end_line
               vim.fn.setreg("+", path)
               vim.notify("Yanked: " .. path)
             end,
-            desc = "Yank file path with line range"
+            desc = "Yank file path with line range",
           },
         },
       },
