@@ -32,4 +32,41 @@ return {
     },
   },
   { import = "astrocommunity.file-explorer.mini-files" }, -- neo-tree isn't working well with large directories
+  { import = "astrocommunity.ai.sidekick-nvim" },
+  {
+    "folke/sidekick.nvim",
+    opts = {
+      nes = {
+        enabled = false,
+      },
+      cli = {
+        tools = {
+          antigravity = {
+            cmd = { "agy" },
+          },
+        },
+      },
+    },
+    dependencies = {
+      {
+        "AstroNvim/astrocore",
+        opts = function(_, opts)
+          local maps = opts.mappings
+          maps.n["<Leader>Ac"] = {
+            function()
+              local tool = (vim.fn.executable("claude") == 1 and "claude")
+                or (vim.fn.executable("agy") == 1 and "antigravity")
+
+              if tool then
+                require("sidekick.cli").toggle({ name = tool, focus = true })
+              else
+                vim.notify("Neither 'claude' nor 'agy' executable found in PATH", vim.log.levels.WARN)
+              end
+            end,
+            desc = "Sidekick Toggle CLI (Claude -> AGY)",
+          }
+        end,
+      },
+    },
+  },
 }
