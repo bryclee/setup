@@ -14,6 +14,6 @@ show tree
 ## Future
 ```tasks
 not done
-(happens after today) OR (no happens date)
+(scheduled after today) OR (no scheduled date)
 group by happens
 ```

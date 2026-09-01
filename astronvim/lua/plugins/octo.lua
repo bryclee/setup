@@ -3,23 +3,31 @@ return {
   -- { import = "astrocommunity.git.octo-nvim" }, -- for reviewing pull requests
   {
     "pwntester/octo.nvim",
-    pin = true,
+    -- pin = true,
     -- commit = "f09ff9413652e3c06a6817ba6284591c00121fe0",
     opts = {
-      use_local_fs = false,
+      -- use_local_fs = false,
       picker = "fzf-lua",
-      default_to_projects_v2 = false,
-      suppress_missing_scope = {
-        projects_v2 = true,
-      },
+      -- default_to_projects_v2 = false,
+      -- suppress_missing_scope = {
+      --   projects_v2 = true,
+      -- },
       reviews = {
         auto_show_threads = false,
         focus = "right",
+        show_virtual_text = false, -- hide the "N comments (date)" right-aligned virtual text; it can overlap long/wrapped lines
+      },
+      ui = {
+        use_signcolumn = true, -- show a comment-thread marker (comment_icon) in the sign column
       },
       mappings = {
         pull_request = {
           checkout_pr = { lhs = "<localleader>pp", desc = "checkout PR" },
           open_in_browser = { lhs = "<localleader>po", desc = "open PR in browser" },
+          copy_sha = { lhs = "", desc = "" },
+        },
+        review_diff = {
+          copy_sha = { lhs = "", desc = "" },
         },
       },
     },
@@ -31,8 +39,8 @@ return {
           local prefix = "<Leader>O"
 
           maps.n[prefix .. "st"] = { "<Cmd>Octo review thread<CR>", desc = "View thread" }
-          maps.n[prefix .. "sg"] =
-            { '<Cmd>exe "normal gf" | tab sp | tabprevious | b# | tabnext<CR>', desc = "Go to file" }
+          -- maps.n[prefix .. "sg"] =
+          --   { '<Cmd>exe "normal gf" | tab sp | tabprevious | b# | tabnext<CR>', desc = "Go to file" }
 
           maps.n[prefix] = { desc = require("astroui").get_icon("Octo", 1, true) .. "Octo" }
           -- Subset of astrocommunity mappings
@@ -70,12 +78,12 @@ return {
             "<Cmd>Octo review thread<CR>",
             { desc = "View thread", buffer = true }
           )
-          vim.keymap.set(
-            { "n" },
-            "<localleader>sg",
-            '<Cmd>exe "normal gf" | tab sp | tabprevious | b# | tabnext<CR>',
-            { desc = "Go to file", buffer = true }
-          )
+          -- vim.keymap.set(
+          --   { "n" },
+          --   "<localleader>sg",
+          --   '<Cmd>exe "normal gf" | tab sp | tabprevious | b# | tabnext<CR>',
+          --   { desc = "Go to file", buffer = true }
+          -- )
         end,
       })
     end,

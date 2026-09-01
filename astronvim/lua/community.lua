@@ -45,6 +45,9 @@ return {
             cmd = { "agy" },
           },
         },
+        mux = {
+          create = "split",
+        },
       },
     },
     dependencies = {
@@ -54,11 +57,11 @@ return {
           local maps = opts.mappings
           maps.n["<Leader>Ac"] = {
             function()
-              local tool = (vim.fn.executable("claude") == 1 and "claude")
-                or (vim.fn.executable("agy") == 1 and "antigravity")
+              local tool = (vim.fn.executable "claude" == 1 and "claude")
+                or (vim.fn.executable "agy" == 1 and "antigravity")
 
               if tool then
-                require("sidekick.cli").toggle({ name = tool, focus = true })
+                require("sidekick.cli").toggle { name = tool, focus = true }
               else
                 vim.notify("Neither 'claude' nor 'agy' executable found in PATH", vim.log.levels.WARN)
               end

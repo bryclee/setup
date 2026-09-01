@@ -9,6 +9,14 @@ return {
       gitbrowse = {
         enabled = true,
       },
+      notifier = {
+        style = "minimal",
+      },
+      styles = {
+        notification = {
+          wo = { winblend = 0 },
+        },
+      },
     },
   },
   {
