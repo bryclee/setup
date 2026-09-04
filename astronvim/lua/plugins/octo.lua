@@ -7,7 +7,7 @@ return {
     -- commit = "f09ff9413652e3c06a6817ba6284591c00121fe0",
     opts = {
       -- use_local_fs = false,
-      picker = "fzf-lua",
+      picker = "snacks",
       -- default_to_projects_v2 = false,
       -- suppress_missing_scope = {
       --   projects_v2 = true,

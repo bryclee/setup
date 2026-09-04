@@ -13,7 +13,6 @@ return {
   -- { import = "astrocommunity.pack.markdown" },
   -- { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.motion.nvim-surround" }, -- for surround motions
-  { import = "astrocommunity.fuzzy-finder.fzf-lua" },
   { import = "astrocommunity.markdown-and-latex/markdown-preview-nvim" },
   { import = "astrocommunity.motion.mini-move" },
   {

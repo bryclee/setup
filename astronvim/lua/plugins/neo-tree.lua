@@ -30,7 +30,10 @@ return {
             ["<Leader>-"] = { "<Cmd>Neotree position=current reveal_force_cwd=true<CR>", desc = "Explorer in current buffer" },
             ["<Leader>be"] = { "<Cmd>Neotree source=buffers<CR>", desc = "Buffer explorer" },
             ["<Leader>ge"] = { "<Cmd>Neotree source=git_status<CR>", desc = "Git explorer" },
-            ["<Leader>of"] = { "<Cmd>FzfLua files cwd=~/orgfiles<CR>", desc = "Find org files" },
+            ["<Leader>of"] = {
+              function() require("snacks").picker.files { cwd = vim.fn.expand "~/orgfiles" } end,
+              desc = "Find org files",
+            },
             ["<Leader>e"] = {
               function()
                 if vim.bo.filetype == "neo-tree" then

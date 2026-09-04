@@ -3,33 +3,6 @@
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
 --       as this provides autocomplete and documentation while editing
 
-local function currentWindowOpts()
-  local win = vim.fn.win_screenpos(0)
-  local row = win[1]
-  local col = win[2]
-  local width = vim.fn.winwidth(0)
-  local height = vim.fn.winheight(0)
-
-  if row == 1 then
-    row = 0
-    height = height - 1
-  end
-
-  if col == 1 then
-    col = 0
-    width = width - 1
-  else
-    width = width - 2
-  end
-
-  return {
-    row = row,
-    col = col,
-    width = width,
-    height = height,
-  }
-end
-
 -- OSX only, write format to clipboard as RTF
 local function exportFormatToRtf(format)
   return [[pandoc -f ]]
@@ -78,22 +51,18 @@ return {
 
           -- Personal mappings for Search
           ["<Leader>s"] = { desc = "Search" },
-          ["<Leader>sf"] = { "<Cmd>FzfLua files<CR>", desc = "Files" },
-          ["<Leader>ss"] = { "<Cmd>FzfLua lsp_live_workspace_symbols<CR>", desc = "Workspace Symbols" },
-          ["<Leader>sn"] = { "<Cmd>FzfLua lsp_document_symbols<CR>", desc = "Document Symbols" },
-          ["<Leader>st"] = { "<Cmd>FzfLua grep_project<CR>", desc = "Text (grep)" },
+          ["<Leader>sf"] = { function() require("snacks").picker.files() end, desc = "Files" },
+          ["<Leader>ss"] = { function() require("snacks").picker.lsp_workspace_symbols() end, desc = "Workspace Symbols" },
+          ["<Leader>sn"] = { function() require("snacks").picker.lsp_symbols() end, desc = "Document Symbols" },
+          ["<Leader>st"] = { function() require("snacks").picker.grep() end, desc = "Text (grep)" },
           ["<Leader>s/"] = {
-            function()
-              require("fzf-lua").blines {
-                winopts = currentWindowOpts(),
-              }
-            end,
+            function() require("snacks").picker.lines() end,
             desc = "Buffer",
           },
           ["<Leader>se"] = { "<Cmd>Neotree position=left<CR>", desc = "Open neotree" },
-          ["<Leader>s<CR>"] = { "<Cmd>FzfLua resume<CR>", desc = "Resume fzf picker" },
-          ["<Leader>s<C-n>"] = { "<Cmd>FzfLua command_history<CR>", desc = "Search command history" },
-          ["<Leader><Leader>"] = { "<Cmd>FzfLua buffers<CR>", desc = "Open buffers" },
+          ["<Leader>s<CR>"] = { function() require("snacks").picker.resume() end, desc = "Resume picker" },
+          ["<Leader>s<C-n>"] = { function() require("snacks").picker.command_history() end, desc = "Search command history" },
+          ["<Leader><Leader>"] = { function() require("snacks").picker.buffers() end, desc = "Open buffers" },
 
           ["<Leader>yo"] = { "<Cmd>w !" .. exportOrg .. "<CR>", desc = "Yank org buffer" },
           ["<Leader>ym"] = { "<Cmd>w !" .. exportMarkdown .. "<CR>", desc = "Yank markdown buffer" },
@@ -112,7 +81,7 @@ return {
           -- ["grr"] = false,
           -- ["gra"] = false,
           -- ["grn"] = false,
-          ["grr"] = { "<Cmd>FzfLua lsp_references<CR>", desc = "Go to references" },
+          ["grr"] = { function() require("snacks").picker.lsp_references() end, desc = "Go to references" },
 
           -- Disable splits
           ["\\"] = { "," }, -- ',' is localleader, so use '\' instead to traverse back
@@ -130,7 +99,7 @@ return {
         },
         v = {
           ["<Leader>st"] = {
-            function() require("fzf-lua").grep_visual() end,
+            function() require("snacks").picker.grep_word() end,
             desc = "Grep visual selection in project",
           },
           ["<Leader>yo"] = { ":w !" .. exportOrg .. "<CR>", desc = "Yank org selection" },

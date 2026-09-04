@@ -1,4 +1,18 @@
 --- @type LazySpec
+local picker_keys = {
+  ["H"] = "toggle_hidden",
+  ["I"] = "toggle_ignored",
+  ["f"] = "toggle_focus",
+  ["/"] = false,
+  ["J"] = "preview_scroll_down",
+  ["K"] = "preview_scroll_up",
+  ["D"] = "preview_scroll_down",
+  ["U"] = "preview_scroll_up",
+  ["M"] = "toggle_maximize",
+  ["F"] = "toggle_follow",
+  ["<c-w><c-w>"] = "cycle_win_no_insert",
+}
+
 return {
   {
     "folke/snacks.nvim",
@@ -8,6 +22,24 @@ return {
       },
       gitbrowse = {
         enabled = true,
+      },
+      picker = {
+        actions = {
+          cycle_win_no_insert = function(picker)
+            require("snacks.picker.actions").cycle_win(picker)
+            if vim.api.nvim_get_current_win() == picker.input.win.win then
+              vim.cmd "stopinsert"
+            end
+          end,
+        },
+        win = {
+          list = {
+            keys = picker_keys,
+          },
+          input = {
+            keys = picker_keys,
+          },
+        },
       },
       notifier = {
         style = "minimal",
