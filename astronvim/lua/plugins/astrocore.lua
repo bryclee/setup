@@ -59,9 +59,8 @@ return {
             function() require("snacks").picker.lines() end,
             desc = "Buffer",
           },
-          ["<Leader>se"] = { "<Cmd>Neotree position=left<CR>", desc = "Open neotree" },
           ["<Leader>s<CR>"] = { function() require("snacks").picker.resume() end, desc = "Resume picker" },
-          ["<Leader>s<C-n>"] = { function() require("snacks").picker.command_history() end, desc = "Search command history" },
+          ["<Leader>sp"] = { function() require("snacks").picker() end, desc = "Picker" },
           ["<Leader><Leader>"] = { function() require("snacks").picker.buffers() end, desc = "Open buffers" },
 
           ["<Leader>yo"] = { "<Cmd>w !" .. exportOrg .. "<CR>", desc = "Yank org buffer" },
