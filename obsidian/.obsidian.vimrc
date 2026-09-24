@@ -54,6 +54,10 @@ exmap taskStatusInProgress obcommand obsidian-tasks-plugin:set-status-symbol-to-
 nmap <Space>tsi :taskStatusInProgress<CR>
 exmap taskStatusCancelled obcommand obsidian-tasks-plugin:set-status-symbol-to--
 nmap <Space>tsc :taskStatusCancelled<CR>
+exmap taskStatusWaiting obcommand obsidian-tasks-plugin:set-status-symbol-to-t
+nmap <Space>tst :taskStatusWaiting<CR>
+exmap taskStatusDelegated obcommand obsidian-tasks-plugin:set-status-symbol-to->
+nmap <Space>ts> :taskStatusDelegated<CR>
 
 " View commands
 exmap showExplorer obcommand notebook-navigator:open

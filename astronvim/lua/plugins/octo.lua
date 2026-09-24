@@ -1,3 +1,5 @@
+local UNMAPPED = { lhs = "" }
+
 ---@type LazySpec
 return {
   -- { import = "astrocommunity.git.octo-nvim" }, -- for reviewing pull requests
@@ -22,12 +24,16 @@ return {
       },
       mappings = {
         pull_request = {
-          checkout_pr = { lhs = "<localleader>pp", desc = "checkout PR" },
-          open_in_browser = { lhs = "<localleader>po", desc = "open PR in browser" },
-          copy_sha = { lhs = "", desc = "" },
+          checkout_pr = { lhs = "<localleader>pp" },
+          open_in_browser = { lhs = "<localleader>po" },
+          copy_sha = UNMAPPED,
         },
         review_diff = {
-          copy_sha = { lhs = "", desc = "" },
+          copy_sha = UNMAPPED,
+          close_review_tab = UNMAPPED,
+        },
+        review_thread = {
+          close_review_tab = UNMAPPED,
         },
       },
     },

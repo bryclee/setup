@@ -14,6 +14,7 @@ return {
   -- { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.motion.nvim-surround" }, -- for surround motions
   { import = "astrocommunity.markdown-and-latex/markdown-preview-nvim" },
+  { import = "astrocommunity.markdown-and-latex/render-markdown-nvim" },
   { import = "astrocommunity.motion.mini-move" },
   {
     "echasnovski/mini.move",

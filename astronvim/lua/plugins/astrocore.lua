@@ -76,6 +76,10 @@ return {
             desc = "Yank file path with line number"
           },
 
+          -- Markdown
+          ["<Leader>M"] = { desc = "Markdown" },
+          ["<Leader>Mr"] = { "<Cmd>RenderMarkdown toggle<CR>", desc = "Toggle markdown rendering" },
+
           -- References
           -- ["grr"] = false,
           -- ["gra"] = false,
@@ -89,7 +93,7 @@ return {
           -- Fold helper, only show current fold, and also expand all folds under current
           ["zV"] = { "zMzvzczOzz", desc = "Focus current fold under cursor" },
 
-          ["<Leader>gB"] = { function() require("gitsigns").blame() end, desc = "Git blame file (gitsigns)" },
+          -- ["<Leader>gB"] = { function() require("gitsigns").blame() end, desc = "Git blame file (gitsigns)" },
         },
         t = {
           ["<C-_>"] = { "<C-/>", remap = true },

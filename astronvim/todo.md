@@ -35,6 +35,8 @@ Running list of items to configure for `astronvim` to make it work the way I'd l
     - [ ] I don't know why, when going into a comment thread, the scroll position of the window is changed
   - [x] Once `gitsigns` is updated, no longer need fugitive for blame. Still need it for browse, but at that point I can maybe install a different plugin instead
     - This was updated, but decided to keep fugitive for consistency. Also allows for opening blames in Github.
+  - [ ] Consider a Snacks picker to list files changed between the current branch and an arbitrary branch (e.g. `develop`), selecting a file opens a `Gdiffsplit` side-by-side diff
+    - Similar pattern to the existing `git_status_diff` action in `snacks.lua`, but sourced from `git diff --name-only <base>...HEAD` and using fugitive's `Gdiffsplit` instead of gitsigns
 - [x] Hide bufferline, only want to show tabs
   - Mixed, this might be useful to keep. Buffers are tagged to the tabs they were spawned in, which is interesting for keeping track
   - This is also very complicated to update, don't want to waste too much time on this ultimately cosmetic issue

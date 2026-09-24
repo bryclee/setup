@@ -94,6 +94,19 @@ local function git_status_diff(picker)
   end
 end
 
+-- q to close on gitsigns diff buffers (e.g. from `diff_file`/`Gitsigns diffthis`)
+vim.api.nvim_create_autocmd({ "BufWinEnter", "BufReadPost" }, {
+  pattern = "gitsigns://*",
+  callback = function(args)
+    vim.keymap.set("n", "q", "<Cmd>close<CR>", {
+      desc = "Close window",
+      buffer = args.buf,
+      silent = true,
+      nowait = true,
+    })
+  end,
+})
+
 return {
   {
     "folke/snacks.nvim",
@@ -106,7 +119,7 @@ return {
       },
       picker = {
         layout = {
-          preset = function() return vim.o.columns >= 140 and "ivy" or "vertical" end,
+          preset = "vertical",
         },
         actions = {
           cycle_win_no_insert = function(picker)

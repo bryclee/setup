@@ -1,7 +1,7 @@
 gui:
   showFileTree: false
 customCommands:
-  - key: "v"
+  - key: "<c-x>"
     context: "localBranches"
     loadingText: "Checking out GitHub Pull Request..."
     command: "gh pr checkout {{.Form.PullRequestNumber}}"
