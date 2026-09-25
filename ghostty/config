@@ -1,0 +1,17 @@
+# https://ghostty.org/docs/config/reference
+
+theme = Sequoia Moonlight Light
+macos-titlebar-style = hidden
+working-directory = ~/Projects
+window-padding-y = 10,0
+font-family = Iosevka
+font-size = 15
+cursor-style-blink = false
+
+# Bump the contrast between foreground/background so dim ANSI colors
+# stay readable (1 = no enforcement, ratio scale like WCAG contrast).
+minimum-contrast = 1.50
+
+# Global hotkey window, similar to iTerm's Hotkey Window feature.
+# Requires accessibility permissions to be granted to Ghostty.
+keybind = global:alt+space=toggle_quick_terminal

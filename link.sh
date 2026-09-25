@@ -17,6 +17,7 @@ mkdir -p ~/.config
 ./safelyLink.sh vim ~/.vim
 ./safelyLink.sh nvim ~/.config
 ./safelyLink.sh kitty ~/.config
+./safelyLink.sh ghostty ~/.config
 ./safelyLink.sh lazygit ~/.config
 ./safelyLink.sh astronvim ~/.config
 ./safelyLink.sh kickstart ~/.config
