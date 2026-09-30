@@ -38,9 +38,7 @@ local function diff_file(path)
 
   local function ensure_attached()
     local cache = package.loaded["gitsigns.cache"] and require("gitsigns.cache").cache
-    if cache and cache[bufnr] and cache[bufnr].compare_text ~= nil then
-      return true
-    end
+    if cache and cache[bufnr] and cache[bufnr].compare_text ~= nil then return true end
     gs.attach(bufnr)
     return vim.wait(1000, function()
       local c = package.loaded["gitsigns.cache"] and require("gitsigns.cache").cache
@@ -114,8 +112,10 @@ return {
       lazygit = {
         enabled = true,
       },
+      -- Using fugitive + rhubarb (:GBrowse) instead; disable so AstroNvim's
+      -- default <Leader>go/<Leader>gy snacks mappings don't get registered
       gitbrowse = {
-        enabled = true,
+        enabled = false,
       },
       picker = {
         layout = {
@@ -171,30 +171,6 @@ return {
           ["<Leader>gg"] = {
             function() require("snacks").lazygit() end,
             desc = "Toggle LazyGit (Snacks)",
-          },
-          ["<Leader>gy"] = {
-            function()
-              require("snacks").gitbrowse {
-                open = function(url)
-                  vim.fn.setreg("+", url)
-                  vim.notify("Yanked git URL: " .. url)
-                end,
-              }
-            end,
-            desc = "Yank git URL (Snacks)",
-          },
-        },
-        v = {
-          ["<Leader>gy"] = {
-            function()
-              require("snacks").gitbrowse {
-                open = function(url)
-                  vim.fn.setreg("+", url)
-                  vim.notify("Yanked git URL: " .. url)
-                end,
-              }
-            end,
-            desc = "Yank git URL for selection (Snacks)",
           },
         },
       },

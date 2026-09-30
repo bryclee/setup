@@ -51,13 +51,15 @@ nmap <Space>tr :toggleRightSidebar<CR>
 
 " Task status symbols
 exmap taskStatusInProgress obcommand obsidian-tasks-plugin:set-status-symbol-to-/
-nmap <Space>tsi :taskStatusInProgress<CR>
+nmap <Space>ts/ :taskStatusInProgress<CR>
 exmap taskStatusCancelled obcommand obsidian-tasks-plugin:set-status-symbol-to--
-nmap <Space>tsc :taskStatusCancelled<CR>
+nmap <Space>ts- :taskStatusCancelled<CR>
 exmap taskStatusWaiting obcommand obsidian-tasks-plugin:set-status-symbol-to-t
 nmap <Space>tst :taskStatusWaiting<CR>
 exmap taskStatusDelegated obcommand obsidian-tasks-plugin:set-status-symbol-to->
 nmap <Space>ts> :taskStatusDelegated<CR>
+nmap <Space>tt- :s/-<space>\[.\]/-<space>[-]<CR>:noh<CR>
+nmap <Space>tt/ :s/-<space>\[.\]/-<space>[\/]<CR>:noh<CR>
 
 " View commands
 exmap showExplorer obcommand notebook-navigator:open

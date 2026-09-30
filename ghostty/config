@@ -5,12 +5,16 @@ macos-titlebar-style = hidden
 working-directory = ~/Projects
 window-padding-y = 10,0
 font-family = Iosevka
-font-size = 15
+font-size = 14
 cursor-style-blink = false
+cursor-color = cell-foreground
+cursor-text = cell-background
+confirm-close-surface = false
+link-previews = true
 
 # Bump the contrast between foreground/background so dim ANSI colors
 # stay readable (1 = no enforcement, ratio scale like WCAG contrast).
-minimum-contrast = 1.50
+minimum-contrast = 1.6
 
 # Global hotkey window, similar to iTerm's Hotkey Window feature.
 # Requires accessibility permissions to be granted to Ghostty.

@@ -2,6 +2,14 @@
 setopt NO_CASE_GLOB
 bindkey -v
 
+# Ghostty only auto-loads its shell integration (which drives the vi-mode
+# cursor shape, among other things) in shells it spawns directly -- not in
+# `tmux`/`exec zsh`/nested shells -- so source it explicitly here too.
+# https://ghostty.org/docs/features/shell-integration
+if [[ -n "$GHOSTTY_RESOURCES_DIR" ]]; then
+  source "$GHOSTTY_RESOURCES_DIR"/shell-integration/zsh/ghostty-integration
+fi
+
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
@@ -21,18 +29,26 @@ compinit
 
 # End of lines added by compinstall
 autoload bashcompinit && bashcompinit
-export PROMPT='%(?..%F{red}!%? )%B%F{blue}%~%b%f %# '
 
-[[ -e ~/.zshrc_local ]] && source ~/.zshrc_local
+# Reduce delay after Esc before zsh registers a vi-mode switch (default 40 = 0.4s)
+export KEYTIMEOUT=20
 
-source ~/.bash_aliases
+# Show [+]/[-] in the prompt for vi insert/normal mode (normal mode dimmed)
+function zle-keymap-select zle-line-init {
+  if [[ $KEYMAP == vicmd ]]; then
+    VI_MODE_INDICATOR=$'%{\e[2m%}[-]%{\e[22m%} '
+  else
+    VI_MODE_INDICATOR="[+] "
+  fi
+  zle reset-prompt
+}
+zle -N zle-keymap-select
+zle -N zle-line-init
 
-# Set vim as default editor
-export EDITOR="vi"
+setopt PROMPT_SUBST
+export PROMPT='%(?..%F{red}!%? )%B%F{blue}%~%b%f ${VI_MODE_INDICATOR}%# '
 
-# Load z
-# Disabled because it sometimes make shell startup slow
-# . ~/setup/z/z.sh
+[[ -f "/opt/homebrew/bin/brew" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Add setup bin to path
 export PATH="$HOME/setup/bin:$PATH"
@@ -40,9 +56,8 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # colorized ls
 alias ls='ls -G'
-# export FZF_DEFAULT_OPTS="--bind alt-a:select-all,alt-d:deselect-all,ctrl-s:toggle-sort"
 
-# tmux-sessionizer https://github.com/ThePrimeagen/.dotfiles/blob/9990fea97c007d4c1f51481dd54cc74fcfc5e21d/zsh/.zsh_profile#L26
+# shortcuts to quicly access files
 bindkey -s ^f "tmux-s\n"
 bindkey -s ^o ". cdproject\n"
 
@@ -53,3 +68,8 @@ hash fzf 2</dev/null && source <(fzf --zsh)
 
 # Activate mise, to make it available for usage
 type mise &>/dev/null && eval "$(mise activate zsh)"
+[[ -e ~/.zshrc_local ]] && source ~/.zshrc_local
+source ~/.bash_aliases
+
+# Set vim as default editor
+export EDITOR="vi"
