@@ -32,10 +32,12 @@ return {
         astrolight = {
           DiffAdd = { bg = "#e6f2f8" },
           DiffDelete = {
-            fg = "#7a7aac",
+            -- fg = "#7a7aac",
             bg = "#d6e2e8",
           },
           DiffChange = { bg = "#f6daf8" },
+          OctoReviewDiffAddText = { bg = "#d6fff0" },
+          OctoReviewDiffDeleteText = { bg = "#e6daf5" },
           Visual = { bg = "#e7e2fb" }
         },
       },

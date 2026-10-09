@@ -61,6 +61,7 @@ return {
           },
           ["<Leader>s<CR>"] = { function() require("snacks").picker.resume() end, desc = "Resume picker" },
           ["<Leader>sp"] = { function() require("snacks").picker() end, desc = "Picker" },
+          ["<Leader>sj"] = { function() require("snacks").picker.jumps({ layout = { preset = "ivy_split" }}) end, desc = "Jumps" },
           ["<Leader><Leader>"] = { function() require("snacks").picker.buffers() end, desc = "Open buffers" },
 
           ["<Leader>yo"] = { "<Cmd>w !" .. exportOrg .. "<CR>", desc = "Yank org buffer" },

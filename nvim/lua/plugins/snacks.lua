@@ -154,7 +154,7 @@ return {
         },
       },
       notifier = {
-        style = "minimal",
+        -- style = "minimal",
       },
       styles = {
         notification = {

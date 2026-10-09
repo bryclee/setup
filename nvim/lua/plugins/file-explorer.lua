@@ -45,6 +45,31 @@ return {
           end)
         end
       end
+
+      -- Dirvish-style `.`: put the currently focused directory's path on the
+      -- command line so it can be edited/acted on, instead of just navigated.
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "MiniFilesBufferCreate",
+        callback = function(args)
+          local buf_id = args.data.buf_id
+
+          local function put_path_on_cmdline()
+            local state = MiniFiles.get_explorer_state()
+            local branch = state.branch
+            local depth = state.depth_focus or #branch
+            local path = branch[depth]
+            if path == nil then return end
+
+            if vim.fn.isdirectory(path) == 1 and not path:match("/$") then
+              path = path .. "/"
+            end
+
+            vim.api.nvim_feedkeys(":" .. vim.fn.fnameescape(path), "n", false)
+          end
+
+          vim.keymap.set("n", ".", put_path_on_cmdline, { buffer = buf_id, desc = "Put path on cmdline" })
+        end,
+      })
     end,
   },
 }
