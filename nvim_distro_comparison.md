@@ -30,4 +30,4 @@ See [todo](./lazyvim/todo.md)
 
 ### Customizations
 
-See [todo](./astronvim/todo.md)
+See [todo](./nvim/todo.md)

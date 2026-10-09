@@ -19,7 +19,6 @@ mkdir -p ~/.config
 ./safelyLink.sh kitty ~/.config
 ./safelyLink.sh ghostty ~/.config
 ./safelyLink.sh lazygit ~/.config
-./safelyLink.sh astronvim ~/.config
 ./safelyLink.sh kickstart ~/.config
 ./safelyLink.sh doom ~/.config
 ./safelyLink.sh default-npm-packages ~/.default-npm-packages

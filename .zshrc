@@ -66,10 +66,9 @@ hash fzf 2</dev/null && source <(fzf --zsh)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/setup/fzf-git.sh/fzf-git.sh ] && source ~/setup/fzf-git.sh/fzf-git.sh
 
-# Activate mise, to make it available for usage
-type mise &>/dev/null && eval "$(mise activate zsh)"
+# Set vim as default editor
+export EDITOR="vi"
+
 [[ -e ~/.zshrc_local ]] && source ~/.zshrc_local
 source ~/.bash_aliases
 
-# Set vim as default editor
-export EDITOR="vi"
