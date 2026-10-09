@@ -1,11 +1,40 @@
 #!/usr/bin/env bash
+self=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
+
+list_projects() {
+    find ~ -maxdepth 1 -type d,l
+    find ~/Projects -mindepth 1 -maxdepth "${TMUXS_PROJECT_DEPTH:-1}" -type d
+}
+
+list_sessions() {
+    tmux list-sessions -F '#S' 2>/dev/null
+}
+
+case "$1" in
+    --list=projects) list_projects; exit 0 ;;
+    --list=sessions) list_sessions; exit 0 ;;
+esac
+
 if [[ -n "$1" ]]; then
     selected=$1
 else
-    selected=$(( find ~ -maxdepth 1 -type d,l; find ~/Projects -mindepth 1 -maxdepth ${TMUXS_PROJECT_DEPTH:-1} -type d) | fzf --prompt='tmux session > ')
+    selected=$(list_projects | fzf \
+        --prompt='projects> ' \
+        --header='ctrl-s: toggle projects/sessions' \
+        --bind "ctrl-s:transform:if [[ \$FZF_PROMPT == 'projects> ' ]]; then echo 'change-prompt(sessions> )+reload($self --list=sessions)'; else echo 'change-prompt(projects> )+reload($self --list=projects)'; fi")
 fi
 
 if [[ -z "$selected" ]]; then
+    exit 0
+fi
+
+# An existing tmux session name (picked from the sessions list) isn't a path.
+if ! [[ -e "$selected" ]] && tmux has-session -t "$selected" 2> /dev/null; then
+    if [[ -z $TMUX ]]; then
+        tmux attach-session -t "$selected"
+    else
+        tmux switch-client -t "$selected"
+    fi
     exit 0
 fi
 
