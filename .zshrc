@@ -46,7 +46,7 @@ zle -N zle-keymap-select
 zle -N zle-line-init
 
 setopt PROMPT_SUBST
-export PROMPT='%(?..%F{red}!%? )%B%F{blue}%~%b%f ${VI_MODE_INDICATOR}%# '
+export PROMPT='%(?..%F{red}!%? )%(1j.%F{yellow}⚙%j %f.)%B%F{blue}%~%b%f ${VI_MODE_INDICATOR}%# '
 
 [[ -f "/opt/homebrew/bin/brew" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
