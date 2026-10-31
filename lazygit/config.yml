@@ -1,5 +1,5 @@
 gui:
-  showFileTree: false
+  showFileTree: true
 customCommands:
   - key: "<c-x>"
     context: "localBranches"

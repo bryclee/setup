@@ -2,12 +2,14 @@
 tags:
   - admin
 ---
-## For today
+# For today
 ```tasks
 not done
 happens on or before today
 group by happens
+group by tags
 sort by priority
+sort by happens
 show tree
 ```
 

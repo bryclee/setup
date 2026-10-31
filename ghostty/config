@@ -14,8 +14,13 @@ link-previews = true
 
 # Bump the contrast between foreground/background so dim ANSI colors
 # stay readable (1 = no enforcement, ratio scale like WCAG contrast).
-minimum-contrast = 1.6
+minimum-contrast = 1.5
 
 # Global hotkey window, similar to iTerm's Hotkey Window feature.
 # Requires accessibility permissions to be granted to Ghostty.
 keybind = global:alt+space=toggle_quick_terminal
+
+quick-terminal-size=1200px,900px
+quick-terminal-position=center
+quick-terminal-animation-duration=0
+quick-terminal-screen=mouse

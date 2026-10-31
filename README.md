@@ -31,18 +31,3 @@ Some prerequisites that are not yet automated/other issues:
  - install the server extensions globally? if you use different versions of npm, you lose your extensions
  - only activate completion/bindings on files that have an extension installed?
 
-
-## Other things that are nice to have that are not installed as part of the script
-
-### General other tools
-
-Flux
-Postman
-
-### Mac
-
-XCode App - The command line tools are installed as part of the script, but not sure if that includes all the tools that are desired.
-Alfred (search is better than default Spotlight)
-    - Script will install, but need to manually disable the spotlight shortcut in system preferences
-Hammerspoon
-    - Need to enable accessibility

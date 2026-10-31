@@ -112,10 +112,11 @@ return {
       lazygit = {
         enabled = true,
       },
-      -- Using fugitive + rhubarb (:GBrowse) instead; disable so AstroNvim's
-      -- default <Leader>go/<Leader>gy snacks mappings don't get registered
+      -- Trying snacks' built-in git_browse again instead of fugitive + rhubarb
+      -- (:GBrowse); see nvim/lua/plugins/fugitive.lua for the old mappings,
+      -- left commented in case I switch back.
       gitbrowse = {
-        enabled = false,
+        enabled = true,
       },
       picker = {
         layout = {
@@ -171,6 +172,30 @@ return {
           ["<Leader>gg"] = {
             function() require("snacks").lazygit() end,
             desc = "Toggle LazyGit (Snacks)",
+          },
+          ["<Leader>gy"] = {
+            function()
+              require("snacks").gitbrowse {
+                open = function(url)
+                  vim.fn.setreg("+", url)
+                  vim.notify("Yanked git URL: " .. url)
+                end,
+              }
+            end,
+            desc = "Yank git URL (Snacks)",
+          },
+        },
+        x = {
+          ["<Leader>gy"] = {
+            function()
+              require("snacks").gitbrowse {
+                open = function(url)
+                  vim.fn.setreg("+", url)
+                  vim.notify("Yanked git URL: " .. url)
+                end,
+              }
+            end,
+            desc = "Yank git URL for selection (Snacks)",
           },
         },
       },

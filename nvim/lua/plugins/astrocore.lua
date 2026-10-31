@@ -52,30 +52,36 @@ return {
 
           -- Personal mappings for Search
           ["<Leader>s"] = { desc = "Search" },
-          ["<Leader>sf"] = { function() require("snacks").picker.files() end, desc = "Files" },
-          ["<Leader>ss"] = { function() require("snacks").picker.lsp_workspace_symbols() end, desc = "Workspace Symbols" },
+          ["<Leader>sf"] = { function() require("snacks").picker.files { hidden = true } end, desc = "Files" },
+          ["<Leader>ss"] = {
+            function() require("snacks").picker.lsp_workspace_symbols() end,
+            desc = "Workspace Symbols",
+          },
           ["<Leader>sn"] = { function() require("snacks").picker.lsp_symbols() end, desc = "Document Symbols" },
-          ["<Leader>st"] = { function() require("snacks").picker.grep() end, desc = "Text (grep)" },
+          ["<Leader>sw"] = { function() require("snacks").picker.grep() end, desc = "Find words" },
           ["<Leader>s/"] = {
             function() require("snacks").picker.lines() end,
             desc = "Buffer",
           },
           ["<Leader>s<CR>"] = { function() require("snacks").picker.resume() end, desc = "Resume picker" },
           ["<Leader>sp"] = { function() require("snacks").picker() end, desc = "Picker" },
-          ["<Leader>sj"] = { function() require("snacks").picker.jumps({ layout = { preset = "ivy_split" }}) end, desc = "Jumps" },
+          ["<Leader>sj"] = {
+            function() require("snacks").picker.jumps { layout = { preset = "ivy_split" } } end,
+            desc = "Jumps",
+          },
           ["<Leader><Leader>"] = { function() require("snacks").picker.buffers() end, desc = "Open buffers" },
 
           ["<Leader>yo"] = { "<Cmd>w !" .. exportOrg .. "<CR>", desc = "Yank org buffer" },
           ["<Leader>ym"] = { "<Cmd>w !" .. exportMarkdown .. "<CR>", desc = "Yank markdown buffer" },
           ["<Leader>yy"] = {
             function()
-              local file = vim.fn.expand("%:.")
-              local line = vim.fn.line(".")
+              local file = vim.fn.expand "%:."
+              local line = vim.fn.line "."
               local path = file .. "#L" .. line
               vim.fn.setreg("+", path)
               vim.notify("Yanked: " .. path)
             end,
-            desc = "Yank file path with line number"
+            desc = "Yank file path with line number",
           },
 
           -- Markdown
@@ -95,7 +101,7 @@ return {
           -- Fold helper, only show current fold, and also expand all folds under current
           ["zV"] = { "zMzvzczOzz", desc = "Focus current fold under cursor" },
 
-          -- ["<Leader>gB"] = { function() require("gitsigns").blame() end, desc = "Git blame file (gitsigns)" },
+          ["<Leader>gb"] = { function() require("gitsigns").blame() end, desc = "Git blame file (gitsigns)" },
         },
         t = {
           ["<C-_>"] = { "<C-/>", remap = true },
@@ -103,7 +109,7 @@ return {
           ["<C-\\><C-\\>"] = { [[<C-\><C-n>]], desc = "Return to Normal Mode" },
         },
         v = {
-          ["<Leader>st"] = {
+          ["<Leader>sw"] = {
             function() require("snacks").picker.grep_word() end,
             desc = "Grep visual selection in project",
           },
@@ -111,8 +117,8 @@ return {
           ["<Leader>ym"] = { ":w !" .. exportMarkdown .. "<CR>", desc = "Yank markdown selection" },
           ["<Leader>yy"] = {
             function()
-              local file = vim.fn.expand("%:.")
-              local region = vim.fn.getregionpos(vim.fn.getpos("v"), vim.fn.getpos("."))
+              local file = vim.fn.expand "%:."
+              local region = vim.fn.getregionpos(vim.fn.getpos "v", vim.fn.getpos ".")
               local start_line = region[1][1][2]
               local end_line = region[#region][1][2]
               local path = file .. "#L" .. start_line .. "-L" .. end_line

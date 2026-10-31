@@ -18,14 +18,16 @@ return {
           -- remap existing Git branches to <leader>gB instead
           maps.n[prefix .. "B"] = maps.n[prefix .. "b"]
           -- Git blame
-          maps.n[prefix .. "b"] = { "<Cmd>Git blame<CR>", desc = "Git blame" }
+          -- maps.n[prefix .. "b"] = { "<Cmd>Git blame<CR>", desc = "Git blame" }
           -- Copy git URL (file/blob/commit, or cursor line's commit in a blame buffer) to clipboard
-          maps.n[prefix .. "y"] = { "<Cmd>.GBrowse!<CR>", desc = "Copy git URL to clipboard (GBrowse)" }
-          maps.x[prefix .. "y"] =
-            { ":GBrowse!<CR>", desc = "Copy git URL for selection to clipboard (GBrowse)" }
+          -- Trying snacks' git_browse instead (see nvim/lua/plugins/snacks.lua); leaving these
+          -- commented in case I switch back to fugitive + rhubarb.
+          -- maps.n[prefix .. "y"] = { "<Cmd>.GBrowse!<CR>", desc = "Copy git URL to clipboard (GBrowse)" }
+          -- maps.x[prefix .. "y"] =
+          --   { ":GBrowse!<CR>", desc = "Copy git URL for selection to clipboard (GBrowse)" }
           -- Open git URL (file/blob/commit, or cursor line's commit in a blame buffer) in browser
-          maps.n[prefix .. "o"] = { "<Cmd>.GBrowse<CR>", desc = "Open git URL in browser (GBrowse)" }
-          maps.x[prefix .. "o"] = { ":GBrowse<CR>", desc = "Open git URL for selection in browser (GBrowse)" }
+          -- maps.n[prefix .. "o"] = { "<Cmd>.GBrowse<CR>", desc = "Open git URL in browser (GBrowse)" }
+          -- maps.x[prefix .. "o"] = { ":GBrowse<CR>", desc = "Open git URL for selection in browser (GBrowse)" }
         end,
       },
     },
