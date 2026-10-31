@@ -7,7 +7,7 @@ list_projects() {
 }
 
 list_sessions() {
-    tmux list-sessions -F '#S' 2>/dev/null
+    tmux list-sessions -F '#S#{?session_attached, (attached),}' 2>/dev/null
 }
 
 case "$1" in
@@ -27,6 +27,9 @@ fi
 if [[ -z "$selected" ]]; then
     exit 0
 fi
+
+# Strip the attached indicator added by list_sessions.
+selected=${selected% (attached)}
 
 # An existing tmux session name (picked from the sessions list) isn't a path.
 if ! [[ -e "$selected" ]] && tmux has-session -t "$selected" 2> /dev/null; then
