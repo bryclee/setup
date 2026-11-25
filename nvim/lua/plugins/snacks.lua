@@ -105,10 +105,70 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "BufReadPost" }, {
   end,
 })
 
+-- Toggle inline snacks images for the current buffer. snacks has no detach API
+-- (the inline updater is bound via nvim_buf_attach), so we wrap
+-- `doc.find_visible` once to report no images for buffers flagged as disabled;
+-- the inline updater then closes the existing placements itself.
+local function toggle_buf_images()
+  local Snacks = require "snacks"
+  local doc = Snacks.image.doc
+  if not doc._toggle_wrapped then
+    local orig = doc.find_visible
+    doc.find_visible = function(buf, cb)
+      if vim.b[buf].snacks_image_disabled then return cb {} end
+      return orig(buf, cb)
+    end
+    doc._toggle_wrapped = true
+  end
+
+  local buf = vim.api.nvim_get_current_buf()
+  local disabled = not vim.b[buf].snacks_image_disabled
+  vim.b[buf].snacks_image_disabled = disabled
+  doc.attach(buf) -- no-op if already attached
+  vim.schedule(function() vim.api.nvim_exec_autocmds("BufWinEnter", { buffer = buf, modeline = false }) end)
+  vim.notify("Snacks images " .. (disabled and "disabled" or "enabled"))
+end
+
 return {
+  {
+    "AstroNvim/astrocore",
+    opts = {
+      autocmds = {
+        markdown_image_toggle = {
+          {
+            event = "FileType",
+            -- Same criteria snacks uses to attach: the filetype's treesitter lang
+            -- has an images.scm query (markdown, html, latex, ... and octo via
+            -- the markdown registration in octo.lua).
+            callback = function(args)
+              local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+              if not (lang and vim.tbl_contains(require("snacks").image.langs(), lang)) then return end
+              vim.keymap.set("n", "<Leader>Mi", toggle_buf_images, {
+                buffer = args.buf,
+                desc = "Toggle Snacks images (buffer)",
+              })
+            end,
+          },
+        },
+      },
+    },
+  },
   {
     "folke/snacks.nvim",
     opts = {
+      -- AstroNvim disables inline doc rendering (opts.image.doc.enabled = false in
+      -- astronvim/plugins/snacks.lua). Re-enable it here; also set conceallevel=2
+      -- (already set in astrocore.lua) since inline images use conceal.
+      image = {
+        enabled = true,
+        doc = {
+          enabled = true,
+          inline = true,
+          float = true,
+          max_width = 400,
+          max_height = 200,
+        },
+      },
       lazygit = {
         enabled = true,
       },
@@ -119,9 +179,22 @@ return {
         enabled = true,
       },
       picker = {
-        layout = {
-          preset = "vertical",
-        },
+        layout = function()
+          if vim.o.columns <= 200 then
+            return {
+              preset = "vertical",
+              layout = { width = 0.9, min_width = 100, backdrop = 80 },
+            }
+          else
+            return {
+              preset = "default",
+              layout = {
+                backdrop = 80,
+                min_width = 200,
+              },
+            }
+          end
+        end,
         actions = {
           cycle_win_no_insert = function(picker)
             require("snacks.picker.actions").cycle_win(picker)

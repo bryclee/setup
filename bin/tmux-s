@@ -2,37 +2,93 @@
 self=$(cd "$(dirname "$0")" && pwd)/$(basename "$0")
 
 list_projects() {
-    find ~ -maxdepth 1 -type d,l
-    find ~/Projects -mindepth 1 -maxdepth "${TMUXS_PROJECT_DEPTH:-1}" -type d
+    {
+        find ~ -maxdepth 1 -type d,l
+        find ~/Projects -mindepth 1 -maxdepth "${TMUXS_PROJECT_DEPTH:-1}" -type d
+    } | awk '{print $0 "\t" $0}'
 }
 
+# Output: "<name>\t<display>" (fzf shows field 2, uses field 1 as the value).
 list_sessions() {
-    tmux list-sessions -F '#S#{?session_attached, (attached),}' 2>/dev/null
+    tmux list-sessions -F '#{session_activity}	#S	#S: #{session_windows} #{?#{==:#{session_windows},1},window,windows}#{?session_attached, (attached),}' 2>/dev/null | sort -rn | cut -f2-
+}
+
+kill_session() {
+    local name=${1% (attached)}
+    read -rn 1 -p "Kill tmux session '$name'? [y/N] " answer
+    [[ $answer == [yY] ]] && tmux kill-session -t "=$name"
+    return 0
+}
+
+# Prompt for a session name (default: project name) and create it detached.
+# With no argument (sessions view), start in $HOME unless TMUXS_NEW_SESSION_DIR is set.
+# Prints "session:<name>" so the caller can attach/switch to it.
+new_session() {
+    local path default name
+    if [[ -n "$1" ]]; then
+        path=$(cd "$1" 2> /dev/null && pwd) || return
+    else
+        path=${TMUXS_NEW_SESSION_DIR:-$HOME}
+    fi
+    default=$(basename "$path" | tr .: __)
+    if ((BASH_VERSINFO[0] >= 4)); then
+        # bash 4+: pre-fill the readline buffer with the default (editable/deletable).
+        read -erp "New session name: " -i "$default" name < /dev/tty > /dev/tty || return
+    else
+        read -rp "New session name [$default]: " name < /dev/tty > /dev/tty || return
+    fi
+    name=$(tr .: __ <<< "${name:-$default}")
+    tmux has-session -t "=$name" 2> /dev/null || tmux new-session -ds "$name" -c "$path"
+    echo "session:$name"
+}
+
+# Window list plus a snapshot of the session's active pane (with colors).
+preview_session() {
+    local name=${1% (attached)}
+    tmux list-windows -t "=$name" -F '#{window_index}:#{window_name}#{?window_active,*,} (#{window_panes} panes)' 2> /dev/null
+    echo
+    tmux capture-pane -ep -t "=$name:" 2> /dev/null
 }
 
 case "$1" in
+    --preview) preview_session "$2"; exit 0 ;;
+    --new) new_session "$2"; exit 0 ;;
     --list=projects) list_projects; exit 0 ;;
     --list=sessions) list_sessions; exit 0 ;;
+    --kill) kill_session "$2"; exit 0 ;;
 esac
 
 if [[ -n "$1" ]]; then
     selected=$1
 else
-    selected=$(list_projects | fzf \
-        --prompt='projects> ' \
-        --header='ctrl-s: toggle projects/sessions' \
-        --bind "ctrl-s:transform:if [[ \$FZF_PROMPT == 'projects> ' ]]; then echo 'change-prompt(sessions> )+reload($self --list=sessions)'; else echo 'change-prompt(projects> )+reload($self --list=projects)'; fi")
+    sessions_header='ctrl-o: toggle sessions/projects | ctrl-x: kill session | ctrl-t: new named session'
+    projects_header='ctrl-o: toggle sessions/projects | ctrl-t: new named session'
+    selected=$(list_sessions | fzf \
+        --prompt='sessions> ' \
+        --header="$sessions_header" \
+        --preview "$self --preview {1}" \
+        --preview-window 'down,60%,border-rounded' \
+        --delimiter '\t' \
+        --with-nth 2 \
+        --bind "ctrl-x:transform:if [[ \$FZF_PROMPT == 'sessions> ' ]]; then echo 'execute($self --kill {1})+reload($self --list=sessions)'; fi" \
+        --bind "ctrl-t:transform:if [[ \$FZF_PROMPT == 'projects> ' ]]; then echo 'become($self --new {1})'; elif [[ \$FZF_PROMPT == 'sessions> ' ]]; then echo 'become($self --new)'; fi" \
+        --bind "ctrl-o:transform:if [[ \$FZF_PROMPT == 'sessions> ' ]]; then echo 'change-prompt(projects> )+change-header($projects_header)+hide-preview+reload($self --list=projects)'; else echo 'change-prompt(sessions> )+change-header($sessions_header)+show-preview+reload($self --list=sessions)'; fi" \
+        | cut -f1)
 fi
 
 if [[ -z "$selected" ]]; then
     exit 0
 fi
 
-# Strip the attached indicator added by list_sessions.
-selected=${selected% (attached)}
+# A session name from the sessions list or --new (not a path).
+if [[ $selected == session:* ]]; then
+    selected=${selected#session:}
+    is_session=1
+elif ! [[ -e "$selected" ]] && tmux has-session -t "$selected" 2> /dev/null; then
+    is_session=1
+fi
 
-# An existing tmux session name (picked from the sessions list) isn't a path.
-if ! [[ -e "$selected" ]] && tmux has-session -t "$selected" 2> /dev/null; then
+if [[ -n $is_session ]]; then
     if [[ -z $TMUX ]]; then
         tmux attach-session -t "$selected"
     else

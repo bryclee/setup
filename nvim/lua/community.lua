@@ -9,6 +9,7 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.pack.java" }, -- nvim-jdtls: handles jdt:// (navigate into jar classes)
   -- import/override with your plugins folder
   -- { import = "astrocommunity.pack.markdown" },
   -- { import = "astrocommunity.pack.typescript" },

@@ -101,6 +101,26 @@ return {
           -- Fold helper, only show current fold, and also expand all folds under current
           ["zV"] = { "zMzvzczOzz", desc = "Focus current fold under cursor" },
 
+          -- Tabs
+          ["<Leader><Tab>"] = { desc = "Tabs" },
+          ["<Leader><Tab>]"] = { "<Cmd>tabnext<CR>", desc = "Next tab" },
+          ["<Leader><Tab>["] = { "<Cmd>tabprevious<CR>", desc = "Previous tab" },
+          ["<Leader><Tab>n"] = { "<Cmd>tabnew<CR>", desc = "New tab" },
+          ["<Leader><Tab>T"] = { "<Cmd>tabnew %<CR>", desc = "Current buffer in new tab" },
+          ["<Leader><Tab>q"] = { "<Cmd>tabclose<CR>", desc = "Close tab" },
+          ["<Leader><Tab>H"] = { "<Cmd>tabmove -1<CR>", desc = "Move tab left" },
+          ["<Leader><Tab>L"] = { "<Cmd>tabmove +1<CR>", desc = "Move tab right" },
+          ["<Leader><Tab>o"] = { "<Cmd>tabonly<CR>", desc = "Close other tabs" },
+          ["<Leader><Tab>O"] = {
+            function()
+              local cur = vim.fn.tabpagenr()
+              for i = vim.fn.tabpagenr "$", cur + 1, -1 do
+                vim.cmd("tabclose " .. i)
+              end
+            end,
+            desc = "Close tabs to the right",
+          },
+
           ["<Leader>gb"] = { function() require("gitsigns").blame() end, desc = "Git blame file (gitsigns)" },
         },
         t = {

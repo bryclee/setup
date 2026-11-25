@@ -10,6 +10,12 @@ return {
     opts = function(_, opts)
       local status = require "astroui.status"
 
+      -- Italicize the LSP location (breadcrumbs) in the active winbar; the last child is the breadcrumbs component.
+      local active = opts.winbar and opts.winbar[2]
+      if active then
+        active[#active].hl = vim.tbl_extend("force", status.hl.get_attributes("winbar", true), { italic = true })
+      end
+
       opts.statusline = {
         hl = { fg = "fg", bg = "bg" },
         status.component.mode(),

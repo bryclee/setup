@@ -1,5 +1,65 @@
 local UNMAPPED = { lhs = "" }
 
+local function in_review_diff()
+  local layout = require("octo.reviews").get_current_layout()
+  if not layout then return false end
+  local win = vim.api.nvim_get_current_win()
+  return win == layout.left_winid or win == layout.right_winid
+end
+
+local function is_octo_buf() return vim.api.nvim_buf_get_name(0):match "^octo://" ~= nil end
+
+local function in_review() return in_review_diff() or is_octo_buf() end
+
+-- Outside a review, behave as if the mapping didn't exist.
+local function fallback(lhs) vim.api.nvim_feedkeys(lhs, "n", false) end
+
+-- These are global mappings (vim has no window/tab-local keymaps) that only act
+-- inside an Octo review. With `use_local_fs = true` the right-hand diff buffer is
+-- the real file, so buffer-name-based (`octo://*`) buffer-local mappings don't apply.
+-- `fn` returns true if it handled the key, false to fall back to the default behavior.
+local function map_review(suffix, fn)
+  local lhs = (vim.g.maplocalleader or "\\") .. suffix
+  vim.keymap.set("n", lhs, function()
+    if not (in_review() and fn()) then fallback(lhs) end
+  end, { desc = "Octo review: " .. suffix })
+end
+
+local function view_thread()
+  vim.cmd "Octo review thread"
+  return true
+end
+
+-- Open the file under the cursor in a new tab at the same position,
+-- leaving the review diff untouched so closing the tab returns to it.
+-- The review diff's buffer line matches the file's line, so we resolve
+-- the path from octo's buffer-local `octo_diff_props` and open it directly,
+-- setting the cursor explicitly (buffer switches don't reliably restore it).
+local function go_to_file_in_tab()
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  local ok, props = pcall(vim.api.nvim_buf_get_var, 0, "octo_diff_props")
+  if not (ok and props and props.path) then
+    -- Not a review diff buffer (e.g. a comment thread); defer to octo.
+    require("octo.navigation").go_to_file()
+    return true
+  end
+
+  local path = vim.fs.joinpath(vim.fn.getcwd(), props.path)
+  if not vim.uv.fs_stat(path) then
+    local root = vim.fn.system("git rev-parse --show-toplevel"):gsub("%s+$", "")
+    path = vim.fs.joinpath(root, props.path)
+  end
+  if not vim.uv.fs_stat(path) then
+    vim.notify("octo: cannot find " .. props.path, vim.log.levels.WARN)
+    return true
+  end
+
+  vim.cmd("tabnew " .. vim.fn.fnameescape(path))
+  local line = math.min(cursor[1], vim.api.nvim_buf_line_count(0))
+  vim.api.nvim_win_set_cursor(0, { line, cursor[2] })
+  return true
+end
+
 ---@type LazySpec
 return {
   -- { import = "astrocommunity.git.octo-nvim" }, -- for reviewing pull requests
@@ -8,7 +68,7 @@ return {
     -- pin = true,
     -- commit = "f09ff9413652e3c06a6817ba6284591c00121fe0",
     opts = {
-      -- use_local_fs = false,
+      use_local_fs = true,
       picker = "snacks",
       -- default_to_projects_v2 = false,
       -- suppress_missing_scope = {
@@ -75,23 +135,21 @@ return {
       },
     },
     init = function()
-      vim.api.nvim_create_autocmd("BufEnter", {
-        pattern = "octo://*",
-        callback = function()
-          vim.keymap.set(
-            { "n" },
-            "<localleader>st",
-            "<Cmd>Octo review thread<CR>",
-            { desc = "View thread", buffer = true }
-          )
-          -- vim.keymap.set(
-          --   { "n" },
-          --   "<localleader>sg",
-          --   '<Cmd>exe "normal gf" | tab sp | tabprevious | b# | tabnext<CR>',
-          --   { desc = "Go to file", buffer = true }
-          -- )
+      -- Treat octo buffers as markdown so snacks.image attaches (it matches on
+      -- the treesitter lang of the filetype) and renders inline PR images.
+      vim.treesitter.language.register("markdown", "octo")
+      -- snacks' own FileType hook doesn't attach to octo buffers, so do it explicitly.
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "octo",
+        callback = function(ev)
+          vim.schedule(function()
+            if vim.api.nvim_buf_is_valid(ev.buf) then require("snacks").image.doc.attach(ev.buf) end
+          end)
         end,
       })
+
+      map_review("st", view_thread)
+      map_review("sg", go_to_file_in_tab)
     end,
   },
 }
