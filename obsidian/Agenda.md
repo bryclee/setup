@@ -13,6 +13,13 @@ sort by happens
 show tree
 ```
 
+## Limbo/Waiting
+```tasks
+status.type is ON_HOLD
+no scheduled date
+show tree
+```
+
 ## Future
 ```tasks
 not done

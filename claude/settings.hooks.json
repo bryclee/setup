@@ -1,0 +1,37 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact|fork",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -I ~/.claude/skills/sync-to-note/scripts/session-start-hook.py",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/notify.sh 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/notify.sh --permission 2>/dev/null || true",
+            "async": true
+          }
+        ]
+      }
+    ]
+  }
+}
